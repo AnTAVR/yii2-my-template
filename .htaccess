@@ -1,0 +1,16 @@
+DirectoryIndex index.php
+AddDefaultCharset utf-8
+AddType 'text/html; charset=utf-8' .html .htm .shtml
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteBase /
+RedirectMatch 403 /\..*$
+#RewriteCond %{HTTPS} off
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php
+</IfModule>
+#php_value post_max_size "50M"
+#php_value upload_max_filesize "50M"
+php_value default_charset utf-8

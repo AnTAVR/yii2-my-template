@@ -1,0 +1,13 @@
+.toplink {
+    position: fixed;
+    bottom: 50px;
+    right: 5px;
+
+    padding: 5px 8px 0 5px;
+
+    border: solid 1px #ddd;
+    border-radius: 5px;
+
+    cursor: pointer;
+    display: none;
+}
