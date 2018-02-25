@@ -27,7 +27,7 @@ class AppAsset extends AssetBundle
         'app\assets\NormalizeCSSAsset',
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
-        'app\widgets\CKEditor\CKEditorHighlightAsset',
         'yii\bootstrap\BootstrapThemeAsset',
+        'app\widgets\CKEditor\CKEditorHighlightAsset',
     ];
 }
