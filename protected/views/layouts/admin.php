@@ -49,7 +49,11 @@ if (Yii::$app->user->isGuest) {
 } else {
     /** @var $identity \app\modules\user\models\User */
     $identity = Yii::$app->user->identity;
-    $profileItems[] = ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-out"></span> ' . Yii::t('app', 'Logout ({username})', ['username' => $identity->username]), 'url' => ['/user/default/logout']];
+    $profileItems = [
+        ['label' => Yii::t('app', 'Edit'), 'url' => ['/user']],
+        '<li class="divider"></li>',
+        ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-out"></span> ' . Yii::t('app', 'Logout ({username})', ['username' => $identity->username]), 'url' => ['/user/default/logout']],
+    ];
 }
 
 $menuItems[] = ['label' => Yii::t('app', 'Profile'), 'items' => $profileItems,];
