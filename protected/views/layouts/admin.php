@@ -66,7 +66,7 @@ NavBar::end();
 $controllerId = Yii::$app->controller->id;
 $moduleId = Yii::$app->controller->module->id;
 ?>
-<div class="wrap fixed-top">
+<div class="wrap">
     <div class="container">
         <?= Menu::widget([
             'options' => ['class' => 'nav nav-tabs'],

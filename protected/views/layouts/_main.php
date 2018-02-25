@@ -85,7 +85,7 @@ echo Nav::widget([
 ]);
 NavBar::end();
 ?>
-<div class="wrap">
+<div class="wrap fixed-top">
     <div class="container">
         <?= Carousel::widget([
             'showIndicators' => true,
