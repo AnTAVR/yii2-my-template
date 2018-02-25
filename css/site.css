@@ -85,3 +85,28 @@ div.required label.control-label:after {
     content: " *";
     color: red;
 }
+
+.sidebar-module > ul.list-unstyled > li > a {
+    border-left: 3px solid transparent;
+    text-decoration: none;
+    padding-left: 3px;
+}
+
+.sidebar-module > ul.list-unstyled > li.active > a {
+    border-left-color: #9e2929;
+}
+
+.sidebar-module > ul.list-unstyled > li > a:hover {
+    border-left-color: #2b9e3e;
+}
+
+.sidebar-module > h4 {
+    color: #1b6d85;
+    box-shadow: 0 1px 0 #1b6d85;
+    /*text-align: center;*/
+    text-decoration: none;
+}
+
+.sidebar-module > h4 > a {
+    text-decoration: none;
+}
