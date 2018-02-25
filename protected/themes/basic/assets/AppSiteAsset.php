@@ -3,10 +3,19 @@
 namespace app\themes\basic\assets;
 
 use app\themes\BasicTheme as Theme;
-use app\assets\AppSiteAsset as OldAppSiteAsset;
+use yii\web\AssetBundle;
 
-class AppSiteAsset extends OldAppSiteAsset
+class AppSiteAsset extends AssetBundle
 {
+    public $css = [
+        'css/site.css',
+    ];
+    public $js = [
+        'js/site.js',
+    ];
+    public $depends = [
+        'app\assets\AppAsset'
+    ];
     public function init()
     {
         parent::init();
