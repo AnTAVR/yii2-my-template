@@ -6,6 +6,7 @@ body {
 img.thumbnail {
     display: inline-block;
     vertical-align: inherit;
+    margin: 5px;
 }
 
 .wrap > .container {
