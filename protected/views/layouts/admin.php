@@ -30,7 +30,7 @@ $asset = AppSiteAsset::register($this);
 
 <?php
 NavBar::begin([
-    'brandLabel' => Yii::t('app', 'Admin panel'),
+    'brandLabel' => Yii::t('app', 'View site'),
     'brandUrl' => Yii::$app->homeUrl,
     'brandOptions' => [
         'target' => '_blank',
