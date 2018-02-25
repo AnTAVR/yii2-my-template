@@ -1,0 +1,10 @@
+html,
+body {
+    min-width: 320px;
+    background-color: #fffff5;
+}
+
+img.thumbnail {
+    display: inline-block;
+    vertical-align: inherit;
+}
