@@ -102,9 +102,6 @@ div.required label.control-label:after {
 }
 
 .sidebar-module > h4 {
-    color: #1b6d85;
-    box-shadow: 0 1px 0 #1b6d85;
-    /*text-align: center;*/
     text-decoration: none;
 }
 
