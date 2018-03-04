@@ -18,6 +18,9 @@ class CKEditorHighlightAsset extends AssetBundle
         'jQuery("pre code").each(function(i, block) {hljs.highlightBlock(block);});',
     ];
 
+    /**
+     * @param \yii\web\View $view:
+     */
     public function registerAssetFiles($view)
     {
         parent::registerAssetFiles($view);
