@@ -28,12 +28,8 @@ class ProfileController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['logout', 'index', 'edit'],
+                        'actions' => ['logout', 'index', 'edit', 'password-edit'],
                         'roles' => ['@'],
-                    ],
-                    [
-                        'allow' => true,
-                        'actions' => ['password-edit'],
                     ],
                 ],
             ],
