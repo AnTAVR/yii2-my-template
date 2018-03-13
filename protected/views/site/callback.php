@@ -1,7 +1,6 @@
 <?php
-
 /* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
+
 /* @var $model app\models\CallbackForm */
 
 use app\widgets\Captcha;
@@ -22,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
     <div class="col-lg-6">
 
-        <?php $form = ActiveForm::begin(['id' => 'callback-form']); ?>
+        <?php $form = ActiveForm::begin(['id' => 'callback-form']); /* @var $form yii\bootstrap\ActiveForm */ ?>
 
         <?= $form->field($model, 'phone')->textInput(['autofocus' => true]) ?>
 
