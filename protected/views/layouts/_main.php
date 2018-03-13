@@ -74,7 +74,7 @@ if (Yii::$app->user->isGuest) {
         ['label' => Yii::t('app', 'Profile'), 'url' => ['/user']],
         '<li class="divider"></li>',
         ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-out"></span> ' .
-            Yii::t('app', 'Logout'), 'url' => ['/user/default/logout']],
+            Yii::t('app', 'Logout'), 'url' => ['/user/profile/logout']],
     ]);
 
     /** @var $identity \app\modules\user\models\User */

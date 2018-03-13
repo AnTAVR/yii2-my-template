@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="form-group">
                 <?= Html::submitButton(Yii::t('app', 'Send'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                <?= Html::a(Yii::t('app', 'Signup'), ['/user/default/signup'], ['class' => 'btn btn-success']) ?>
+                <?= Html::a(Yii::t('app', 'Signup'), ['/user/profile/signup'], ['class' => 'btn btn-success']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>

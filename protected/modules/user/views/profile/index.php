@@ -10,7 +10,7 @@ $identity = Yii::$app->user->identity;
 $this->title = $identity->username;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-default-index">
+<div class="user-profile-index">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4><?= Yii::t('app', 'Profile') ?></h4>

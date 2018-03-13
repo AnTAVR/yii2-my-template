@@ -13,7 +13,7 @@ class Module extends ModuleOld
      * @inheritdoc
      */
     public $controllerNamespace = 'app\modules\user\controllers';
-    public $defaultRoute = 'default';
+    public $defaultRoute = 'profile';
 
     /**
      * @inheritdoc
