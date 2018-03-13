@@ -1,4 +1,7 @@
 <?php
+/* @var $this yii\web\View */
+
+/* @var $model app\modules\products\models\Products */
 
 use app\modules\products\models\Products;
 use app\widgets\CKEditor\CKEditor;
@@ -6,14 +9,11 @@ use app\widgets\DateTimePicker\DateTimePicker;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\products\models\Products */
-/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="products-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(); /* @var $form yii\widgets\ActiveForm */ ?>
 
     <?= $form->field($model, 'meta_url')->textInput(['maxlength' => true]) ?>
 

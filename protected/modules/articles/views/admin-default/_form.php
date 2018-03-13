@@ -1,4 +1,8 @@
 <?php
+/* @var $this yii\web\View */
+
+/* @var $model app\modules\articles\models\Articles */
+
 
 use app\modules\articles\models\Articles;
 use app\widgets\CKEditor\CKEditor;
@@ -6,14 +10,11 @@ use app\widgets\DateTimePicker\DateTimePicker;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\articles\models\Articles */
-/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="articles-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(); /* @var $form yii\widgets\ActiveForm */ ?>
 
     <?= $form->field($model, 'meta_url')->textInput(['maxlength' => true]) ?>
 
