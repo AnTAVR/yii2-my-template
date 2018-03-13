@@ -1,17 +1,32 @@
 <?php
 /* @var $this yii\web\View */
-/* @var $context yii\web\Controller */
-$context = $this->context;
+
+use yii\helpers\Html;
+use yii\widgets\DetailView;
+
+/** @var $identity \app\modules\user\models\User */
+$identity = Yii::$app->user->identity;
+
+$this->title = $identity->username;
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-default-index">
-    <h1><?= $context->action->uniqueId ?></h1>
-    <p>
-        This is the view content for action "<?= $context->action->id ?>".
-        The action belongs to the controller "<?= get_class($context) ?>"
-        in the "<?= $context->module->id ?>" module.
-    </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4><?= Yii::t('app', 'Profile') ?></h4>
+        </div>
+        <div class="panel-body">
+            <?= DetailView::widget([
+                'model' => $identity,
+                'attributes' => [
+                    'id',
+                    'username',
+                    'password',
+                ],
+            ]) ?>
+        </div>
+        <div class="panel-footer">
+            <?= Html::a(Yii::t('app', 'Edit'), ['edit'], ['class' => 'btn btn-default']) ?>
+        </div>
+    </div>
 </div>
