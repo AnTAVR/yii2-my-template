@@ -8,9 +8,8 @@ use yii\web\IdentityInterface;
 
 class User extends BaseObject implements IdentityInterface
 {
-    public $id;
-    public $username;
-    public $password;
+    use UserTrait;
+
     public $authKey;
     public $accessToken;
 
