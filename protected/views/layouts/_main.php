@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
+
 /* @var $content string */
 
 use app\assets\AppSiteAsset;
@@ -63,7 +64,9 @@ $menuItems = [
 $profileItems = [];
 
 if (Yii::$app->user->isGuest) {
-    $profileItems[] = ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-in"></span> ' . Yii::t('app', 'Login'), 'url' => [Yii::$app->user->loginUrl]];
+    $profileItems = [
+        ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-in"></span> ' . Yii::t('app', 'Login'), 'url' => [Yii::$app->user->loginUrl]],
+    ];
 } else {
     /** @var $identity \app\modules\user\models\User */
     $identity = Yii::$app->user->identity;
@@ -76,9 +79,9 @@ if (Yii::$app->user->isGuest) {
     ];
 }
 
-if (!Yii::$app->user->isGuest) {
-    $menuItems[] = ['label' => Yii::t('app', 'Profile'), 'items' => $profileItems,];
-}
+//if (!Yii::$app->user->isGuest) {
+$menuItems[] = ['label' => Yii::t('app', 'Profile'), 'items' => $profileItems,];
+//}
 
 echo Nav::widget([
     'options' => ['class' => 'navbar-nav navbar-right'],
