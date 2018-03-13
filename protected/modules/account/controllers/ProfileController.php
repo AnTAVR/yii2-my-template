@@ -4,6 +4,7 @@ namespace app\modules\account\controllers;
 
 use app\modules\account\models\LoginForm;
 use app\modules\account\models\PasswordResetForm;
+use app\modules\account\models\PasswordEditForm;
 use app\modules\account\models\SignupForm;
 use Yii;
 use yii\filters\AccessControl;
@@ -29,6 +30,10 @@ class ProfileController extends Controller
                         'allow' => true,
                         'actions' => ['logout', 'index', 'edit'],
                         'roles' => ['@'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['password-edit'],
                     ],
                 ],
             ],
@@ -56,7 +61,7 @@ class ProfileController extends Controller
             return $this->goHome();
         }
 
-        $model = new LoginForm();
+        $model = new LoginForm(['scenario' => 'login']);
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             /** @var $identity \app\modules\account\models\User */
             $identity = Yii::$app->user->identity;
@@ -86,7 +91,7 @@ class ProfileController extends Controller
      */
     public function actionSignup()
     {
-        $model = new SignupForm();
+        $model = new SignupForm(['scenario' => 'signup']);
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $model->save();
@@ -109,12 +114,27 @@ class ProfileController extends Controller
      */
     public function actionPasswordReset()
     {
-        $model = new PasswordResetForm();
+        $model = new PasswordResetForm(['scenario' => 'password-reset']);
 
         if ($model->load(Yii::$app->request->get()) && $model->validate()) {
             $model->save();
         }
         return $this->render('password-reset', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * @return string
+     */
+    public function actionPasswordEdit()
+    {
+        $model = new PasswordEditForm(['scenario' => 'password-edit']);
+
+        if ($model->load(Yii::$app->request->get()) && $model->validate()) {
+            $model->save();
+        }
+        return $this->render('password-edit', [
             'model' => $model,
         ]);
     }
