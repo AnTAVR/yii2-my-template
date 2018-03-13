@@ -8,7 +8,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 
 /**
- * Default controller for the `user` module
+ * Default controller for the `profile` module
  */
 class ProfileController extends Controller
 {
