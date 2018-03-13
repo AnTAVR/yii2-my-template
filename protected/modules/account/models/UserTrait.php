@@ -12,6 +12,7 @@ trait UserTrait
     public $email;
     public $password;
 
+    public $verifyRules;
     public $verifyPassword;
     public $verifyCode;
     public $rememberMe = true;
@@ -24,16 +25,18 @@ trait UserTrait
         return [
             // username and password are both required
             ['username', 'required', 'on' => ['signup', 'login']],
-            ['username', 'unique', 'on' => ['signup']],
+//            ['username', 'unique', 'on' => ['signup']],
             ['password', 'required', 'on' => ['signup', 'login', 'password-edit']],
             ['password', 'validatePassword', 'on' => ['login']],
             ['verifyPassword', 'required', 'on' => ['signup', 'password-edit']],
             ['verifyPassword', 'compare', 'compareAttribute' => 'password', 'on' => ['signup', 'password-edit']],
             ['email', 'required', 'on' => ['signup', 'password-reset']],
             ['email', 'email', 'on' => ['signup', 'password-reset']],
-            ['email', 'unique', 'on' => ['signup']],
+//            ['email', 'unique', 'on' => ['signup']],
             ['verifyCode', 'captcha', 'on' => ['signup', 'login', 'password-edit', 'password-reset']],
             ['rememberMe', 'boolean', 'on' => ['login']],
+            ['verifyRules', 'boolean', 'on' => ['signup']],
+            ['verifyRules', 'compare', 'compareValue' => 1, 'on' => ['signup']],
         ];
     }
 
@@ -50,6 +53,7 @@ trait UserTrait
             'verifyPassword' => Yii::t('app', 'Verification Password'),
             'verifyCode' => Yii::t('app', 'Verification Code'),
             'rememberMe' => Yii::t('app', 'Remember Me'),
+            'verifyRules' => Yii::t('app', 'Verify Rules'),
         ];
     }
 
