@@ -57,7 +57,7 @@ $config = [
         'user' => [
             'identityClass' => 'app\modules\user\models\User',
             'enableAutoLogin' => true,
-            'loginUrl' => '/user/profile/login'
+            'loginUrl' => '/profile/profile/login'
         ],
         'request' => [
             'cookieValidationKey' => 'test',
