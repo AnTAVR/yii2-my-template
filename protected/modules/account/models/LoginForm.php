@@ -17,21 +17,6 @@ class LoginForm extends Model
 
     private $_user = false;
 
-
-    /**
-     * @return array the validation rules.
-     */
-    public function rules()
-    {
-        return [
-            ['username', 'required', 'on' => ['login']],
-            ['password', 'required', 'on' => ['login']],
-            ['rememberMe', 'boolean', 'on' => ['login']],
-            ['password', 'validatePassword', 'on' => ['login']],
-            ['verifyCode', 'captcha', 'on' => ['login']],
-        ];
-    }
-
     /**
      * Validates the password.
      * This method serves as the inline validation for password.
