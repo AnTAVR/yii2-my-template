@@ -10,7 +10,7 @@ $config = [
     'name' => $params['appName'],
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'] + array_keys($modules),
+    'bootstrap' => array_merge(['log'],  array_keys($modules)),
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
@@ -33,9 +33,9 @@ $config = [
             'theme' => $params['theme'],
         ],
         'user' => [
-            'identityClass' => 'app\modules\user\models\User',
+            'identityClass' => 'app\modules\account\models\User',
             'enableAutoLogin' => true,
-            'loginUrl' => '/profile/profile/login'
+            'loginUrl' => '/account/profile/login'
         ],
         'errorHandler' => [
             'errorAction' => '/site/error',
