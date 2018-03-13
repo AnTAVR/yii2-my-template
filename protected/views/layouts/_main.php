@@ -64,9 +64,7 @@ $menuItems = [
 $profileItems = [];
 
 if (Yii::$app->user->isGuest) {
-    $profileItems = [
-        ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-in"></span> ' . Yii::t('app', 'Login'), 'url' => [Yii::$app->user->loginUrl]],
-    ];
+    $profileItems = ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-in"></span> ' . Yii::t('app', 'Login'), 'url' => [Yii::$app->user->loginUrl]];
 } else {
     /** @var $identity \app\modules\user\models\User */
     $identity = Yii::$app->user->identity;
@@ -77,10 +75,11 @@ if (Yii::$app->user->isGuest) {
         '<li class="divider"></li>',
         ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-out"></span> ' . Yii::t('app', 'Logout ({username})', ['username' => $identity->username]), 'url' => ['/user/default/logout']],
     ];
+    $profileItems = ['label' => Yii::t('app', 'Profile'), 'items' => $profileItems,];
 }
 
 //if (!Yii::$app->user->isGuest) {
-$menuItems[] = ['label' => Yii::t('app', 'Profile'), 'items' => $profileItems,];
+$menuItems[] = $profileItems;
 //}
 
 echo Nav::widget([
