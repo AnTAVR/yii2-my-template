@@ -1,17 +1,17 @@
 <?php
+/* @var $this yii\web\View */
+
+/* @var $model app\models\StaticPage */
 
 use app\widgets\CKEditor\CKEditor;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\StaticPage */
-/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="static-page-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(); /* @var $form yii\bootstrap\ActiveForm */ ?>
 
     <?= $form->field($model, 'meta_url')->textInput(['maxlength' => true]) ?>
 
