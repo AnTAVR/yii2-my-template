@@ -26,9 +26,9 @@ class Module extends ModuleOld
         \Yii::$app->urlManager->addRules(
             [
                 '/account/admin-<controller>' => '/account/admin-<controller>',
-                '/account/login' => '/account/profile/login',
-                '/account/logout' => '/account/profile/logout',
-                '/account/signup' => '/account/profile/signup',
+                '/login' => '/account/profile/login',
+                '/logout' => '/account/profile/logout',
+                '/signup' => '/account/profile/signup',
             ]
         );
         // custom initialization code goes here
