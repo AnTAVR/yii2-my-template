@@ -8,7 +8,7 @@ use yii\widgets\DetailView;
 $identity = Yii::$app->user->identity;
 
 $this->title = $identity->username;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Profile'), 'url' => ['/account']];
+
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="account-profile-index">

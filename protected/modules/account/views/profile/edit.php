@@ -1,7 +1,11 @@
 <?php
 /* @var $this yii\web\View */
 
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Profile'), 'url' => ['/account']];
+/** @var $identity \app\modules\account\models\User */
+$identity = Yii::$app->user->identity;
+$this->params['breadcrumbs'][] = ['label' => $identity->username, 'url' => ['/account']];
+
+$this->params['breadcrumbs'][] = $this->title;
 
 /* @var $context yii\web\Controller */
 $context = $this->context;
