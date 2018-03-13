@@ -20,8 +20,13 @@ class SignupForm extends Model
     {
         return [
             // username and password are both required
-            [['username', 'password', 'verifyPassword'], 'required', 'on' => ['signup']],
+            ['username', 'required', 'on' => ['signup']],
+            ['password', 'required', 'on' => ['signup']],
+            ['verifyPassword', 'required', 'on' => ['signup']],
+            ['email', 'required', 'on' => ['signup']],
             ['verifyPassword', 'compare', 'compareAttribute' => 'password', 'on' => ['signup']],
+            ['email', 'email', 'on' => ['signup']],
+            ['email', 'unique', 'on' => ['signup']],
             ['verifyCode', 'captcha', 'on' => ['signup']],
         ];
     }
@@ -33,6 +38,7 @@ class SignupForm extends Model
     {
         return [
             'username' => Yii::t('app', 'Username'),
+            'email' => Yii::t('app', 'E-Mail'),
             'password' => Yii::t('app', 'Password'),
             'verifyPassword' => Yii::t('app', 'Verification Password'),
             'verifyCode' => Yii::t('app', 'Verification Code'),
