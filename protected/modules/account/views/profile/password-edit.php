@@ -18,7 +18,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-6">
             <?php $form = ActiveForm::begin(['id' => 'password-edit-form']); /* @var $form yii\bootstrap\ActiveForm */ ?>
 
-            <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
+            <?= $form->field($model, 'password')->passwordInput() ?>
+
+            <?= $form->field($model, 'verifyPassword')->passwordInput() ?>
 
             <?= $form->field($model, 'verifyCode')->widget(Captcha::class) ?>
 
