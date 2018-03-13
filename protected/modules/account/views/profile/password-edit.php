@@ -8,6 +8,7 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
 $this->title = Yii::t('app', 'Password Edit');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Profile'), 'url' => ['/account']];
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
