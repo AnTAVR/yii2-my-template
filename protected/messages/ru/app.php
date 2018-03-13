@@ -17,6 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'E-Mail' => '',
     'ID' => '',
     'Meta Description' => '',
     'Meta Keywords' => '',
@@ -155,6 +156,7 @@ return [
     'Uploader Images' => 'Загрузка фото',
     'Username' => 'Имя пользователя',
     'Verification Code' => 'Проверочный код',
+    'Verification Password' => 'Повтор пароля',
     'View image' => 'Просмотр изображения',
     'View site' => 'Просмотр на сайте',
     'We will respond to you as soon as possible.' => 'Мы ответим Вам как можно скорее.',
