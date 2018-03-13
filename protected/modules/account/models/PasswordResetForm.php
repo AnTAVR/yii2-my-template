@@ -16,6 +16,7 @@ class PasswordResetForm extends Model
         return [
             // username and password are both required
             ['email', 'required', 'on' => ['password-reset']],
+            ['email', 'email', 'on' => ['password-reset']],
             ['verifyCode', 'captcha', 'on' => ['password-reset']],
         ];
     }
