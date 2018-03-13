@@ -36,7 +36,7 @@ trait UserTrait
             ['verifyCode', 'captcha', 'on' => ['signup', 'login', 'password-edit', 'password-reset']],
             ['rememberMe', 'boolean', 'on' => ['login']],
             ['verifyRules', 'boolean', 'on' => ['signup']],
-            ['verifyRules', 'compare', 'compareValue' => 1, 'on' => ['signup']],
+            ['verifyRules', 'compare', 'compareValue' => 1, 'message' => Yii::t('app', 'You must agree with the rules'), 'on' => ['signup']],
         ];
     }
 
