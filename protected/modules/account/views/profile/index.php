@@ -4,13 +4,13 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/** @var $identity \app\modules\profile\models\User */
+/** @var $identity \app\modules\account\models\User */
 $identity = Yii::$app->user->identity;
 
 $this->title = $identity->username;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="profile-profile-index">
+<div class="account-profile-index">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4><?= Yii::t('app', 'Profile') ?></h4>
