@@ -117,6 +117,7 @@ return [
     'News Url' => 'Урл новости',
     'Partners' => 'Наши партнеры',
     'Password' => 'Пароль',
+    'Password Reset' => 'Восстановление пароля',
     'Payment' => 'Оплата',
     'Phone {phone}, name {name}' => 'Телефон {phone}, имя {name}',
     'Please contact us if you think this is a server error.' => 'Пожалуйста свяжитесь с нами если вы считаете что это ошибка сервера.',
