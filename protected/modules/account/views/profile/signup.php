@@ -1,17 +1,35 @@
 <?php
 /* @var $this yii\web\View */
-/* @var $context yii\web\Controller */
-$context = $this->context;
+
+/* @var $model app\modules\account\models\SignupForm */
+
+use app\widgets\Captcha;
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
+
+$this->title = Yii::t('app', 'Signup');
+$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="account-profile-signup">
-    <h1><?= $context->action->uniqueId ?></h1>
-    <p>
-        This is the view content for action "<?= $context->action->id ?>".
-        The action belongs to the controller "<?= get_class($context) ?>"
-        in the "<?= $context->module->id ?>" module.
-    </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <?php $form = ActiveForm::begin(['id' => 'signup-form']); /* @var $form yii\bootstrap\ActiveForm */ ?>
+
+            <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+
+            <?= $form->field($model, 'password')->passwordInput() ?>
+
+            <?= $form->field($model, 'verifyCode')->widget(Captcha::class) ?>
+
+            <div class="form-group">
+                <?= Html::submitButton(Yii::t('app', 'Send'), ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+            </div>
+
+            <?php ActiveForm::end(); ?>
+        </div>
+    </div>
+
 </div>
