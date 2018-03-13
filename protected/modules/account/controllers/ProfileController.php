@@ -17,11 +17,10 @@ class ProfileController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['login', 'logout', 'signup', 'index', 'edit'],
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['login', 'signup'],
+                        'actions' => ['login', 'signup', 'password-reset'],
                         'roles' => ['?'],
                     ],
                     [
@@ -94,5 +93,13 @@ class ProfileController extends Controller
     public function actionEdit()
     {
         return $this->render('edit');
+    }
+
+    /**
+     * @return string
+     */
+    public function actionPasswordReset()
+    {
+        return $this->render('password-reset');
     }
 }
