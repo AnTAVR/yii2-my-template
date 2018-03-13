@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\modules\profile\models\LoginForm */
+/* @var $model app\modules\account\models\LoginForm */
 
 use app\widgets\Captcha;
 use yii\bootstrap\ActiveForm;
@@ -11,7 +11,7 @@ use yii\helpers\Html;
 $this->title = Yii::t('app', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-login">
+<div class="account-login">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p><?= Yii::t('app', 'Please fill out the following fields to login:') ?></p>
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="form-group">
                 <?= Html::submitButton(Yii::t('app', 'Send'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                <?= Html::a(Yii::t('app', 'Signup'), ['/profile/profile/signup'], ['class' => 'btn btn-success']) ?>
+                <?= Html::a(Yii::t('app', 'Signup'), ['/account/profile/signup'], ['class' => 'btn btn-success']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>
