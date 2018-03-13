@@ -13,6 +13,7 @@ class Module extends ModuleOld
      * @inheritdoc
      */
     public $controllerNamespace = 'app\modules\user\controllers';
+    public $defaultRoute = 'default';
 
     /**
      * @inheritdoc
@@ -20,6 +21,13 @@ class Module extends ModuleOld
     public function init()
     {
         parent::init();
+
+        /** @noinspection HtmlUnknownTag */
+        \Yii::$app->urlManager->addRules(
+            [
+                '/user/admin-<controller>' => '/user/admin-<controller>',
+            ]
+        );
 
         // custom initialization code goes here
     }
