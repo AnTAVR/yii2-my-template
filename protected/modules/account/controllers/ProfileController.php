@@ -3,6 +3,8 @@
 namespace app\modules\account\controllers;
 
 use app\modules\account\models\LoginForm;
+use app\modules\account\models\PasswordResetForm;
+use app\modules\account\models\SignupForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -84,7 +86,14 @@ class ProfileController extends Controller
      */
     public function actionSignup()
     {
-        return $this->render('signup');
+        $model = new SignupForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->save();
+        }
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -100,6 +109,13 @@ class ProfileController extends Controller
      */
     public function actionPasswordReset()
     {
-        return $this->render('password-reset');
+        $model = new PasswordResetForm();
+
+        if ($model->load(Yii::$app->request->get()) && $model->validate()) {
+            $model->save();
+        }
+        return $this->render('password-reset', [
+            'model' => $model,
+        ]);
     }
 }

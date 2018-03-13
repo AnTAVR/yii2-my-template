@@ -32,4 +32,9 @@ class PasswordResetForm extends Model
             'verifyCode' => Yii::t('app', 'Verification Code'),
         ];
     }
+
+    public function save()
+    {
+        return true;
+    }
 }
