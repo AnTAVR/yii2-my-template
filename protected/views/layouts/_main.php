@@ -71,13 +71,13 @@ if (Yii::$app->user->isGuest) {
     ];
 
     $profileItems = array_merge($profileItems, [
-        ['label' => Yii::t('app', 'Profile'), 'url' => ['/profile']],
+        ['label' => Yii::t('app', 'Profile'), 'url' => ['/account']],
         '<li class="divider"></li>',
         ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-out"></span> ' .
-            Yii::t('app', 'Logout'), 'url' => ['/profile/profile/logout']],
+            Yii::t('app', 'Logout'), 'url' => ['/account/profile/logout']],
     ]);
 
-    /** @var $identity \app\modules\user\models\User */
+    /** @var $identity \app\modules\account\models\User */
     $identity = Yii::$app->user->identity;
     $profileItems = ['label' => $identity->username, 'items' => $profileItems,];
 }
