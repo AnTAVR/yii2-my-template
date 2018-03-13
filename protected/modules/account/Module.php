@@ -30,6 +30,7 @@ class Module extends ModuleOld
                 '/logout' => '/account/profile/logout',
                 '/signup' => '/account/profile/signup',
                 '/password-reset' => '/account/profile/password-reset',
+                '/password-edit' => '/account/profile/password-edit',
             ]
         );
         // custom initialization code goes here
