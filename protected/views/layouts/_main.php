@@ -13,6 +13,7 @@ use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 
 $asset = AppSiteAsset::register($this);
+/** @var yii\web\AssetBundle $asset */
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -90,8 +91,8 @@ NavBar::end();
         <?= Carousel::widget([
             'showIndicators' => true,
             'controls' => [
-//                '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>',
-//                '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>',
+                '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>',
+                '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>',
                 '',
                 '',
             ],
