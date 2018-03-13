@@ -31,6 +31,7 @@ class Module extends ModuleOld
                 '/signup' => '/account/profile/signup',
                 '/password-reset' => '/account/profile/password-reset',
                 '/password-edit' => '/account/profile/password-edit',
+                '/verify-email/<user_id:\d+>/<crc:\w+>' => '/account/profile/verify-email',
             ]
         );
         // custom initialization code goes here

@@ -31,6 +31,10 @@ class ProfileController extends Controller
                         'actions' => ['logout', 'index', 'edit', 'password-edit'],
                         'roles' => ['@'],
                     ],
+                    [
+                        'allow' => true,
+                        'actions' => ['verify-email'],
+                    ],
                 ],
             ],
 //            'verbs' => [
@@ -133,5 +137,16 @@ class ProfileController extends Controller
         return $this->render('password-edit', [
             'model' => $model,
         ]);
+    }
+
+    /**
+     * @param $user_id integer
+     * @param $crc string
+     * @return string
+     */
+    public function actionVerifyEmail(/** @noinspection PhpUnusedParameterInspection */
+        $user_id, $crc)
+    {
+        return (string)$user_id . ' ' . (string)$crc;
     }
 }
