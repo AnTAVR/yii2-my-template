@@ -61,21 +61,25 @@ $menuItems = [
     ],
 ];
 
-$profileItems = [];
-
 if (Yii::$app->user->isGuest) {
-    $profileItems = ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-in"></span> ' . Yii::t('app', 'Login'), 'url' => [Yii::$app->user->loginUrl]];
+    $profileItems = ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-in"></span> ' .
+        Yii::t('app', 'Login'), 'url' => [Yii::$app->user->loginUrl]];
 } else {
+    $profileItems = [
+        ['label' => Yii::t('app', 'Admin panel'), 'url' => ['/admin-site'], 'linkOptions' => ['target' => '_blank']],
+        '<li class="divider"></li>',
+    ];
+
+    $profileItems = array_merge($profileItems, [
+        ['label' => Yii::t('app', 'Profile'), 'url' => ['/user']],
+        '<li class="divider"></li>',
+        ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-out"></span> ' .
+            Yii::t('app', 'Logout'), 'url' => ['/user/default/logout']],
+    ]);
+
     /** @var $identity \app\modules\user\models\User */
     $identity = Yii::$app->user->identity;
-    $profileItems = [
-        ['label' => Yii::t('app', 'Edit'), 'url' => ['/user']],
-        '<li class="divider"></li>',
-        ['label' => Yii::t('app', 'Admin panel'), 'url' => ['/admin-site'], 'options' => ['target' => '_blank']],
-        '<li class="divider"></li>',
-        ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-out"></span> ' . Yii::t('app', 'Logout ({username})', ['username' => $identity->username]), 'url' => ['/user/default/logout']],
-    ];
-    $profileItems = ['label' => Yii::t('app', 'Profile'), 'items' => $profileItems,];
+    $profileItems = ['label' => $identity->username, 'items' => $profileItems,];
 }
 
 //if (!Yii::$app->user->isGuest) {
