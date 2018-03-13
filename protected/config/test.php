@@ -8,7 +8,7 @@ $config = [
     'name' => $params['appName'],
     'id' => 'basic-tests',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'] + array_keys($modules),
+    'bootstrap' => array_merge(['log'],  array_keys($modules)),
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
@@ -55,9 +55,9 @@ $config = [
             ],
         ],
         'user' => [
-            'identityClass' => 'app\modules\user\models\User',
+            'identityClass' => 'app\modules\account\models\User',
             'enableAutoLogin' => true,
-            'loginUrl' => '/profile/profile/login'
+            'loginUrl' => '/account/profile/login'
         ],
         'request' => [
             'cookieValidationKey' => 'test',
