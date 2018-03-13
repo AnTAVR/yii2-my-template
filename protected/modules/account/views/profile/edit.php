@@ -1,5 +1,8 @@
 <?php
 /* @var $this yii\web\View */
+
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Profile'), 'url' => ['/account']];
+
 /* @var $context yii\web\Controller */
 $context = $this->context;
 ?>
