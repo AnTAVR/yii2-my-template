@@ -1,18 +1,18 @@
 <?php
 
-namespace app\modules\profile;
+namespace app\modules\account;
 
 use app\components\Module as ModuleOld;
 
 /**
- * profile module definition class
+ * account module definition class
  */
 class Module extends ModuleOld
 {
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'app\modules\user\controllers';
+    public $controllerNamespace = 'app\modules\account\controllers';
     public $defaultRoute = 'profile';
 
     /**
@@ -25,11 +25,12 @@ class Module extends ModuleOld
         /** @noinspection HtmlUnknownTag */
         \Yii::$app->urlManager->addRules(
             [
-                '/profile/admin-<controller>' => '/profile/admin-<controller>',
-                '/profile/<controller:[\w-]+>' => '/profile/profile/<controller>',
+                '/account/admin-<controller>' => '/account/admin-<controller>',
+                '/account/login' => '/account/profile/login',
+                '/account/logout' => '/account/profile/logout',
+                '/account/signup' => '/account/profile/signup',
             ]
         );
-
         // custom initialization code goes here
     }
 }
