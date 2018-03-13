@@ -5,7 +5,7 @@ namespace app\modules\user;
 use app\components\Module as ModuleOld;
 
 /**
- * user module definition class
+ * profile module definition class
  */
 class Module extends ModuleOld
 {
@@ -25,7 +25,8 @@ class Module extends ModuleOld
         /** @noinspection HtmlUnknownTag */
         \Yii::$app->urlManager->addRules(
             [
-                '/user/admin-<controller>' => '/user/admin-<controller>',
+                '/profile/admin-<controller>' => '/profile/admin-<controller>',
+                '/profile/<controller:[\w-]+>' => '/profile/profile/<controller>',
             ]
         );
 

@@ -49,10 +49,10 @@ if (Yii::$app->user->isGuest) {
     $profileItems = [];
 
     $profileItems = array_merge($profileItems, [
-        ['label' => Yii::t('app', 'Profile'), 'url' => ['/user']],
+        ['label' => Yii::t('app', 'Profile'), 'url' => ['/profile']],
         '<li class="divider"></li>',
         ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-out"></span> ' .
-            Yii::t('app', 'Logout'), 'url' => ['/user/profile/logout']],
+            Yii::t('app', 'Logout'), 'url' => ['/profile/profile/logout']],
     ]);
 
     /** @var $identity \app\modules\user\models\User */
