@@ -8,6 +8,7 @@ use yii\base\Model;
 class SignupForm extends Model
 {
     public $username;
+    public $email;
     public $password;
     public $verifyPassword;
     public $verifyCode;
@@ -19,9 +20,9 @@ class SignupForm extends Model
     {
         return [
             // username and password are both required
-            [['username', 'password'], 'required'],
-            ['verifyPassword', 'compare', 'compareAttribute' => 'password'],
-            ['verifyCode', 'captcha'],
+            [['username', 'password', 'verifyPassword'], 'required', 'on' => ['signup']],
+            ['verifyPassword', 'compare', 'compareAttribute' => 'password', 'on' => ['signup']],
+            ['verifyCode', 'captcha', 'on' => ['signup']],
         ];
     }
 
