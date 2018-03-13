@@ -17,16 +17,17 @@ class DefaultController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
+                'only' => ['login', 'logout', 'signup', 'index', 'edit'],
                 'rules' => [
                     [
-                        'actions' => ['logout', 'index'],
                         'allow' => true,
-                        'roles' => ['@'],
+                        'actions' => ['login', 'signup'],
+                        'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['login'],
                         'allow' => true,
-                        'roles' => ['?'],
+                        'actions' => ['logout', 'index', 'edit'],
+                        'roles' => ['@'],
                     ],
                 ],
             ],
@@ -68,5 +69,21 @@ class DefaultController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    /**
+     * @return string
+     */
+    public function actionSignup()
+    {
+        return $this->render('signup');
+    }
+
+    /**
+     * @return string
+     */
+    public function actionEdit()
+    {
+        return $this->render('edit');
     }
 }
