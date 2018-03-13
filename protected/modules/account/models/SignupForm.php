@@ -9,6 +9,7 @@ class SignupForm extends Model
 {
     public $username;
     public $password;
+    public $verifyPassword;
     public $verifyCode;
 
     /**
@@ -19,6 +20,7 @@ class SignupForm extends Model
         return [
             // username and password are both required
             [['username', 'password'], 'required'],
+            ['verifyPassword', 'compare', 'compareAttribute' => 'password'],
             ['verifyCode', 'captcha'],
         ];
     }
@@ -31,6 +33,7 @@ class SignupForm extends Model
         return [
             'username' => Yii::t('app', 'Username'),
             'password' => Yii::t('app', 'Password'),
+            'verifyPassword' => Yii::t('app', 'Verification Password'),
             'verifyCode' => Yii::t('app', 'Verification Code'),
         ];
     }
