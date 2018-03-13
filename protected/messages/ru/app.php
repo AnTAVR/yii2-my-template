@@ -118,6 +118,7 @@ return [
     'News Url' => 'Урл новости',
     'Partners' => 'Наши партнеры',
     'Password' => 'Пароль',
+    'Password Edit' => 'Изменить пароль',
     'Password Reset' => 'Восстановление пароля',
     'Payment' => 'Оплата',
     'Phone {phone}, name {name}' => 'Телефон {phone}, имя {name}',
