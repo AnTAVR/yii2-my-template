@@ -13,10 +13,7 @@ use yii\base\Model;
  */
 class LoginForm extends Model
 {
-    public $username;
-    public $password;
-    public $rememberMe = true;
-    public $verifyCode;
+    use UserTrait;
 
     private $_user = false;
 
@@ -32,19 +29,6 @@ class LoginForm extends Model
             ['rememberMe', 'boolean', 'on' => ['login']],
             ['password', 'validatePassword', 'on' => ['login']],
             ['verifyCode', 'captcha', 'on' => ['login']],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'username' => Yii::t('app', 'Username'),
-            'password' => Yii::t('app', 'Password'),
-            'rememberMe' => Yii::t('app', 'Remember Me'),
-            'verifyCode' => Yii::t('app', 'Verification Code'),
         ];
     }
 

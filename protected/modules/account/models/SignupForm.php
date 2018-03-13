@@ -2,16 +2,11 @@
 
 namespace app\modules\account\models;
 
-use Yii;
 use yii\base\Model;
 
 class SignupForm extends Model
 {
-    public $username;
-    public $email;
-    public $password;
-    public $verifyPassword;
-    public $verifyCode;
+    use UserTrait;
 
     /**
      * @return array the validation rules.
@@ -28,20 +23,6 @@ class SignupForm extends Model
             ['email', 'email', 'on' => ['signup']],
             ['email', 'unique', 'on' => ['signup']],
             ['verifyCode', 'captcha', 'on' => ['signup']],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'username' => Yii::t('app', 'Username'),
-            'email' => Yii::t('app', 'E-Mail'),
-            'password' => Yii::t('app', 'Password'),
-            'verifyPassword' => Yii::t('app', 'Verification Password'),
-            'verifyCode' => Yii::t('app', 'Verification Code'),
         ];
     }
 

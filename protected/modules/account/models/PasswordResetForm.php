@@ -2,13 +2,11 @@
 
 namespace app\modules\account\models;
 
-use Yii;
 use yii\base\Model;
 
 class PasswordResetForm extends Model
 {
-    public $email;
-    public $verifyCode;
+    use UserTrait;
 
     /**
      * @return array the validation rules.
@@ -19,17 +17,6 @@ class PasswordResetForm extends Model
             // username and password are both required
             ['email', 'required', 'on' => ['password-reset']],
             ['verifyCode', 'captcha', 'on' => ['password-reset']],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'email' => Yii::t('app', 'E-Mail'),
-            'verifyCode' => Yii::t('app', 'Verification Code'),
         ];
     }
 
