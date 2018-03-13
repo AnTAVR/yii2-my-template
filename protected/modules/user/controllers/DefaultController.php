@@ -57,6 +57,10 @@ class DefaultController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            /** @var $identity \app\modules\user\models\User */
+            $identity = Yii::$app->user->identity;
+            Yii::$app->session->setFlash('success', Yii::t('app', 'Hello {username}', ['username' => $identity->username]));
+
             return $this->goBack();
         }
         return $this->render('login', [
@@ -66,7 +70,12 @@ class DefaultController extends Controller
 
     public function actionLogout()
     {
+        /** @var $identity \app\modules\user\models\User */
+        $identity = Yii::$app->user->identity;
+
         Yii::$app->user->logout();
+
+        Yii::$app->session->setFlash('success', Yii::t('app', 'Goodbye {username}', ['username' => $identity->username]));
 
         return $this->goHome();
     }
