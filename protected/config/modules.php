@@ -1,7 +1,7 @@
 <?php
 return [
-    'profile' => [
-        'class' => 'app\modules\profile\Module',
+    'account' => [
+        'class' => 'app\modules\account\Module',
     ],
     'products' => [
         'class' => 'app\modules\products\Module',
