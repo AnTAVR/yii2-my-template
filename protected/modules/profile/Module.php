@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\user;
+namespace app\modules\profile;
 
 use app\components\Module as ModuleOld;
 

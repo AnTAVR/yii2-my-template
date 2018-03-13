@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\user\models;
+namespace app\modules\profile\models;
 
 use yii\base\BaseObject;
 use yii\web\IdentityInterface;

@@ -1,8 +1,8 @@
 <?php
 
-namespace app\modules\user\controllers;
+namespace app\modules\profile\controllers;
 
-use app\modules\user\models\LoginForm;
+use app\modules\profile\models\LoginForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -57,7 +57,7 @@ class ProfileController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            /** @var $identity \app\modules\user\models\User */
+            /** @var $identity \app\modules\profile\models\User */
             $identity = Yii::$app->user->identity;
             Yii::$app->session->setFlash('success', Yii::t('app', 'Hello {username}', ['username' => $identity->username]));
 
@@ -70,7 +70,7 @@ class ProfileController extends Controller
 
     public function actionLogout()
     {
-        /** @var $identity \app\modules\user\models\User */
+        /** @var $identity \app\modules\profile\models\User */
         $identity = Yii::$app->user->identity;
 
         Yii::$app->user->logout();

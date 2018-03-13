@@ -3,7 +3,7 @@
 /* @var $context yii\web\Controller */
 $context = $this->context;
 ?>
-<div class="user-profile-edit">
+<div class="profile-profile-edit">
     <h1><?= $context->action->uniqueId ?></h1>
     <p>
         This is the view content for action "<?= $context->action->id ?>".
