@@ -26,6 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($model, 'verifyPassword')->passwordInput() ?>
 
+            <?= $form->field($model, 'verifyRules')->checkbox()->hint(Html::a(Yii::t('app', 'Rules'), ['/static/index', 'meta_url' => 'rules'], ['class' => 'label label-success'])) ?>
+
             <?= $form->field($model, 'verifyCode')->widget(Captcha::class) ?>
 
             <div class="form-group">
