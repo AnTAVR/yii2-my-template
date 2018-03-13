@@ -17,7 +17,8 @@ class PasswordSaveForm extends Model
     public function rules()
     {
         return [
-            [['password', 'verifyPassword'], 'required', 'on' => ['password-save']],
+            ['password', 'required', 'on' => ['password-save']],
+            ['verifyPassword', 'required', 'on' => ['password-save']],
             ['verifyPassword', 'compare', 'compareAttribute' => 'password', 'on' => ['password-save']],
             ['verifyCode', 'captcha', 'on' => ['password-save']],
         ];
