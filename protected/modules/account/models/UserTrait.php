@@ -11,6 +11,7 @@ trait UserTrait
     public $username;
     public $email;
     public $password;
+
     public $verifyPassword;
     public $verifyCode;
     public $rememberMe = true;
