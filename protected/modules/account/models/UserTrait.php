@@ -110,17 +110,15 @@ trait UserTrait
         if ($scenario == 'signup') {
             $hints = [
                 'username' => Yii::t('app', 'Possible characters ({chars})', ['chars' => Yii::$app->params['username.hint']]),
-                'email' => Yii::t('app', 'E-Mail'),
+                'email' => Yii::t('app', 'E-Mail must be valid, a letter with instructions will be sent to it.'),
                 'password' => Yii::t('app', 'Set a complex password using uppercase and lowercase letters, numbers and special characters.'),
             ];
-        }
-        elseif ($scenario == 'password-reset') {
+        } elseif ($scenario == 'password-reset') {
 //
             $hints = [
                 'email' => Yii::t('app', 'Enter E-Mail corresponding to the account, it will be sent an email with instructions.'),
             ];
-        }
-        elseif ($scenario == 'password-edit') {
+        } elseif ($scenario == 'password-edit') {
             $hints = [
                 'password' => Yii::t('app', 'Set a complex password using uppercase and lowercase letters, numbers and special characters.'),
             ];
@@ -130,11 +128,25 @@ trait UserTrait
         return array_merge(parent::attributeHints(), $hints);
     }
 
-    public function validateLoginPassword($attribute, $params)
+    /**
+     * @param $attribute string
+     * @param $params array
+     * @return bool
+     */
+    public function validateLoginPassword(/** @noinspection PhpUnusedParameterInspection */
+        $attribute, $params)
     {
+        return false;
     }
 
-    public function validateOldPassword($attribute, $params)
+    /**
+     * @param $attribute string
+     * @param $params array
+     * @return bool
+     */
+    public function validateOldPassword(/** @noinspection PhpUnusedParameterInspection */
+        $attribute, $params)
     {
+        return false;
     }
 }
