@@ -92,17 +92,15 @@ class UserDd extends ActiveRecord implements IdentityInterface
         return $this->password === $password;
     }
 
-    public function beforeSave($insert)
+    public function generateAuthKey()
     {
         $security = Yii::$app->security;
-        if ($this->isNewRecord) {
-            $this->auth_key = $security->generateRandomString();
-        }
+        $this->auth_key = $security->generateRandomString();
+    }
 
-        if (!empty($this->password)) {
-            $this->password = $security->generatePasswordHash($this->password);
-        }
-
-        return parent::beforeSave($insert);
+    public function setPassword($password)
+    {
+        $security = Yii::$app->security;
+        $this->password = $security->generatePasswordHash($password);
     }
 }
