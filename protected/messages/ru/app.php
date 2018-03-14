@@ -95,7 +95,7 @@ return [
     'Docs' => 'Документы',
     'E-Mail must be valid, a letter with instructions will be sent to it.' => 'E-Mail должен быть действующий, на него будет выслано письмо с инструкцией.',
     'Email' => 'Электронная почта',
-    'Enter E-Mail corresponding to the account, it will be sent an email with instructions.' => 'Введите E-Mail соответствующие аккаунту, на него будет выслано письмо с инструкцией.',
+    'Enter E-Mail corresponding to the account, it will be sent an email with instructions.' => 'Введите E-Mail соответствующий аккаунту, на него будет выслано письмо с инструкцией.',
     'Extensions "{extensions}"' => 'Расширения "{extensions}"',
     'Feedback' => 'Обратная связь',
     'File' => 'Файл',
