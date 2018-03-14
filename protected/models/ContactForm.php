@@ -27,12 +27,12 @@ class ContactForm extends Model
             ['name', 'trim'],
             ['name', 'required'],
             ['name', 'string',
-                'max' => $params['contact.name.max']],
+                'max' => $params['string.max']],
 
             ['subject', 'trim'],
             ['subject', 'required'],
             ['subject', 'string',
-                'max' => $params['contact.subject.max']],
+                'max' => $params['string.max']],
 
             ['body', 'trim'],
             ['body', 'required'],
