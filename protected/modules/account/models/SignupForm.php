@@ -4,7 +4,10 @@ namespace app\modules\account\models;
 
 class SignupForm extends User
 {
-
+    /**
+     * @return User|null
+     * @throws \yii\base\Exception
+     */
     public function signup()
     {
         if ($this->validate()) {
