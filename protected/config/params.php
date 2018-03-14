@@ -13,6 +13,8 @@ return [
     'password.max' => 128,
     'username.max' => 16,
     'username.min' => 2,
+    'username.pattern' => '/^[A-Za-z1-9\-_]+$/s',
+    'username.hint' => 'A-Z a-z 0-9 -_',
     'email.max' => 128,
     'login.duration' => 60 * 60 * 24 * 30,
     'contact.name.max' => 255,
