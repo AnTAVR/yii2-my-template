@@ -45,6 +45,40 @@ class User extends ActiveRecord implements IdentityInterface
         return '{{%user}}';
     }
 
+    /**
+     * Finds an identity by the given ID.
+     *
+     * @param string|int $id the ID to be looked for
+     * @return IdentityInterface|null the identity object that matches the given ID.
+     */
+    public static function findIdentity($id)
+    {
+        return static::findOne($id);
+    }
+
+    /**
+     * Finds an identity by the given token.
+     *
+     * @param string $token the token to be looked for
+     * @param null $type
+     * @return IdentityInterface|null the identity object that matches the given token.
+     */
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return static::findOne(['access_token' => $token]);
+    }
+
+    /**
+     * Finds user by username
+     *
+     * @param string $username
+     * @return static|null
+     */
+    public static function findByUsername($username)
+    {
+        return static::findOne(['username' => $username]);
+    }
+
     public function scenarios()
     {
         return ArrayHelper::merge(
@@ -168,54 +202,6 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Finds an identity by the given ID.
-     *
-     * @param string|int $id the ID to be looked for
-     * @return IdentityInterface|null the identity object that matches the given ID.
-     */
-    public static function findIdentity($id)
-    {
-        return static::findOne($id);
-    }
-
-    /**
-     * Finds an identity by the given token.
-     *
-     * @param string $token the token to be looked for
-     * @param null $type
-     * @return IdentityInterface|null the identity object that matches the given token.
-     */
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        return static::findOne(['access_token' => $token]);
-    }
-
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @return static|null
-     */
-    public static function findByUsername($username)
-    {
-        return static::findOne(['username' => $username]);
-    }
-
-    /**
-     * Finds user by [[username]]
-     *
-     * @return User|null
-     */
-    public function getUser()
-    {
-        if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->username);
-        }
-
-        return $this->_user;
-    }
-
-    /**
      * @return int|string current user ID
      */
     public function getId()
@@ -241,19 +227,6 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Validates password
-     *
-     * @param string $password password to validate
-     * @return boolean if password provided is valid for current user
-     * @throws \yii\base\Exception
-     */
-    public function validatePassword($password)
-    {
-        $security = Yii::$app->security;
-        return $this->password === $security->generatePasswordHash($password);
-    }
-
-    /**
      * Validates the password.
      * This method serves as the inline validation for password.
      *
@@ -271,6 +244,19 @@ class User extends ActiveRecord implements IdentityInterface
         }
     }
 
+    /**
+     * Validates password
+     *
+     * @param string $password password to validate
+     * @return boolean if password provided is valid for current user
+     * @throws \yii\base\Exception
+     */
+    public function validatePassword($password)
+    {
+        $security = Yii::$app->security;
+        return $this->password === $security->generatePasswordHash($password);
+    }
+
     public function generateAuthKey()
     {
         $security = Yii::$app->security;
@@ -285,5 +271,17 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $security = Yii::$app->security;
         $this->password = $security->generatePasswordHash($password);
+    }
+
+    /**
+     * Logs in a user using the provided username and password.
+     * @return boolean whether the user is logged in successfully
+     */
+    public function login()
+    {
+        if ($this->validate()) {
+            return Yii::$app->user->login($this, $this->rememberMe ? 3600 * 24 * 30 : 0);
+        }
+        return false;
     }
 }
