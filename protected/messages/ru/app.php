@@ -94,6 +94,7 @@ return [
     'Delivery' => 'Доставка',
     'Docs' => 'Документы',
     'Email' => 'Электронная почта',
+    'Enter E-Mail corresponding to the account, it will be sent an email with instructions.' => 'Введите E-Mail соответствующие аккаунту, на него будет выслано письмо с инструкцией.',
     'Extensions "{extensions}"' => 'Расширения "{extensions}"',
     'Feedback' => 'Обратная связь',
     'File' => 'Файл',
