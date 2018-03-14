@@ -32,7 +32,6 @@ class ProfileController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['*'],
                         'roles' => ['@'],
                     ],
                 ],
