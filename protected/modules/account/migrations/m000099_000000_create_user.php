@@ -25,10 +25,12 @@ class m000099_000000_create_user extends Migration
         $this->createTable($this->tableName, [
             'id' => $this->primaryKey(),
             'username' => $this->string()->notNull()->unique(),
+            'email' => $this->string()->notNull()->unique(),
             'password' => $this->string()->notNull(),
+
             'auth_key' => $this->string(32)->notNull(),
             'access_token' => $this->string()->unique(),
-            'email' => $this->string()->notNull()->unique(),
+
             'email_confirmed' => $this->boolean()->notNull()->defaultValue(false),
 
             'foto' => $this->string(),
@@ -39,7 +41,6 @@ class m000099_000000_create_user extends Migration
 
             'session_at' => $this->dateTime(),
             'session' => $this->string(),
-
         ], $this->tableOptions);
 
         $name = 'session';
