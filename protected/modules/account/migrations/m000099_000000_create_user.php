@@ -27,6 +27,7 @@ class m000099_000000_create_user extends Migration
             'username' => $this->string()->notNull()->unique(),
             'password' => $this->string()->notNull(),
             'auth_key' => $this->string(32)->notNull(),
+            'access_token' => $this->string()->unique(),
             'email' => $this->string()->notNull()->unique(),
             'email_confirmed' => $this->boolean()->notNull()->defaultValue(false),
 
