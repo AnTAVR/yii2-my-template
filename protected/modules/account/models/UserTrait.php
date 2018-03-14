@@ -114,7 +114,6 @@ trait UserTrait
                 'password' => Yii::t('app', 'Set a complex password using uppercase and lowercase letters, numbers and special characters.'),
             ];
         } elseif ($scenario == 'password-reset') {
-//
             $hints = [
                 'email' => Yii::t('app', 'Enter E-Mail corresponding to the account, it will be sent an email with instructions.'),
             ];
