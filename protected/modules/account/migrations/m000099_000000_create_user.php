@@ -52,6 +52,7 @@ class m000099_000000_create_user extends Migration
                 'username' => 'admin',
                 'email' => $params['adminEmail'],
                 'password' => $security->generatePasswordHash('adminadmin'),
+                'auth_key' => $security->generateRandomString(),
                 'email_confirmed' => true,
             ]
         );
