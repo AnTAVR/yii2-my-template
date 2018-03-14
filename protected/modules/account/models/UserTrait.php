@@ -57,6 +57,46 @@ trait UserTrait
         ];
     }
 
+    public function attributeHints()
+    {
+        $hints = [];
+
+        $scenario = $this->scenario;
+        if ($scenario == 'signup') {
+            $hints = [
+                'username' => Yii::t('app', 'Username'),
+                'email' => Yii::t('app', 'E-Mail'),
+                'password' => Yii::t('app', 'Password'),
+                'verifyPassword' => Yii::t('app', 'Verification Password'),
+            ];
+        }
+        elseif ($scenario == 'login') {
+            $hints = [];
+        }
+        elseif ($scenario == 'password-reset') {
+            $hints = [
+                'email' => Yii::t('app', 'E-Mail'),
+            ];
+        }
+        elseif ($scenario == 'password-edit') {
+            $hints = [
+                'password' => Yii::t('app', 'Password'),
+                'verifyPassword' => Yii::t('app', 'Verification Password'),
+            ];
+        }
+
+//        $hints = [
+//            'username' => Yii::t('app', 'Username'),
+//            'email' => Yii::t('app', 'E-Mail'),
+//            'password' => Yii::t('app', 'Password'),
+//            'verifyPassword' => Yii::t('app', 'Verification Password'),
+//            'verifyCode' => Yii::t('app', 'Verification Code'),
+//            'rememberMe' => Yii::t('app', 'Remember Me'),
+//            'verifyRules' => Yii::t('app', 'Verify Rules'),
+//        ];
+        return array_merge(parent::attributeHints(), $hints);
+    }
+
     public function validatePassword($attribute, $params)
     {
     }
