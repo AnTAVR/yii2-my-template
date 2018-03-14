@@ -7,7 +7,7 @@ class m000101_000002_insert_page_static extends Migration
 {
     public $tableName = '{{%page_static}}';
 
-    public $content_static = ['index', 'about', 'delivery', 'payment', 'partners', 'docs'];
+    public $content_static = ['index', 'about', 'delivery', 'payment', 'partners', 'docs', 'rules'];
 
     /**
      * @inheritdoc
