@@ -2,13 +2,12 @@
 
 namespace app\modules\account\models;
 
-use yii\base\Model;
-
-class PasswordEditForm extends Model
+class PasswordEditForm extends User
 {
-    use UserTrait;
-
-    public function save()
+    /**
+     * @return bool
+     */
+    public function edit()
     {
         return true;
     }
