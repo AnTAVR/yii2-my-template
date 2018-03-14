@@ -202,6 +202,20 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Finds user by [[username]]
+     *
+     * @return User|null
+     */
+    public function getUser()
+    {
+        if ($this->_user === false) {
+            $this->_user = User::findByUsername($this->username);
+        }
+
+        return $this->_user;
+    }
+
+    /**
      * @return int|string current user ID
      */
     public function getId()
@@ -231,10 +245,30 @@ class User extends ActiveRecord implements IdentityInterface
      *
      * @param string $password password to validate
      * @return boolean if password provided is valid for current user
+     * @throws \yii\base\Exception
      */
     public function validatePassword($password)
     {
-        return $this->password === $password;
+        $security = Yii::$app->security;
+        return $this->password === $security->generatePasswordHash($password);
+    }
+
+    /**
+     * Validates the password.
+     * This method serves as the inline validation for password.
+     *
+     * @param string $attribute the attribute currently being validated
+     * @param array $params the additional name-value pairs given in the rule
+     * @throws \yii\base\Exception
+     */
+    public function validateLoginPassword($attribute, /** @noinspection PhpUnusedParameterInspection */
+                                          $params)
+    {
+        if (!$this->hasErrors()) {
+            if (!$this->validatePassword($this->password)) {
+                $this->addError($attribute, Yii::t('app', 'Incorrect username or password.'));
+            }
+        }
     }
 
     public function generateAuthKey()
