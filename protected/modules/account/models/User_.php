@@ -6,7 +6,7 @@ use yii\base\BaseObject;
 use yii\web\IdentityInterface;
 
 
-class User extends BaseObject implements IdentityInterface
+class User_ extends BaseObject implements IdentityInterface
 {
     use UserTrait;
 
