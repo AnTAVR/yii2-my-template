@@ -28,7 +28,7 @@ class CallbackForm extends Model
 
             ['name', 'required'],
             ['name', 'string',
-                'max' => $params['contact.name.max']],
+                'max' => $params['string.max']],
 
             ['verifyCode', 'captcha'],
         ];
