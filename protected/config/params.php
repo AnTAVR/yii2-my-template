@@ -10,6 +10,7 @@ return [
     'language' => 'ru',
     'user.passwordResetTokenExpire' => 60 * 60,
     'password.min' => 6,
+    'password.max' => 128,
     'username.max' => 16,
     'username.min' => 2,
     'email.max' => 128,
