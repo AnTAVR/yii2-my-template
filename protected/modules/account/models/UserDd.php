@@ -98,6 +98,10 @@ class UserDd extends ActiveRecord implements IdentityInterface
         $this->auth_key = $security->generateRandomString();
     }
 
+    /**
+     * @param string $password password to validate
+     * @throws \yii\base\Exception
+     */
     public function setPassword($password)
     {
         $security = Yii::$app->security;
