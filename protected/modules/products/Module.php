@@ -3,6 +3,7 @@
 namespace app\modules\products;
 
 use app\components\Module as ModuleOld;
+use Yii;
 
 /**
  * products module definition class
@@ -26,7 +27,7 @@ class Module extends ModuleOld
         parent::init();
 
         /** @noinspection HtmlUnknownTag */
-        \Yii::$app->urlManager->addRules(
+        Yii::$app->urlManager->addRules(
             [
                 '/products/admin-<controller>' => '/products/admin-<controller>',
                 '/products/page-<page\d+>' => '/products/default/index',
