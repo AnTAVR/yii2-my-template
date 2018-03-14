@@ -3,6 +3,7 @@
 namespace app\modules\account;
 
 use app\components\Module as ModuleOld;
+use Yii;
 
 /**
  * account module definition class
@@ -23,7 +24,7 @@ class Module extends ModuleOld
         parent::init();
 
         /** @noinspection HtmlUnknownTag */
-        \Yii::$app->urlManager->addRules(
+        Yii::$app->urlManager->addRules(
             [
                 '/account/admin-<controller>' => '/account/admin-<controller>',
                 '/login' => '/account/profile/login',
