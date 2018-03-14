@@ -39,6 +39,8 @@ trait UserTrait
 
             ['oldPassword', 'required',
                 'on' => ['password-edit']],
+            ['oldPassword', 'validateOldPassword',
+                'on' => ['password-edit']],
 
             ['password', 'required',
                 'on' => ['signup', 'login', 'password-edit']],
@@ -129,6 +131,10 @@ trait UserTrait
     }
 
     public function validateLoginPassword($attribute, $params)
+    {
+    }
+
+    public function validateOldPassword($attribute, $params)
     {
     }
 }
