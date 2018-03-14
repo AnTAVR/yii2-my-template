@@ -2,13 +2,12 @@
 
 namespace app\modules\account\models;
 
-use yii\base\Model;
-
-class PasswordResetForm extends Model
+class PasswordResetForm extends User
 {
-    use UserTrait;
-
-    public function save()
+    /**
+     * @return bool
+     */
+    public function reset()
     {
         return true;
     }
