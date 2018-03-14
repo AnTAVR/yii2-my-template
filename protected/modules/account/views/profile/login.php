@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $form->field($model, 'verifyCode')->widget(Captcha::class) ?>
 
             <div class="form-group">
-                <?= Html::submitButton(Yii::t('app', 'Send'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                <?= Html::submitButton(Yii::t('app', 'Login'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>
