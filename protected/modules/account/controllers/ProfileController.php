@@ -28,12 +28,12 @@ class ProfileController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['logout', 'index', 'edit', 'password-edit'],
-                        'roles' => ['@'],
+                        'actions' => ['verify-email'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['verify-email'],
+                        'actions' => ['*'],
+                        'roles' => ['@'],
                     ],
                 ],
             ],
