@@ -3,8 +3,8 @@
 namespace app\modules\account\controllers;
 
 use app\modules\account\models\LoginForm;
-use app\modules\account\models\PasswordResetForm;
 use app\modules\account\models\PasswordEditForm;
+use app\modules\account\models\PasswordResetForm;
 use app\modules\account\models\SignupForm;
 use Yii;
 use yii\filters\AccessControl;
@@ -87,13 +87,14 @@ class ProfileController extends Controller
 
     /**
      * @return string
+     * @throws \yii\base\Exception
      */
     public function actionSignup()
     {
         $model = new SignupForm(['scenario' => 'signup']);
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $model->save();
+            $model->signup();
         }
         return $this->render('signup', [
             'model' => $model,
@@ -116,7 +117,7 @@ class ProfileController extends Controller
         $model = new PasswordResetForm(['scenario' => 'password-reset']);
 
         if ($model->load(Yii::$app->request->get()) && $model->validate()) {
-            $model->save();
+            $model->reset();
         }
         return $this->render('password-reset', [
             'model' => $model,
@@ -131,7 +132,7 @@ class ProfileController extends Controller
         $model = new PasswordEditForm(['scenario' => 'password-edit']);
 
         if ($model->load(Yii::$app->request->get()) && $model->validate()) {
-            $model->save();
+            $model->edit();
         }
         return $this->render('password-edit', [
             'model' => $model,
