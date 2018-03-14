@@ -3,6 +3,7 @@
 namespace app\modules\news;
 
 use app\components\Module as ModuleOld;
+use Yii;
 
 /**
  * news module definition class
@@ -26,7 +27,7 @@ class Module extends ModuleOld
         parent::init();
 
         /** @noinspection HtmlUnknownTag */
-        \Yii::$app->urlManager->addRules(
+        Yii::$app->urlManager->addRules(
             [
                 '/news/admin-<controller>' => '/news/admin-<controller>',
                 '/news/page-<page\d+>' => '/news/default/index',
