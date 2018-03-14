@@ -54,6 +54,14 @@ class UserDd extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * @return string current user auth key
+     */
+    public function getAuthKey()
+    {
+        return $this->auth_key;
+    }
+
+    /**
      * @param string $authKey
      * @return bool if auth key is valid for current user
      */
@@ -71,14 +79,6 @@ class UserDd extends ActiveRecord implements IdentityInterface
     public function validatePassword($password)
     {
         return $this->password === $password;
-    }
-
-    /**
-     * @return string current user auth key
-     */
-    public function getAuthKey()
-    {
-        return $this->auth_key;
     }
 
     public function beforeSave($insert)
