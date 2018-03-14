@@ -90,9 +90,6 @@ trait UserTrait
                 'password' => Yii::t('app', 'Задайте сложный пароль, используя заглавные и строчные буквы (A-Z, a-z), цифры (0-9) и специальные символы'),
             ];
         }
-        elseif ($scenario == 'login') {
-            $hints = [];
-        }
         elseif ($scenario == 'password-reset') {
             $hints = [
                 'email' => Yii::t('app', 'E-Mail'),
