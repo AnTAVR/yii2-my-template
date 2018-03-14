@@ -238,7 +238,7 @@ class User extends ActiveRecord implements IdentityInterface
                                           $params)
     {
         if (!$this->hasErrors()) {
-            if (!$this->validatePassword($this->password)) {
+            if (!$this->validatePassword($this->getAttribute($attribute))) {
                 $this->addError($attribute, Yii::t('app', 'Incorrect username or password.'));
             }
         }
