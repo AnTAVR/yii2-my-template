@@ -36,8 +36,16 @@ class UploaderImage extends ActiveRecord
      */
     public function rules()
     {
+        $params = Yii::$app->params;
         return [
-            [['comment', 'file', 'meta_url'], 'string', 'max' => 255],
+            ['comment', 'string',
+                'max' => $params['string.max']],
+
+            ['file', 'string',
+                'max' => $params['string.max']],
+
+            ['meta_url', 'string',
+                'max' => $params['string.max']],
         ];
     }
 

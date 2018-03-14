@@ -24,9 +24,14 @@ class UploaderFileForm extends Model
      */
     public function rules()
     {
+        $params = Yii::$app->params;
         return [
-            ['comment', 'string', 'max' => 255],
-            ['fileUpload', 'file', 'skipOnEmpty' => false, 'maxSize' => self::MAX_SIZE],
+            ['comment', 'string',
+                'max' => $params['string.max']],
+
+            ['fileUpload', 'file',
+                'skipOnEmpty' => false,
+                'maxSize' => self::MAX_SIZE],
         ];
     }
 
