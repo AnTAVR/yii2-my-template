@@ -51,9 +51,6 @@ class m000099_000000_create_user extends Migration
      */
     public function down()
     {
-        $name = 'published_at';
-        $this->dropIndex($name, $this->tableName);
-
         $this->dropTable($this->tableName);
     }
 
