@@ -2,13 +2,10 @@
 
 namespace app\modules\account\models;
 
-use yii\base\Model;
-
-class SignupForm extends Model
+class SignupForm extends User
 {
-    use UserTrait;
 
-    public function save()
+    public function signup()
     {
         if ($this->validate()) {
             $user = new User();
