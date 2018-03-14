@@ -22,8 +22,9 @@
         "ckeditor/ckeditor": "~4.8.0+full",
         "bower-asset/smalot-bootstrap-datetimepicker": "2.4.4",
         "bower-asset/normalize-css": "8.0.0",
-      "bariew/yii2-module-migration-controller": "*",
-        "2amigos/yii2-file-upload-widget": "~1.0"
+        "bariew/yii2-module-migration-controller": "*",
+        "2amigos/yii2-file-upload-widget": "~1.0",
+        "yiisoft/yii2-jui": "^2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
