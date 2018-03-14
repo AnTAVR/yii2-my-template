@@ -4,6 +4,7 @@ namespace tests\models;
 
 use app\modules\account\models\LoginForm;
 use Codeception\Test\Unit;
+use Yii;
 
 class LoginFormTest extends Unit
 {
@@ -22,7 +23,7 @@ class LoginFormTest extends Unit
         ]);
 
         expect_not($this->model->login());
-        expect_that(\Yii::$app->user->isGuest);
+        expect_that(Yii::$app->user->isGuest);
     }
 
     public function testLoginWrongPassword()
@@ -33,7 +34,7 @@ class LoginFormTest extends Unit
         ]);
 
         expect_not($this->model->login());
-        expect_that(\Yii::$app->user->isGuest);
+        expect_that(Yii::$app->user->isGuest);
         expect($this->model->errors)->hasKey('password');
     }
 
@@ -45,7 +46,7 @@ class LoginFormTest extends Unit
         ]);
 
         expect_that($this->model->login());
-        expect_not(\Yii::$app->user->isGuest);
+        expect_not(Yii::$app->user->isGuest);
         expect($this->model->errors)->hasntKey('password');
     }
 
