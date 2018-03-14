@@ -11,12 +11,34 @@ use yii\web\IdentityInterface;
 
 
 /**
- * @property string $authKey
+ * @property integer id
+ * @property string username
+ * @property string email
+ * @property string password
+ *
  * @property string auth_key
+ * @property string access_token
+ *
+ * @property boolean email_confirmed
+ *
+ * @property string foto
+ *
+ * @property integer status
+ *
+ * @property integer created_at
+ *
+ * @property integer session_at
+ * @property string session
+ *
+ * @property string $authKey
  */
-class UserDd extends ActiveRecord implements IdentityInterface
+class User extends ActiveRecord implements IdentityInterface
 {
-    use UserTrait;
+    public $verifyRules;
+    public $verifyPassword;
+    public $oldPassword;
+    public $verifyCode;
+    public $rememberMe = true;
 
     public static function tableName()
     {
