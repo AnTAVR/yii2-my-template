@@ -6,10 +6,12 @@ use Yii;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
+/** @noinspection PropertiesInspection */
+
 
 /**
- *
  * @property string $authKey
+ * @property string auth_key
  */
 class UserDd extends ActiveRecord implements IdentityInterface
 {
@@ -48,7 +50,7 @@ class UserDd extends ActiveRecord implements IdentityInterface
      */
     public function getId()
     {
-        return $this->username;
+        return $this->id;
     }
 
     /**
@@ -57,7 +59,7 @@ class UserDd extends ActiveRecord implements IdentityInterface
      */
     public function validateAuthKey($authKey)
     {
-        return $this->getAuthKey() === $authKey;
+        return $this->auth_key === $authKey;
     }
 
     /**
