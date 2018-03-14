@@ -2,9 +2,8 @@
 
 namespace app\modules\account\models;
 
-use Yii;
-use yii\base\Model;
 use app\modules\account\models\UserDd as User;
+use yii\base\Model;
 
 class SignupForm extends Model
 {
