@@ -226,22 +226,16 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->auth_key === $authKey;
     }
 
-    /**
-     * Validates the password.
-     * This method serves as the inline validation for password.
-     *
-     * @param string $attribute the attribute currently being validated
-     * @param array $params the additional name-value pairs given in the rule
-     * @throws \yii\base\Exception
-     */
-    public function validateLoginPassword($attribute, /** @noinspection PhpUnusedParameterInspection */
-                                          $params)
+    public function validateLoginPassword(/** @noinspection PhpUnusedParameterInspection */
+        $attribute, $params)
     {
-        if (!$this->hasErrors()) {
-            if (!$this->validatePassword($this->getAttribute($attribute))) {
-                $this->addError($attribute, Yii::t('app', 'Incorrect username or password.'));
-            }
-        }
+        return false;
+    }
+
+    public function validateOldPassword(/** @noinspection PhpUnusedParameterInspection */
+        $attribute, $params)
+    {
+        return false;
     }
 
     /**
@@ -271,17 +265,5 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $security = Yii::$app->security;
         $this->password = $security->generatePasswordHash($password);
-    }
-
-    /**
-     * Logs in a user using the provided username and password.
-     * @return boolean whether the user is logged in successfully
-     */
-    public function login()
-    {
-        if ($this->validate()) {
-            return Yii::$app->user->login($this, $this->rememberMe ? 3600 * 24 * 30 : 0);
-        }
-        return false;
     }
 }
