@@ -3,6 +3,7 @@
 namespace app\modules\account\models;
 
 use Yii;
+use yii\base\NotSupportedException;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
@@ -194,12 +195,13 @@ class User extends ActiveRecord implements IdentityInterface
      *
      * @param string $token the token to be looked for
      * @param null $type
-     * @return IdentityInterface|null the identity object that matches the given token.
+    //     * @return IdentityInterface|null the identity object that matches the given token.
+     * @throws NotSupportedException
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
+        throw new NotSupportedException('Method "' . __CLASS__ . '::' . __METHOD__ . '" is not implemented.');
 //        return static::findOne(['access_token' => $token]);
-        return null;
     }
 
     /**
