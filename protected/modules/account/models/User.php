@@ -9,6 +9,7 @@ use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 
+/** @noinspection PropertiesInspection */
 
 /**
  * @property string $authKey
@@ -41,29 +42,6 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 20;
 
     static $statusName = [];
-
-    function init()
-    {
-        parent::init();
-        static::$statusName = [
-            static::STATUS_ACTIVE => Yii::t('app', 'ACTIVE'),
-            static::STATUS_BLOCKED => Yii::t('app', 'BLOCKED'),
-            static::STATUS_DELETED => Yii::t('app', 'DELETED'),
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        $labels = [
-            'id' => Yii::t('app', 'ID'),
-            'username' => Yii::t('app', 'Username'),
-            'email' => Yii::t('app', 'E-Mail'),
-        ];
-        return ArrayHelper::merge(parent::attributeLabels(), $labels);
-    }
 
     /**
      * @return string
@@ -112,6 +90,29 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findByUsername($username)
     {
         return static::findOne(['username' => $username]);
+    }
+
+    function init()
+    {
+        parent::init();
+        static::$statusName = [
+            static::STATUS_ACTIVE => Yii::t('app', 'ACTIVE'),
+            static::STATUS_BLOCKED => Yii::t('app', 'BLOCKED'),
+            static::STATUS_DELETED => Yii::t('app', 'DELETED'),
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        $labels = [
+            'id' => Yii::t('app', 'ID'),
+            'username' => Yii::t('app', 'Username'),
+            'email' => Yii::t('app', 'E-Mail'),
+        ];
+        return ArrayHelper::merge(parent::attributeLabels(), $labels);
     }
 
     /**
