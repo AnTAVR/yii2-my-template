@@ -4,7 +4,12 @@ namespace app\modules\account\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 
+/**
+ *
+ * @property string $emailToken
+ */
 class SignupForm extends User
 {
     public $password;
@@ -88,6 +93,7 @@ class SignupForm extends User
         $ret = null;
         $security = Yii::$app->security;
         $this->password_hash = $security->generatePasswordHash($this->password);
+        $this->salt = $security->generateRandomString(64);
         $this->auth_key = $security->generateRandomString();
         $this->access_token = $security->generateRandomString(40);
 
@@ -104,10 +110,49 @@ class SignupForm extends User
     }
 
     /**
-     * @return bool
+     * @return boolean whether the email was sent
      */
     public function sendEmail()
     {
-        return false;
+        $url = Url::to(['/account/signup/verify-email', ['user_id' => $this->id, 'token' => $this->emailToken]], true);
+        $body = Yii::t('app', 'To confirm E-Mail, follow the link: {url}', ['url' => $url]);
+        $subject = Yii::t('app', 'Registration on the site {site}', ['site' => Yii::$app->name]);
+
+        return Yii::$app->mailer->compose()
+            ->setTo($this->email)
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::t('app', '{appname} robot', ['appname' => Yii::$app->name])])
+            ->setSubject($subject)
+            ->setTextBody($body)
+            ->send();
     }
+
+    /**
+     * @return string
+     */
+    public function emailTokenRaw()
+    {
+        return $this->email . $this->email_confirmed . $this->password_hash;
+    }
+
+    public function getEmailToken()
+    {
+        $security = Yii::$app->security;
+        return $security->encryptByPassword($this->emailTokenRaw(), $this->salt);
+    }
+
+    /**
+     * @param string $token
+     * @return boolean
+     */
+    public function validateEmailToken($token)
+    {
+        return $token === $this->emailToken;
+    }
+
+    public function VerifyEmail()
+    {
+        $this->email_confirmed = true;
+        return $this->save();
+    }
+
 }
