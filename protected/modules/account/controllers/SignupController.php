@@ -89,8 +89,12 @@ class SignupController extends Controller
         if (!$user) {
             throw new NotFoundHttpException(Yii::t('app', 'User not found.'));
         }
+        $email_token = '';
+        if ($email_token !== $token) {
+            throw new NotFoundHttpException(Yii::t('app', 'User not found.'));
+        }
 
-        Yii::$app->session->addFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
-        return $this->goHome();
+        Yii::$app->session->addFlash('success', Yii::t('app', 'E-Mail is verified, now you can login.'));
+        return $this->redirect(Yii::$app->user->loginUrl);
     }
 }
