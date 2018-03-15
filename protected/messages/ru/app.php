@@ -134,6 +134,7 @@ return [
     'Products Url' => 'Урл к продукции',
     'Profile' => 'Профиль',
     'Published At' => 'Опубликовано',
+    'Registration on the site {site}' => 'Регистрация на сайте {site}',
     'Remember Me' => 'Запомнить меня',
     'Repeat password' => 'Повтор пароля',
     'Rules' => 'Правила сайта',
