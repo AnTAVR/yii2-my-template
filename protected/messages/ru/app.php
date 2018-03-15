@@ -64,6 +64,7 @@ return [
     'reset it' => '@@восстановить его@@',
     'ACTIVE' => 'Активный',
     'About' => 'О нас',
+    'Account successfully registered.' => 'Аккаунт успешно зарегистрирован.',
     'Admin panel' => 'Админ панель',
     'All rights, including related copyrights are<br>reserved by the respective owners.' => 'Все авторские права, включая смежные авторские,<br>сохраняются за правообладателями.',
     'Application for a callback' => 'Заявка на обратный звонок',
