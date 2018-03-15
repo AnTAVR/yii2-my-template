@@ -3,15 +3,68 @@
 namespace app\modules\account\models;
 
 use Yii;
-use yii\base\Model;
+use yii\helpers\ArrayHelper;
 
 /**
  * LoginForm is the model behind the login form.
  *
  */
-class LoginForm extends Model
+class LoginForm extends User
 {
-    use UserTrait;
+    public $password;
+    public $rememberMe = true;
+    public $verifyCode;
+
+    /**
+     * @inheritdoc
+     */
+    public function scenarios()
+    {
+        return ArrayHelper::merge(parent::scenarios(),
+            [
+                'login' => ['username', 'password', 'verifyCode', 'rememberMe'],
+            ]
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        $params = Yii::$app->params;
+        $rules = [
+            ['verifyCode', 'captcha'],
+            ['rememberMe', 'boolean'],
+
+            ['username', 'required'],
+            ['username', 'string',
+                'max' => $params['username.max'],
+                'min' => $params['username.min']],
+            ['username', 'match',
+                'pattern' => $params['username.pattern']],
+
+            ['password', 'required'],
+            ['password', 'string',
+                'max' => $params['password.max'],
+                'min' => $params['password.min']],
+
+            ['password', 'validateLoginPassword'],
+        ];
+        return ArrayHelper::merge(parent::rules(), $rules);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        $labels = [
+            'rememberMe' => Yii::t('app', 'Remember Me'),
+        ];
+        return ArrayHelper::merge(parent::attributeLabels(), $labels);
+    }
+
     /**
      * Validates the password.
      * This method serves as the inline validation for password.
