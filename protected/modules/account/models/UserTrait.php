@@ -4,6 +4,7 @@ namespace app\modules\account\models;
 
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 trait UserTrait
 {
@@ -17,6 +18,19 @@ trait UserTrait
     public $oldPassword;
     public $verifyCode;
     public $rememberMe = true;
+
+    public function scenarios()
+    {
+        return ArrayHelper::merge(
+            parent::scenarios(),
+            [
+                'signup' => ['username', 'password', 'verifyPassword', 'email', 'verifyCode', 'verifyRules'],
+                'login' => ['username', 'password', 'verifyCode', 'rememberMe'],
+                'password-edit' => ['oldPassword', 'password', 'verifyPassword', 'verifyCode'],
+                'password-reset' => ['email', 'verifyCode'],
+            ]
+        );
+    }
 
     /**
      * @return array the validation rules.
@@ -124,7 +138,6 @@ trait UserTrait
             ];
         }
 
-        /** @noinspection PhpUndefinedClassInspection */
         return ArrayHelper::merge(parent::attributeHints(), $hints);
     }
 
