@@ -131,13 +131,12 @@ class SignupForm extends User
      */
     public function emailTokenRaw()
     {
-        return $this->email . $this->email_confirmed . $this->password_hash;
+        return $this->email . $this->salt . $this->email_confirmed . $this->password_hash;
     }
 
     public function getEmailToken()
     {
-        $security = Yii::$app->security;
-        return $security->encryptByPassword($this->emailTokenRaw(), $this->salt);
+        return hash('sha256', $this->emailTokenRaw());
     }
 
     /**
