@@ -9,10 +9,11 @@ use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 
-/** @noinspection PropertiesInspection */
-
 
 /**
+ * @property string $authKey
+ *
+ * Database fields:
  * @property integer $id
  * @property string $username
  * @property string $email
@@ -32,8 +33,6 @@ use yii\web\IdentityInterface;
  *
  * @property integer $session_at
  * @property string $session
- *
- * @property string $authKey
  */
 class User extends ActiveRecord implements IdentityInterface
 {
