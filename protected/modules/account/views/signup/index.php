@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($model, 'password')->passwordInput() ?>
 
-            <?= $form->field($model, 'verifyPassword')->passwordInput() ?>
+            <?= $form->field($model, 'repeatPassword')->passwordInput() ?>
 
             <?= $form->field($model, 'verifyRules')->checkbox()->hint(Html::a(Yii::t('app', 'Rules'), ['/static/index', 'meta_url' => 'rules'], ['class' => 'label label-success', 'target' => '_blank'])) ?>
 
