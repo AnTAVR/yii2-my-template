@@ -15,6 +15,10 @@ class Module extends ModuleOld
      */
     public $controllerNamespace = 'app\modules\account\controllers';
     public $defaultRoute = 'profile';
+    public $params = [
+        'duration' => 3600 * 24 * 30,
+        'adminPageSize' => 100,
+    ];
 
     /**
      * @inheritdoc
