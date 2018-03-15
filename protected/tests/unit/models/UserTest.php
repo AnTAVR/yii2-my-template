@@ -9,10 +9,10 @@ class UserTest extends Unit
 {
     public function testFindUserById()
     {
-        expect_that($user = User::findIdentity(100));
+        expect_that($user = User::findOne(100));
         expect($user->username)->equals('admin');
 
-        expect_not(User::findIdentity(999));
+        expect_not(User::findOne(999));
     }
 
     public function testFindUserByAccessToken()
