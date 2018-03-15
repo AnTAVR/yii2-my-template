@@ -35,7 +35,7 @@ class Module extends ModuleOld
                 '/logout' => '/account/logout',
                 '/signup' => '/account/signup',
                 '/password-reset' => '/account/signup/password-reset',
-                '/verify-email/<user_id:\d+>/<crc:\w+>' => '/account/signup/verify-email',
+                '/verify-email/<user_id:\d+>/<token:\w+>' => '/account/signup/verify-email',
             ]
         );
         // custom initialization code goes here
