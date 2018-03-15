@@ -4,10 +4,12 @@ namespace app\modules\account\controllers;
 
 use app\modules\account\models\PasswordResetForm;
 use app\modules\account\models\SignupForm;
+use app\modules\account\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class SignupController extends Controller
 {
@@ -46,7 +48,7 @@ class SignupController extends Controller
                 } else {
                     Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
                 }
-                return $this->redirect('');
+                return $this->refresh();
             }
         }
         return $this->render('index', [
@@ -67,7 +69,7 @@ class SignupController extends Controller
             } else {
                 Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
             }
-            return $this->redirect('');
+            return $this->refresh();
         }
         return $this->render('password-reset', [
             'model' => $model,
@@ -76,12 +78,19 @@ class SignupController extends Controller
 
     /**
      * @param $user_id integer
-     * @param $crc string
+     * @param $token string
      * @return string
+     * @throws NotFoundHttpException
      */
     public function actionVerifyEmail(/** @noinspection PhpUnusedParameterInspection */
-        $user_id, $crc)
+        $user_id, $token)
     {
-        return (string)$user_id . ' ' . (string)$crc;
+        $user = User::findIdentity($user_id);
+        if (!$user) {
+            throw new NotFoundHttpException(Yii::t('app', 'User not found.'));
+        }
+
+        Yii::$app->session->addFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
+        return $this->goHome();
     }
 }
