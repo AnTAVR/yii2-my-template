@@ -124,6 +124,7 @@ return [
     'Password' => 'Пароль',
     'Password Edit' => 'Изменить пароль',
     'Password Reset' => 'Восстановление пароля',
+    'Password recovery from {site}' => 'Восстановление пароля с сайта {site}',
     'Payment' => 'Оплата',
     'Phone {phone}, name {name}' => 'Телефон {phone}, имя {name}',
     'Please contact us if you think this is a server error.' => 'Пожалуйста свяжитесь с нами если вы считаете что это ошибка сервера.',
