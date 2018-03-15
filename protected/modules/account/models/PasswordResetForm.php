@@ -7,6 +7,7 @@ use yii\base\Model;
 class PasswordResetForm extends Model
 {
     use UserTrait;
+
     /**
      * @return bool
      */
