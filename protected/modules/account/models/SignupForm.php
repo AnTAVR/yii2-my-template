@@ -86,8 +86,9 @@ class SignupForm extends User
     public function signup()
     {
         if ($this->validate()) {
-            $this->setPassword($this->password);
-            $this->generateAuthKey();
+            $security = Yii::$app->security;
+            $this->password_hash = $security->generatePasswordHash($this->password);
+            $this->auth_key = $security->generateRandomString();
             $this->save(false);
 
 //  the following three lines were added:
