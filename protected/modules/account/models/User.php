@@ -37,6 +37,22 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+    const STATUS_ACTIVE = 0;
+    const STATUS_BLOCKED = 10;
+    const STATUS_DELETED = 20;
+
+    static $statusName = [];
+
+    function init()
+    {
+        parent::init();
+        static::$statusName = [
+            static::STATUS_ACTIVE => Yii::t('app', 'ACTIVE'),
+            static::STATUS_BLOCKED => Yii::t('app', 'BLOCKED'),
+            static::STATUS_DELETED => Yii::t('app', 'DELETED'),
+        ];
+    }
+
     /**
      * @inheritdoc
      */
