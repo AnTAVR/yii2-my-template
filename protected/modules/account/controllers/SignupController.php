@@ -62,7 +62,7 @@ class SignupController extends Controller
     {
         $model = new PasswordResetForm();
 
-        if ($model->load(Yii::$app->request->get()) && $model->validate()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
                 Yii::$app->session->addFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
             } else {
