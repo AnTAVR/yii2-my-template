@@ -20,9 +20,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-6">
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-            <?= $form->field($model, 'username')->textInput(['autofocus' => true])->hint(Html::a(Yii::t('app', 'Signup'), ['/account/profile/signup'], ['class' => 'label label-success'])) ?>
+            <?= $form->field($model, 'username')->textInput(['autofocus' => true])->hint(Html::a(Yii::t('app', 'Signup'), ['/account/signup'], ['class' => 'label label-success'])) ?>
 
-            <?= $form->field($model, 'password')->passwordInput([''])->hint(Html::a(Yii::t('app', 'Password Reset'), ['/account/profile/password-reset'], ['class' => 'label label-danger'])) ?>
+            <?= $form->field($model, 'password')->passwordInput([''])->hint(Html::a(Yii::t('app', 'Password Reset'), ['/account/signup/password-reset'], ['class' => 'label label-danger'])) ?>
 
             <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
