@@ -47,7 +47,7 @@ class SignupController extends Controller
                 } else {
                     Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
                 }
-                return $this->refresh();
+                return $this->goHome();
             }
         }
         return $this->render('index', [
@@ -68,7 +68,7 @@ class SignupController extends Controller
             } else {
                 Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
             }
-            return $this->refresh();
+            return $this->goHome();
         }
         return $this->render('password-reset', [
             'model' => $model,
