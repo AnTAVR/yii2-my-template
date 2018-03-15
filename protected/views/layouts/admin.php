@@ -8,6 +8,7 @@ use app\widgets\Thumbnail\Thumbnail;
 use app\widgets\TopLink\TopLink;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 use yii\widgets\Menu;
@@ -48,7 +49,7 @@ if (Yii::$app->user->isGuest) {
 } else {
     $profileItems = [];
 
-    $profileItems = array_merge($profileItems, [
+    $profileItems = ArrayHelper::merge($profileItems, [
         ['label' => Yii::t('app', 'Profile'), 'url' => ['/account']],
         '<li class="divider"></li>',
         ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-out"></span> ' .

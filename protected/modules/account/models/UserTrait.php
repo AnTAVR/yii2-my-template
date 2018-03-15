@@ -106,6 +106,7 @@ trait UserTrait
     {
         $hints = [];
 
+        /** @noinspection PhpUndefinedFieldInspection */
         $scenario = $this->scenario;
         if ($scenario == 'signup') {
             $hints = [
@@ -124,7 +125,7 @@ trait UserTrait
         }
 
         /** @noinspection PhpUndefinedClassInspection */
-        return array_merge(parent::attributeHints(), $hints);
+        return ArrayHelper::merge(parent::attributeHints(), $hints);
     }
 
     /**

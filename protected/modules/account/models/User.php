@@ -199,7 +199,7 @@ class User extends ActiveRecord implements IdentityInterface
         }
 
         /** @noinspection PhpUndefinedClassInspection */
-        return array_merge(parent::attributeHints(), $hints);
+        return ArrayHelper::merge(parent::attributeHints(), $hints);
     }
 
     /**

@@ -7,6 +7,7 @@ use app\modules\products\models\Products;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -19,7 +20,7 @@ class AdminDefaultController extends AdminController
      */
     public function behaviors()
     {
-        return array_merge(
+        return ArrayHelper::merge(
             parent::behaviors(),
             [
                 'verbs' => [

@@ -10,6 +10,7 @@ use app\widgets\TopLink\TopLink;
 use yii\bootstrap\Carousel;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 
@@ -70,7 +71,7 @@ if (Yii::$app->user->isGuest) {
         '<li class="divider"></li>',
     ];
 
-    $profileItems = array_merge($profileItems, [
+    $profileItems = ArrayHelper::merge($profileItems, [
         ['label' => Yii::t('app', 'Profile'), 'url' => ['/account']],
         '<li class="divider"></li>',
         ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-out"></span> ' .
