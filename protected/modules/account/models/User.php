@@ -107,6 +107,24 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => Yii::t('app', 'ID'),
+            'username' => Yii::t('app', 'Username'),
+            'email' => Yii::t('app', 'E-Mail'),
+            'password' => Yii::t('app', 'Password'),
+            'oldPassword' => Yii::t('app', 'Old Password'),
+            'verifyPassword' => Yii::t('app', 'Verification Password'),
+            'verifyCode' => Yii::t('app', 'Verification Code'),
+            'rememberMe' => Yii::t('app', 'Remember Me'),
+            'verifyRules' => Yii::t('app', 'Verify Rules'),
+        ];
+    }
+
     public static function tableName()
     {
         return '{{%user}}';
@@ -157,24 +175,6 @@ class User extends ActiveRecord implements IdentityInterface
                 'password-reset' => ['email', 'verifyCode'],
             ]
         );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => Yii::t('app', 'ID'),
-            'username' => Yii::t('app', 'Username'),
-            'email' => Yii::t('app', 'E-Mail'),
-            'password' => Yii::t('app', 'Password'),
-            'oldPassword' => Yii::t('app', 'Old Password'),
-            'verifyPassword' => Yii::t('app', 'Verification Password'),
-            'verifyCode' => Yii::t('app', 'Verification Code'),
-            'rememberMe' => Yii::t('app', 'Remember Me'),
-            'verifyRules' => Yii::t('app', 'Verify Rules'),
-        ];
     }
 
     public function attributeHints()
