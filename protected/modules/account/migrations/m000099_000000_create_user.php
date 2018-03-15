@@ -36,7 +36,7 @@ class m000099_000000_create_user extends Migration
 
             'foto' => $this->string(),
 
-            'status' => $this->smallInteger()->notNull()->defaultValue(false),
+            'status' => $this->smallInteger()->notNull()->defaultValue(0),
 
             'created_at' => $this->dateTime()->notNull()->defaultValue(new Expression('NOW()')),
 
