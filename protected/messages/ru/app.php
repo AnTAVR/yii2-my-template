@@ -156,6 +156,7 @@ return [
     'Thumbnail Path' => 'Путь к предпросмотру',
     'Thumbnail Url' => 'Урл предпросмотр',
     'Title' => 'Заголовок',
+    'To confirm E-Mail, follow the link: {url}' => 'Для подтверждения Е-Майл пройдите по ссылке: {url}',
     'Up' => 'Наверх',
     'Update' => 'Редактировать',
     'Update Articles: {name}' => 'Редактирование статьи: {name}',
