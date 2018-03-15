@@ -65,17 +65,8 @@ class User extends ActiveRecord implements IdentityInterface
                 'compareAttribute' => 'password',
                 'on' => ['password-edit']],
 
-            ['email', 'required',
-                'on' => ['password-reset']],
-            ['email', 'string', 'max' => $params['email.max'],
-                'on' => ['password-reset']],
-            ['email', 'email',
-                'on' => ['password-reset']],
-            ['email', 'exist',
-                'on' => ['password-reset']],
-
             ['verifyCode', 'captcha',
-                'on' => ['password-edit', 'password-reset']],
+                'on' => ['password-edit']],
         ];
         return ArrayHelper::merge(parent::rules(), $rules);
     }
@@ -106,11 +97,7 @@ class User extends ActiveRecord implements IdentityInterface
         $hints = [];
 
         $scenario = $this->scenario;
-        if ($scenario == 'password-reset') {
-            $hints = [
-                'email' => Yii::t('app', 'Enter E-Mail corresponding to the account, it will be sent an email with instructions.'),
-            ];
-        } elseif ($scenario == 'password-edit') {
+        if ($scenario == 'password-edit') {
             $hints = [
                 'password' => Yii::t('app', 'Set a complex password using uppercase and lowercase letters, numbers and special characters.'),
             ];
