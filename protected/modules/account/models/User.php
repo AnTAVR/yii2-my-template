@@ -60,7 +60,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         $params = Yii::$app->params;
-        return [
+        $rules = [
             ['username', 'required',
                 'on' => ['signup', 'login']],
             ['username', 'string',
@@ -118,6 +118,7 @@ class User extends ActiveRecord implements IdentityInterface
                 'message' => Yii::t('app', 'You must agree with the rules'),
                 'on' => ['signup']],
         ];
+        return ArrayHelper::merge(parent::rules(), $rules);
     }
 
     /**
@@ -125,7 +126,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function attributeLabels()
     {
-        return [
+        $labels = [
             'id' => Yii::t('app', 'ID'),
             'username' => Yii::t('app', 'Username'),
             'email' => Yii::t('app', 'E-Mail'),
@@ -136,6 +137,7 @@ class User extends ActiveRecord implements IdentityInterface
             'rememberMe' => Yii::t('app', 'Remember Me'),
             'verifyRules' => Yii::t('app', 'Verify Rules'),
         ];
+        return ArrayHelper::merge(parent::attributeLabels(), $labels);
     }
 
     public function attributeHints()
