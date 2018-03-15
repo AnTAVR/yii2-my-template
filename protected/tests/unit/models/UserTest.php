@@ -32,6 +32,7 @@ class UserTest extends Unit
     /**
      * @depends testFindUserByUsername
      * @param $user
+     * @throws \yii\base\Exception
      */
     public function testValidateUser(/** @noinspection PhpUnusedParameterInspection */
         $user)
