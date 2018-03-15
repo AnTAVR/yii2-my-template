@@ -47,57 +47,35 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $params = Yii::$app->params;
         $rules = [
-            ['username', 'required',
-                'on' => ['signup']],
-            ['username', 'string',
-                'max' => $params['username.max'],
-                'min' => $params['username.min'],
-                'on' => ['signup']],
-            ['username', 'match',
-                'pattern' => $params['username.pattern'],
-                'on' => ['signup']],
-            ['username', 'unique',
-                'on' => ['signup']],
-
             ['oldPassword', 'required',
                 'on' => ['password-edit']],
             ['oldPassword', 'validateOldPassword',
                 'on' => ['password-edit']],
 
             ['password', 'required',
-                'on' => ['signup', 'password-edit']],
+                'on' => ['password-edit']],
             ['password', 'string',
                 'max' => $params['password.max'],
                 'min' => $params['password.min'],
-                'on' => ['signup', 'password-edit']],
+                'on' => ['password-edit']],
 
             ['verifyPassword', 'required',
-                'on' => ['signup', 'password-edit']],
+                'on' => ['password-edit']],
             ['verifyPassword', 'compare',
                 'compareAttribute' => 'password',
-                'on' => ['signup', 'password-edit']],
+                'on' => ['password-edit']],
 
             ['email', 'required',
-                'on' => ['signup', 'password-reset']],
+                'on' => ['password-reset']],
             ['email', 'string', 'max' => $params['email.max'],
-                'on' => ['signup', 'password-reset']],
+                'on' => ['password-reset']],
             ['email', 'email',
-                'on' => ['signup', 'password-reset']],
-            ['email', 'unique',
-                'on' => ['signup']],
+                'on' => ['password-reset']],
             ['email', 'exist',
                 'on' => ['password-reset']],
 
             ['verifyCode', 'captcha',
-                'on' => ['signup', 'password-edit', 'password-reset']],
-
-            ['verifyRules', 'boolean',
-                'on' => ['signup']],
-
-            ['verifyRules', 'compare',
-                'compareValue' => 1,
-                'message' => Yii::t('app', 'You must agree with the rules'),
-                'on' => ['signup']],
+                'on' => ['password-edit', 'password-reset']],
         ];
         return ArrayHelper::merge(parent::rules(), $rules);
     }
@@ -116,7 +94,6 @@ class User extends ActiveRecord implements IdentityInterface
             'oldPassword' => Yii::t('app', 'Old Password'),
             'verifyPassword' => Yii::t('app', 'Verification Password'),
             'verifyCode' => Yii::t('app', 'Verification Code'),
-            'verifyRules' => Yii::t('app', 'Verify Rules'),
         ];
         return ArrayHelper::merge(parent::attributeLabels(), $labels);
     }
@@ -129,13 +106,7 @@ class User extends ActiveRecord implements IdentityInterface
         $hints = [];
 
         $scenario = $this->scenario;
-        if ($scenario == 'signup') {
-            $hints = [
-                'username' => Yii::t('app', 'Possible characters ({chars})', ['chars' => Yii::$app->params['username.hint']]),
-                'email' => Yii::t('app', 'E-Mail must be valid, a letter with instructions will be sent to it.'),
-                'password' => Yii::t('app', 'Set a complex password using uppercase and lowercase letters, numbers and special characters.'),
-            ];
-        } elseif ($scenario == 'password-reset') {
+        if ($scenario == 'password-reset') {
             $hints = [
                 'email' => Yii::t('app', 'Enter E-Mail corresponding to the account, it will be sent an email with instructions.'),
             ];
