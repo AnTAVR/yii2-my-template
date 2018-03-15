@@ -52,7 +52,7 @@ class ProfileController extends Controller
      */
     public function actionPasswordEdit()
     {
-        $model = new PasswordEditForm(['scenario' => 'password-edit']);
+        $model = new PasswordEditForm();
 
         if ($model->load(Yii::$app->request->get()) && $model->validate()) {
             $model->edit();

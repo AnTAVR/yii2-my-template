@@ -32,7 +32,7 @@ class LoginController extends Controller
      */
     public function actionIndex()
     {
-        $model = new LoginForm(['scenario' => 'login']);
+        $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             /** @var $identity \app\modules\account\models\User */
             $identity = Yii::$app->user->identity;

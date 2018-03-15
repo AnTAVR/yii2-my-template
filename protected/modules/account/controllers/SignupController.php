@@ -35,7 +35,7 @@ class SignupController extends Controller
      */
     public function actionIndex()
     {
-        $model = new SignupForm(['scenario' => 'signup']);
+        $model = new SignupForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $model->signup();
@@ -50,7 +50,7 @@ class SignupController extends Controller
      */
     public function actionPasswordReset()
     {
-        $model = new PasswordResetForm(['scenario' => 'password-reset']);
+        $model = new PasswordResetForm();
 
         if ($model->load(Yii::$app->request->get()) && $model->validate()) {
             $model->reset();
