@@ -2,8 +2,11 @@
 
 namespace app\modules\account\models;
 
-class SignupForm extends User
+use yii\base\Model;
+
+class SignupForm extends Model
 {
+    use UserTrait;
     /**
      * @return User|null
      * @throws \yii\base\Exception

@@ -3,13 +3,15 @@
 namespace app\modules\account\models;
 
 use Yii;
+use yii\base\Model;
 
 /**
  * LoginForm is the model behind the login form.
  *
  */
-class LoginForm extends User
+class LoginForm extends Model
 {
+    use UserTrait;
     /**
      * Validates the password.
      * This method serves as the inline validation for password.
