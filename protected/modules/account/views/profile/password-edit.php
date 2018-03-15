@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($model, 'password')->passwordInput() ?>
 
-            <?= $form->field($model, 'verifyPassword')->passwordInput() ?>
+            <?= $form->field($model, 'repeatPassword')->passwordInput() ?>
 
             <?= $form->field($model, 'verifyCode')->widget(Captcha::class) ?>
 
