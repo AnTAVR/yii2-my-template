@@ -134,6 +134,7 @@ class User extends ActiveRecord implements IdentityInterface
             'id' => Yii::t('app', 'ID'),
             'username' => Yii::t('app', 'Username'),
             'email' => Yii::t('app', 'E-Mail'),
+
             'password' => Yii::t('app', 'Password'),
             'oldPassword' => Yii::t('app', 'Old Password'),
             'verifyPassword' => Yii::t('app', 'Verification Password'),
@@ -294,20 +295,20 @@ class User extends ActiveRecord implements IdentityInterface
         return false;
     }
 
-    /**
-     * @param bool $insert
-     * @return bool
-     * @throws \yii\base\Exception
-     */
-    public function beforeSave($insert)
-    {
-        $security = Yii::$app->security;
-        if ($insert) {
-            $this->setAttribute('auth_key', $security->generateRandomString());
-        }
-        if (!empty($this->password)) {
-            $this->setPassword($this->password);
-        }
-        return parent::beforeSave($insert);
-    }
+//    /**
+//     * @param bool $insert
+//     * @return bool
+//     * @throws \yii\base\Exception
+//     */
+//    public function beforeSave($insert)
+//    {
+//        $security = Yii::$app->security;
+//        if ($insert) {
+//            $this->setAttribute('auth_key', $security->generateRandomString());
+//        }
+//        if (!empty($this->password)) {
+//            $this->setPassword($this->password);
+//        }
+//        return parent::beforeSave($insert);
+//    }
 }
