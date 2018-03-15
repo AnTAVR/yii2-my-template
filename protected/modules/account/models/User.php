@@ -12,65 +12,29 @@ use yii\web\IdentityInterface;
 
 
 /**
- * @property integer id
- * @property string username
- * @property string email
- * @property string password_hash
+ * @property integer $id
+ * @property string $username
+ * @property string $email
+ * @property string $password_hash
  *
- * @property string auth_key
- * @property string access_token
+ * @property string $auth_key
+ * @property string $access_token
  *
- * @property boolean email_confirmed
+ * @property boolean $email_confirmed
  *
- * @property string foto
+ * @property string $foto
  *
- * @property integer status
+ * @property integer $status
  *
- * @property integer created_at
+ * @property integer $created_at
  *
- * @property integer session_at
- * @property string session
+ * @property integer $session_at
+ * @property string $session
  *
  * @property string $authKey
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-    public $password;
-    public $verifyPassword;
-    public $oldPassword;
-    public $verifyCode;
-
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        $params = Yii::$app->params;
-        $rules = [
-            ['oldPassword', 'required',
-                'on' => ['password-edit']],
-            ['oldPassword', 'validateOldPassword',
-                'on' => ['password-edit']],
-
-            ['password', 'required',
-                'on' => ['password-edit']],
-            ['password', 'string',
-                'max' => $params['password.max'],
-                'min' => $params['password.min'],
-                'on' => ['password-edit']],
-
-            ['verifyPassword', 'required',
-                'on' => ['password-edit']],
-            ['verifyPassword', 'compare',
-                'compareAttribute' => 'password',
-                'on' => ['password-edit']],
-
-            ['verifyCode', 'captcha',
-                'on' => ['password-edit']],
-        ];
-        return ArrayHelper::merge(parent::rules(), $rules);
-    }
-
     /**
      * @inheritdoc
      */
@@ -80,30 +44,8 @@ class User extends ActiveRecord implements IdentityInterface
             'id' => Yii::t('app', 'ID'),
             'username' => Yii::t('app', 'Username'),
             'email' => Yii::t('app', 'E-Mail'),
-
-            'password' => Yii::t('app', 'Password'),
-            'oldPassword' => Yii::t('app', 'Old Password'),
-            'verifyPassword' => Yii::t('app', 'Verification Password'),
-            'verifyCode' => Yii::t('app', 'Verification Code'),
         ];
         return ArrayHelper::merge(parent::attributeLabels(), $labels);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeHints()
-    {
-        $hints = [];
-
-        $scenario = $this->scenario;
-        if ($scenario == 'password-edit') {
-            $hints = [
-                'password' => Yii::t('app', 'Set a complex password using uppercase and lowercase letters, numbers and special characters.'),
-            ];
-        }
-
-        return ArrayHelper::merge(parent::attributeHints(), $hints);
     }
 
     /**
@@ -118,7 +60,7 @@ class User extends ActiveRecord implements IdentityInterface
      * Finds an identity by the given ID.
      *
      * @param string|int $id the ID to be looked for
-     * @return IdentityInterface|null the identity object that matches the given ID.
+     * @return User|null the identity object that matches the given ID.
      */
     public static function findIdentity($id)
     {
@@ -206,32 +148,4 @@ class User extends ActiveRecord implements IdentityInterface
         $security = Yii::$app->security;
         $this->password_hash = $security->generatePasswordHash($password);
     }
-
-    /**
-     * @param $attribute
-     * @param $params
-     * @return bool
-     */
-    public function validateOldPassword(/** @noinspection PhpUnusedParameterInspection */
-        $attribute, $params)
-    {
-        return false;
-    }
-
-//    /**
-//     * @param bool $insert
-//     * @return bool
-//     * @throws \yii\base\Exception
-//     */
-//    public function beforeSave($insert)
-//    {
-//        $security = Yii::$app->security;
-//        if ($insert) {
-//            $this->setAttribute('auth_key', $security->generateRandomString());
-//        }
-//        if (!empty($this->password)) {
-//            $this->setPassword($this->password);
-//        }
-//        return parent::beforeSave($insert);
-//    }
 }
