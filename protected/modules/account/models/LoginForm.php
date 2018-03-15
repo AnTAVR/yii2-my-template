@@ -81,7 +81,9 @@ class LoginForm extends User
     {
         if ($this->validate()) {
             $user = User::findByUsername($this->username);
-            return Yii::$app->user->login($user, $this->rememberMe ? 3600 * 24 * 30 : 0);
+            /** @var \app\modules\account\Module $module */
+            $module = Yii::$app->getModule('account');
+            return Yii::$app->user->login($user, $this->rememberMe ? $module->params['duration'] : 0);
         }
         return false;
     }
