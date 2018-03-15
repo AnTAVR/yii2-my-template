@@ -62,6 +62,7 @@ return [
     'You have successfully created your Yii-powered application.' => '@@Вы успешно создали свое приложение на Yii.@@',
     'You may modify the following file to customize its content:' => '@@Вы можете изменить следующий файл, чтобы настроить содержание:@@',
     'reset it' => '@@восстановить его@@',
+    'A letter with instructions was sent to E-Mail.' => 'Письмо с инструкциями отправлено на Е-Mail.',
     'ACTIVE' => 'Активный',
     'About' => 'О нас',
     'Account successfully registered.' => 'Аккаунт успешно зарегистрирован.',
