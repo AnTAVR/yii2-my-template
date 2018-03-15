@@ -18,18 +18,6 @@ class LoginForm extends User
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
-        return ArrayHelper::merge(parent::scenarios(),
-            [
-                'login' => ['username', 'password', 'verifyCode', 'rememberMe'],
-            ]
-        );
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         $params = Yii::$app->params;
