@@ -14,7 +14,7 @@ use yii\web\IdentityInterface;
  * @property integer id
  * @property string username
  * @property string email
- * @property string password
+ * @property string password_hash
  *
  * @property string auth_key
  * @property string access_token
@@ -34,6 +34,7 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+    public $password;
     public $verifyRules;
     public $verifyPassword;
     public $oldPassword;
@@ -226,18 +227,6 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->auth_key === $authKey;
     }
 
-    public function validateLoginPassword(/** @noinspection PhpUnusedParameterInspection */
-        $attribute, $params)
-    {
-        return false;
-    }
-
-    public function validateOldPassword(/** @noinspection PhpUnusedParameterInspection */
-        $attribute, $params)
-    {
-        return false;
-    }
-
     /**
      * Validates password
      *
@@ -265,5 +254,17 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $security = Yii::$app->security;
         $this->password = $security->generatePasswordHash($password);
+    }
+
+    public function validateLoginPassword(/** @noinspection PhpUnusedParameterInspection */
+        $attribute, $params)
+    {
+        return false;
+    }
+
+    public function validateOldPassword(/** @noinspection PhpUnusedParameterInspection */
+        $attribute, $params)
+    {
+        return false;
     }
 }
