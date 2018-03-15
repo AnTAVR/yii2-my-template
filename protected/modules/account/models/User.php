@@ -41,58 +41,6 @@ class User extends ActiveRecord implements IdentityInterface
     public $verifyCode;
     public $rememberMe = true;
 
-    public static function tableName()
-    {
-        return '{{%user}}';
-    }
-
-    /**
-     * Finds an identity by the given ID.
-     *
-     * @param string|int $id the ID to be looked for
-     * @return IdentityInterface|null the identity object that matches the given ID.
-     */
-    public static function findIdentity($id)
-    {
-        return static::findOne($id);
-    }
-
-    /**
-     * Finds an identity by the given token.
-     *
-     * @param string $token the token to be looked for
-     * @param null $type
-     * @return IdentityInterface|null the identity object that matches the given token.
-     */
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        return static::findOne(['access_token' => $token]);
-    }
-
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @return static|null
-     */
-    public static function findByUsername($username)
-    {
-        return static::findOne(['username' => $username]);
-    }
-
-    public function scenarios()
-    {
-        return ArrayHelper::merge(
-            parent::scenarios(),
-            [
-                'signup' => ['username', 'password', 'verifyPassword', 'email', 'verifyCode', 'verifyRules'],
-                'login' => ['username', 'password', 'verifyCode', 'rememberMe'],
-                'password-edit' => ['oldPassword', 'password', 'verifyPassword', 'verifyCode'],
-                'password-reset' => ['email', 'verifyCode'],
-            ]
-        );
-    }
-
     /**
      * @return array the validation rules.
      */
@@ -157,6 +105,58 @@ class User extends ActiveRecord implements IdentityInterface
                 'message' => Yii::t('app', 'You must agree with the rules'),
                 'on' => ['signup']],
         ];
+    }
+
+    public static function tableName()
+    {
+        return '{{%user}}';
+    }
+
+    /**
+     * Finds an identity by the given ID.
+     *
+     * @param string|int $id the ID to be looked for
+     * @return IdentityInterface|null the identity object that matches the given ID.
+     */
+    public static function findIdentity($id)
+    {
+        return static::findOne($id);
+    }
+
+    /**
+     * Finds an identity by the given token.
+     *
+     * @param string $token the token to be looked for
+     * @param null $type
+     * @return IdentityInterface|null the identity object that matches the given token.
+     */
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return static::findOne(['access_token' => $token]);
+    }
+
+    /**
+     * Finds user by username
+     *
+     * @param string $username
+     * @return static|null
+     */
+    public static function findByUsername($username)
+    {
+        return static::findOne(['username' => $username]);
+    }
+
+    public function scenarios()
+    {
+        return ArrayHelper::merge(
+            parent::scenarios(),
+            [
+                'signup' => ['username', 'password', 'verifyPassword', 'email', 'verifyCode', 'verifyRules'],
+                'login' => ['username', 'password', 'verifyCode', 'rememberMe'],
+                'password-edit' => ['oldPassword', 'password', 'verifyPassword', 'verifyCode'],
+                'password-reset' => ['email', 'verifyCode'],
+            ]
+        );
     }
 
     /**
