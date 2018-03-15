@@ -5,6 +5,7 @@ namespace app\modules\account\models;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\db\ActiveRecord;
+use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 
@@ -64,7 +65,12 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne($id);
+        $identity = static::findOne($id);
+        if ($identity) {
+            $identity->session_at = new Expression('NOW()');
+            $identity->save();
+        }
+        return $identity;
     }
 
     /**
