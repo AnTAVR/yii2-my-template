@@ -4,7 +4,6 @@ namespace app\modules\account\controllers;
 
 use app\modules\account\models\PasswordResetForm;
 use app\modules\account\models\SignupForm;
-use app\modules\account\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
@@ -21,7 +20,7 @@ class SignupController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'password-reset'],
+                        'actions' => ['index', 'password-reset', 'verify-email'],
                         'roles' => ['?'],
                     ],
                 ],
@@ -85,15 +84,15 @@ class SignupController extends Controller
     public function actionVerifyEmail(/** @noinspection PhpUnusedParameterInspection */
         $user_id, $token)
     {
-        $user = User::findIdentity($user_id);
+        $user = SignupForm::findIdentity($user_id);
         if (!$user) {
             throw new NotFoundHttpException(Yii::t('app', 'User not found.'));
         }
-        $email_token = '';
-        if ($email_token !== $token) {
+
+        if (!$user->validateEmailToken($token)) {
             throw new NotFoundHttpException(Yii::t('app', 'User not found.'));
         }
-
+        $user->verifyEmail();
         Yii::$app->session->addFlash('success', Yii::t('app', 'E-Mail is verified, now you can login.'));
         return $this->redirect(Yii::$app->user->loginUrl);
     }
