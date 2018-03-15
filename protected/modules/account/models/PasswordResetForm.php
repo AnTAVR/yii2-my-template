@@ -46,7 +46,6 @@ class PasswordResetForm extends User
         $hints = [
             'email' => Yii::t('app', 'Enter E-Mail corresponding to the account, it will be sent an email with instructions.'),
         ];
-
         return ArrayHelper::merge(parent::attributeHints(), $hints);
     }
 
