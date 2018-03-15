@@ -35,6 +35,9 @@ class LoginController extends Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->login()) {
+                /** @var \app\modules\account\models\User $identity */
+                $identity = Yii::$app->user->identity;
+                Yii::$app->session->setFlash('success', Yii::t('app', 'Hello {username}', ['username' => $identity->username]));
                 return $this->goBack();
             }
         }
