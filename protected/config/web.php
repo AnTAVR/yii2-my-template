@@ -35,7 +35,7 @@ $config = [
         'user' => [
             'identityClass' => 'app\modules\account\models\User',
             'enableAutoLogin' => true,
-            'loginUrl' => '/account/profile/login'
+            'loginUrl' => '/account/login'
         ],
         'errorHandler' => [
             'errorAction' => '/site/error',
