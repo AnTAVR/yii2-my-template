@@ -26,10 +26,10 @@ class m000099_000000_create_user extends Migration
             'id' => $this->primaryKey(),
             'username' => $this->string()->notNull()->unique(),
             'email' => $this->string()->notNull()->unique(),
-            'password' => $this->string()->notNull(),
+            'password_hash' => $this->string()->notNull(),
 
             'auth_key' => $this->string(32)->notNull(),
-            'access_token' => $this->string()->unique(),
+            'access_token' => $this->string(40)->notNull()->unique(),
 
             'email_confirmed' => $this->boolean()->notNull()->defaultValue(false),
 
@@ -51,8 +51,9 @@ class m000099_000000_create_user extends Migration
         $this->insert($this->tableName, [
                 'username' => 'admin',
                 'email' => $params['adminEmail'],
-                'password' => $security->generatePasswordHash('adminadmin'),
+                'password_hash' => $security->generatePasswordHash('adminadmin'),
                 'auth_key' => $security->generateRandomString(),
+                'access_token' => $security->generateRandomString(40),
                 'email_confirmed' => true,
             ]
         );
