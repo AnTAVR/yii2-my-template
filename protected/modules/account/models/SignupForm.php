@@ -89,6 +89,7 @@ class SignupForm extends User
             $security = Yii::$app->security;
             $this->password_hash = $security->generatePasswordHash($this->password);
             $this->auth_key = $security->generateRandomString();
+            $this->access_token = $security->generateRandomString(40);
             $this->save(false);
 
 //  the following three lines were added:
