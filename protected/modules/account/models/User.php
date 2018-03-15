@@ -41,6 +41,9 @@ class User extends ActiveRecord implements IdentityInterface
     public $verifyCode;
     public $rememberMe = true;
 
+    /**
+     * @inheritdoc
+     */
     public function scenarios()
     {
         return ArrayHelper::merge(
@@ -55,7 +58,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @return array the validation rules.
+     * @inheritdoc
      */
     public function rules()
     {
@@ -140,6 +143,9 @@ class User extends ActiveRecord implements IdentityInterface
         return ArrayHelper::merge(parent::attributeLabels(), $labels);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function attributeHints()
     {
         $hints = [];
@@ -164,6 +170,9 @@ class User extends ActiveRecord implements IdentityInterface
         return ArrayHelper::merge(parent::attributeHints(), $hints);
     }
 
+    /**
+     * @return string
+     */
     public static function tableName()
     {
         return '{{%user}}';
@@ -242,6 +251,9 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->password_hash === $security->generatePasswordHash($password);
     }
 
+    /**
+     * @throws \yii\base\Exception
+     */
     public function generateAuthKey()
     {
         $security = Yii::$app->security;
@@ -258,15 +270,42 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_hash = $security->generatePasswordHash($password);
     }
 
+    /**
+     * @param $attribute
+     * @param $params
+     * @return bool
+     */
     public function validateLoginPassword(/** @noinspection PhpUnusedParameterInspection */
         $attribute, $params)
     {
         return false;
     }
 
+    /**
+     * @param $attribute
+     * @param $params
+     * @return bool
+     */
     public function validateOldPassword(/** @noinspection PhpUnusedParameterInspection */
         $attribute, $params)
     {
         return false;
+    }
+
+    /**
+     * @param bool $insert
+     * @return bool
+     * @throws \yii\base\Exception
+     */
+    public function beforeSave($insert)
+    {
+        $security = Yii::$app->security;
+        if ($insert) {
+            $this->setAttribute('auth_key', $security->generateRandomString());
+        }
+        if (!empty($this->password)) {
+            $this->setPassword($this->password);
+        }
+        return parent::beforeSave($insert);
     }
 }

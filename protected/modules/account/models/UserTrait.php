@@ -19,6 +19,9 @@ trait UserTrait
     public $verifyCode;
     public $rememberMe = true;
 
+    /**
+     * @inheritdoc
+     */
     public function scenarios()
     {
         return ArrayHelper::merge(
@@ -33,7 +36,7 @@ trait UserTrait
     }
 
     /**
-     * @return array the validation rules.
+     * @inheritdoc
      */
     public function rules()
     {
@@ -118,6 +121,9 @@ trait UserTrait
         return ArrayHelper::merge(parent::attributeLabels(), $labels);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function attributeHints()
     {
         $hints = [];
