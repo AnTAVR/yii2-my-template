@@ -1,11 +1,10 @@
 <?php
 /* @var $this yii\web\View */
 
+/** @var $identity \app\modules\account\models\User */
+
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
-/** @var $identity \app\modules\account\models\User */
-$identity = Yii::$app->user->identity;
 
 $this->title = $identity->username;
 
