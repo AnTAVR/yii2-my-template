@@ -6,13 +6,14 @@ use app\modules\account\models\PasswordResetForm;
 use app\modules\account\models\SignupForm;
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 
 class SignupController extends Controller
 {
     public function behaviors()
     {
-        return [
+        $behaviors = [
             'access' => [
                 'class' => AccessControl::class,
                 'rules' => [
@@ -24,6 +25,7 @@ class SignupController extends Controller
                 ],
             ],
         ];
+        return ArrayHelper::merge(parent::behaviors(), $behaviors);
     }
 
     /**
