@@ -37,7 +37,7 @@ class LoginController extends Controller
             if ($model->login()) {
                 /** @var \app\modules\account\models\User $identity */
                 $identity = Yii::$app->user->identity;
-                Yii::$app->session->setFlash('success', Yii::t('app', 'Hello {username}', ['username' => $identity->username]));
+                Yii::$app->session->addFlash('success', Yii::t('app', 'Hello {username}', ['username' => $identity->username]));
                 return $this->goBack();
             }
         }
