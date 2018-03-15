@@ -9,8 +9,7 @@ use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 
-/** @noinspection PropertiesInspection */
-
+/** @noinspection MissingPropertyAnnotationsInspection */
 /**
  * @property string $authKey
  *
@@ -51,6 +50,11 @@ class User extends ActiveRecord implements IdentityInterface
             self::STATUS_BLOCKED => Yii::t('app', 'BLOCKED'),
             self::STATUS_DELETED => Yii::t('app', 'DELETED'),
         ];
+    }
+
+    public function getStatusName()
+    {
+        return self::$statusName[$this->status];
     }
 
     /**
