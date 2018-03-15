@@ -39,8 +39,14 @@ class SignupController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->signup()) {
-                Yii::$app->session->setFlash('success', Yii::t('app', 'Account successfully registered.'));
-                Yii::$app->session->setFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
+                Yii::$app->session->addFlash('success', Yii::t('app', 'Account successfully registered.'));
+
+                if ($model->sendEmail()) {
+                    Yii::$app->session->addFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
+                } else {
+                    Yii::$app->session->addFlash('error', Yii::t('app', 'It was not possible to send a letter to E-Mail.'));
+                }
+                return $this->redirect('');
             }
         }
         return $this->render('index', [
@@ -56,9 +62,12 @@ class SignupController extends Controller
         $model = new PasswordResetForm();
 
         if ($model->load(Yii::$app->request->get()) && $model->validate()) {
-            if ($model->reset()) {
-                Yii::$app->session->setFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
+            if ($model->sendEmail()) {
+                Yii::$app->session->addFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
+            } else {
+                Yii::$app->session->addFlash('error', Yii::t('app', 'It was not possible to send a letter to E-Mail.'));
             }
+            return $this->redirect('');
         }
         return $this->render('password-reset', [
             'model' => $model,
