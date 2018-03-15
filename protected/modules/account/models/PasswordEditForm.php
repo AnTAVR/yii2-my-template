@@ -8,7 +8,7 @@ use yii\helpers\ArrayHelper;
 class PasswordEditForm extends User
 {
     public $password;
-    public $verifyPassword;
+    public $repeatPassword;
     public $oldPassword;
     public $verifyCode;
 
@@ -26,8 +26,8 @@ class PasswordEditForm extends User
                 'max' => $params['password.max'],
                 'min' => $params['password.min']],
 
-            ['verifyPassword', 'required'],
-            ['verifyPassword', 'compare',
+            ['repeatPassword', 'required'],
+            ['repeatPassword', 'compare',
                 'compareAttribute' => 'password'],
 
             ['oldPassword', 'required'],
@@ -45,7 +45,7 @@ class PasswordEditForm extends User
         $labels = [
             'password' => Yii::t('app', 'Password'),
             'oldPassword' => Yii::t('app', 'Old Password'),
-            'verifyPassword' => Yii::t('app', 'Verification Password'),
+            'repeatPassword' => Yii::t('app', 'Repeat password'),
             'verifyCode' => Yii::t('app', 'Verification Code'),
         ];
         return ArrayHelper::merge(parent::attributeLabels(), $labels);
