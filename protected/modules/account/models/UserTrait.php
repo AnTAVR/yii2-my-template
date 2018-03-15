@@ -38,7 +38,7 @@ trait UserTrait
     public function rules()
     {
         $params = Yii::$app->params;
-        return [
+        $rules = [
             ['username', 'required',
                 'on' => ['signup', 'login']],
             ['username', 'string',
@@ -96,6 +96,7 @@ trait UserTrait
                 'message' => Yii::t('app', 'You must agree with the rules'),
                 'on' => ['signup']],
         ];
+        return ArrayHelper::merge(parent::rules(), $rules);
     }
 
     /**
@@ -103,7 +104,7 @@ trait UserTrait
      */
     public function attributeLabels()
     {
-        return [
+        $labels = [
             'id' => Yii::t('app', 'ID'),
             'username' => Yii::t('app', 'Username'),
             'email' => Yii::t('app', 'E-Mail'),
@@ -114,6 +115,7 @@ trait UserTrait
             'rememberMe' => Yii::t('app', 'Remember Me'),
             'verifyRules' => Yii::t('app', 'Verify Rules'),
         ];
+        return ArrayHelper::merge(parent::attributeLabels(), $labels);
     }
 
     public function attributeHints()
