@@ -67,6 +67,20 @@ class SignupForm extends User
     }
 
     /**
+     * @inheritdoc
+     */
+    public function attributeHints()
+    {
+        $hints = [
+            'username' => Yii::t('app', 'Possible characters ({chars})', ['chars' => Yii::$app->params['username.hint']]),
+            'email' => Yii::t('app', 'E-Mail must be valid, a letter with instructions will be sent to it.'),
+            'password' => Yii::t('app', 'Set a complex password using uppercase and lowercase letters, numbers and special characters.'),
+        ];
+
+        return ArrayHelper::merge(parent::attributeHints(), $hints);
+    }
+
+    /**
      * @return User|null
      * @throws \yii\base\Exception
      */
