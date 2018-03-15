@@ -237,7 +237,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function validatePassword($password)
     {
         $security = Yii::$app->security;
-        return $this->password === $security->generatePasswordHash($password);
+        return $this->password_hash === $security->generatePasswordHash($password);
     }
 
     public function generateAuthKey()
@@ -253,7 +253,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function setPassword($password)
     {
         $security = Yii::$app->security;
-        $this->password = $security->generatePasswordHash($password);
+        $this->password_hash = $security->generatePasswordHash($password);
     }
 
     public function validateLoginPassword(/** @noinspection PhpUnusedParameterInspection */
