@@ -3,6 +3,7 @@
 namespace app\modules\account\models;
 
 use Yii;
+use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -86,6 +87,7 @@ class LoginForm extends User
             $login = Yii::$app->user->login($user, $this->rememberMe ? $module->params['duration'] : 0);
             if ($login) {
                 $user->session = Yii::$app->session->id;
+                $user->session_at = new Expression('NOW()');
                 $user->save();
             }
             return $login;
