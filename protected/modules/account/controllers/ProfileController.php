@@ -10,9 +10,6 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 
-/**
- * Default controller for the `account` module
- */
 class ProfileController extends Controller
 {
     public function behaviors()
