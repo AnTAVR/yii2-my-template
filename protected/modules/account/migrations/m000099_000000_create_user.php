@@ -37,7 +37,7 @@ class m000099_000000_create_user extends Migration
 
             'status' => $this->smallInteger()->notNull()->defaultValue(false),
 
-            'created_at' => $this->dateTime()->defaultValue(new Expression('NOW()')),
+            'created_at' => $this->dateTime()->notNull()->defaultValue(new Expression('NOW()')),
 
             'session_at' => $this->dateTime(),
             'session' => $this->string(),
