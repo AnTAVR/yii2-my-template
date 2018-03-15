@@ -52,8 +52,8 @@ class PasswordResetForm extends User
     /**
      * @return bool
      */
-    public function reset()
+    public function sendEmail()
     {
-        return true;
+        return false;
     }
 }
