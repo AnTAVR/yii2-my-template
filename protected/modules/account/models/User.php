@@ -43,6 +43,16 @@ class User extends ActiveRecord implements IdentityInterface
 
     static $statusName = [];
 
+    function init()
+    {
+        parent::init();
+        static::$statusName = [
+            static::STATUS_ACTIVE => Yii::t('app', 'ACTIVE'),
+            static::STATUS_BLOCKED => Yii::t('app', 'BLOCKED'),
+            static::STATUS_DELETED => Yii::t('app', 'DELETED'),
+        ];
+    }
+
     /**
      * @return string
      */
@@ -90,16 +100,6 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findByUsername($username)
     {
         return static::findOne(['username' => $username]);
-    }
-
-    function init()
-    {
-        parent::init();
-        static::$statusName = [
-            static::STATUS_ACTIVE => Yii::t('app', 'ACTIVE'),
-            static::STATUS_BLOCKED => Yii::t('app', 'BLOCKED'),
-            static::STATUS_DELETED => Yii::t('app', 'DELETED'),
-        ];
     }
 
     /**
