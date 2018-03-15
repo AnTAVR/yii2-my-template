@@ -46,10 +46,10 @@ class User extends ActiveRecord implements IdentityInterface
     function init()
     {
         parent::init();
-        static::$statusName = [
-            static::STATUS_ACTIVE => Yii::t('app', 'ACTIVE'),
-            static::STATUS_BLOCKED => Yii::t('app', 'BLOCKED'),
-            static::STATUS_DELETED => Yii::t('app', 'DELETED'),
+        self::$statusName = [
+            self::STATUS_ACTIVE => Yii::t('app', 'ACTIVE'),
+            self::STATUS_BLOCKED => Yii::t('app', 'BLOCKED'),
+            self::STATUS_DELETED => Yii::t('app', 'DELETED'),
         ];
     }
 
