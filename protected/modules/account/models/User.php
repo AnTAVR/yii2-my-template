@@ -40,7 +40,6 @@ class User extends ActiveRecord implements IdentityInterface
     public $verifyPassword;
     public $oldPassword;
     public $verifyCode;
-    public $rememberMe = true;
 
     /**
      * @inheritdoc
@@ -51,7 +50,6 @@ class User extends ActiveRecord implements IdentityInterface
             parent::scenarios(),
             [
                 'signup' => ['username', 'password', 'verifyPassword', 'email', 'verifyCode', 'verifyRules'],
-                'login' => ['username', 'password', 'verifyCode', 'rememberMe'],
                 'password-edit' => ['oldPassword', 'password', 'verifyPassword', 'verifyCode'],
                 'password-reset' => ['email', 'verifyCode'],
             ]
@@ -66,14 +64,14 @@ class User extends ActiveRecord implements IdentityInterface
         $params = Yii::$app->params;
         $rules = [
             ['username', 'required',
-                'on' => ['signup', 'login']],
+                'on' => ['signup']],
             ['username', 'string',
                 'max' => $params['username.max'],
                 'min' => $params['username.min'],
-                'on' => ['signup', 'login']],
+                'on' => ['signup']],
             ['username', 'match',
                 'pattern' => $params['username.pattern'],
-                'on' => ['signup', 'login']],
+                'on' => ['signup']],
             ['username', 'unique',
                 'on' => ['signup']],
 
@@ -83,7 +81,7 @@ class User extends ActiveRecord implements IdentityInterface
                 'on' => ['password-edit']],
 
             ['password', 'required',
-                'on' => ['signup', 'login', 'password-edit']],
+                'on' => ['signup', 'password-edit']],
             ['password', 'string',
                 'max' => $params['password.max'],
                 'min' => $params['password.min'],
@@ -107,10 +105,7 @@ class User extends ActiveRecord implements IdentityInterface
                 'on' => ['password-reset']],
 
             ['verifyCode', 'captcha',
-                'on' => ['signup', 'login', 'password-edit', 'password-reset']],
-
-            ['rememberMe', 'boolean',
-                'on' => ['login']],
+                'on' => ['signup', 'password-edit', 'password-reset']],
 
             ['verifyRules', 'boolean',
                 'on' => ['signup']],
@@ -137,7 +132,6 @@ class User extends ActiveRecord implements IdentityInterface
             'oldPassword' => Yii::t('app', 'Old Password'),
             'verifyPassword' => Yii::t('app', 'Verification Password'),
             'verifyCode' => Yii::t('app', 'Verification Code'),
-            'rememberMe' => Yii::t('app', 'Remember Me'),
             'verifyRules' => Yii::t('app', 'Verify Rules'),
         ];
         return ArrayHelper::merge(parent::attributeLabels(), $labels);
