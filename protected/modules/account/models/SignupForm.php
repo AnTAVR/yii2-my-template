@@ -102,4 +102,12 @@ class SignupForm extends User
 
         return null;
     }
+
+    /**
+     * @return bool
+     */
+    public function sendEmail()
+    {
+        return false;
+    }
 }
