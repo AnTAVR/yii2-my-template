@@ -36,25 +36,9 @@ use yii\web\IdentityInterface;
 class User extends ActiveRecord implements IdentityInterface
 {
     public $password;
-    public $verifyRules;
     public $verifyPassword;
     public $oldPassword;
     public $verifyCode;
-
-    /**
-     * @inheritdoc
-     */
-    public function scenarios()
-    {
-        return ArrayHelper::merge(
-            parent::scenarios(),
-            [
-                'signup' => ['username', 'password', 'verifyPassword', 'email', 'verifyCode', 'verifyRules'],
-                'password-edit' => ['oldPassword', 'password', 'verifyPassword', 'verifyCode'],
-                'password-reset' => ['email', 'verifyCode'],
-            ]
-        );
-    }
 
     /**
      * @inheritdoc
