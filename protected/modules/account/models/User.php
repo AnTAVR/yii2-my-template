@@ -41,6 +41,19 @@ class User extends ActiveRecord implements IdentityInterface
     public $verifyCode;
     public $rememberMe = true;
 
+    public function scenarios()
+    {
+        return ArrayHelper::merge(
+            parent::scenarios(),
+            [
+                'signup' => ['username', 'password', 'verifyPassword', 'email', 'verifyCode', 'verifyRules'],
+                'login' => ['username', 'password', 'verifyCode', 'rememberMe'],
+                'password-edit' => ['oldPassword', 'password', 'verifyPassword', 'verifyCode'],
+                'password-reset' => ['email', 'verifyCode'],
+            ]
+        );
+    }
+
     /**
      * @return array the validation rules.
      */
@@ -165,19 +178,6 @@ class User extends ActiveRecord implements IdentityInterface
         return static::findOne(['username' => $username]);
     }
 
-    public function scenarios()
-    {
-        return ArrayHelper::merge(
-            parent::scenarios(),
-            [
-                'signup' => ['username', 'password', 'verifyPassword', 'email', 'verifyCode', 'verifyRules'],
-                'login' => ['username', 'password', 'verifyCode', 'rememberMe'],
-                'password-edit' => ['oldPassword', 'password', 'verifyPassword', 'verifyCode'],
-                'password-reset' => ['email', 'verifyCode'],
-            ]
-        );
-    }
-
     public function attributeHints()
     {
         $hints = [];
@@ -199,7 +199,6 @@ class User extends ActiveRecord implements IdentityInterface
             ];
         }
 
-        /** @noinspection PhpUndefinedClassInspection */
         return ArrayHelper::merge(parent::attributeHints(), $hints);
     }
 
