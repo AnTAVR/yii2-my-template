@@ -44,7 +44,7 @@ class SignupController extends Controller
                 if ($model->sendEmail()) {
                     Yii::$app->session->addFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
                 } else {
-                    Yii::$app->session->addFlash('error', Yii::t('app', 'It was not possible to send a letter to E-Mail.'));
+                    Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
                 }
                 return $this->redirect('');
             }
@@ -65,7 +65,7 @@ class SignupController extends Controller
             if ($model->sendEmail()) {
                 Yii::$app->session->addFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
             } else {
-                Yii::$app->session->addFlash('error', Yii::t('app', 'It was not possible to send a letter to E-Mail.'));
+                Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
             }
             return $this->redirect('');
         }
