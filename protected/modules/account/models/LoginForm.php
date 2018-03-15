@@ -85,12 +85,10 @@ class LoginForm extends User
             /** @var \app\modules\account\Module $module */
             $module = Yii::$app->getModule('account');
             $login = Yii::$app->user->login($user, $this->rememberMe ? $module->params['duration'] : 0);
-            $session = Yii::$app->session;
             if ($login) {
-                $user->session = $session->id;
+                $user->session = Yii::$app->session->id;
                 $user->session_at = new Expression('NOW()');
                 $user->save();
-                $session->setFlash('success', Yii::t('app', 'Hello {username}', ['username' => $user->username]));
             }
             return $login;
         }
