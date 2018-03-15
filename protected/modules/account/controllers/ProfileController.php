@@ -51,15 +51,15 @@ class ProfileController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $identity = Yii::$app->user->identity;
+
+        return $this->render('index', [
+            'identity' => $identity,
+        ]);
     }
 
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
         $model = new LoginForm(['scenario' => 'login']);
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             /** @var $identity \app\modules\account\models\User */
