@@ -72,6 +72,7 @@ return [
     'Are you sure you want to delete this item?' => 'Вы уверены, что хотите удалить этот элемент?',
     'Articles' => 'Статьи',
     'Articles Url' => 'Урл статьи',
+    'BLOCKED' => 'Заблокирован',
     'Body' => 'Сообщение',
     'Callback' => 'Обратный звонок',
     'Close' => 'Закрыть',
