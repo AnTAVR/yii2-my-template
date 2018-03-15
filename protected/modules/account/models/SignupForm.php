@@ -48,7 +48,8 @@ class SignupForm extends User
                 'compareAttribute' => 'password'],
 
             ['email', 'required'],
-            ['email', 'string', 'max' => $params['email.max']],
+            ['email', 'string',
+                'max' => $params['email.max']],
             ['email', 'email'],
 
             ['username', 'unique'],
