@@ -43,7 +43,7 @@ class LogoutController extends Controller
 
         Yii::$app->user->logout();
 
-        Yii::$app->session->setFlash('success', Yii::t('app', 'Goodbye {username}', ['username' => $identity->username]));
+        Yii::$app->session->addFlash('success', Yii::t('app', 'Goodbye {username}', ['username' => $identity->username]));
 
         return $this->goHome();
     }
