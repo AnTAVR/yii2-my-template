@@ -8,7 +8,7 @@ use yii\helpers\ArrayHelper;
 class SignupForm extends User
 {
     public $password;
-    public $verifyPassword;
+    public $repeatPassword;
     public $verifyRules;
     public $verifyCode;
 
@@ -38,8 +38,8 @@ class SignupForm extends User
                 'max' => $params['password.max'],
                 'min' => $params['password.min']],
 
-            ['verifyPassword', 'required'],
-            ['verifyPassword', 'compare',
+            ['repeatPassword', 'required'],
+            ['repeatPassword', 'compare',
                 'compareAttribute' => 'password'],
 
             ['email', 'required'],
@@ -59,7 +59,7 @@ class SignupForm extends User
     {
         $labels = [
             'password' => Yii::t('app', 'Password'),
-            'verifyPassword' => Yii::t('app', 'Verification Password'),
+            'repeatPassword' => Yii::t('app', 'Repeat password'),
             'verifyRules' => Yii::t('app', 'Verify Rules'),
             'verifyCode' => Yii::t('app', 'Verification Code'),
         ];
