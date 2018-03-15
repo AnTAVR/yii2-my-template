@@ -27,12 +27,11 @@ class Module extends ModuleOld
         Yii::$app->urlManager->addRules(
             [
                 '/account/admin-<controller>' => '/account/admin-<controller>',
-                '/login' => '/account/profile/login',
-                '/logout' => '/account/profile/logout',
-                '/signup' => '/account/profile/signup',
-                '/password-reset' => '/account/profile/password-reset',
-                '/password-edit' => '/account/profile/password-edit',
-                '/verify-email/<user_id:\d+>/<crc:\w+>' => '/account/profile/verify-email',
+                '/login' => '/account/login',
+                '/logout' => '/account/logout',
+                '/signup' => '/account/signup',
+                '/password-reset' => '/account/signup/password-reset',
+                '/verify-email/<user_id:\d+>/<crc:\w+>' => '/account/signup/verify-email',
             ]
         );
         // custom initialization code goes here
