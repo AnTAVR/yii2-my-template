@@ -11,6 +11,7 @@ use yii\validators\DateValidator;
 /**
  * This is the model class for table "page_products".
  *
+ * Database fields:
  * @property integer $id
  *
  * @property integer $published_at
