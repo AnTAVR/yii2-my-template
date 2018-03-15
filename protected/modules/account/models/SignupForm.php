@@ -115,7 +115,7 @@ class SignupForm extends User
      */
     public function sendEmail()
     {
-        $url = Url::to(['/account/signup/verify-email', ['user_id' => $this->id, 'token' => $this->emailToken]], true);
+        $url = Url::to(['/account/signup/verify-email', 'user_id' => $this->id, 'token' => $this->emailToken], true);
         $body = Yii::t('app', 'To confirm E-Mail, follow the link: {url}', ['url' => $url]);
         $subject = Yii::t('app', 'Registration on the site {site}', ['site' => Yii::$app->name]);
 
