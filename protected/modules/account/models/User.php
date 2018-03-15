@@ -138,6 +138,30 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
+    public function attributeHints()
+    {
+        $hints = [];
+
+        $scenario = $this->scenario;
+        if ($scenario == 'signup') {
+            $hints = [
+                'username' => Yii::t('app', 'Possible characters ({chars})', ['chars' => Yii::$app->params['username.hint']]),
+                'email' => Yii::t('app', 'E-Mail must be valid, a letter with instructions will be sent to it.'),
+                'password' => Yii::t('app', 'Set a complex password using uppercase and lowercase letters, numbers and special characters.'),
+            ];
+        } elseif ($scenario == 'password-reset') {
+            $hints = [
+                'email' => Yii::t('app', 'Enter E-Mail corresponding to the account, it will be sent an email with instructions.'),
+            ];
+        } elseif ($scenario == 'password-edit') {
+            $hints = [
+                'password' => Yii::t('app', 'Set a complex password using uppercase and lowercase letters, numbers and special characters.'),
+            ];
+        }
+
+        return ArrayHelper::merge(parent::attributeHints(), $hints);
+    }
+
     public static function tableName()
     {
         return '{{%user}}';
@@ -176,30 +200,6 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findByUsername($username)
     {
         return static::findOne(['username' => $username]);
-    }
-
-    public function attributeHints()
-    {
-        $hints = [];
-
-        $scenario = $this->scenario;
-        if ($scenario == 'signup') {
-            $hints = [
-                'username' => Yii::t('app', 'Possible characters ({chars})', ['chars' => Yii::$app->params['username.hint']]),
-                'email' => Yii::t('app', 'E-Mail must be valid, a letter with instructions will be sent to it.'),
-                'password' => Yii::t('app', 'Set a complex password using uppercase and lowercase letters, numbers and special characters.'),
-            ];
-        } elseif ($scenario == 'password-reset') {
-            $hints = [
-                'email' => Yii::t('app', 'Enter E-Mail corresponding to the account, it will be sent an email with instructions.'),
-            ];
-        } elseif ($scenario == 'password-edit') {
-            $hints = [
-                'password' => Yii::t('app', 'Set a complex password using uppercase and lowercase letters, numbers and special characters.'),
-            ];
-        }
-
-        return ArrayHelper::merge(parent::attributeHints(), $hints);
     }
 
     /**
