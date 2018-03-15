@@ -27,6 +27,7 @@ class m000099_000000_create_user extends Migration
             'username' => $this->string()->notNull()->unique(),
             'email' => $this->string()->notNull()->unique(),
             'password_hash' => $this->string()->notNull(),
+            'salt' => $this->string(64)->notNull(),
 
             'auth_key' => $this->string(32)->notNull(),
             'access_token' => $this->string(40)->notNull()->unique(),
@@ -52,6 +53,7 @@ class m000099_000000_create_user extends Migration
                 'username' => 'admin',
                 'email' => $params['adminEmail'],
                 'password_hash' => $security->generatePasswordHash('adminadmin'),
+                'salt' => $security->generateRandomString(64),
                 'auth_key' => $security->generateRandomString(),
                 'access_token' => $security->generateRandomString(40),
                 'email_confirmed' => true,
