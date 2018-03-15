@@ -84,7 +84,7 @@ class SignupController extends Controller
     public function actionVerifyEmail(/** @noinspection PhpUnusedParameterInspection */
         $user_id, $token)
     {
-        $user = SignupForm::findIdentity($user_id);
+        $user = SignupForm::findOne($user_id);
         if (!$user) {
             throw new NotFoundHttpException(Yii::t('app', 'User not found.'));
         }
