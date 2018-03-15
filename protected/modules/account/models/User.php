@@ -76,7 +76,7 @@ class User extends ActiveRecord implements IdentityInterface
         $identity = static::findOne($id);
         if ($identity) {
             $identity->session_at = new Expression('NOW()');
-            $identity->save();
+            $identity->save(false);
         }
         return $identity;
     }
