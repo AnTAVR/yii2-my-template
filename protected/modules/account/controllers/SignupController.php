@@ -38,7 +38,10 @@ class SignupController extends Controller
         $model = new SignupForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $model->signup();
+            if ($model->signup()) {
+                Yii::$app->session->setFlash('success', Yii::t('app', 'Account successfully registered.'));
+                Yii::$app->session->setFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
+            }
         }
         return $this->render('index', [
             'model' => $model,
@@ -53,7 +56,9 @@ class SignupController extends Controller
         $model = new PasswordResetForm();
 
         if ($model->load(Yii::$app->request->get()) && $model->validate()) {
-            $model->reset();
+            if ($model->reset()) {
+                Yii::$app->session->setFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
+            }
         }
         return $this->render('password-reset', [
             'model' => $model,
