@@ -76,7 +76,6 @@ class SignupForm extends User
             'email' => Yii::t('app', 'E-Mail must be valid, a letter with instructions will be sent to it.'),
             'password' => Yii::t('app', 'Set a complex password using uppercase and lowercase letters, numbers and special characters.'),
         ];
-
         return ArrayHelper::merge(parent::attributeHints(), $hints);
     }
 
