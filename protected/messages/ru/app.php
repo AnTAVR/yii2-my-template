@@ -165,6 +165,7 @@ return [
     'Update Static Page: {name}' => 'Редактирование страницы: {name}',
     'Uploader Files' => 'Загрузка файлов',
     'Uploader Images' => 'Загрузка фото',
+    'User not found.' => 'Пользователь не найден.',
     'Username' => 'Имя пользователя',
     'Verification Code' => 'Проверочный код',
     'Verify Rules' => 'С правилами согласен',
