@@ -88,8 +88,6 @@ class User extends ActiveRecord implements IdentityInterface
                 'max' => $params['password.max'],
                 'min' => $params['password.min'],
                 'on' => ['signup', 'password-edit']],
-            ['password', 'validateLoginPassword',
-                'on' => ['login']],
 
             ['verifyPassword', 'required',
                 'on' => ['signup', 'password-edit']],
@@ -271,17 +269,6 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $security = Yii::$app->security;
         $this->password_hash = $security->generatePasswordHash($password);
-    }
-
-    /**
-     * @param $attribute
-     * @param $params
-     * @return bool
-     */
-    public function validateLoginPassword(/** @noinspection PhpUnusedParameterInspection */
-        $attribute, $params)
-    {
-        return false;
     }
 
     /**
