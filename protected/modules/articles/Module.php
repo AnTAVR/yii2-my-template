@@ -14,10 +14,6 @@ class Module extends ModuleOld
      * @inheritdoc
      */
     public $controllerNamespace = 'app\modules\articles\controllers';
-    public $params = [
-        'pageSize' => 10,
-        'adminPageSize' => 10,
-    ];
 
     /**
      * @inheritdoc
@@ -25,6 +21,7 @@ class Module extends ModuleOld
     public function init()
     {
         parent::init();
+        $this->params = require __DIR__ . '/config/params.php';
 
         /** @noinspection HtmlUnknownTag */
         Yii::$app->urlManager->addRules(
