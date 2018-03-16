@@ -11,15 +11,6 @@ class LogoutController extends Controller
     public function behaviors()
     {
         $behaviors = [
-//            'access' => [
-//                'class' => AccessControl::class,
-//                'rules' => [
-//                    [
-//                        'allow' => true,
-//                        'roles' => ['@'],
-//                    ],
-//                ],
-//            ],
 //            'verbs' => [
 //                'class' => VerbFilter::className(),
 //                'actions' => [
@@ -37,6 +28,10 @@ class LogoutController extends Controller
      */
     public function actionIndex()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         /** @var $identity \app\modules\account\models\User */
         $identity = Yii::$app->user->identity;
 
