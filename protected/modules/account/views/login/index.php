@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             }
             ?>
 
-            <?= $form->field($model, 'password')->passwordInput([''])->hint(Html::a(Yii::t('app', 'Password Reset'), ['/account/signup/password-reset'], ['class' => 'label label-danger'])) ?>
+            <?= $form->field($model, 'password')->passwordInput([''])->hint(Html::a(Yii::t('app', 'Password Reset'), ['/account/password'], ['class' => 'label label-danger'])) ?>
 
             <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
