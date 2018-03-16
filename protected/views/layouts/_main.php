@@ -32,11 +32,12 @@ $asset = AppSiteAsset::register($this);
 <?php $this->beginBody() ?>
 
 <?php
+$fixed_top = true;
 NavBar::begin([
     'brandLabel' => Yii::$app->params['brandLabel'],
     'brandUrl' => Yii::$app->homeUrl,
     'options' => [
-        'class' => 'navbar-default navbar-fixed-top',
+        'class' => 'navbar-default' . ($fixed_top ? ' navbar-fixed-top' : ''),
     ],
 ]); ?>
 <p class="navbar-text">
@@ -93,7 +94,7 @@ echo Nav::widget([
 ]);
 NavBar::end();
 ?>
-<div class="wrap fixed-top">
+<div class="wrap<?= $fixed_top ? ' fixed-top' : '' ?>">
     <div class="container">
         <?= Carousel::widget([
             'showIndicators' => true,
