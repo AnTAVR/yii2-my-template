@@ -55,6 +55,7 @@ class PasswordController extends Controller
      * @param $token string
      * @return string
      * @throws NotFoundHttpException
+     * @throws \yii\base\Exception
      */
     public function actionNew($user_id, $token)
     {
