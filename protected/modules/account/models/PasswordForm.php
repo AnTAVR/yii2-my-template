@@ -4,9 +4,12 @@ namespace app\modules\account\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 
 class PasswordForm extends User
 {
+    use PasswordTrait;
+
     public $verifyCode;
 
     /**
@@ -54,7 +57,8 @@ class PasswordForm extends User
      */
     public function sendEmail()
     {
-        $body = Yii::t('app', 'Phone {phone}, name {name}', ['phone' => $this->phone, 'name' => $this->name]);
+        $url = Url::to(['/account/password/new', 'user_id' => $this->id, 'token' => $this->passwordToken], true);
+        $body = Yii::t('app', 'To password recovery, follow the link: {url}', ['url' => $url]);
         $subject = Yii::t('app', 'Password recovery from {site}', ['site' => Yii::$app->name]);
 
         return Yii::$app->mailer->compose()
