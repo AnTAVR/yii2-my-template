@@ -97,6 +97,7 @@ class SignupForm extends User
         $this->salt = $security->generateRandomString(64);
         $this->auth_key = $security->generateRandomString();
         $this->access_token = $security->generateRandomString(40);
+        $this->email_confirmed = 0;
 
         if ($this->save(false)) {
             $ret = $this;
@@ -151,8 +152,8 @@ class SignupForm extends User
 
     public function VerifyEmail()
     {
-        $this->email_confirmed = true;
-        return $this->save();
+        $this->email_confirmed = 1;
+        return $this->save(false);
     }
 
 }
