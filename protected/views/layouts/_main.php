@@ -124,9 +124,7 @@ NavBar::end();
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
 
-        <div class="content">
-            <?= $content ?>
-        </div>
+        <?= $content ?>
     </div>
 </div>
 
