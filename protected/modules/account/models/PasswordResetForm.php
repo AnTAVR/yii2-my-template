@@ -50,10 +50,18 @@ class PasswordResetForm extends User
     }
 
     /**
-     * @return bool
+     * @return boolean whether the email was sent
      */
     public function sendEmail()
     {
-        return false;
+        $body = Yii::t('app', 'Phone {phone}, name {name}', ['phone' => $this->phone, 'name' => $this->name]);
+        $subject = Yii::t('app', 'Password recovery from {site}', ['site' => Yii::$app->name]);
+
+        return Yii::$app->mailer->compose()
+            ->setTo($this->email)
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::t('app', '{appname} robot', ['appname' => Yii::$app->name])])
+            ->setSubject($subject)
+            ->setTextBody($body)
+            ->send();
     }
 }
