@@ -21,8 +21,4 @@ if (!isset($breadcrumbs)) {
     $this->params['breadcrumbs'][] = $this->title;
 }
 ?>
-<div class="static-view static-<?= $model->meta_url ?>">
-
-    <?= $model->content_full ?>
-
-</div>
+<?= $model->content_full ?>
