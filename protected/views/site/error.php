@@ -1,6 +1,6 @@
 <?php
 
-/* @var $this yii\web\View */
+/* @var $this \app\components\View */
 /* @var $name string */
 /* @var $message string */
 /* @var $exception Exception */
