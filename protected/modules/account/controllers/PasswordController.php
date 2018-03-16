@@ -2,7 +2,7 @@
 
 namespace app\modules\account\controllers;
 
-use app\modules\account\models\PasswordResetForm;
+use app\modules\account\models\PasswordForm;
 use app\modules\account\models\SignupForm;
 use Yii;
 use yii\filters\AccessControl;
@@ -35,7 +35,7 @@ class PasswordController extends Controller
      */
     public function actionIndex()
     {
-        $model = new PasswordResetForm();
+        $model = new PasswordForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
