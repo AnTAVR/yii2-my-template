@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="col-lg-6">
-            <?php $form = ActiveForm::begin(['id' => 'password-edit-form']); /* @var $form yii\bootstrap\ActiveForm */ ?>
+            <?php $form = ActiveForm::begin(['id' => 'password-edit-form']); /* @var $form \yii\bootstrap\ActiveForm */ ?>
 
             <?= $form->field($model, 'oldPassword')->passwordInput() ?>
 

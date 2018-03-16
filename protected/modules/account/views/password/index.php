@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="col-lg-6">
-            <?php $form = ActiveForm::begin(['id' => 'password-form']); /* @var $form yii\bootstrap\ActiveForm */ ?>
+            <?php $form = ActiveForm::begin(['id' => 'password-form']); /* @var $form \yii\bootstrap\ActiveForm */ ?>
 
             <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
 
