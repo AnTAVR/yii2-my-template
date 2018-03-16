@@ -3,7 +3,6 @@
 namespace app\modules\account\controllers;
 
 use Yii;
-use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 
@@ -12,15 +11,15 @@ class LogoutController extends Controller
     public function behaviors()
     {
         $behaviors = [
-            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
+//            'access' => [
+//                'class' => AccessControl::class,
+//                'rules' => [
+//                    [
+//                        'allow' => true,
+//                        'roles' => ['@'],
+//                    ],
+//                ],
+//            ],
 //            'verbs' => [
 //                'class' => VerbFilter::className(),
 //                'actions' => [
