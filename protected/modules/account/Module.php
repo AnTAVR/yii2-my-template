@@ -17,7 +17,7 @@ class Module extends ModuleOld
     public $defaultRoute = 'profile';
     public $params = [
         'duration' => 3600 * 24 * 30,
-        'signup' => false,
+        'signup' => false, // Разрешить регистрацию на сайте.
         'adminPageSize' => 100,
     ];
 
