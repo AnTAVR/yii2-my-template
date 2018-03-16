@@ -21,7 +21,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
             <?php
-            $module = Yii::$app->getModule('account');
+            /** @var \app\modules\account\Module $module */
+            $module = Yii::$app->controller->module;
             if ($module->params['signup']) {
                 echo $form->field($model, 'username')->textInput(['autofocus' => true])->hint(Html::a(Yii::t('app', 'Signup'), ['/account/signup'], ['class' => 'label label-success']));
             } else {
