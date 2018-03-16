@@ -56,8 +56,7 @@ class PasswordController extends Controller
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionNew(/** @noinspection PhpUnusedParameterInspection */
-        $user_id, $token)
+    public function actionNew($user_id, $token)
     {
         $user = SignupForm::findOne($user_id);
         if (!$user) {
