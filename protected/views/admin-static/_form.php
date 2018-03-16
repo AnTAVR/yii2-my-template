@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 
 <div class="static-page-form">
 
-    <?php $form = ActiveForm::begin(); /* @var $form yii\bootstrap\ActiveForm */ ?>
+    <?php $form = ActiveForm::begin(); /* @var $form \yii\bootstrap\ActiveForm */ ?>
 
     <?= $form->field($model, 'meta_url')->textInput(['maxlength' => true]) ?>
 

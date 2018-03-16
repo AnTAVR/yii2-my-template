@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
 <div class="articles-form">
 
-    <?php $form = ActiveForm::begin(); /* @var $form yii\widgets\ActiveForm */ ?>
+    <?php $form = ActiveForm::begin(); /* @var $form \yii\widgets\ActiveForm */ ?>
 
     <?= $form->field($model, 'meta_url')->textInput(['maxlength' => true]) ?>
 
