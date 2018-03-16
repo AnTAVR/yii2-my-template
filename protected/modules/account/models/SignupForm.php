@@ -86,7 +86,7 @@ class SignupForm extends User
     }
 
     /**
-     * @return User|null
+     * @return static|null
      * @throws \yii\base\Exception
      */
     public function signup()
