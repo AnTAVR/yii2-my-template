@@ -15,11 +15,6 @@ class Module extends ModuleOld
      */
     public $controllerNamespace = 'app\modules\account\controllers';
     public $defaultRoute = 'profile';
-    public $params = [
-        'duration' => 3600 * 24 * 30,
-        'signup' => false, // Разрешить регистрацию на сайте.
-        'adminPageSize' => 100,
-    ];
 
     /**
      * @inheritdoc
@@ -27,6 +22,7 @@ class Module extends ModuleOld
     public function init()
     {
         parent::init();
+        $this->params = require __DIR__ . '/config/params.php';
 
         /** @noinspection HtmlUnknownTag */
         Yii::$app->urlManager->addRules(
