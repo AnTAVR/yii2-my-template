@@ -97,4 +97,16 @@ class UploaderImage extends ActiveRecord
     {
         return Yii::getAlias('@webroot' . self::PATH_THUMBNAIL) . '/' . $this->meta_url;
     }
+
+    public function beforeDelete()
+    {
+        if (!parent::beforeDelete()) {
+            return false;
+        }
+
+        unlink($this->thumbnailPath);
+        unlink($this->imagePath);
+
+        return true;
+    }
 }

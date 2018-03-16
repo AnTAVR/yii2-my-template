@@ -140,7 +140,6 @@ class AdminFilesController extends AdminController
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
-        unlink($model->filePath);
         $model->delete();
 
         return $this->redirect(['index']);

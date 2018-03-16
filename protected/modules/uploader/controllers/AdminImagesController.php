@@ -140,8 +140,6 @@ class AdminImagesController extends AdminController
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
-        unlink($model->thumbnailPath);
-        unlink($model->imagePath);
         $model->delete();
 
         return $this->redirect(['index']);

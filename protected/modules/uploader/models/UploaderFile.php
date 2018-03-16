@@ -76,4 +76,15 @@ class UploaderFile extends ActiveRecord
     {
         return Yii::getAlias('@webroot' . self::PATH_FILES) . '/' . $this->meta_url;
     }
+
+    public function beforeDelete()
+    {
+        if (!parent::beforeDelete()) {
+            return false;
+        }
+
+        unlink($this->filePath);
+
+        return true;
+    }
 }
