@@ -119,10 +119,11 @@ class AdminFilesController extends AdminController
     {
         $model = new UploaderFileForm();
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            return $model->upload();
+        if (!$model->load(Yii::$app->request->post())) {
+            return Json::encode($model->errors);
         }
-        return Json::encode($model->errors);
+
+        return $model->upload();
     }
 
     /** @noinspection PhpUndefinedClassInspection */
