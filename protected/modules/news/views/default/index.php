@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
-/* @var $this yii\web\View */
+/* @var $this \app\components\View */
 /* @var $data array */
 /* @var $pagination yii\data\Pagination */
 
