@@ -4,30 +4,11 @@ namespace app\modules\account\controllers;
 
 use app\modules\account\models\SignupForm;
 use Yii;
-use yii\filters\AccessControl;
-use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 class SignupController extends Controller
 {
-    public function behaviors()
-    {
-        $behaviors = [
-            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'actions' => ['index', 'verify-email'],
-                        'roles' => ['?'],
-                    ],
-                ],
-            ],
-        ];
-        return ArrayHelper::merge(parent::behaviors(), $behaviors);
-    }
-
     /**
      * Renders the index view for the module
      * @return string
@@ -35,6 +16,10 @@ class SignupController extends Controller
      */
     public function actionIndex()
     {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         /** @var \app\modules\account\Module $module */
         $module = $this->module;
 
@@ -69,6 +54,10 @@ class SignupController extends Controller
      */
     public function actionVerifyEmail($user_id, $token)
     {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         $model = SignupForm::findOne($user_id);
         if (!$model) {
             throw new NotFoundHttpException(Yii::t('app', 'User not found.'));
