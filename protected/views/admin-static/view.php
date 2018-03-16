@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this \app\components\View */
-/* @var $model app\models\StaticPage */
+/* @var $model \app\models\StaticPage */
 
 $this->title = $model->content_title;
 if (!empty($model->meta_description)) {

@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'buttons' => [
                     'viewP' => function (/** @noinspection PhpUnusedParameterInspection */
                         $url, $model, $key) {
-                        /* @var $model app\models\StaticPage */
+                        /* @var $model \app\models\StaticPage */
                         return Html::a('<span class="glyphicon glyphicon-eye-open"></span>',
                             $model->staticUrl,
                             [

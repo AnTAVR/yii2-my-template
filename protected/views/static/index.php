@@ -1,7 +1,7 @@
 <?php
 
 /* @var $this \app\components\View */
-/* @var $model app\models\StaticPage */
+/* @var $model \app\models\StaticPage */
 /* @var $breadcrumbs boolean */
 
 $this->title = $model->content_title;
