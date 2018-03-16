@@ -5,11 +5,10 @@ namespace app\modules\account\models;
 use Yii;
 use yii\helpers\ArrayHelper;
 
-/**
- * @property string passwordToken
- */
 class PasswordNewForm extends User
 {
+    use PasswordTrait;
+
     public $password;
     public $repeatPassword;
     public $verifyCode;
@@ -58,31 +57,6 @@ class PasswordNewForm extends User
         ];
 
         return ArrayHelper::merge(parent::attributeHints(), $hints);
-    }
-
-    /**
-     * @return string
-     */
-    public function passwordTokenRaw()
-    {
-        return $this->salt . $this->password_hash;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPasswordToken()
-    {
-        return hash('sha256', $this->passwordTokenRaw());
-    }
-
-    /**
-     * @param string $token
-     * @return boolean
-     */
-    public function validatePasswordToken($token)
-    {
-        return $token === $this->passwordToken;
     }
 
     /**
