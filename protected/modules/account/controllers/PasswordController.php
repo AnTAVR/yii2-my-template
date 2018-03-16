@@ -73,7 +73,7 @@ class PasswordController extends Controller
             Yii::$app->session->addFlash('success', Yii::t('app', 'New password was saved.'));
             return $this->redirect(Yii::$app->user->loginUrl);
         }
-        return $this->render('index', [
+        return $this->render('new', [
             'model' => $model,
         ]);
     }
