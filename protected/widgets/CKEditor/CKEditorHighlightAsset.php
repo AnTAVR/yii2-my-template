@@ -19,7 +19,7 @@ class CKEditorHighlightAsset extends AssetBundle
     ];
 
     /**
-     * @param \yii\web\View $view:
+     * @param \app\components\View $view :
      */
     public function registerAssetFiles($view)
     {
