@@ -29,7 +29,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'view' => [
-            'class' => 'yii\web\View',
+            'class' => 'app\components\View',
             'theme' => $params['theme'],
         ],
         'user' => [

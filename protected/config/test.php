@@ -54,6 +54,10 @@ $config = [
                 '/static/<meta_url>' => '/static/index',
             ],
         ],
+        'view' => [
+            'class' => 'app\components\View',
+            'theme' => $params['theme'],
+        ],
         'user' => [
             'identityClass' => 'app\modules\account\models\User',
             'enableAutoLogin' => true,
