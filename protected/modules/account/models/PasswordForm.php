@@ -57,7 +57,9 @@ class PasswordForm extends User
      */
     public function sendEmail()
     {
-        $url = Url::to(['/account/password/new', 'user_id' => $this->id, 'token' => $this->passwordToken], true);
+        $model = static::findOne(['email' => $this->email]);
+
+        $url = Url::to(['/account/password/new', 'user_id' => $model->id, 'token' => $model->passwordToken], true);
         $body = Yii::t('app', 'To password recovery, follow the link: {url}', ['url' => $url]);
         $subject = Yii::t('app', 'Password recovery from {site}', ['site' => Yii::$app->name]);
 
