@@ -8,7 +8,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 ?>
-<?php $form = ActiveForm::begin(['id' => $this->uniqueId . '-form']); /* @var $form \yii\bootstrap\ActiveForm */ ?>
+<?php $form = ActiveForm::begin(); /* @var $form \yii\bootstrap\ActiveForm */ ?>
 
 <?= $form->field($model, 'meta_url')->textInput(['maxlength' => true]) ?>
 
