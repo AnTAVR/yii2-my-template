@@ -136,6 +136,9 @@ class SignupForm extends User
         return $this->email . $this->salt . $this->email_confirmed . $this->password_hash;
     }
 
+    /**
+     * @return string
+     */
     public function getEmailToken()
     {
         return hash('sha256', $this->emailTokenRaw());
