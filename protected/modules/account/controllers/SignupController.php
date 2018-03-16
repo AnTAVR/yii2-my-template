@@ -69,15 +69,15 @@ class SignupController extends Controller
      */
     public function actionVerifyEmail($user_id, $token)
     {
-        $user = SignupForm::findOne($user_id);
-        if (!$user) {
+        $model = SignupForm::findOne($user_id);
+        if (!$model) {
             throw new NotFoundHttpException(Yii::t('app', 'User not found.'));
         }
 
-        if (!$user->validateEmailToken($token)) {
+        if (!$model->validateEmailToken($token)) {
             throw new NotFoundHttpException(Yii::t('app', 'User not found.'));
         }
-        $user->verifyEmail();
+        $model->verifyEmail();
         Yii::$app->session->addFlash('success', Yii::t('app', 'E-Mail is verified, now you can login.'));
         return $this->redirect(Yii::$app->user->loginUrl);
     }
