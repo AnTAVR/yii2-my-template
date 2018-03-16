@@ -64,9 +64,6 @@ class UploaderImageForm extends Model
     public function upload()
     {
         $this->fileUpload = UploadedFile::getInstance($this, 'fileUpload');
-        if (!$this->validate()) {
-            return Json::encode($this->errors);
-        }
 
         $modelImage = new UploaderImage([
             'comment' => $this->comment,
