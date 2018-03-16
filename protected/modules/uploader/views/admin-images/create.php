@@ -13,34 +13,30 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <h1><?= Html::encode($this->title) ?></h1>
 
-<div class="uploader-form">
+<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); /* @var $form \yii\bootstrap\ActiveForm */ ?>
 
-    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); /* @var $form \yii\bootstrap\ActiveForm */ ?>
+<?= $form->field($model, 'comment')->textarea(['rows' => 6, 'autofocus' => true]) ?>
 
-    <?= $form->field($model, 'comment')->textarea(['rows' => 6, 'autofocus' => true]) ?>
+<?= $form->field($model, 'fileUpload')->widget(FileUploadUI::class, [
+    'url' => ['upload'],
+    'formView' => '@app/modules/uploader/views/form',
+    'gallery' => false,
+    'fieldOptions' => [
+        'accept' => $model::ACCEPT,
+    ],
+    'clientOptions' => [
+        'maxFileSize' => $model::MAX_SIZE,
+    ],
+    'clientEvents' => [
+        'fileuploaddone' => 'function(e, data) {
+                            console.log(e);
+                            console.log(data);
+                        }',
+        'fileuploadfail' => 'function(e, data) {
+                            console.log(e);
+                            console.log(data);
+                        }',
+    ],
+]) ?>
 
-    <?= $form->field($model, 'fileUpload')->widget(FileUploadUI::class, [
-        'url' => ['upload'],
-        'formView' => '@app/modules/uploader/views/form',
-        'gallery' => false,
-        'fieldOptions' => [
-            'accept' => $model::ACCEPT,
-        ],
-        'clientOptions' => [
-            'maxFileSize' => $model::MAX_SIZE,
-        ],
-        'clientEvents' => [
-            'fileuploaddone' => 'function(e, data) {
-                                console.log(e);
-                                console.log(data);
-                            }',
-            'fileuploadfail' => 'function(e, data) {
-                                console.log(e);
-                                console.log(data);
-                            }',
-        ],
-    ]) ?>
-
-    <?php ActiveForm::end(); ?>
-
-</div>
+<?php ActiveForm::end(); ?>
