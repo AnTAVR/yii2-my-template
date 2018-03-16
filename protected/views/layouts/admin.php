@@ -30,6 +30,7 @@ $asset = AppSiteAsset::register($this);
 <?php $this->beginBody() ?>
 
 <?php
+$fixed_top = false;
 NavBar::begin([
     'brandLabel' => Yii::t('app', 'View site'),
     'brandUrl' => Yii::$app->homeUrl,
@@ -37,7 +38,7 @@ NavBar::begin([
         'target' => '_blank',
     ],
     'options' => [
-        'class' => 'navbar-inverse',
+        'class' => 'navbar-inverse' . ($fixed_top ? ' navbar-fixed-top' : ''),
     ],
 ]);
 $menuItems = [
@@ -71,7 +72,7 @@ NavBar::end();
 $controllerId = Yii::$app->controller->id;
 $moduleId = Yii::$app->controller->module->id;
 ?>
-<div class="wrap">
+<div class="wrap<?= $fixed_top ? ' fixed-top' : '' ?>">
     <div class="container">
         <?= Menu::widget([
             'options' => ['class' => 'nav nav-tabs'],
