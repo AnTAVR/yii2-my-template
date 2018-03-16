@@ -80,18 +80,15 @@ class LoginForm extends User
      */
     public function login()
     {
-        if ($this->validate()) {
-            $model = User::findByUsername($this->username);
-            /** @var \app\modules\account\Module $module */
-            $module = Yii::$app->getModule('account');
-            $login = Yii::$app->user->login($model, $this->rememberMe ? $module->params['duration'] : 0);
-            if ($login) {
-                $model->session = Yii::$app->session->id;
-                $model->session_at = new Expression('NOW()');
-                $model->save();
-            }
-            return $login;
+        $model = User::findByUsername($this->username);
+        /** @var \app\modules\account\Module $module */
+        $module = Yii::$app->getModule('account');
+        $login = Yii::$app->user->login($model, $this->rememberMe ? $module->params['duration'] : 0);
+        if ($login) {
+            $model->session = Yii::$app->session->id;
+            $model->session_at = new Expression('NOW()');
+            $model->save();
         }
-        return false;
+        return $login;
     }
 }
