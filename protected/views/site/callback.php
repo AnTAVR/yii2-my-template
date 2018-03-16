@@ -20,8 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="row">
     <div class="col-lg-6">
-
-        <?php $form = ActiveForm::begin(['id' => $this->uniqueId . '-form']); /* @var $form \yii\bootstrap\ActiveForm */ ?>
+        <?php $form = ActiveForm::begin(); /* @var $form \yii\bootstrap\ActiveForm */ ?>
 
         <?= $form->field($model, 'phone')->textInput(['autofocus' => true]) ?>
 
@@ -34,6 +33,5 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <?php ActiveForm::end(); ?>
-
     </div>
 </div>
