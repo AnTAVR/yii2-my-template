@@ -36,6 +36,13 @@ class SignupController extends Controller
      */
     public function actionIndex()
     {
+        /** @var \app\modules\account\Module $module */
+        $module = $this->module;
+
+        if (!$module->params['signup']) {
+            throw new NotFoundHttpException();
+        }
+
         $model = new SignupForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
