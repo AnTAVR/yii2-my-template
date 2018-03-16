@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
         ],
     ]) ?>
 
-    <?php $form = ActiveForm::begin(['id' => $this->uniqueId . '-form']); /* @var $form \yii\bootstrap\ActiveForm */ ?>
+    <?php $form = ActiveForm::begin(); /* @var $form \yii\bootstrap\ActiveForm */ ?>
     <div class="form-group">
 
         <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
@@ -40,7 +40,6 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
             ]) ?>
         </div>
 
-        <?php ActiveForm::end(); ?>
-
     </div>
+    <?php ActiveForm::end(); ?>
 </div>
