@@ -1,6 +1,5 @@
 <?php
-
-/* @var $this yii\web\View */
+/* @var $this \app\components\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\modules\account\models\LoginForm */
 

@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
+/* @var $this \app\components\View */
 
 $this->title = Yii::t('app', 'Admin panel');
 ?>

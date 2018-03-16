@@ -1,6 +1,5 @@
 <?php
-/* @var $this yii\web\View */
-
+/* @var $this \app\components\View */
 /* @var $model app\modules\account\models\SignupForm */
 
 use app\widgets\Captcha;
@@ -11,12 +10,12 @@ $this->title = Yii::t('app', 'Signup');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<div class="account-signup">
+<div class="<?= $this->divClass ?>">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <div class="row">
         <div class="col-lg-6">
-            <?php $form = ActiveForm::begin(['id' => 'signup-form']); /* @var $form yii\bootstrap\ActiveForm */ ?>
+            <?php $form = ActiveForm::begin(['id' => $this->uniqueId . '-form']); /* @var $form yii\bootstrap\ActiveForm */ ?>
 
             <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
