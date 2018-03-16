@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 
-/* @var $this yii\web\View */
+/* @var $this \app\components\View */
 /* @var $model app\modules\products\models\Products */
 
 $this->title = Yii::t('app', 'Create Products');
