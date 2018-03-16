@@ -20,7 +20,14 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-6">
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-            <?= $form->field($model, 'username')->textInput(['autofocus' => true])->hint(Html::a(Yii::t('app', 'Signup'), ['/account/signup'], ['class' => 'label label-success'])) ?>
+            <?php
+            $module = Yii::$app->getModule('account');
+            if ($module->params['signup']) {
+                echo $form->field($model, 'username')->textInput(['autofocus' => true])->hint(Html::a(Yii::t('app', 'Signup'), ['/account/signup'], ['class' => 'label label-success']));
+            } else {
+                echo $form->field($model, 'username')->textInput(['autofocus' => true]);
+            }
+            ?>
 
             <?= $form->field($model, 'password')->passwordInput([''])->hint(Html::a(Yii::t('app', 'Password Reset'), ['/account/signup/password-reset'], ['class' => 'label label-danger'])) ?>
 
