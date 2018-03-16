@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="uploader-form">
 
-        <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+        <?php $form = ActiveForm::begin(['id' => $this->uniqueId . '-form', 'options' => ['enctype' => 'multipart/form-data']]); /* @var $form \yii\bootstrap\ActiveForm */ ?>
 
         <?= $form->field($model, 'comment')->textarea(['rows' => 6, 'autofocus' => true]) ?>
 
