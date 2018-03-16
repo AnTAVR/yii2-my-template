@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
+/* @var $this \app\components\View */
 /* @var $model app\modules\articles\models\Articles */
 /* @var $class string */
 
