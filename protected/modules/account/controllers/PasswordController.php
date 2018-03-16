@@ -5,36 +5,21 @@ namespace app\modules\account\controllers;
 use app\modules\account\models\PasswordForm;
 use app\modules\account\models\PasswordNewForm;
 use Yii;
-use yii\filters\AccessControl;
-use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 class PasswordController extends Controller
 {
-    public function behaviors()
-    {
-        $behaviors = [
-            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'actions' => ['index', 'new'],
-                        'roles' => ['?'],
-                    ],
-                ],
-            ],
-        ];
-        return ArrayHelper::merge(parent::behaviors(), $behaviors);
-    }
-
     /**
      * Renders the index view for the module
      * @return string
      */
     public function actionIndex()
     {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         $model = new PasswordForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -59,6 +44,10 @@ class PasswordController extends Controller
      */
     public function actionNew($user_id, $token)
     {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         $model = PasswordNewForm::findOne($user_id);
         if (!$model) {
             throw new NotFoundHttpException(Yii::t('app', 'User not found.'));
