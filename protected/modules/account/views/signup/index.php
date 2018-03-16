@@ -1,6 +1,6 @@
 <?php
 /* @var $this \app\components\View */
-/* @var $model app\modules\account\models\SignupForm */
+/* @var $model \app\modules\account\models\SignupForm */
 
 use app\widgets\Captcha;
 use yii\bootstrap\ActiveForm;

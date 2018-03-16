@@ -1,7 +1,7 @@
 <?php
 /* @var $this \app\components\View */
 
-/* @var $model app\modules\account\models\PasswordResetForm */
+/* @var $model \app\modules\account\models\PasswordResetForm */
 
 use app\widgets\Captcha;
 use yii\bootstrap\ActiveForm;

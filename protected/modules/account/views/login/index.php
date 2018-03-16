@@ -1,7 +1,7 @@
 <?php
 /* @var $this \app\components\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\modules\account\models\LoginForm */
+/* @var $model \app\modules\account\models\LoginForm */
 
 use app\widgets\Captcha;
 use yii\bootstrap\ActiveForm;
