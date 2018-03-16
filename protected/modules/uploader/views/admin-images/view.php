@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this \app\components\View */
-/* @var $model app\modules\uploader\models\UploaderImage */
+/* @var $model \app\modules\uploader\models\UploaderImage */
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Uploader Images'), 'url' => ['index']];

@@ -1,7 +1,7 @@
 <?php
 /* @var $this \app\components\View */
 
-/* @var $model app\modules\products\models\Products */
+/* @var $model \app\modules\products\models\Products */
 
 use app\modules\products\models\Products;
 use app\widgets\CKEditor\CKEditor;

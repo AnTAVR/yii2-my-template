@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'buttons' => [
                     'viewP' => function (/** @noinspection PhpUnusedParameterInspection */
                         $url, $model, $key) {
-                        /* @var $model app\modules\uploader\models\UploaderImage */
+                        /* @var $model \app\modules\uploader\models\UploaderImage */
                         return Html::a('<span class="glyphicon glyphicon-eye-open"></span>',
                             $model->imageUrl,
                             [

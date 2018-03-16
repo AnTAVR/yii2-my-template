@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this \app\components\View */
-/* @var $model app\modules\uploader\models\UploaderImageForm */
+/* @var $model \app\modules\uploader\models\UploaderImageForm */
 
 $this->title = Yii::t('app', 'Create Image');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Uploader Images'), 'url' => ['index']];

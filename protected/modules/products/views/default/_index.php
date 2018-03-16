@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this \app\components\View */
-/* @var $model app\modules\products\models\Products */
+/* @var $model \app\modules\products\models\Products */
 /* @var $class string */
 
 ?>

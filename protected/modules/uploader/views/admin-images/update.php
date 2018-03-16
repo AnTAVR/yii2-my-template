@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\widgets\DetailView;
 
 /* @var $this \app\components\View */
-/* @var $model app\modules\uploader\models\UploaderImage */
+/* @var $model \app\modules\uploader\models\UploaderImage */
 
 $this->title = Yii::t('app', 'Update Image: {name}', ['name' => $model->file]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Uploader Images'), 'url' => ['index']];

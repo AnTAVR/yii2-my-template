@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php $i = 0;
     $col = 1;
     foreach ($data as $model) {
-        /* @var $model app\modules\news\models\News */
+        /* @var $model \app\modules\news\models\News */
         if (!$i) {
             echo '<div class="row">', "\n";
             $open = true;

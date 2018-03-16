@@ -1,7 +1,7 @@
 <?php
 
 /* @var $this \app\components\View */
-/* @var $model app\modules\news\models\News */
+/* @var $model \app\modules\news\models\News */
 
 $this->title = $model->content_title;
 if (!empty($model->meta_description)) {
