@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 
-/* @var $this yii\web\View */
+/* @var $this \app\components\View */
 /* @var $model app\models\StaticPage */
 
 $this->title = Yii::t('app', 'Create Static Page');
