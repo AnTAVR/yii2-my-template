@@ -2,7 +2,6 @@
 
 namespace app\modules\account\controllers;
 
-use app\modules\account\models\PasswordResetForm;
 use app\modules\account\models\SignupForm;
 use Yii;
 use yii\filters\AccessControl;
@@ -20,7 +19,7 @@ class SignupController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'password-reset', 'verify-email'],
+                        'actions' => ['index', 'verify-email'],
                         'roles' => ['?'],
                     ],
                 ],
@@ -63,33 +62,12 @@ class SignupController extends Controller
     }
 
     /**
-     * @return string
-     */
-    public function actionPasswordReset()
-    {
-        $model = new PasswordResetForm();
-
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail()) {
-                Yii::$app->session->addFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
-            } else {
-                Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
-            }
-            return $this->goHome();
-        }
-        return $this->render('password-reset', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
      * @param $user_id integer
      * @param $token string
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionVerifyEmail(/** @noinspection PhpUnusedParameterInspection */
-        $user_id, $token)
+    public function actionVerifyEmail($user_id, $token)
     {
         $user = SignupForm::findOne($user_id);
         if (!$user) {
