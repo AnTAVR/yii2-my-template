@@ -3,7 +3,7 @@
 namespace app\modules\account\controllers;
 
 use app\modules\account\models\PasswordForm;
-use app\modules\account\models\SignupForm;
+use app\modules\account\models\PasswordNewForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
@@ -58,16 +58,22 @@ class PasswordController extends Controller
      */
     public function actionNew($user_id, $token)
     {
-        $user = SignupForm::findOne($user_id);
-        if (!$user) {
+        $model = PasswordNewForm::findOne($user_id);
+        if (!$model) {
             throw new NotFoundHttpException(Yii::t('app', 'User not found.'));
         }
 
-        if (!$user->validateEmailToken($token)) {
+        if (!$model->validatePasswordToken($token)) {
             throw new NotFoundHttpException(Yii::t('app', 'User not found.'));
         }
-        $user->verifyEmail();
-        Yii::$app->session->addFlash('success', Yii::t('app', 'E-Mail is verified, now you can login.'));
-        return $this->redirect(Yii::$app->user->loginUrl);
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->edit();
+            Yii::$app->session->addFlash('success', Yii::t('app', 'New password was saved.'));
+            return $this->redirect(Yii::$app->user->loginUrl);
+        }
+        return $this->render('index', [
+            'model' => $model,
+        ]);
     }
 }
