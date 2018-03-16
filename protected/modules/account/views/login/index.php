@@ -1,6 +1,6 @@
 <?php
 /* @var $this \app\components\View */
-/* @var $form yii\bootstrap\ActiveForm */
+
 /* @var $model \app\modules\account\models\LoginForm */
 
 use app\widgets\Captcha;
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="col-lg-6">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+            <?php $form = ActiveForm::begin(['id' => 'login-form']); /* @var $form \yii\bootstrap\ActiveForm */ ?>
 
             <?php
             /** @var \app\modules\account\Module $module */
