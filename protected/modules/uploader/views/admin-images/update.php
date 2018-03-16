@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
+/* @var $this \app\components\View */
 /* @var $model app\modules\uploader\models\UploaderImage */
 
 $this->title = Yii::t('app', 'Update Image: {name}', ['name' => $model->file]);

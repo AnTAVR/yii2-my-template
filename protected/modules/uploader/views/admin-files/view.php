@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
+/* @var $this \app\components\View */
 /* @var $model app\modules\uploader\models\UploaderFile */
 
 $this->title = $model->id;

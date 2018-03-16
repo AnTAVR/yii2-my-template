@@ -4,7 +4,7 @@ use dosamigos\fileupload\FileUploadUI;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
+/* @var $this \app\components\View */
 /* @var $model app\modules\uploader\models\UploaderImageForm */
 
 $this->title = Yii::t('app', 'Create Image');
