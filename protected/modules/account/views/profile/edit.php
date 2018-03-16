@@ -1,5 +1,5 @@
 <?php
-/* @var $this yii\web\View */
+/* @var $this \app\components\View */
 
 /** @var $identity \app\modules\account\models\User */
 $identity = Yii::$app->user->identity;

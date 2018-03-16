@@ -1,5 +1,5 @@
 <?php
-/* @var $this yii\web\View */
+/* @var $this \app\components\View */
 
 /* @var $model app\modules\account\models\PasswordResetForm */
 
@@ -11,12 +11,12 @@ $this->title = Yii::t('app', 'Password Reset');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<div class="account-profile-password-reset">
+<div class="account-password">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <div class="row">
         <div class="col-lg-6">
-            <?php $form = ActiveForm::begin(['id' => 'password-reset-form']); /* @var $form yii\bootstrap\ActiveForm */ ?>
+            <?php $form = ActiveForm::begin(['id' => 'password-form']); /* @var $form yii\bootstrap\ActiveForm */ ?>
 
             <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
 
