@@ -9,6 +9,7 @@ use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -118,11 +119,10 @@ class AdminFilesController extends AdminController
     {
         $model = new UploaderFileForm();
 
-        if (!$model->load(Yii::$app->request->post())) {
-            return $model->errors;
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            return $model->upload();
         }
-
-        return $model->upload();
+        return Json::encode($model->errors);
     }
 
     /** @noinspection PhpUndefinedClassInspection */
