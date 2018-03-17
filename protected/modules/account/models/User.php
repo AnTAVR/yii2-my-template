@@ -3,11 +3,11 @@
 namespace app\modules\account\models;
 
 use Yii;
-use yii\base\NotSupportedException;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
+use yii\web\UnauthorizedHttpException;
 
 /** @noinspection MissingPropertyAnnotationsInspection */
 /**
@@ -86,12 +86,21 @@ class User extends ActiveRecord implements IdentityInterface
      * @param string $token the token to be looked for
      * @param null $type
     //     * @return IdentityInterface|null the identity object that matches the given token.
-     * @throws NotSupportedException
+     * @return User|null
+     * @throws UnauthorizedHttpException
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        throw new NotSupportedException('Method "' . __CLASS__ . '::' . __METHOD__ . '" is not implemented.');
-//        return static::findOne(['access_token' => $token]);
+        $tokenModel = Token::findOne([
+            'code' => $token,
+            'type' => Token::TYPE_API_AUTH
+        ]);
+
+        if (!isset($tokenModel) or $tokenModel->isExpired) {
+            throw new UnauthorizedHttpException(Yii::t('app', 'Auth code not found or expired!'));
+        }
+
+        return static::findOne($tokenModel->user_id);
     }
 
     /**
