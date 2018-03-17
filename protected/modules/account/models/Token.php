@@ -64,7 +64,7 @@ class Token extends ActiveRecord
 
             ['code', 'required'],
             ['code', 'string',
-                'max' => 40],
+                'max' => 64],
 
             ['type', 'required'],
             ['type', 'integer'],
@@ -72,7 +72,7 @@ class Token extends ActiveRecord
             ['expires_on', 'required'],
             ['expires_on', 'integer'],
 
-            [['user_id', 'code', 'type'], 'unique',
+            ['code', 'unique',
                 'targetAttribute' => ['user_id', 'code', 'type'],
                 'message' => Yii::t('app', 'The combination of User ID, Code and Type has already been taken.')],
         ];
