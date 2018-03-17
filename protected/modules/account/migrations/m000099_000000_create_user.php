@@ -14,6 +14,12 @@ class m000099_000000_create_user extends Migration
     // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
     public $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
 
+    public function init()
+    {
+        parent::init();
+        $this->tableName = User::tableName();
+    }
+
     /**
      * @inheritdoc
      */
