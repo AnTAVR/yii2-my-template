@@ -17,7 +17,6 @@ return [
     'username.hint' => 'A-Z a-z 0-9 -_',
     'string.max' => 255,
     'email.max' => 128,
-    'login.duration' => 60 * 60 * 24 * 30,
     'contact.body.max' => 3000,
     'meta_url_pattern' => '/^[a-z1-9\-]*$/s',
     'meta_url_hint' => 'a-z 0-9 -',
