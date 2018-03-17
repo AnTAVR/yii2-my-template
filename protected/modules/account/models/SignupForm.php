@@ -5,6 +5,11 @@ namespace app\modules\account\models;
 use Yii;
 use yii\helpers\ArrayHelper;
 
+/**
+ *
+ * @property string $tokenRaw
+ * @property mixed $token
+ */
 class SignupForm extends User
 {
     public $password;
@@ -81,28 +86,13 @@ class SignupForm extends User
         return ArrayHelper::merge(parent::attributeHints(), $hints);
     }
 
-    /**
-     * @return static|null
-     * @throws \yii\base\Exception
-     */
-    public function signup()
+    public function getTokenRaw()
     {
-        $ret = null;
-        $security = Yii::$app->security;
-        $this->password_hash = $security->generatePasswordHash($this->password);
-        $this->salt = $security->generateRandomString(64);
-        $this->auth_key = $security->generateRandomString();
-        $this->email_confirmed = 0;
+        return $this->salt . $this->email_confirmed . $this->email;
+    }
 
-        if ($this->save(false)) {
-            $ret = $this;
-        }
-
-//  the following three lines were added:
-//            $auth = Yii::$app->authManager;
-//            $authorRole = $auth->getRole('author');
-//            $auth->assign($authorRole, $user->getId());
-
-        return $ret;
+    public function getToken()
+    {
+        return hash('sha256', $this->tokenRaw);
     }
 }
