@@ -29,6 +29,9 @@ use yii\web\UnauthorizedHttpException;
  * @property integer $status
  *
  * @property integer $created_at
+ * @property integer $created_ip
+ *
+ * @property integer $last_request_at
  *
  * @property integer $session_at
  * @property string $session
@@ -74,7 +77,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $identity = static::findOne(['id' => $id, 'status' => static::STATUS_ACTIVE]);
         if ($identity) {
-            $identity->session_at = new Expression('NOW()');
+            $identity->last_request_at = new Expression('NOW()');
             $identity->save(false);
         }
         return $identity;
@@ -100,7 +103,12 @@ class User extends ActiveRecord implements IdentityInterface
             throw new UnauthorizedHttpException(Yii::t('app', 'Auth code not found or expired!'));
         }
 
-        return static::findOne(['id' => $tokenModel->user_id, 'status' => static::STATUS_ACTIVE]);
+        $identity = static::findOne(['id' => $tokenModel->user_id, 'status' => static::STATUS_ACTIVE]);
+        if ($identity) {
+            $identity->last_request_at = new Expression('NOW()');
+            $identity->save(false);
+        }
+        return $identity;
     }
 
     /**
