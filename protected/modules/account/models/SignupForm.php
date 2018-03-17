@@ -96,7 +96,6 @@ class SignupForm extends User
         $this->password_hash = $security->generatePasswordHash($this->password);
         $this->salt = $security->generateRandomString(64);
         $this->auth_key = $security->generateRandomString();
-        $this->access_token = $security->generateRandomString(40);
         $this->email_confirmed = 0;
 
         if ($this->save(false)) {
