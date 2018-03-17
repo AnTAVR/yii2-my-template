@@ -49,7 +49,7 @@ class SignupForm extends User
 
             ['email', 'required'],
             ['email', 'string',
-                'max' => $params['email.max']],
+                'max' => Yii::$app->params['email.max']],
             ['email', 'email'],
 
             ['username', 'unique'],
