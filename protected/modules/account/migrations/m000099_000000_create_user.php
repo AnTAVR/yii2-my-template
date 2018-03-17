@@ -30,7 +30,6 @@ class m000099_000000_create_user extends Migration
             'salt' => $this->string(64)->notNull(),
 
             'auth_key' => $this->string(32)->notNull(),
-            'access_token' => $this->string(40)->notNull()->unique(),
 
             'email_confirmed' => $this->boolean()->notNull()->defaultValue(false),
 
@@ -38,7 +37,7 @@ class m000099_000000_create_user extends Migration
 
             'status' => $this->smallInteger()->notNull()->defaultValue(0),
 
-            'created_at' => $this->dateTime()->notNull()->defaultValue(new Expression('NOW()')),
+            'created_at' => $this->timestamp()->notNull()->defaultValue(new Expression('NOW()')),
 
             'session_at' => $this->dateTime(),
             'session' => $this->string(),
@@ -55,7 +54,6 @@ class m000099_000000_create_user extends Migration
                 'password_hash' => $security->generatePasswordHash('adminadmin'),
                 'salt' => $security->generateRandomString(64),
                 'auth_key' => $security->generateRandomString(),
-                'access_token' => $security->generateRandomString(40),
                 'email_confirmed' => true,
             ]
         );
