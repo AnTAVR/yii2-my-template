@@ -154,21 +154,4 @@ class Token extends ActiveRecord
         ]);
         return $token->save(false) ? $token : null;
     }
-
-    /**
-     * @param integer $userId
-     * @param integer $expiresOn
-     * @return Token|null
-     * @throws \yii\base\InvalidConfigException
-     */
-    public static function createConfirmEmailToken($userId, $expiresOn)
-    {
-        $token = Yii::createObject([
-            'class' => static::class,
-            'user_id' => $userId,
-            'type' => self::TYPE_CONFIRM_EMAIL,
-            'expires_on' => $expiresOn,
-        ]);
-        return $token->save(false) ? $token : null;
-    }
 }
