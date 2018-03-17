@@ -1,7 +1,6 @@
 <?php
 
 use app\modules\account\models\User;
-use yii\db\Expression;
 use yii\db\Migration;
 
 /**
@@ -44,7 +43,7 @@ class m000099_000000_create_user extends Migration
 
             'status' => $this->smallInteger()->notNull()->defaultValue(User::STATUS_ACTIVE),
 
-            'created_at' => $this->timestamp()->notNull()->defaultValue(new Expression('NOW()')),
+            'created_at' => $this->timestamp()->notNull()->defaultExpression('NOW()'),
             'created_ip' => $this->string(45),
 
             'last_request_at' => $this->timestamp(),
