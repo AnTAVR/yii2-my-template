@@ -4,12 +4,7 @@ namespace app\modules\account\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Url;
 
-/**
- *
- * @property string $emailToken
- */
 class SignupForm extends User
 {
     public $password;
@@ -109,47 +104,5 @@ class SignupForm extends User
 //            $auth->assign($authorRole, $user->getId());
 
         return $ret;
-    }
-
-    /**
-     * @return boolean whether the email was sent
-     */
-    public function sendEmail()
-    {
-        $url = Url::to(['/account/signup/verify-email', 'user_id' => $this->id, 'token' => $this->emailToken], true);
-        $body = Yii::t('app', 'To confirm E-Mail, follow the link: {url}', ['url' => $url]);
-        $subject = Yii::t('app', 'Registration on the site {site}', ['site' => Yii::$app->name]);
-
-        return Yii::$app->mailer->compose()
-            ->setTo($this->email)
-            ->setFrom([Yii::$app->params['supportEmail'] => Yii::t('app', '{appname} robot', ['appname' => Yii::$app->name])])
-            ->setSubject($subject)
-            ->setTextBody($body)
-            ->send();
-    }
-
-    /**
-     * @return string
-     */
-    public function emailTokenRaw()
-    {
-        return $this->email . $this->salt . $this->email_confirmed . $this->password_hash;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmailToken()
-    {
-        return hash('sha256', $this->emailTokenRaw());
-    }
-
-    /**
-     * @param string $token
-     * @return boolean
-     */
-    public function validateEmailToken($token)
-    {
-        return $token === $this->emailToken;
     }
 }
