@@ -75,9 +75,6 @@ class SignupController extends Controller
                     } else {
                         Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
                     }
-                } else {
-                    $model->delete();
-                    Yii::error($tokenModel->errors);
                 }
 
                 return $this->goHome();

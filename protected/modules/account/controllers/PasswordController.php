@@ -57,8 +57,6 @@ class PasswordController extends Controller
                 } else {
                     Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
                 }
-            } else {
-                Yii::error($tokenModel->errors);
             }
 
             return $this->goHome();
