@@ -5,7 +5,7 @@ use app\modules\account\models\User;
 use yii\db\Migration;
 
 
-class m000099_000000_create_token extends Migration
+class m000099_000001_create_token extends Migration
 {
     public $tableName = '{{%token}}';
 
