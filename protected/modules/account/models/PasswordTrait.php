@@ -1,5 +1,7 @@
 <?php
 
+namespace app\modules\account\models;
+
 /**
  * @property string $tokenRaw
  * @property string $token
