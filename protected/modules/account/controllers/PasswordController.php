@@ -29,34 +29,34 @@ class PasswordController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $user = User::findOne(['email' => $model->email]);
 
-            $security = Yii::$app->security;
             $tokenModel = new Token([
                 'user_id' => $user->id,
-                'code' => $security->generateRandomString(),
+                'code' => $model->token,
                 'type' => Token::TYPE_RECOVERY_PASSWORD,
                 'expires_on' => time() + $this->module->params['expires_recovery_password'],
             ]);
-            $tokenModel->save();
 
-            $url = Url::to(['new', 'token' => $tokenModel->code], true);
-            $body = Yii::t('app', 'To password recovery, follow the link: {url}', ['url' => $url]);
-            $body .= "\n";
-            $body .= Yii::t('app', 'Is valid until: {expires}', ['expires' => $tokenModel->getExpiresTxt()]);
-            $body .= "\n";
-            $body .= "\n";
-            $body .= Yii::t('app', 'IP: {ip}', ['ip' => Yii::$app->request->getUserIP()]);
-            $subject = Yii::t('app', 'Password recovery from {site}', ['site' => Yii::$app->name]);
+            if ($tokenModel->save()) {
+                $url = Url::to(['new', 'token' => $tokenModel->code], true);
+                $body = Yii::t('app', 'To password recovery, follow the link: {url}', ['url' => $url]);
+                $body .= "\n";
+                $body .= Yii::t('app', 'Is valid until: {expires}', ['expires' => $tokenModel->getExpiresTxt()]);
+                $body .= "\n";
+                $body .= "\n";
+                $body .= Yii::t('app', 'IP: {ip}', ['ip' => Yii::$app->request->getUserIP()]);
+                $subject = Yii::t('app', 'Password recovery from {site}', ['site' => Yii::$app->name]);
 
-            $ret = Yii::$app->mailer->compose()
-                ->setTo($user->email)
-                ->setFrom([Yii::$app->params['supportEmail'] => Yii::t('app', '{appname} robot', ['appname' => Yii::$app->name])])
-                ->setSubject($subject)
-                ->setTextBody($body)
-                ->send();
-            if ($ret) {
-                Yii::$app->session->addFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
-            } else {
-                Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
+                $ret = Yii::$app->mailer->compose()
+                    ->setTo($user->email)
+                    ->setFrom([Yii::$app->params['supportEmail'] => Yii::t('app', '{appname} robot', ['appname' => Yii::$app->name])])
+                    ->setSubject($subject)
+                    ->setTextBody($body)
+                    ->send();
+                if ($ret) {
+                    Yii::$app->session->addFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
+                } else {
+                    Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
+                }
             }
             return $this->goHome();
         }
@@ -86,6 +86,11 @@ class PasswordController extends Controller
         $model = PasswordNewForm::findOne($tokenModel->user_id);
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if ($model->token !== $token) {
+                $tokenModel->delete();
+                throw new NotFoundHttpException(Yii::t('app', 'Token not found!'));
+            }
+
             $security = Yii::$app->security;
             $model->password_hash = $security->generatePasswordHash($model->password);
             $model->save(false);
