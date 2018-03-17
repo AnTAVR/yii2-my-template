@@ -33,10 +33,8 @@ class SignupController extends Controller
         $model = new SignupForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->signup()) {
+            if ($user = $model->signup()) {
                 Yii::$app->session->addFlash('success', Yii::t('app', 'Account successfully registered.'));
-
-                $user = User::findOne(['email' => $model->email]);
 
                 $security = Yii::$app->security;
                 $tokenModel = new Token([
