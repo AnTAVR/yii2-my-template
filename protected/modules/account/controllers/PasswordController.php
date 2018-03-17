@@ -90,9 +90,9 @@ class PasswordController extends Controller
             $model->password_hash = $security->generatePasswordHash($model->password);
             $model->save(false);
 
-            $tokenModel->delete();
-
             Yii::$app->session->addFlash('success', Yii::t('app', 'New password was saved.'));
+
+            $tokenModel->delete();
             return $this->redirect(Yii::$app->user->loginUrl);
         }
         return $this->render('new', [
