@@ -58,20 +58,4 @@ class PasswordNewForm extends User
 
         return ArrayHelper::merge(parent::attributeHints(), $hints);
     }
-
-    /**
-     * @return static|null
-     * @throws \yii\base\Exception
-     */
-    public function edit()
-    {
-        $ret = null;
-        $security = Yii::$app->security;
-        $this->password_hash = $security->generatePasswordHash($this->password);
-        if ($this->save(false)) {
-            $ret = $this;
-        }
-
-        return $ret;
-    }
 }
