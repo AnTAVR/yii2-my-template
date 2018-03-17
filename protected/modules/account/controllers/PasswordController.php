@@ -35,7 +35,7 @@ class PasswordController extends Controller
                 'user_id' => $user->id,
                 'code' => $security->generateRandomString(),
                 'type' => Token::TYPE_RECOVERY_PASSWORD,
-                'expires_on' => time() + 60 * 60 * 24,
+                'expires_on' => time() + $this->module->params['expires_recovery_password'],
             ]);
             $tokenModel->save();
 
