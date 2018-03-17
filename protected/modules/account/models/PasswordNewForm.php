@@ -7,8 +7,6 @@ use yii\helpers\ArrayHelper;
 
 class PasswordNewForm extends User
 {
-    use PasswordTrait;
-
     public $password;
     public $repeatPassword;
     public $verifyCode;
