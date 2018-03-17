@@ -152,11 +152,4 @@ class SignupForm extends User
     {
         return $token === $this->emailToken;
     }
-
-    public function VerifyEmail()
-    {
-        $this->email_confirmed = 1;
-        return $this->save(false);
-    }
-
 }
