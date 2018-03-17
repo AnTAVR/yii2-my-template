@@ -3,6 +3,7 @@
 namespace app\modules\account\controllers;
 
 use Yii;
+use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 
@@ -11,12 +12,12 @@ class LogoutController extends Controller
     public function behaviors()
     {
         $behaviors = [
-//            'verbs' => [
-//                'class' => VerbFilter::className(),
-//                'actions' => [
-//                    'index' => ['post'],
-//                ],
-//            ],
+            'verbs' => [
+                'class' => VerbFilter::class,
+                'actions' => [
+                    'index' => ['post'],
+                ],
+            ],
         ];
 
         return ArrayHelper::merge(parent::behaviors(), $behaviors);
