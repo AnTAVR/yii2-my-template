@@ -4,7 +4,6 @@ namespace app\modules\account\controllers;
 
 use app\modules\account\models\SignupForm;
 use app\modules\account\models\Token;
-use app\modules\account\models\User;
 use Yii;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -33,13 +32,24 @@ class SignupController extends Controller
         $model = new SignupForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($user = $model->signup()) {
+            $security = Yii::$app->security;
+
+            $model->password_hash = $security->generatePasswordHash($model->password);
+            $model->salt = $security->generateRandomString(64);
+            $model->auth_key = $security->generateRandomString();
+            $model->email_confirmed = 0;
+
+            if ($model->save(false)) {
+                //the following three lines were added:
+//                $auth = Yii::$app->authManager;
+//                $authorRole = $auth->getRole('author');
+//                $auth->assign($authorRole, $model->getId());
+
                 Yii::$app->session->addFlash('success', Yii::t('app', 'Account successfully registered.'));
 
-                $security = Yii::$app->security;
                 $tokenModel = new Token([
-                    'user_id' => $user->id,
-                    'code' => $security->generateRandomString(),
+                    'user_id' => $model->id,
+                    'code' => $model->token,
                     'type' => Token::TYPE_CONFIRM_EMAIL,
                     'expires_on' => time() + $this->module->params['expires_confirm_email'],
                 ]);
@@ -55,7 +65,7 @@ class SignupController extends Controller
                 $subject = Yii::t('app', 'Registration on the site {site}', ['site' => Yii::$app->name]);
 
                 $ret = Yii::$app->mailer->compose()
-                    ->setTo($user->email)
+                    ->setTo($model->email)
                     ->setFrom([Yii::$app->params['supportEmail'] => Yii::t('app', '{appname} robot', ['appname' => Yii::$app->name])])
                     ->setSubject($subject)
                     ->setTextBody($body)
@@ -90,13 +100,15 @@ class SignupController extends Controller
 
         $tokenModel = Token::findByCode($token, Token::TYPE_CONFIRM_EMAIL);
 
-        $model = User::findOne($tokenModel->user_id);
+        $model = SignupForm::findOne($tokenModel->user_id);
+
         if ($model) {
             $model->email_confirmed = true;
             $model->save(false);
             Yii::$app->session->addFlash('success', Yii::t('app', 'E-Mail is verified, now you can login.'));
         }
 
+        $tokenModel->delete();
         return $this->redirect(Yii::$app->user->loginUrl);
     }
 }
