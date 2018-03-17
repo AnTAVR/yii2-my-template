@@ -67,7 +67,7 @@ class LoginForm extends User
                                           $params)
     {
         if (!$this->hasErrors()) {
-            $user = User::findByUsername($this->username);
+            $user = User::findOne(['username' => $this->username]);
             if (!$user or !$user->validatePassword($this->password)) {
                 $this->addError($attribute, Yii::t('app', 'Incorrect username or password.'));
             }
@@ -80,7 +80,7 @@ class LoginForm extends User
      */
     public function login()
     {
-        $model = User::findByUsername($this->username);
+        $model = User::findOne(['username' => $this->username]);
         /** @var \app\modules\account\Module $module */
         $module = Yii::$app->getModule('account');
         $login = Yii::$app->user->login($model, $this->rememberMe ? $module->params['duration'] : 0);
