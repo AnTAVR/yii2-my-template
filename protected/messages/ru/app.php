@@ -23,6 +23,7 @@ return [
     'ID' => '',
     'Meta Description' => '',
     'Meta Keywords' => '',
+    'RECOVERY PASSWORD' => '',
     'User ID' => '',
     '"findIdentityByAccessToken" is not implemented.' => '@@"findIdentityByAccessToken" не реализован.@@',
     'A link to reset password will be sent there.' => '@@Ссылка для сброса пароля будет отправлена туда.@@',
@@ -117,6 +118,7 @@ return [
     'Image Path' => 'Путь к фото',
     'Image Url' => 'Урл фото',
     'Incorrect password.' => 'Неверный пароль.',
+    'Is valid until: {expires}' => 'Действует до: {expires}',
     'Login' => 'Вход',
     'Logout' => 'Выход',
     'Max length {length}' => 'Максимальная длина {length}',
@@ -187,5 +189,6 @@ return [
     'View site' => 'Просмотр на сайте',
     'We will respond to you as soon as possible.' => 'Мы ответим Вам как можно скорее.',
     'You must agree with the rules' => 'Вы должны согласиться с правилами',
+    'indefinitely' => 'бесконечно',
     '{appname} robot' => '{appname} робот',
 ];
