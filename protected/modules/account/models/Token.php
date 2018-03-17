@@ -50,7 +50,7 @@ class Token extends ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%token}}';
+        return '{{%user_token}}';
     }
 
     /**
