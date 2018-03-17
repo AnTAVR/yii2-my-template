@@ -120,7 +120,7 @@ class Token extends ActiveRecord
             throw new NotFoundHttpException(Yii::t('app', 'Token not found!'));
         }
 
-        if ($token->getIsExpired()) {
+        if ($token->isExpired) {
             $token->delete();
             throw new NotFoundHttpException(Yii::t('app', 'Token not found!'));
         }
