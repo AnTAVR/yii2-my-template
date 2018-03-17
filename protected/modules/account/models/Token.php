@@ -137,6 +137,17 @@ class Token extends ActiveRecord
     }
 
     /**
+     * @return string
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function getExpiresTxt()
+    {
+        if ($this->expires_on > 0) {
+            return Yii::$app->formatter->asDatetime($this->expires_on);
+        }
+        return Yii::t('app', 'indefinitely');
+    }
+    /**
      * @param integer $userId
      * @param string $code
      * @param integer $expiresOn
