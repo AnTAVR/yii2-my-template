@@ -37,6 +37,7 @@ class LoginForm extends User
                 'max' => $params['password.max'],
                 'min' => $params['password.min']],
 
+            ['username', 'exist'],
             ['password', 'validateLoginPassword'],
         ];
         return ArrayHelper::merge(parent::rules(), $rules);
@@ -68,7 +69,7 @@ class LoginForm extends User
         if (!$this->hasErrors()) {
             $user = User::findOne(['username' => $this->username]);
             if (!$user or !$user->validatePassword($this->password)) {
-                $this->addError($attribute, Yii::t('app', 'Incorrect username or password.'));
+                $this->addError($attribute, Yii::t('app', 'Incorrect password.'));
             }
         }
     }
