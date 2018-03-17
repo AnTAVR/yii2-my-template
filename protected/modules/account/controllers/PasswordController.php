@@ -81,7 +81,7 @@ class PasswordController extends Controller
             return $this->goHome();
         }
 
-        $tokenModel = Token::findByCode($token, Token::TYPE_CONFIRM_EMAIL);
+        $tokenModel = Token::findByCode($token, Token::TYPE_RECOVERY_PASSWORD);
 
         $model = PasswordNewForm::findOne($tokenModel->user_id);
 
