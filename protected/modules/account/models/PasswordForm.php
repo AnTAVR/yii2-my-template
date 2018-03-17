@@ -14,12 +14,11 @@ class PasswordForm extends User
      */
     public function rules()
     {
-        $params = Yii::$app->params;
         $rules = [
             ['verifyCode', 'captcha'],
 
             ['email', 'required'],
-            ['email', 'string', 'max' => $params['email.max']],
+            ['email', 'string', 'max' => Yii::$app->params['email.max']],
             ['email', 'email'],
 
             ['email', 'exist'],
