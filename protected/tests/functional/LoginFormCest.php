@@ -46,7 +46,7 @@ class LoginFormCest
             'LoginForm[password]' => 'wrong',
         ]);
         $I->expectTo('see validations errors');
-        $I->see('Incorrect username or password.');
+        $I->see('Incorrect password.');
     }
 
     public function loginSuccessfully(\FunctionalTester $I)
