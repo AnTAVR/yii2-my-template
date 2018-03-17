@@ -58,7 +58,9 @@ class PasswordController extends Controller
                 }
                 return $this->goHome();
             } else {
-                $model->addError('email', Yii::t('app', 'A letter with instructions has already been sent to E-Mail.'));
+                $txt = Yii::t('app', 'A letter with instructions has already been sent to E-Mail.');
+                Yii::$app->session->addFlash('error', $txt);
+                $model->addError('email', $txt);
             }
         }
         return $this->render('index', [
