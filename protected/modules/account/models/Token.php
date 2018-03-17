@@ -149,6 +149,16 @@ class Token extends ActiveRecord
         }
         return Yii::t('app', 'indefinitely');
     }
+
+    /**
+     * @return string
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function getCreatedTxt()
+    {
+        return Yii::$app->formatter->asDatetime($this->created_at);
+    }
+
     /**
      * @param integer $userId
      * @param string $code
