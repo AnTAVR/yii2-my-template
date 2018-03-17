@@ -84,13 +84,12 @@ class PasswordController extends Controller
         $tokenModel = Token::findByCode($token, Token::TYPE_RECOVERY_PASSWORD);
 
         $model = PasswordNewForm::findOne($tokenModel->user_id);
+        if ($model->token !== $tokenModel->code) {
+            $tokenModel->delete();
+            throw new NotFoundHttpException(Yii::t('app', 'Token not found!'));
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->token !== $tokenModel->code) {
-                $tokenModel->delete();
-                throw new NotFoundHttpException(Yii::t('app', 'Token not found!'));
-            }
-
             $security = Yii::$app->security;
             $model->password_hash = $security->generatePasswordHash($model->password);
             $model->save(false);
