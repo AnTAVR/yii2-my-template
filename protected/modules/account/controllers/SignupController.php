@@ -3,6 +3,8 @@
 namespace app\modules\account\controllers;
 
 use app\modules\account\models\SignupForm;
+use app\modules\account\models\Token;
+use app\modules\account\models\User;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -46,27 +48,28 @@ class SignupController extends Controller
         ]);
     }
 
+    /** @noinspection PhpUndefinedClassInspection */
     /**
-     * @param $user_id integer
      * @param $token string
      * @return string
      * @throws NotFoundHttpException
+     * @throws \Exception
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
-    public function actionVerifyEmail($user_id, $token)
+    public function actionVerifyEmail($token)
     {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
-        $model = SignupForm::findOne($user_id);
-        if (!$model) {
-            throw new NotFoundHttpException(Yii::t('app', 'User not found.'));
-        }
+        $tokenModel = Token::findByCode($token, Token::TYPE_CONFIRM_EMAIL);
 
-        if (!$model->validateEmailToken($token)) {
-            throw new NotFoundHttpException(Yii::t('app', 'User not found.'));
-        }
-        $model->verifyEmail();
+        $model = User::findOne($tokenModel->user_id);
+
+        $model->email_confirmed = true;
+        $model->save(false);
+
         Yii::$app->session->addFlash('success', Yii::t('app', 'E-Mail is verified, now you can login.'));
         return $this->redirect(Yii::$app->user->loginUrl);
     }
