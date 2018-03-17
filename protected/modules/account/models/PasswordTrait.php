@@ -19,5 +19,4 @@ trait PasswordTrait
     {
         return hash('sha256', $this->tokenRaw);
     }
-
 }
