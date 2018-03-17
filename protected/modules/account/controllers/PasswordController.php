@@ -28,13 +28,13 @@ class PasswordController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
-            $user = User::findOne(['email' => $this->email]);
+            $user = User::findOne(['email' => $model->email]);
 
             $security = Yii::$app->security;
             $tokenModel = new Token([
                 'user_id' => $user->id,
                 'code' => $security->generateRandomString(),
-                'type' => Token::TYPE_CONFIRM_EMAIL,
+                'type' => Token::TYPE_RECOVERY_PASSWORD,
                 'expires_on' => time() + 60 * 60 * 24,
             ]);
             $tokenModel->save();
@@ -43,6 +43,9 @@ class PasswordController extends Controller
             $body = Yii::t('app', 'To password recovery, follow the link: {url}', ['url' => $url]);
             $body .= "\n";
             $body .= Yii::t('app', 'Is valid until: {expires}', ['expires' => $tokenModel->getExpiresTxt()]);
+            $body .= "\n";
+            $body .= "\n";
+            $body .= Yii::t('app', 'IP: {ip}', ['ip' => Yii::$app->request->getUserIP()]);
             $subject = Yii::t('app', 'Password recovery from {site}', ['site' => Yii::$app->name]);
 
             $ret = Yii::$app->mailer->compose()
