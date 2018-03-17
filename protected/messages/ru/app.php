@@ -110,7 +110,7 @@ return [
     'If you have business inquiries or other questions, please fill out the following form to contact us.' => 'Если у вас есть деловое предложение или другие вопросы, пожалуйста, заполните следующую форму, чтобы связаться с нами.',
     'Image Path' => 'Путь к фото',
     'Image Url' => 'Урл фото',
-    'Incorrect username or password.' => 'Неверное имя пользователя или пароль.',
+    'Incorrect password.' => 'Неверный пароль.',
     'Login' => 'Вход',
     'Logout' => 'Выход',
     'Max length {length}' => 'Максимальная длина {length}',
