@@ -41,6 +41,8 @@ class PasswordController extends Controller
 
             $url = Url::to(['new', 'token' => $tokenModel->code], true);
             $body = Yii::t('app', 'To password recovery, follow the link: {url}', ['url' => $url]);
+            $body .= "\n";
+            $body .= Yii::t('app', 'Is valid until: {expires}', ['expires' => $tokenModel->getExpiresTxt()]);
             $subject = Yii::t('app', 'Password recovery from {site}', ['site' => Yii::$app->name]);
 
             $ret = Yii::$app->mailer->compose()
