@@ -25,8 +25,8 @@ class UserTest extends Unit
 
     public function testFindUserByUsername()
     {
-        expect_that($user = User::findByUsername('admin'));
-        expect_not(User::findByUsername('not-admin'));
+        expect_that($user = User::findOne(['username' => 'admin']));
+        expect_not(User::findOne(['username' => 'not-admin']));
     }
 
     /**
@@ -37,7 +37,7 @@ class UserTest extends Unit
     public function testValidateUser(/** @noinspection PhpUnusedParameterInspection */
         $user)
     {
-        $user = User::findByUsername('admin');
+        $user = User::findOne(['username' => 'admin']);
         expect_that($user->validateAuthKey('test100key'));
         expect_not($user->validateAuthKey('test102key'));
 
