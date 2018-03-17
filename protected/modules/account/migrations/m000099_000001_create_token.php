@@ -26,7 +26,7 @@ class m000099_000001_create_token extends Migration
 
         $this->createTable($this->tableName, [
             'user_id' => $this->integer()->notNull(),
-            'code' => $this->string(40)->notNull(),
+            'code' => $this->string(64)->notNull(),
             'type' => $this->smallInteger()->notNull(),
             'created_at' => $this->timestamp()->notNull()->defaultExpression('NOW()'),
             'expires_on' => $this->timestamp()->notNull()->defaultValue(0),
