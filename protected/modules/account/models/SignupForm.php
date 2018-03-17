@@ -22,7 +22,7 @@ class SignupForm extends User
      */
     public function rules()
     {
-        $params = Yii::$app->params;
+        $params = require __DIR__ . '/../config/params.php';
         $rules = [
             ['verifyCode', 'captcha'],
 
@@ -77,8 +77,9 @@ class SignupForm extends User
      */
     public function attributeHints()
     {
+        $params = require __DIR__ . '/../config/params.php';
         $hints = [
-            'username' => Yii::t('app', 'Possible characters ({chars})', ['chars' => Yii::$app->params['username.hint']]),
+            'username' => Yii::t('app', 'Possible characters ({chars})', ['chars' => $params['username.hint']]),
             'email' => Yii::t('app', 'E-Mail must be valid, a letter with instructions will be sent to it.'),
             'password' => Yii::t('app', 'Set a complex password using uppercase and lowercase letters, numbers and special characters.'),
         ];
