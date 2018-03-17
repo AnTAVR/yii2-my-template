@@ -106,7 +106,7 @@ class SignupController extends Controller
         $tokenModel->delete();
 
         if ($model) {
-            if ($model->token !== $token) {
+            if ($model->token !== $tokenModel->code) {
                 throw new NotFoundHttpException(Yii::t('app', 'Token not found!'));
             }
 
