@@ -27,7 +27,6 @@ class PasswordController extends Controller
         $model = new PasswordForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-
             $user = User::findOne(['email' => $model->email]);
 
             $security = Yii::$app->security;
