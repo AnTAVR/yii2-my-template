@@ -1,5 +1,6 @@
 <?php
 
+use app\modules\account\models\User;
 use yii\db\Expression;
 use yii\db\Migration;
 
@@ -35,11 +36,14 @@ class m000099_000000_create_user extends Migration
 
             'foto' => $this->string(),
 
-            'status' => $this->smallInteger()->notNull()->defaultValue(0),
+            'status' => $this->smallInteger()->notNull()->defaultValue(User::STATUS_ACTIVE),
 
             'created_at' => $this->timestamp()->notNull()->defaultValue(new Expression('NOW()')),
+            'created_ip' => $this->string(45),
 
-            'session_at' => $this->dateTime(),
+            'last_request_at' => $this->timestamp(),
+
+            'session_at' => $this->timestamp(),
             'session' => $this->string(),
         ], $this->tableOptions);
 
