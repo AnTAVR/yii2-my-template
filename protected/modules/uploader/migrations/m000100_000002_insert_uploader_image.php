@@ -1,10 +1,17 @@
 <?php
 
+use app\modules\uploader\models\UploaderImage;
 use yii\db\Migration;
 
 class m000100_000002_insert_uploader_image extends Migration
 {
-    public $tableName = '{{%uploader_image}}';
+    public $tableName;
+
+    public function init()
+    {
+        parent::init();
+        $this->tableName = UploaderImage::tableName();
+    }
 
     /**
      * @inheritdoc

@@ -1,15 +1,22 @@
 <?php
 
 use app\migrations\DefaultContent;
+use app\modules\news\models\News;
 use yii\db\Expression;
 use yii\db\Migration;
 
 class m000103_000002_insert_page_news extends Migration
 {
-    public $tableName = '{{%page_news}}';
+    public $tableName;
 
     const CONTENT_TITLE = 'new';
     const COUNT = 3;
+
+    public function init()
+    {
+        parent::init();
+        $this->tableName = News::tableName();
+    }
 
     /**
      * @inheritdoc

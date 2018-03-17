@@ -1,13 +1,20 @@
 <?php
 
 use app\migrations\DefaultContent;
+use app\models\StaticPage;
 use yii\db\Migration;
 
 class m000101_000002_insert_page_static extends Migration
 {
-    public $tableName = '{{%page_static}}';
+    public $tableName;
 
     public $content_static = ['index', 'about', 'delivery', 'payment', 'partners', 'docs', 'rules'];
+
+    public function init()
+    {
+        parent::init();
+        $this->tableName = StaticPage::tableName();
+    }
 
     /**
      * @inheritdoc

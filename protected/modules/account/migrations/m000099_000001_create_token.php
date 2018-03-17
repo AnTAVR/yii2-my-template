@@ -7,7 +7,7 @@ use yii\db\Migration;
 
 class m000099_000001_create_token extends Migration
 {
-    public $tableName = '{{%token}}';
+    public $tableName;
 
     // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
     public $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
