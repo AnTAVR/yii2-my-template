@@ -75,8 +75,10 @@ class SignupController extends Controller
                     } else {
                         Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
                     }
+                    return $this->goHome();
+                } else {
+                    $model->addError('email', Yii::t('app', 'A letter with instructions has already been sent to E-Mail.'));
                 }
-
                 return $this->goHome();
             }
         }
