@@ -31,9 +31,9 @@ class Module extends ModuleOld
                 '/login' => '/account/login',
                 '/logout' => '/account/logout',
                 '/signup' => '/account/signup',
-                '/signup/verify-email/<user_id:\d+>/<token:\w+>' => '/account/signup/verify-email',
+                '/signup/verify-email/<token:\w+>' => '/account/signup/verify-email',
                 '/password' => '/account/password',
-                '/password/new/<user_id:\d+>/<token:\w+>' => '/account/password/new',
+                '/password/new/<token:\w+>' => '/account/password/new',
             ]
         );
         // custom initialization code goes here
