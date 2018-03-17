@@ -24,6 +24,7 @@ class Token extends ActiveRecord
 {
     const TYPE_API_AUTH = 0;
     const TYPE_CONFIRM_EMAIL = 2;
+    const TYPE_RECOVERY_PASSWORD = 4;
 
     static $typesName = [];
 
@@ -33,6 +34,7 @@ class Token extends ActiveRecord
         self::$typesName = [
             self::TYPE_API_AUTH => Yii::t('app', 'API AUTH'),
             self::TYPE_CONFIRM_EMAIL => Yii::t('app', 'CONFIRM EMAIL'),
+            self::TYPE_RECOVERY_PASSWORD => Yii::t('app', 'RECOVERY PASSWORD'),
         ];
     }
 
