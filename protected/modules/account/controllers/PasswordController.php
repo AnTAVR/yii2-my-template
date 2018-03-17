@@ -87,7 +87,7 @@ class PasswordController extends Controller
         $model = PasswordNewForm::findOne($tokenModel->user_id);
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->token !== $token) {
+            if ($model->token !== $tokenModel->code) {
                 $tokenModel->delete();
                 throw new NotFoundHttpException(Yii::t('app', 'Token not found!'));
             }
