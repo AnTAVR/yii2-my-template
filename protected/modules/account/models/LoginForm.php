@@ -68,9 +68,13 @@ class LoginForm extends User
     {
         if (!$this->hasErrors()) {
             $user = User::findOne(['username' => $this->username]);
-            if (!$user or !$user->validatePassword($this->password)) {
-                $this->addError($attribute, Yii::t('app', 'Incorrect password.'));
+            if ($user) {
+                $security = Yii::$app->security;
+                if ($security->validatePassword($this->password, $user->password_hash)) {
+                    return;
+                }
             }
+            $this->addError($attribute, Yii::t('app', 'Incorrect password.'));
         }
     }
 }
