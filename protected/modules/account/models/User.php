@@ -21,7 +21,6 @@ use yii\web\IdentityInterface;
  * @property string $salt
  *
  * @property string $auth_key
- * @property string $access_token
  *
  * @property boolean $email_confirmed
  *
