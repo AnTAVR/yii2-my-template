@@ -44,7 +44,7 @@ class User extends ActiveRecord implements IdentityInterface
     function init()
     {
         parent::init();
-        self::$statusName = [
+        static::$statusName = [
             self::STATUS_ACTIVE => Yii::t('app', 'ACTIVE'),
             self::STATUS_BLOCKED => Yii::t('app', 'BLOCKED'),
             self::STATUS_DELETED => Yii::t('app', 'DELETED'),
@@ -72,7 +72,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        $identity = static::findOne($id);
+        $identity = static::findOne(['id' => $id, 'status' => static::STATUS_ACTIVE]);
         if ($identity) {
             $identity->session_at = new Expression('NOW()');
             $identity->save(false);
@@ -96,22 +96,11 @@ class User extends ActiveRecord implements IdentityInterface
             'type' => Token::TYPE_API_AUTH
         ]);
 
-        if (!isset($tokenModel) or $tokenModel->isExpired) {
+        if (!$tokenModel or $tokenModel->isExpired) {
             throw new UnauthorizedHttpException(Yii::t('app', 'Auth code not found or expired!'));
         }
 
-        return static::findOne($tokenModel->user_id);
-    }
-
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @return static|null
-     */
-    public static function findByUsername($username)
-    {
-        return static::findOne(['username' => $username]);
+        return static::findOne(['id' => $tokenModel->user_id, 'status' => static::STATUS_ACTIVE]);
     }
 
     /**
@@ -150,17 +139,5 @@ class User extends ActiveRecord implements IdentityInterface
     public function validateAuthKey($authKey)
     {
         return $this->auth_key === $authKey;
-    }
-
-    /**
-     * Validates password
-     *
-     * @param string $password password to validate
-     * @return boolean if password provided is valid for current user
-     */
-    public function validatePassword($password)
-    {
-        $security = Yii::$app->security;
-        return $security->validatePassword($password, $this->password_hash);
     }
 }
