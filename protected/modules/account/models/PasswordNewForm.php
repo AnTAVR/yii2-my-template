@@ -16,7 +16,7 @@ class PasswordNewForm extends User
      */
     public function rules()
     {
-        $params = Yii::$app->params;
+        $params = require __DIR__ . '/../config/params.php';
         $rules = [
             ['verifyCode', 'captcha'],
 
