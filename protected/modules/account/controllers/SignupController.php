@@ -66,11 +66,12 @@ class SignupController extends Controller
         $tokenModel = Token::findByCode($token, Token::TYPE_CONFIRM_EMAIL);
 
         $model = User::findOne($tokenModel->user_id);
+        if ($model) {
+            $model->email_confirmed = true;
+            $model->save(false);
+            Yii::$app->session->addFlash('success', Yii::t('app', 'E-Mail is verified, now you can login.'));
+        }
 
-        $model->email_confirmed = true;
-        $model->save(false);
-
-        Yii::$app->session->addFlash('success', Yii::t('app', 'E-Mail is verified, now you can login.'));
         return $this->redirect(Yii::$app->user->loginUrl);
     }
 }
