@@ -21,6 +21,7 @@ return [
     'CONFIRM EMAIL' => '',
     'Code' => '',
     'ID' => '',
+    'IP: {ip}' => '',
     'Meta Description' => '',
     'Meta Keywords' => '',
     'RECOVERY PASSWORD' => '',
