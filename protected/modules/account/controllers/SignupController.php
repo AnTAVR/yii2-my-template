@@ -37,6 +37,7 @@ class SignupController extends Controller
             $model->password_hash = $security->generatePasswordHash($model->password);
             $model->salt = $security->generateRandomString(64);
             $model->auth_key = $security->generateRandomString();
+            $model->created_ip = Yii::$app->request->userIP;
             $model->email_confirmed = 0;
 
             if ($model->save(false)) {
@@ -61,7 +62,7 @@ class SignupController extends Controller
                     $body .= Yii::t('app', 'Is valid until: {expires}', ['expires' => $tokenModel->getExpiresTxt()]);
                     $body .= "\n";
                     $body .= "\n";
-                    $body .= Yii::t('app', 'IP: {ip}', ['ip' => Yii::$app->request->getUserIP()]);
+                    $body .= Yii::t('app', 'IP: {ip}', ['ip' => Yii::$app->request->userIP]);
                     $subject = Yii::t('app', 'Registration on the site {site}', ['site' => Yii::$app->name]);
 
                     $ret = Yii::$app->mailer->compose()
