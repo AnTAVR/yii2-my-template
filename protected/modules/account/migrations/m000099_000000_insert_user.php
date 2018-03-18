@@ -6,7 +6,7 @@ use yii\db\Migration;
 /**
  * Handles the creation for table `user`.
  */
-class m000099_000001_insert_user extends Migration
+class m000099_000000_insert_user extends Migration
 {
     public $tableName;
 
