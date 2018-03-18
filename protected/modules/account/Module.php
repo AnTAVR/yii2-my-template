@@ -4,11 +4,14 @@ namespace app\modules\account;
 
 use app\components\Module as ModuleOld;
 use Yii;
+use yii\base\BootstrapInterface;
+use yii\web\Application;
+use yii\web\User;
 
 /**
  * account module definition class
  */
-class Module extends ModuleOld
+class Module extends ModuleOld implements BootstrapInterface
 {
     /**
      * @inheritdoc
@@ -37,5 +40,14 @@ class Module extends ModuleOld
             ]
         );
         // custom initialization code goes here
+    }
+
+
+    public function bootstrap($app)
+    {
+        if ($app instanceof Application) {
+            $app->user->on(User::EVENT_AFTER_LOGIN, ['app\modules\account\events\AfterLoginEvent', 'run']);
+            $app->user->on(User::EVENT_AFTER_LOGOUT, ['app\modules\account\events\AfterLogoutEvent', 'run']);
+        }
     }
 }
