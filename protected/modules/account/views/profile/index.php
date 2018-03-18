@@ -25,7 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'foto:image',
                 'status_txt',
                 'created_at',
-                'created_ip',
+                [
+                    'attribute' => 'created_ip',
+                    'value' => Html::a($identity->created_ip, 'http://ipinfo.io/' . $identity->created_ip, ['target' => '_blank']),
+                    'format' => 'raw',
+                ],
                 'session_at',
             ],
         ]) ?>
