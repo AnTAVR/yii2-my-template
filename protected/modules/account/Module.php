@@ -47,7 +47,8 @@ class Module extends ModuleOld implements BootstrapInterface
     {
         if ($app instanceof Application) {
             $app->user->on(User::EVENT_AFTER_LOGIN, ['app\modules\account\events\AfterLoginEvent', 'run']);
-            $app->user->on(User::EVENT_AFTER_LOGOUT, ['app\modules\account\events\AfterLogoutEvent', 'run']);
+            $app->user->on(User::EVENT_BEFORE_LOGOUT, ['app\modules\account\events\BeforeLogoutEvent', 'run']);
+            $app->on(Application::EVENT_BEFORE_REQUEST, ['app\modules\account\events\BeforeRequestEvent', 'run']);
         }
     }
 }
