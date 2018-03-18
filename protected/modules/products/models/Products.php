@@ -79,7 +79,6 @@ class Products extends ActiveRecord
             ['content_title', 'required'],
             ['content_title', 'string',
                 'max' => $params['string.max']],
-            ['content_title', 'safe'],
 
             ['content_short', 'trim'],
             ['content_short', 'required'],
