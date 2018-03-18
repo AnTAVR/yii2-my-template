@@ -30,7 +30,6 @@ class LoginController extends Controller
                     $user->session_at = new Expression('NOW()');
                     $user->save();
 
-                    Yii::$app->session->addFlash('success', Yii::t('app', 'Hello {username}', ['username' => $user->username]));
                     return $this->goBack();
                 }
             } else {
