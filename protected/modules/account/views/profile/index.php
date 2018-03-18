@@ -20,7 +20,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'attributes' => [
                 'id',
                 'username',
-                'foto',
+                'email:email',
+                'email_confirmed:boolean',
+                'foto:image',
+                'status_txt',
+                'created_at',
+                'created_ip',
+                'session_at',
             ],
         ]) ?>
     </div>
