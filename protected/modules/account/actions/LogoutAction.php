@@ -16,7 +16,7 @@ class LogoutAction extends Action
             return $this->controller->goHome();
         }
 
-        Yii::$app->user->logout();
+        Yii::$app->user->logout(false);
 
         return $this->controller->goHome();
     }
