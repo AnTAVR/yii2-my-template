@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'username',
                 'email:email',
                 'email_confirmed:boolean',
-                'foto:image',
+                'avatar:image',
                 'status_txt',
                 'created_at',
                 [

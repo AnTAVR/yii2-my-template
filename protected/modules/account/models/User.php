@@ -24,7 +24,7 @@ use yii\web\UnauthorizedHttpException;
  *
  * @property boolean $email_confirmed
  *
- * @property string $foto
+ * @property string $avatar
  *
  * @property integer $status
  *

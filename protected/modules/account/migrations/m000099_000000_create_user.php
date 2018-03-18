@@ -39,7 +39,7 @@ class m000099_000000_create_user extends Migration
 
             'email_confirmed' => $this->boolean()->notNull()->defaultValue(false),
 
-            'foto' => $this->string(),
+            'avatar' => $this->string(),
 
             'status' => $this->smallInteger()->notNull()->defaultValue(User::STATUS_ACTIVE),
 
