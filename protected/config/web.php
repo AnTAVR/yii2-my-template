@@ -16,6 +16,9 @@ $config = [
         '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
+        'formatter' => [
+            'class' => 'app\components\Formatter',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'jXBjnr3BwJb-0lXBx8fZfYKKGdqkXb-X',

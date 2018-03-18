@@ -14,6 +14,9 @@ $config = [
         '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
+        'formatter' => [
+            'class' => 'app\components\Formatter',
+        ],
         'db' => $db,
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
