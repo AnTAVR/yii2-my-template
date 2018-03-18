@@ -12,6 +12,7 @@ class AfterLoginEvent
     {
         /** @var $identity \app\modules\account\models\User */
         $identity = Yii::$app->user->identity;
-        Yii::$app->session->addFlash('success', Yii::t('app', 'Hello {username}', ['username' => $identity->username]));
+        $username = $identity->username;
+        Yii::$app->session->addFlash('success', Yii::t('app', 'Hello {username}!', ['username' => $username]));
     }
 }
