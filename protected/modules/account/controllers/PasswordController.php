@@ -42,7 +42,7 @@ class PasswordController extends Controller
                 $body .= Yii::t('app', 'Is valid until: {expires}', ['expires' => $tokenModel->getExpiresTxt()]);
                 $body .= "\n";
                 $body .= "\n";
-                $body .= Yii::t('app', 'IP: {ip}', ['ip' => Yii::$app->request->getUserIP()]);
+                $body .= Yii::t('app', 'IP: {ip}', ['ip' => Yii::$app->request->userIP]);
                 $subject = Yii::t('app', 'Password recovery from {site}', ['site' => Yii::$app->name]);
 
                 $ret = Yii::$app->mailer->compose()
