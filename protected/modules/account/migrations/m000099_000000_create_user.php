@@ -54,18 +54,6 @@ class m000099_000000_create_user extends Migration
 
         $name = 'session';
         $this->createIndex($name, $this->tableName, $name);
-
-        $security = Yii::$app->security;
-        $params = Yii::$app->params;
-        $this->insert($this->tableName, [
-                'username' => 'admin',
-                'email' => $params['adminEmail'],
-                'password_hash' => $security->generatePasswordHash('adminadmin'),
-                'salt' => $security->generateRandomString(64),
-                'auth_key' => $security->generateRandomString(),
-                'email_confirmed' => true,
-            ]
-        );
     }
 
     /**
