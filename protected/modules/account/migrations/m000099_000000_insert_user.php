@@ -29,6 +29,7 @@ class m000099_000000_insert_user extends Migration
                 'password_hash' => $security->generatePasswordHash('adminadmin'),
                 'salt' => $security->generateRandomString(64),
                 'auth_key' => $security->generateRandomString(),
+                'created_ip' => Yii::$app->request->isConsoleRequest ? '(console)' : Yii::$app->request->userIP,
                 'email_confirmed' => true,
             ]
         );
