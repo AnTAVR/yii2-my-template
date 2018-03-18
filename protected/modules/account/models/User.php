@@ -4,7 +4,6 @@ namespace app\modules\account\models;
 
 use Yii;
 use yii\db\ActiveRecord;
-use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 use yii\web\UnauthorizedHttpException;
@@ -76,12 +75,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        $identity = static::findOne(['id' => $id, 'status' => static::STATUS_ACTIVE]);
-        if ($identity) {
-            $identity->last_request_at = new Expression('NOW()');
-            $identity->save(false);
-        }
-        return $identity;
+        return static::findOne(['id' => $id, 'status' => static::STATUS_ACTIVE]);
     }
 
     /**
@@ -104,12 +98,7 @@ class User extends ActiveRecord implements IdentityInterface
             throw new UnauthorizedHttpException(Yii::t('app', 'Auth code not found or expired!'));
         }
 
-        $identity = static::findOne(['id' => $tokenModel->user_id, 'status' => static::STATUS_ACTIVE]);
-        if ($identity) {
-            $identity->last_request_at = new Expression('NOW()');
-            $identity->save(false);
-        }
-        return $identity;
+        return static::findOne(['id' => $tokenModel->user_id, 'status' => static::STATUS_ACTIVE]);
     }
 
     /**
