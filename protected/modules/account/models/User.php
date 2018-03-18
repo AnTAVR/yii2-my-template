@@ -34,6 +34,7 @@ use yii\web\UnauthorizedHttpException;
  * @property integer $last_request_at
  *
  * @property integer $session_at
+ * @property string $status_txt
  * @property string $session
  */
 class User extends ActiveRecord implements IdentityInterface
@@ -120,6 +121,7 @@ class User extends ActiveRecord implements IdentityInterface
             'id' => Yii::t('app', 'ID'),
             'username' => Yii::t('app', 'Username'),
             'email' => Yii::t('app', 'E-Mail'),
+            'status_txt' => Yii::t('app', 'Status'),
         ];
         return ArrayHelper::merge(parent::attributeLabels(), $labels);
     }
@@ -147,5 +149,13 @@ class User extends ActiveRecord implements IdentityInterface
     public function validateAuthKey($authKey)
     {
         return $this->auth_key === $authKey;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus_txt()
+    {
+        return isset(self::$statusName[$this->status]) ? self::$statusName[$this->status] : 'None';
     }
 }
