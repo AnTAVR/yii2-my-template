@@ -29,7 +29,7 @@ class m000099_000001_create_token extends Migration
             'code' => $this->string(64)->notNull(),
             'type' => $this->smallInteger()->notNull(),
             'created_at' => $this->timestamp()->notNull()->defaultExpression('NOW()'),
-            'expires_on' => $this->timestamp()->notNull()->defaultValue(0),
+            'expires_on' => $this->integer()->notNull()->defaultValue(0),
         ], $this->tableOptions);
         $this->createIndex('token_unique', $this->tableName, ['user_id', 'code', 'type'], true);
         $this->addForeignKey('fk_user_token', $this->tableName, 'user_id', User::tableName(), 'id', 'CASCADE', 'RESTRICT');
