@@ -37,7 +37,7 @@ class SignupController extends Controller
             $model->password_hash = $security->generatePasswordHash($model->password);
             $model->salt = $security->generateRandomString(64);
             $model->auth_key = $security->generateRandomString();
-            $model->created_ip = Yii::$app->request->userIP;
+            $model->created_ip = Yii::$app->request->isConsoleRequest ? '(console)' : Yii::$app->request->userIP;
             $model->email_confirmed = 0;
 
             if ($model->save(false)) {
