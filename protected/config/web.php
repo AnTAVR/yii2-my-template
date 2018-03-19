@@ -4,6 +4,8 @@ $db = require __DIR__ . '/db.php';
 $i18n = require __DIR__ . '/i18n.php';
 $modules = require __DIR__ . '/modules.php';
 $container = require __DIR__ . '/container.php';
+$assetManager = require __DIR__ . '/assetManager.php';
+$aliases = require __DIR__ . '/aliases.php';
 
 /** @noinspection HtmlUnknownTag */
 $config = [
@@ -12,10 +14,6 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => array_merge(['log'],  array_keys($modules)),
-    'aliases' => [
-        '@bower' => '@vendor/bower-asset',
-        '@npm' => '@vendor/npm-asset',
-    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -68,6 +66,7 @@ $config = [
         'i18n' => $i18n,
         'db' => $db,
     ],
+    'aliases' => $aliases,
     'container' => $container,
     'modules' => $modules,
     'params' => $params,

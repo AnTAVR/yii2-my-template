@@ -4,6 +4,7 @@ $db = require __DIR__ . '/test_db.php';
 $modules = require __DIR__ . '/modules.php';
 $container = require __DIR__ . '/container.php';
 $assetManager = require __DIR__ . '/assetManager.php';
+$aliases = require __DIR__ . '/aliases.php';
 
 $config = [
     'language' => 'en-US',
@@ -11,10 +12,6 @@ $config = [
     'id' => 'basic-tests',
     'basePath' => dirname(__DIR__),
     'bootstrap' => array_merge(['log'],  array_keys($modules)),
-    'aliases' => [
-        '@bower' => '@vendor/bower-asset',
-        '@npm' => '@vendor/npm-asset',
-    ],
     'components' => [
         'request' => [
             'cookieValidationKey' => 'test',
@@ -52,6 +49,7 @@ $config = [
         'assetManager' => $assetManager,
         'db' => $db,
     ],
+    'aliases' => $aliases,
     'container' => $container,
     'modules' => $modules,
     'params' => $params,

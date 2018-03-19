@@ -1,9 +1,10 @@
 <?php
-
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 $i18n = require __DIR__ . '/i18n.php';
 $modules = require __DIR__ . '/modules.php';
+$container = require __DIR__ . '/container.php';
+$aliases = require __DIR__ . '/aliases.php';
 
 $config = [
     'language' => $params['language'],
@@ -12,10 +13,6 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'] + array_keys($modules),
     'controllerNamespace' => 'app\commands',
-    'aliases' => [
-        '@bower' => '@vendor/bower-asset',
-        '@npm' => '@vendor/npm-asset',
-    ],
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -31,6 +28,8 @@ $config = [
         'i18n' => $i18n,
         'db' => $db,
     ],
+    'aliases' => $aliases,
+    'container' => $container,
     'modules' => $modules,
     'params' => $params,
     'controllerMap' => [
