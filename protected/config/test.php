@@ -2,7 +2,7 @@
 
 use yii\helpers\ArrayHelper;
 
-$__config = [
+return ArrayHelper::merge(require __DIR__ . '/common.php', [
     'language' => 'en-US',
     'id' => 'basic-tests',
     'components' => [
@@ -19,6 +19,4 @@ $__config = [
         ],
         'db' => require __DIR__ . '/test_db.php',
     ],
-];
-
-return ArrayHelper::merge(require __DIR__ . '/common.php', $__config);
+]);
