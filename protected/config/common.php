@@ -30,6 +30,10 @@ $__config = [
     'modules' => require __DIR__ . '/common/modules.php',
 
     'components' => [
+        'request' => [
+            'csrfParam' => 'ckCsrfToken',
+            'enableCsrfValidation' => !YII_ENV_TEST,
+        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
