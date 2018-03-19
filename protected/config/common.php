@@ -5,7 +5,6 @@ use yii\helpers\ArrayHelper;
 $params = require __DIR__ . '/common/params.php';
 $db = require __DIR__ . '/db.php';
 $modules = require __DIR__ . '/common/modules.php';
-$container = require __DIR__ . '/container.php';
 $assetManager = require __DIR__ . '/assetManager.php';
 $aliases = require __DIR__ . '/common/aliases.php';
 
@@ -17,7 +16,18 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ArrayHelper::merge(['log'], array_keys($modules)),
     'aliases' => $aliases,
-    'container' => $container,
+    'container' => [
+        'definitions' => [
+            'yii\i18n\Formatter' => 'app\components\Formatter',
+            'yii\web\View' => 'app\components\View',
+            'yii\web\Session' => [
+                'class' => 'app\components\Session',
+                'savePath' => '@runtime/session',
+            ],
+        ],
+        'singletons' => [
+        ],
+    ],
     'modules' => $modules,
 
     'components' => [
