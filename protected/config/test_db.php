@@ -1,6 +1,6 @@
 <?php
-$db = require __DIR__ . '/db.php';
+$db_tmp = require __DIR__ . '/db.php';
 // test database! Important not to run tests on production or development databases
-$db['dsn'] = 'mysql:host=localhost;dbname=tests_tests';
+$db_tmp['dsn'] = 'mysql:host=localhost;dbname=tests_tests';
 
-return $db;
+return $db_tmp;
