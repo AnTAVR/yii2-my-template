@@ -33,13 +33,6 @@ $config = [
             // for the mailer to send real emails.
             'useFileTransport' => YII_DEBUG,
         ],
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-                '/static/<meta_url>' => '/static/index',
-            ],
-        ],
         'view' => [
             'class' => 'app\components\View',
             'theme' => $params['theme'],
@@ -48,6 +41,13 @@ $config = [
             'identityClass' => 'app\modules\account\models\User',
             'enableAutoLogin' => true,
             'loginUrl' => '/account/login'
+        ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+                '/static/<meta_url>' => '/static/index',
+            ],
         ],
         'assetManager' => $assetManager,
         'db' => $db,
