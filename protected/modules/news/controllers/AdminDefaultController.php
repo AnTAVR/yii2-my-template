@@ -19,16 +19,14 @@ class AdminDefaultController extends AdminController
      */
     public function behaviors()
     {
-        return ArrayHelper::merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => 'yii\filters\VerbFilter',
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
+        return ArrayHelper::merge(parent::behaviors(), [
+            'verbs' => [
+                'class' => 'yii\filters\VerbFilter',
+                'actions' => [
+                    'delete' => ['POST'],
                 ],
-            ]);
+            ],
+        ]);
     }
 
     /**

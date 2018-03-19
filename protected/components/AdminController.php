@@ -3,6 +3,7 @@
 namespace app\components;
 
 
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 
 class AdminController extends Controller
@@ -11,7 +12,7 @@ class AdminController extends Controller
 
     public function behaviors()
     {
-        return [
+        return ArrayHelper::merge(parent::behaviors(), [
             'access' => [
                 'class' => '\yii\filters\AccessControl',
                 'rules' => [
@@ -21,6 +22,6 @@ class AdminController extends Controller
                     ],
                 ],
             ],
-        ];
+        ]);
     }
 }

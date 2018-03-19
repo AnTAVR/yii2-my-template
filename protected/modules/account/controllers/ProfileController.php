@@ -11,7 +11,7 @@ class ProfileController extends Controller
 {
     public function behaviors()
     {
-        $behaviors = [
+        return ArrayHelper::merge(parent::behaviors(), [
             'access' => [
                 'class' => '\yii\filters\AccessControl',
                 'rules' => [
@@ -21,8 +21,7 @@ class ProfileController extends Controller
                     ],
                 ],
             ],
-        ];
-        return ArrayHelper::merge(parent::behaviors(), $behaviors);
+        ]);
     }
 
     /**
