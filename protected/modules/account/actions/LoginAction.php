@@ -23,7 +23,7 @@ class LoginAction extends Action
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $user = User::findOne(['username' => $model->username]);
             if ($user->status == User::STATUS_ACTIVE) {
-                $params = require __DIR__ . '/../config/params.php';
+                $params = Yii::$app->getModule('account')->params;
 
                 $login = Yii::$app->user->login($user, $model->rememberMe ? $params['duration'] : 0);
                 if ($login) {

@@ -17,7 +17,7 @@ class PasswordEditForm extends User
      */
     public function rules()
     {
-        $params = require __DIR__ . '/../config/params.php';
+        $params = Yii::$app->getModule('account')->params;
         $rules = [
             ['verifyCode', 'captcha'],
 
