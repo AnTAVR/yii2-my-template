@@ -1,6 +1,5 @@
 <?php
 $params = require __DIR__ . '/common/params.php';
-$db = require __DIR__ . '/db.php';
 
 /** @noinspection HtmlUnknownTag */
 $config = [
@@ -34,7 +33,6 @@ $config = [
         'errorHandler' => [
             'errorAction' => '/site/error',
         ],
-        'db' => $db,
     ],
     'params' => $params,
 ];
