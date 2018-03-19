@@ -1,4 +1,7 @@
 <?php
+
+use yii\helpers\ArrayHelper;
+
 $test_db = require __DIR__ . '/test_db.php';
 
 $config = [
@@ -20,4 +23,4 @@ $config = [
     ],
 ];
 
-return $config;
+return ArrayHelper::merge(require __DIR__ . '/common.php', $config);

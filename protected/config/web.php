@@ -1,4 +1,7 @@
 <?php
+
+use yii\helpers\ArrayHelper;
+
 $config = [
     'id' => 'basic',
     'components' => [
@@ -27,4 +30,4 @@ if (YII_ENV_DEV) {
     ];
 }
 
-return $config;
+return ArrayHelper::merge(require __DIR__ . '/common.php', $config);
