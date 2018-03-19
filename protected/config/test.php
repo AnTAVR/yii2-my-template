@@ -1,7 +1,6 @@
 <?php
 $params = require __DIR__ . '/common/params.php';
 $db = require __DIR__ . '/test_db.php';
-$assetManager = require __DIR__ . '/assetManager.php';
 
 $config = [
     'language' => 'en-US', //+
@@ -33,14 +32,6 @@ $config = [
             'enableAutoLogin' => true,
             'loginUrl' => '/account/login'
         ],
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-                '/static/<meta_url>' => '/static/index',
-            ],
-        ],
-        'assetManager' => $assetManager,
         'db' => $db,
     ],
     'params' => $params,

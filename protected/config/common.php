@@ -35,6 +35,14 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ], //+
         'i18n' => $i18n, //+
+        'assetManager' => $assetManager, //+
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+                '/static/<meta_url>' => '/static/index',
+            ],
+        ], //+
 
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -64,14 +72,6 @@ $config = [
         'errorHandler' => [
             'errorAction' => '/site/error',
         ],
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-                '/static/<meta_url>' => '/static/index',
-            ],
-        ],
-        'assetManager' => $assetManager,
         'db' => $db,
     ],
     'params' => $params,

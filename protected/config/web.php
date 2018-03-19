@@ -1,7 +1,6 @@
 <?php
 $params = require __DIR__ . '/common/params.php';
 $db = require __DIR__ . '/db.php';
-$assetManager = require __DIR__ . '/assetManager.php';
 
 /** @noinspection HtmlUnknownTag */
 $config = [
@@ -35,14 +34,6 @@ $config = [
         'errorHandler' => [
             'errorAction' => '/site/error',
         ],
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-                '/static/<meta_url>' => '/static/index',
-            ],
-        ],
-        'assetManager' => $assetManager,
         'db' => $db,
     ],
     'params' => $params,
