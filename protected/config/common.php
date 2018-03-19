@@ -45,7 +45,6 @@ $config = [
         ], //+
         'db' => $db, //+
         'view' => [
-            'class' => 'app\components\View',
             'theme' => $params['theme'],
         ], //+
 
