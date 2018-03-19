@@ -21,10 +21,6 @@ $config = [
             'class' => 'app\components\Session',
             'savePath' => '@runtime/session',
         ],
-        'view' => [
-            'class' => 'app\components\View',
-            'theme' => $params['theme'],
-        ],
         'user' => [
             'identityClass' => 'app\modules\account\models\User',
             'enableAutoLogin' => true,
