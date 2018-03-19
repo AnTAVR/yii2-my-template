@@ -12,14 +12,14 @@ $aliases = require __DIR__ . '/common/aliases.php';
 
 /** @noinspection HtmlUnknownTag */
 $config = [
-    'language' => $params['language'], //+
-    'name' => $params['appName'], //+
-    'id' => 'common', //+
-    'basePath' => dirname(__DIR__), //+
-    'bootstrap' => ArrayHelper::merge(['log'], array_keys($modules)), //+
-    'aliases' => $aliases, //+
-    'container' => $container, //+
-    'modules' => $modules, //+
+    'language' => $params['language'],
+    'name' => $params['appName'],
+    'id' => 'common',
+    'basePath' => dirname(__DIR__),
+    'bootstrap' => ArrayHelper::merge(['log'], array_keys($modules)),
+    'aliases' => $aliases,
+    'container' => $container,
+    'modules' => $modules,
 
     'components' => [
         'log' => [
@@ -30,39 +30,34 @@ $config = [
                     'levels' => ['error', 'warning'],
                 ],
             ],
-        ], //+
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
-        ], //+
-        'i18n' => $i18n, //+
-        'assetManager' => $assetManager, //+
+        ],
+        'i18n' => $i18n,
+        'assetManager' => $assetManager,
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
                 '/static/<meta_url>' => '/static/index',
             ],
-        ], //+
-        'db' => $db, //+
+        ],
+        'db' => $db,
         'view' => [
             'theme' => $params['theme'],
-        ], //+
+        ],
         'user' => [
             'identityClass' => 'app\modules\account\models\User',
             'enableAutoLogin' => true,
             'loginUrl' => '/account/login'
-        ], //+
+        ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
             'useFileTransport' => YII_DEBUG,
-        ], //+
-
-        'session' => [
-            'class' => 'app\components\Session',
-            'savePath' => '@runtime/session',
         ],
         'errorHandler' => [
             'errorAction' => '/site/error',
