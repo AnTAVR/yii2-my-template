@@ -1,10 +1,7 @@
 <?php
 $params = require __DIR__ . '/common/params.php';
 $db = require __DIR__ . '/test_db.php';
-$modules = require __DIR__ . '/common/modules.php';
-$container = require __DIR__ . '/container.php';
 $assetManager = require __DIR__ . '/assetManager.php';
-$aliases = require __DIR__ . '/common/aliases.php';
 
 $config = [
     'language' => 'en-US', //+
@@ -46,9 +43,6 @@ $config = [
         'assetManager' => $assetManager,
         'db' => $db,
     ],
-    'aliases' => $aliases,
-    'container' => $container,
-    'modules' => $modules,
     'params' => $params,
 ];
 

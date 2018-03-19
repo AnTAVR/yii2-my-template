@@ -17,6 +17,9 @@ $config = [
     'id' => 'common', //+
     'basePath' => dirname(__DIR__), //+
     'bootstrap' => ArrayHelper::merge(['log'], array_keys($modules)), //+
+    'aliases' => $aliases, //+
+    'container' => $container, //+
+    'modules' => $modules, //+
 
     'components' => [
         'log' => [
@@ -71,9 +74,6 @@ $config = [
         'i18n' => $i18n,
         'db' => $db,
     ],
-    'aliases' => $aliases,
-    'container' => $container,
-    'modules' => $modules,
     'params' => $params,
 ];
 
