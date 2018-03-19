@@ -19,6 +19,16 @@ $config = [
     'bootstrap' => ArrayHelper::merge(['log'], array_keys($modules)), //+
 
     'components' => [
+        'log' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                ],
+            ],
+        ], //+
+
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'jXBjnr3BwJb-0lXBx8fZfYKKGdqkXb-X',
@@ -49,15 +59,6 @@ $config = [
         ],
         'errorHandler' => [
             'errorAction' => '/site/error',
-        ],
-        'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                ],
-            ],
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
