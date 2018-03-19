@@ -15,7 +15,6 @@ $config = [
         '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
-        'db' => $db,
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             // send all mails to a file by default. You have to set
@@ -74,6 +73,7 @@ $config = [
             ],
             */
         ],
+        'db' => $db,
     ],
     'container' => $container,
     'modules' => $modules,

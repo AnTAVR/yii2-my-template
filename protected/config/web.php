@@ -57,8 +57,6 @@ $config = [
                 ],
             ],
         ],
-        'i18n' => $i18n,
-        'db' => $db,
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -91,6 +89,8 @@ $config = [
                 ],
             ],
         ],
+        'i18n' => $i18n,
+        'db' => $db,
     ],
     'container' => $container,
     'modules' => $modules,
