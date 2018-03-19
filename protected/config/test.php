@@ -7,9 +7,8 @@ $assetManager = require __DIR__ . '/assetManager.php';
 $aliases = require __DIR__ . '/common/aliases.php';
 
 $config = [
-    'language' => 'en-US',
-    'name' => $params['appName'],
-    'id' => 'basic-tests',
+    'language' => 'en-US', //+
+    'id' => 'basic-tests', //+
     'bootstrap' => array_merge(['log'],  array_keys($modules)),
     'components' => [
         'request' => [

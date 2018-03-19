@@ -9,9 +9,9 @@ $aliases = require __DIR__ . '/common/aliases.php';
 
 /** @noinspection HtmlUnknownTag */
 $config = [
-    'language' => $params['language'],
-    'name' => $params['appName'],
-    'id' => 'common',
+    'language' => $params['language'], //+
+    'name' => $params['appName'], //+
+    'id' => 'common', //+
     'basePath' => dirname(__DIR__), //+
 
     'bootstrap' => array_merge(['log'], array_keys($modules)),

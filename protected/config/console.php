@@ -7,9 +7,7 @@ $container = require __DIR__ . '/container.php';
 $aliases = require __DIR__ . '/common/aliases.php';
 
 $config = [
-    'language' => $params['language'],
-    'name' => $params['appName'],
-    'id' => 'basic-console',
+    'id' => 'basic-console', //+
     'bootstrap' => ['log'] + array_keys($modules),
     'controllerNamespace' => 'app\commands',
     'components' => [
