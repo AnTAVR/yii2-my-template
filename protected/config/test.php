@@ -2,6 +2,7 @@
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/test_db.php';
 $modules = require __DIR__ . '/modules.php';
+$container = require __DIR__ . '/container.php';
 
 $config = [
     'language' => 'en-US',
@@ -77,6 +78,7 @@ $config = [
             */
         ],
     ],
+    'container' => $container,
     'modules' => $modules,
     'params' => $params,
 ];
