@@ -4,7 +4,6 @@ use yii\helpers\ArrayHelper;
 
 $params = require __DIR__ . '/common/params.php';
 $db = require __DIR__ . '/db.php';
-$i18n = require __DIR__ . '/i18n.php';
 $modules = require __DIR__ . '/common/modules.php';
 $container = require __DIR__ . '/container.php';
 $assetManager = require __DIR__ . '/assetManager.php';
@@ -34,7 +33,20 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'i18n' => $i18n,
+        'i18n' => [
+            'translations' => [
+                'app' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages',
+                    //'sourceLanguage' => 'en-US',
+                ],
+                'test' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages',
+                    //'sourceLanguage' => 'en-US',
+                ],
+            ]
+        ],
         'assetManager' => $assetManager,
         'urlManager' => [
             'enablePrettyUrl' => true,
