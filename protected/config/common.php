@@ -1,4 +1,7 @@
 <?php
+
+use yii\helpers\ArrayHelper;
+
 $params = require __DIR__ . '/common/params.php';
 $db = require __DIR__ . '/db.php';
 $i18n = require __DIR__ . '/i18n.php';
@@ -13,8 +16,8 @@ $config = [
     'name' => $params['appName'], //+
     'id' => 'common', //+
     'basePath' => dirname(__DIR__), //+
+    'bootstrap' => ArrayHelper::merge(['log'], array_keys($modules)), //+
 
-    'bootstrap' => array_merge(['log'], array_keys($modules)),
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation

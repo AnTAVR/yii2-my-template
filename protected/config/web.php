@@ -10,7 +10,6 @@ $aliases = require __DIR__ . '/common/aliases.php';
 /** @noinspection HtmlUnknownTag */
 $config = [
     'id' => 'basic', //+
-    'bootstrap' => array_merge(['log'],  array_keys($modules)),
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation

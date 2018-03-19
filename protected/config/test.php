@@ -9,7 +9,6 @@ $aliases = require __DIR__ . '/common/aliases.php';
 $config = [
     'language' => 'en-US', //+
     'id' => 'basic-tests', //+
-    'bootstrap' => array_merge(['log'],  array_keys($modules)),
     'components' => [
         'request' => [
             'cookieValidationKey' => 'test',

@@ -8,7 +8,6 @@ $aliases = require __DIR__ . '/common/aliases.php';
 
 $config = [
     'id' => 'basic-console', //+
-    'bootstrap' => ['log'] + array_keys($modules),
     'controllerNamespace' => 'app\commands',
     'components' => [
         'cache' => [
