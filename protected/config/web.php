@@ -5,7 +5,7 @@ $i18n = require __DIR__ . '/i18n.php';
 $modules = require __DIR__ . '/modules.php';
 $container = require __DIR__ . '/container.php';
 $assetManager = require __DIR__ . '/assetManager.php';
-$aliases = require __DIR__ . '/aliases.php';
+$aliases = require __DIR__ . '/common/aliases.php';
 
 /** @noinspection HtmlUnknownTag */
 $config = [
