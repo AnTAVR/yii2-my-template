@@ -1,13 +1,9 @@
 <?php
 $params = require __DIR__ . '/common/params.php';
-$db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic-console', //+
     'controllerNamespace' => 'app\commands',
-    'components' => [
-        'db' => $db,
-    ],
     'params' => $params,
     'controllerMap' => [
         'migrate' => 'bariew\moduleMigration\ModuleMigrateController',
