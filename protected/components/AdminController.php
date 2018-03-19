@@ -3,7 +3,6 @@
 namespace app\components;
 
 
-use yii\filters\AccessControl;
 use yii\web\Controller;
 
 class AdminController extends Controller
@@ -14,7 +13,7 @@ class AdminController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::class,
+                'class' => '\yii\filters\AccessControl',
                 'rules' => [
                     [
                         'allow' => true,
