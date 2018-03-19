@@ -1,24 +1,13 @@
 <?php
-$params = require __DIR__ . '/common/params.php';
-
-/** @noinspection HtmlUnknownTag */
 $config = [
-    'id' => 'basic', //+
+    'id' => 'basic',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'jXBjnr3BwJb-0lXBx8fZfYKKGdqkXb-X',
             'csrfParam' => 'ckCsrfToken',
-        ], //+
-        'session' => [
-            'class' => 'app\components\Session',
-            'savePath' => '@runtime/session',
-        ],
-        'errorHandler' => [
-            'errorAction' => '/site/error',
         ],
     ],
-    'params' => $params,
 ];
 
 if (YII_ENV_DEV) {
