@@ -8,8 +8,6 @@ return ArrayHelper::merge(require __DIR__ . '/common.php', [
     'components' => [
         'request' => [
             'cookieValidationKey' => 'test',
-            'csrfParam' => 'ckCsrfToken',
-            'enableCsrfValidation' => false,
             // but if you absolutely need it set cookie domain to localhost
             /*
             'csrfCookie' => [
