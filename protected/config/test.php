@@ -8,6 +8,7 @@ $config = [
     'components' => [
         'request' => [
             'cookieValidationKey' => 'test',
+            'csrfParam' => 'ckCsrfToken',
             'enableCsrfValidation' => false,
             // but if you absolutely need it set cookie domain to localhost
             /*
