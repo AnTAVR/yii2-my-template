@@ -7,7 +7,6 @@ use app\modules\uploader\models\UploaderImage;
 use app\modules\uploader\models\UploaderImageForm;
 use Yii;
 use yii\data\ActiveDataProvider;
-use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
@@ -26,7 +25,7 @@ class AdminImagesController extends AdminController
             parent::behaviors(),
             [
                 'verbs' => [
-                    'class' => VerbFilter::class,
+                    'class' => 'yii\filters\VerbFilter',
                     'actions' => [
                         'delete' => ['POST'],
                         'upload' => ['POST'],

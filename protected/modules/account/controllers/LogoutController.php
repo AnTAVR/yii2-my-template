@@ -2,7 +2,6 @@
 
 namespace app\modules\account\controllers;
 
-use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 
@@ -21,7 +20,7 @@ class LogoutController extends Controller
     {
         $behaviors = [
             'verbs' => [
-                'class' => VerbFilter::class,
+                'class' => 'yii\filters\VerbFilter',
                 'actions' => [
                     'index' => ['post'],
                 ],

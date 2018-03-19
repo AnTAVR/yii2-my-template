@@ -1,5 +1,6 @@
 <?php
 
+use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\Html;
 
@@ -22,7 +23,7 @@ GridView::widget([
         'staticUrl',
         'content_title',
         [
-            'class' => yii\grid\ActionColumn::class,
+            'class' => ActionColumn::class,
             'template' => '{viewP} {view} {update} {delete}',
             'buttons' => [
                 'viewP' => function (/** @noinspection PhpUnusedParameterInspection */

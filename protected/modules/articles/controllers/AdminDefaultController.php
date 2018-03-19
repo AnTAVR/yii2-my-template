@@ -6,7 +6,6 @@ use app\components\AdminController;
 use app\modules\articles\models\Articles;
 use Yii;
 use yii\data\ActiveDataProvider;
-use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 
@@ -24,7 +23,7 @@ class AdminDefaultController extends AdminController
             parent::behaviors(),
             [
                 'verbs' => [
-                    'class' => VerbFilter::class,
+                    'class' => 'yii\filters\VerbFilter',
                     'actions' => [
                         'delete' => ['POST'],
                     ],

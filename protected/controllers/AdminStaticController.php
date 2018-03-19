@@ -6,7 +6,6 @@ use app\components\AdminController;
 use app\models\StaticPage;
 use Yii;
 use yii\data\ActiveDataProvider;
-use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -27,7 +26,7 @@ class AdminStaticController extends AdminController
             parent::behaviors(),
             [
                 'verbs' => [
-                    'class' => VerbFilter::class,
+                    'class' => 'yii\filters\VerbFilter',
                     'actions' => [
                         'delete' => ['POST'],
                     ],
