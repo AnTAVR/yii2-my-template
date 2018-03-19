@@ -27,9 +27,6 @@ $config = [
             'class' => 'app\components\Session',
             'savePath' => '@runtime/session',
         ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
         'view' => [
             'class' => 'app\components\View',
             'theme' => $params['theme'],

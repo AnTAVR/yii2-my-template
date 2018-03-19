@@ -10,9 +10,6 @@ $config = [
     'id' => 'basic-console', //+
     'controllerNamespace' => 'app\commands',
     'components' => [
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
         'i18n' => $i18n,
         'db' => $db,
     ],

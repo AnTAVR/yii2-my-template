@@ -28,6 +28,9 @@ $config = [
                 ],
             ],
         ], //+
+        'cache' => [
+            'class' => 'yii\caching\FileCache',
+        ], //+
 
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -44,9 +47,6 @@ $config = [
         'session' => [
             'class' => 'app\components\Session',
             'savePath' => '@runtime/session',
-        ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
         ],
         'view' => [
             'class' => 'app\components\View',
