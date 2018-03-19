@@ -43,6 +43,7 @@ $config = [
                 '/static/<meta_url>' => '/static/index',
             ],
         ], //+
+        'db' => $db, //+
 
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -72,7 +73,6 @@ $config = [
         'errorHandler' => [
             'errorAction' => '/site/error',
         ],
-        'db' => $db,
     ],
     'params' => $params,
 ];
