@@ -34,6 +34,7 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ], //+
+        'i18n' => $i18n, //+
 
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -71,7 +72,6 @@ $config = [
             ],
         ],
         'assetManager' => $assetManager,
-        'i18n' => $i18n,
         'db' => $db,
     ],
     'params' => $params,

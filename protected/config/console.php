@@ -1,13 +1,11 @@
 <?php
 $params = require __DIR__ . '/common/params.php';
 $db = require __DIR__ . '/db.php';
-$i18n = require __DIR__ . '/i18n.php';
 
 $config = [
     'id' => 'basic-console', //+
     'controllerNamespace' => 'app\commands',
     'components' => [
-        'i18n' => $i18n,
         'db' => $db,
     ],
     'params' => $params,
