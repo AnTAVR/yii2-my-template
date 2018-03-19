@@ -4,7 +4,6 @@ namespace app\modules\account\controllers;
 
 use app\modules\account\models\PasswordEditForm;
 use Yii;
-use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 
@@ -14,7 +13,7 @@ class ProfileController extends Controller
     {
         $behaviors = [
             'access' => [
-                'class' => AccessControl::class,
+                'class' => '\yii\filters\AccessControl',
                 'rules' => [
                     [
                         'allow' => true,
