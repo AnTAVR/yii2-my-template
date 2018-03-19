@@ -2,7 +2,7 @@
 
 use yii\helpers\ArrayHelper;
 
-$config = [
+$__config = [
     'id' => 'basic-console',
     'controllerNamespace' => 'app\commands',
     'controllerMap' => [
@@ -17,10 +17,10 @@ $config = [
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
-    $config['bootstrap'][] = 'gii';
-    $config['modules']['gii'] = [
+    $__config['bootstrap'][] = 'gii';
+    $__config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
     ];
 }
 
-return ArrayHelper::merge(require __DIR__ . '/common.php', $config);
+return ArrayHelper::merge(require __DIR__ . '/common.php', $__config);
