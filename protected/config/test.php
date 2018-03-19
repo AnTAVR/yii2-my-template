@@ -23,11 +23,6 @@ $config = [
             // for the mailer to send real emails.
             'useFileTransport' => YII_DEBUG,
         ],
-        'user' => [
-            'identityClass' => 'app\modules\account\models\User',
-            'enableAutoLogin' => true,
-            'loginUrl' => '/account/login'
-        ],
         'db' => $test_db,
     ],
     'params' => $params,

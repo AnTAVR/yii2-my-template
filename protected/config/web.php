@@ -21,11 +21,6 @@ $config = [
             'class' => 'app\components\Session',
             'savePath' => '@runtime/session',
         ],
-        'user' => [
-            'identityClass' => 'app\modules\account\models\User',
-            'enableAutoLogin' => true,
-            'loginUrl' => '/account/login'
-        ],
         'errorHandler' => [
             'errorAction' => '/site/error',
         ],

@@ -47,6 +47,11 @@ $config = [
         'view' => [
             'theme' => $params['theme'],
         ], //+
+        'user' => [
+            'identityClass' => 'app\modules\account\models\User',
+            'enableAutoLogin' => true,
+            'loginUrl' => '/account/login'
+        ], //+
 
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -63,11 +68,6 @@ $config = [
         'session' => [
             'class' => 'app\components\Session',
             'savePath' => '@runtime/session',
-        ],
-        'user' => [
-            'identityClass' => 'app\modules\account\models\User',
-            'enableAutoLogin' => true,
-            'loginUrl' => '/account/login'
         ],
         'errorHandler' => [
             'errorAction' => '/site/error',
