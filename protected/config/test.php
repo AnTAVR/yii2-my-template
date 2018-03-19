@@ -17,6 +17,8 @@ return ArrayHelper::merge(require __DIR__ . '/common.php', [
             ],
             */
         ],
-        'db' => require __DIR__ . '/test_db.php',
+        'db' => [
+            'dsn' => require __DIR__ . '/test_db.php'
+        ],
     ],
 ]);
