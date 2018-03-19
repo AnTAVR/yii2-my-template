@@ -4,7 +4,6 @@ use yii\helpers\ArrayHelper;
 
 $params = require __DIR__ . '/common/params.php';
 $db = require __DIR__ . '/db.php';
-$modules = require __DIR__ . '/common/modules.php';
 
 /** @noinspection HtmlUnknownTag */
 $config = [
@@ -12,7 +11,7 @@ $config = [
     'name' => $params['appName'],
     'id' => 'common',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ArrayHelper::merge(['log'], array_keys($modules)),
+    'bootstrap' => ArrayHelper::merge(['log'], array_keys(require __DIR__ . '/common/modules.php')),
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
@@ -29,7 +28,7 @@ $config = [
         'singletons' => [
         ],
     ],
-    'modules' => $modules,
+    'modules' => require __DIR__ . '/common/modules.php',
 
     'components' => [
         'log' => [
