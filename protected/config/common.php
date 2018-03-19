@@ -6,7 +6,6 @@ $params = require __DIR__ . '/common/params.php';
 $db = require __DIR__ . '/db.php';
 $modules = require __DIR__ . '/common/modules.php';
 $assetManager = require __DIR__ . '/assetManager.php';
-$aliases = require __DIR__ . '/common/aliases.php';
 
 /** @noinspection HtmlUnknownTag */
 $config = [
@@ -15,7 +14,10 @@ $config = [
     'id' => 'common',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ArrayHelper::merge(['log'], array_keys($modules)),
-    'aliases' => $aliases,
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm' => '@vendor/npm-asset',
+    ],
     'container' => [
         'definitions' => [
             'yii\i18n\Formatter' => 'app\components\Formatter',
