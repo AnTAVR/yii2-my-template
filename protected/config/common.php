@@ -3,7 +3,6 @@
 use yii\helpers\ArrayHelper;
 
 $params = require __DIR__ . '/common/params.php';
-$db = require __DIR__ . '/common/db.php';
 
 /** @noinspection HtmlUnknownTag */
 $__config = [
@@ -88,7 +87,7 @@ $__config = [
                 '/static/<meta_url>' => '/static/index',
             ],
         ],
-        'db' => $db,
+        'db' => require __DIR__ . '/common/db.php',
         'view' => [
             'theme' => $params['theme'],
         ],
