@@ -15,16 +15,18 @@ $__config = [
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
-    $__config['bootstrap'][] = 'debug';
-    $__config['modules']['debug'] = [
-        'class' => 'yii\debug\Module',
+    $__config['bootstrap'][] = 'gii';
+
+    $__config['modules']['gii'] = [
+        'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
     ];
 
-    $__config['bootstrap'][] = 'gii';
-    $__config['modules']['gii'] = [
-        'class' => 'yii\gii\Module',
+    $__config['bootstrap'][] = 'debug';
+
+    $__config['modules']['debug'] = [
+        'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
     ];
