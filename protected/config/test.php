@@ -10,7 +10,6 @@ $config = [
     'language' => 'en-US',
     'name' => $params['appName'],
     'id' => 'basic-tests',
-    'basePath' => dirname(__DIR__),
     'bootstrap' => array_merge(['log'],  array_keys($modules)),
     'components' => [
         'request' => [

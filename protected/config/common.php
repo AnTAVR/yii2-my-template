@@ -11,8 +11,9 @@ $aliases = require __DIR__ . '/common/aliases.php';
 $config = [
     'language' => $params['language'],
     'name' => $params['appName'],
-    'id' => 'basic',
-    'bootstrap' => array_merge(['log'],  array_keys($modules)),
+    'id' => 'common',
+    'basePath' => dirname(__DIR__),
+    'bootstrap' => array_merge(['log'], array_keys($modules)),
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation

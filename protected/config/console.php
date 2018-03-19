@@ -10,7 +10,6 @@ $config = [
     'language' => $params['language'],
     'name' => $params['appName'],
     'id' => 'basic-console',
-    'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'] + array_keys($modules),
     'controllerNamespace' => 'app\commands',
     'components' => [
