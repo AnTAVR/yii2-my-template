@@ -1,10 +1,9 @@
 <?php
-$params = require __DIR__ . '/common/params.php';
 $test_db = require __DIR__ . '/test_db.php';
 
 $config = [
-    'language' => 'en-US', //+
-    'id' => 'basic-tests', //+
+    'language' => 'en-US',
+    'id' => 'basic-tests',
     'components' => [
         'request' => [
             'cookieValidationKey' => 'test',
@@ -16,13 +15,9 @@ $config = [
                 'domain' => 'localhost',
             ],
             */
-        ], //+
+        ],
         'db' => $test_db,
     ],
-    'params' => $params,
 ];
 
-/**
- * Application configuration shared by all test types
- */
 return $config;
