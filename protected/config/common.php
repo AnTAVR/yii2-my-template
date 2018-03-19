@@ -12,7 +12,8 @@ $config = [
     'language' => $params['language'],
     'name' => $params['appName'],
     'id' => 'common',
-    'basePath' => dirname(__DIR__),
+    'basePath' => dirname(__DIR__), //+
+
     'bootstrap' => array_merge(['log'], array_keys($modules)),
     'components' => [
         'request' => [
