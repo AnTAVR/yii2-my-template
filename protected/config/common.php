@@ -23,7 +23,7 @@ $__config = [
             'yii\web\View' => 'app\components\View',
             'yii\web\Session' => [
                 'class' => 'app\components\Session',
-                'savePath' => '@runtime/session',
+//                'savePath' => '@runtime/session',
             ],
         ],
         'singletons' => [
