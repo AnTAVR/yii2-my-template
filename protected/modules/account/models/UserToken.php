@@ -177,4 +177,18 @@ class UserToken extends ActiveRecord
         ]);
         return $token->save(false) ? $token : null;
     }
+
+    public static function createConfirmEmailToken($userId, $code)
+    {
+        $params = Yii::$app->getModule('account')->params;
+        $token = Yii::createObject([
+            'class' => static::class,
+            'user_id' => $userId,
+            'type' => self::TYPE_CONFIRM_EMAIL,
+            'code' => $code,
+            'expires_on' => time() + $params['expires_confirm_email'],
+        ]);
+        return $token->save(false) ? $token : null;
+    }
+
 }
