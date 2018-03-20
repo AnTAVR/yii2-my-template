@@ -11,6 +11,11 @@ use yii\web\UnauthorizedHttpException;
 /** @noinspection MissingPropertyAnnotationsInspection */
 /**
  * @property string $authKey
+ * @property string $status_txt
+ * @property string $tokenPasswordRaw
+ * @property string $tokenPassword
+ * @property string $tokenEmailRaw
+ * @property string $tokenEmail
  *
  * Database fields:
  * @property integer $id
@@ -33,7 +38,6 @@ use yii\web\UnauthorizedHttpException;
  * @property integer $last_request_at
  *
  * @property integer $session_at
- * @property string $status_txt
  * @property string $session
  */
 class User extends ActiveRecord implements IdentityInterface
@@ -153,4 +157,23 @@ class User extends ActiveRecord implements IdentityInterface
         return static::findOne(['id' => $id, 'status' => static::STATUS_ACTIVE]);
     }
 
+    public function getTokenPasswordRaw()
+    {
+        return $this->salt . $this->password_hash;
+    }
+
+    public function getTokenPassword()
+    {
+        return hash('sha256', $this->tokenPasswordRaw);
+    }
+
+    public function getTokenEmailRaw()
+    {
+        return $this->salt . $this->email_confirmed . $this->email;
+    }
+
+    public function getTokenEmail()
+    {
+        return hash('sha256', $this->tokenEmailRaw);
+    }
 }
