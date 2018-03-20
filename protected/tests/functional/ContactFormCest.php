@@ -9,14 +9,14 @@ class ContactFormCest
 
     public function openContactPage(\FunctionalTester $I)
     {
-        $I->see('Contact', 'h1');
+        $I->see('Feedback', 'h1');
     }
 
     public function submitEmptyForm(\FunctionalTester $I)
     {
         $I->submitForm('#contact-form', []);
         $I->expectTo('see validations errors');
-        $I->see('Contact', 'h1');
+        $I->see('Feedback', 'h1');
         $I->see('Name cannot be blank');
         $I->see('Email cannot be blank');
         $I->see('Subject cannot be blank');
@@ -51,7 +51,6 @@ class ContactFormCest
             'ContactForm[verifyCode]' => 'testme',
         ]);
         $I->seeEmailIsSent();
-        $I->dontSeeElement('#contact-form');
         $I->see('Thank you for contacting us. We will respond to you as soon as possible.');
     }
 }
