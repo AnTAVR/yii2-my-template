@@ -8,14 +8,6 @@ $__config = [
             'csrfParam' => 'ckCsrfToken',
             'enableCsrfValidation' => !YII_ENV_TEST,
         ],
-        'view' => [
-            'theme' => $params['theme'],
-        ],
-        'user' => [
-            'identityClass' => 'app\modules\account\models\User',
-            'enableAutoLogin' => true,
-            'loginUrl' => ['/login'],
-        ],
         'errorHandler' => [
             'errorAction' => '/site/error',
         ],
