@@ -96,7 +96,6 @@ class SignupForm extends User
      * Sends an email to the specified email address using the information collected by this model.
      *
      * @param UserToken $tokenModel
-     * @param string $url
      * @return boolean whether the email was sent
      * @throws \yii\base\InvalidConfigException
      */
