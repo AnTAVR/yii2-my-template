@@ -31,8 +31,6 @@ class Module extends ModuleOld implements BootstrapInterface
         Yii::$app->urlManager->addRules(
             [
                 '/account/admin-<controller>' => '/account/admin-<controller>',
-                '/login' => '/account/login',
-                '/logout' => '/account/logout',
                 '/signup' => '/account/signup',
                 '/signup/verify-email/<token:\w+>' => '/account/signup/verify-email',
                 '/password' => '/account/password',
