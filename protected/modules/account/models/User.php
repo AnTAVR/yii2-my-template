@@ -89,9 +89,9 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        $tokenModel = Token::findOne([
+        $tokenModel = UserToken::findOne([
             'code' => $token,
-            'type' => Token::TYPE_API_AUTH
+            'type' => UserToken::TYPE_API_AUTH
         ]);
 
         if (!$tokenModel or $tokenModel->isExpired) {
