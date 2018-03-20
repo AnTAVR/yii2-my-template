@@ -185,7 +185,7 @@ return [
     'Update Static Page: {name}' => 'Редактирование страницы: {name}',
     'Uploader Files' => 'Загрузка файлов',
     'Uploader Images' => 'Загрузка фото',
-    'User "{username}" status: "{status}"' => 'Пользователь "{username}" статус: "{status}"',
+    'User status: "{status}"' => 'Статус пользователя: "{status}"',
     'Username' => 'Имя пользователя',
     'Verification Code' => 'Проверочный код',
     'Verify Rules' => 'С правилами согласен',
