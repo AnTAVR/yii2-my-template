@@ -3,6 +3,7 @@
 namespace app\modules\account\controllers;
 
 use app\modules\account\models\SignupForm;
+use app\modules\account\models\User;
 use app\modules\account\models\UserToken;
 use Yii;
 use yii\helpers\Url;
@@ -110,7 +111,7 @@ class SignupController extends Controller
         $model = SignupForm::findOne($tokenModel->user_id);
         $tokenModel->delete();
 
-        if ($model) {
+        if ($model->status == User::STATUS_ACTIVE) {
             if ($model->token !== $tokenModel->code) {
                 throw new NotFoundHttpException(Yii::t('app', 'Token not found!'));
             }
@@ -118,6 +119,10 @@ class SignupController extends Controller
             $model->email_confirmed = true;
             $model->save(false);
             Yii::$app->session->addFlash('success', Yii::t('app', 'E-Mail is verified, now you can login.'));
+        } else {
+            $txt = Yii::t('app', 'User status: "{status}"', ['status' => $model->getStatusName()]);
+            Yii::$app->session->addFlash('error', $txt);
+            $model->addError('user', $txt);
         }
 
         return $this->redirect(Yii::$app->user->loginUrl);
