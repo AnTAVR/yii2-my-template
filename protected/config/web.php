@@ -2,7 +2,7 @@
 
 use yii\helpers\ArrayHelper;
 
-return ArrayHelper::merge(require __DIR__ . '/common.php', [
+return ArrayHelper::merge(require __DIR__ . '/common.php', require __DIR__ . '/common_web.php', [
     'id' => 'basic',
     'components' => [
         'request' => [
