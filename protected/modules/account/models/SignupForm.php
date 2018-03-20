@@ -89,7 +89,41 @@ class SignupForm extends User
         if ($runValidation && !$this->validate()) {
             return false;
         }
+        $security = Yii::$app->security;
+
+        $this->password_hash = $security->generatePasswordHash($this->password);
+        $this->salt = $security->generateRandomString(64);
+        $this->auth_key = $security->generateRandomString();
+        $this->created_ip = Yii::$app->request->isConsoleRequest ? '127.0.0.1' : Yii::$app->request->userIP;
+        $this->email_confirmed = (int)false;
+
+        if (!$this->save(false)) {
+            return false;
+
+        }
+        //the following three lines were added:
+//        $auth = Yii::$app->authManager;
+//        $authorRole = $auth->getRole('author');
+//        $auth->assign($authorRole, $this->id);
+
+        Yii::$app->session->addFlash('success', Yii::t('app', 'Account successfully registered.'));
+
+        $tokenModel = UserToken::createConfirmEmailToken($this->id, $this->tokenEmail);
+
+        if ($tokenModel) {
+            if ($this->sendEmail_VerifyEmail($tokenModel)) {
+                Yii::$app->session->addFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
+            } else {
+                Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
+            }
+            return true;
+        } else {
+            $txt = Yii::t('app', 'A letter with instructions has already been sent to E-Mail.');
+            Yii::$app->session->addFlash('error', $txt);
+            $this->addError('email', $txt);
+        }
         return true;
+
     }
 
     /**
