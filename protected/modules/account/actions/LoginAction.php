@@ -34,7 +34,9 @@ class LoginAction extends Action
                     return $this->controller->goBack();
                 }
             } else {
-                $model->addError('username', Yii::t('app', 'User "{username}" status: "{status}"', ['username' => $user->username, 'status' => $user->getStatusName()]));
+                $txt = Yii::t('app', 'User status: "{status}"', ['status' => $user->getStatusName()]);
+                Yii::$app->session->addFlash('error', $txt);
+                $model->addError('username', $txt);
             }
         }
         return $this->controller->render('@app/modules/account/views/login', [
