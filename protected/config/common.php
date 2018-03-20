@@ -14,6 +14,8 @@ $__config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
+        '@webroot' => dirname(dirname(__DIR__)),
+        '@web' => '/',
     ],
     'container' => [
         'definitions' => [
@@ -30,10 +32,6 @@ $__config = [
     'modules' => require __DIR__ . '/common/modules.php',
 
     'components' => [
-        'request' => [
-            'csrfParam' => 'ckCsrfToken',
-            'enableCsrfValidation' => !YII_ENV_TEST,
-        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -98,6 +96,7 @@ $__config = [
             'theme' => $params['theme'],
         ],
         'user' => [
+            'class' => 'yii\web\User',
             'identityClass' => 'app\modules\account\models\User',
             'enableAutoLogin' => true,
             'loginUrl' => ['/login'],
@@ -108,9 +107,6 @@ $__config = [
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
             'useFileTransport' => YII_DEBUG,
-        ],
-        'errorHandler' => [
-            'errorAction' => '/site/error',
         ],
     ],
     'params' => $params,
