@@ -4,6 +4,7 @@ namespace app\modules\account\controllers;
 
 use app\modules\account\models\PasswordForm;
 use app\modules\account\models\PasswordNewForm;
+use app\modules\account\models\User;
 use app\modules\account\models\UserToken;
 use Yii;
 use yii\helpers\Url;
@@ -27,38 +28,43 @@ class PasswordController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $user = PasswordForm::findOne(['email' => $model->email]);
+            if ($user->status == User::STATUS_ACTIVE) {
+                $tokenModel = new UserToken([
+                    'user_id' => $user->id,
+                    'code' => $user->token,
+                    'type' => UserToken::TYPE_RECOVERY_PASSWORD,
+                    'expires_on' => time() + $this->module->params['expires_recovery_password'],
+                ]);
 
-            $tokenModel = new UserToken([
-                'user_id' => $user->id,
-                'code' => $user->token,
-                'type' => UserToken::TYPE_RECOVERY_PASSWORD,
-                'expires_on' => time() + $this->module->params['expires_recovery_password'],
-            ]);
+                if ($tokenModel->save()) {
+                    $url = Url::to(['new', 'token' => $tokenModel->code], true);
+                    $body = Yii::t('app', 'To password recovery, follow the link: {url}', ['url' => $url]);
+                    $body .= "\n";
+                    $body .= Yii::t('app', 'Is valid until: {expires}', ['expires' => $tokenModel->getExpiresTxt()]);
+                    $body .= "\n";
+                    $body .= "\n";
+                    $body .= Yii::t('app', 'IP: {ip}', ['ip' => Yii::$app->request->userIP]);
+                    $subject = Yii::t('app', 'Password recovery from {site}', ['site' => Yii::$app->name]);
 
-            if ($tokenModel->save()) {
-                $url = Url::to(['new', 'token' => $tokenModel->code], true);
-                $body = Yii::t('app', 'To password recovery, follow the link: {url}', ['url' => $url]);
-                $body .= "\n";
-                $body .= Yii::t('app', 'Is valid until: {expires}', ['expires' => $tokenModel->getExpiresTxt()]);
-                $body .= "\n";
-                $body .= "\n";
-                $body .= Yii::t('app', 'IP: {ip}', ['ip' => Yii::$app->request->userIP]);
-                $subject = Yii::t('app', 'Password recovery from {site}', ['site' => Yii::$app->name]);
-
-                $ret = Yii::$app->mailer->compose()
-                    ->setTo($user->email)
-                    ->setFrom([Yii::$app->params['supportEmail'] => Yii::t('app', '{appname} robot', ['appname' => Yii::$app->name])])
-                    ->setSubject($subject)
-                    ->setTextBody($body)
-                    ->send();
-                if ($ret) {
-                    Yii::$app->session->addFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
+                    $ret = Yii::$app->mailer->compose()
+                        ->setTo($user->email)
+                        ->setFrom([Yii::$app->params['supportEmail'] => Yii::t('app', '{appname} robot', ['appname' => Yii::$app->name])])
+                        ->setSubject($subject)
+                        ->setTextBody($body)
+                        ->send();
+                    if ($ret) {
+                        Yii::$app->session->addFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
+                    } else {
+                        Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
+                    }
+                    return $this->goHome();
                 } else {
-                    Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
+                    $txt = Yii::t('app', 'A letter with instructions has already been sent to E-Mail.');
+                    Yii::$app->session->addFlash('error', $txt);
+                    $model->addError('email', $txt);
                 }
-                return $this->goHome();
             } else {
-                $txt = Yii::t('app', 'A letter with instructions has already been sent to E-Mail.');
+                $txt = Yii::t('app', 'User status: "{status}"', ['status' => $user->getStatusName()]);
                 Yii::$app->session->addFlash('error', $txt);
                 $model->addError('email', $txt);
             }
@@ -87,20 +93,27 @@ class PasswordController extends Controller
         $tokenModel = UserToken::findByCode($token, UserToken::TYPE_RECOVERY_PASSWORD);
 
         $model = PasswordNewForm::findOne($tokenModel->user_id);
-        if ($model->token !== $tokenModel->code) {
+        if ($model->status == User::STATUS_ACTIVE) {
+            if ($model->token !== $tokenModel->code) {
+                $tokenModel->delete();
+                throw new NotFoundHttpException(Yii::t('app', 'Token not found!'));
+            }
+
+            if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+                $security = Yii::$app->security;
+                $model->password_hash = $security->generatePasswordHash($model->password);
+                $model->save(false);
+
+                Yii::$app->session->addFlash('success', Yii::t('app', 'New password was saved.'));
+
+                $tokenModel->delete();
+                return $this->redirect(Yii::$app->user->loginUrl);
+            }
+        } else {
             $tokenModel->delete();
-            throw new NotFoundHttpException(Yii::t('app', 'Token not found!'));
-        }
-
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $security = Yii::$app->security;
-            $model->password_hash = $security->generatePasswordHash($model->password);
-            $model->save(false);
-
-            Yii::$app->session->addFlash('success', Yii::t('app', 'New password was saved.'));
-
-            $tokenModel->delete();
-            return $this->redirect(Yii::$app->user->loginUrl);
+            $txt = Yii::t('app', 'User status: "{status}"', ['status' => $model->getStatusName()]);
+            Yii::$app->session->addFlash('error', $txt);
+            $model->addError('password', $txt);
         }
         return $this->render('new', [
             'model' => $model,
