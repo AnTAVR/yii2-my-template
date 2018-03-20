@@ -20,7 +20,7 @@ use yii\web\NotFoundHttpException;
  * @property integer $created_at
  * @property integer $expires_on
  */
-class Token extends ActiveRecord
+class UserToken extends ActiveRecord
 {
     const TYPE_API_AUTH = 0;
     const TYPE_CONFIRM_EMAIL = 2;
