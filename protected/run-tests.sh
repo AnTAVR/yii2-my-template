@@ -6,7 +6,8 @@ PHP_PID=${!}
 
 cd protected
 
-./vendor/bin/codecept -vvv build
+#./tests/bin/yii migrate
+#./vendor/bin/codecept -vvv build
 ./vendor/bin/codecept -vvv run
 
 kill ${PHP_PID}
