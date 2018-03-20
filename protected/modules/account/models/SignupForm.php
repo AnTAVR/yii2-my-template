@@ -138,6 +138,7 @@ class SignupForm extends User
     {
         $tokenModel = UserToken::createConfirmEmailToken($this->id, $this->tokenEmail);
         if (!$tokenModel) {
+            $this->addError('email', Yii::t('app', 'A letter with instructions has already been sent to E-Mail.'));
             return null;
         }
         return $this->sendEmail_VerifyEmail($tokenModel);
