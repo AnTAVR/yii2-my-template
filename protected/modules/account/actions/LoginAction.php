@@ -37,7 +37,7 @@ class LoginAction extends Action
                 $model->addError('username', Yii::t('app', 'User "{username}" status: "{status}"', ['username' => $user->username, 'status' => $user->getStatusName()]));
             }
         }
-        return $this->controller->render('@app/modules/account/views/login/index', [
+        return $this->controller->render('@app/modules/account/views/login', [
             'model' => $model,
         ]);
     }
