@@ -32,7 +32,18 @@ class SignupController extends Controller
         $model = new SignupForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-            return $this->goHome();
+            Yii::$app->session->addFlash('success', Yii::t('app', 'Account successfully registered.'));
+
+            $ret = $model->sendVerifyEmailToken();
+            if ($ret == null) {
+                Yii::$app->session->addFlash('error', $model->getFirstError('email'));
+            } elseif ($ret) {
+                Yii::$app->session->addFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
+                return $this->goHome();
+            } else {
+                Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
+                return $this->goHome();
+            }
         }
         return $this->render('index', [
             'model' => $model,
