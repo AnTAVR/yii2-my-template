@@ -133,4 +133,13 @@ class SignupForm extends User
             ->setTextBody($body)
             ->send();
     }
+
+    public function sendVerifyEmailToken()
+    {
+        $tokenModel = UserToken::createConfirmEmailToken($this->id, $this->tokenEmail);
+        if (!$tokenModel) {
+            return null;
+        }
+        return $this->sendEmail_VerifyEmail($tokenModel);
+    }
 }
