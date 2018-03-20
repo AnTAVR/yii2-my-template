@@ -8,8 +8,8 @@ use yii\helpers\Html;
 
 /**
  *
- * @property string $tokenRaw
- * @property mixed $token
+ * @property string $tokenEmailRaw
+ * @property mixed $tokenEmail
  */
 class SignupForm extends User
 {
@@ -88,13 +88,13 @@ class SignupForm extends User
         return ArrayHelper::merge(parent::attributeHints(), $hints);
     }
 
-    public function getTokenRaw()
+    public function getTokenEmailRaw()
     {
         return $this->salt . $this->email_confirmed . $this->email;
     }
 
-    public function getToken()
+    public function getTokenEmail()
     {
-        return hash('sha256', $this->tokenRaw);
+        return hash('sha256', $this->tokenEmailRaw);
     }
 }
