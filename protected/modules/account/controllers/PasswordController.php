@@ -4,7 +4,7 @@ namespace app\modules\account\controllers;
 
 use app\modules\account\models\PasswordForm;
 use app\modules\account\models\PasswordNewForm;
-use app\modules\account\models\Token;
+use app\modules\account\models\UserToken;
 use Yii;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -28,10 +28,10 @@ class PasswordController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $user = PasswordForm::findOne(['email' => $model->email]);
 
-            $tokenModel = new Token([
+            $tokenModel = new UserToken([
                 'user_id' => $user->id,
                 'code' => $user->token,
-                'type' => Token::TYPE_RECOVERY_PASSWORD,
+                'type' => UserToken::TYPE_RECOVERY_PASSWORD,
                 'expires_on' => time() + $this->module->params['expires_recovery_password'],
             ]);
 
@@ -84,7 +84,7 @@ class PasswordController extends Controller
             return $this->goHome();
         }
 
-        $tokenModel = Token::findByCode($token, Token::TYPE_RECOVERY_PASSWORD);
+        $tokenModel = UserToken::findByCode($token, UserToken::TYPE_RECOVERY_PASSWORD);
 
         $model = PasswordNewForm::findOne($tokenModel->user_id);
         if ($model->token !== $tokenModel->code) {
