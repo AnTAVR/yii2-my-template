@@ -19,12 +19,13 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "yiisoft/yii2-imagine": "*",
-        "ckeditor/ckeditor": "~4.8.0+full",
+      "yiisoft/yii2-authclient": "*",
+      "yiisoft/yii2-jui": "^2.0",
         "bower-asset/smalot-bootstrap-datetimepicker": "2.4.4",
         "bower-asset/normalize-css": "8.0.0",
+      "ckeditor/ckeditor": "~4.8.0+full",
         "bariew/yii2-module-migration-controller": "*",
-        "2amigos/yii2-file-upload-widget": "~1.0",
-        "yiisoft/yii2-jui": "^2.0"
+      "2amigos/yii2-file-upload-widget": "~1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
