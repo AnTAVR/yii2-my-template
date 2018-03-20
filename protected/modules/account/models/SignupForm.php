@@ -4,6 +4,7 @@ namespace app\modules\account\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 
 /**
  *
@@ -82,6 +83,7 @@ class SignupForm extends User
             'username' => Yii::t('app', 'Possible characters ({chars})', ['chars' => $params['username.hint']]),
             'email' => Yii::t('app', 'E-Mail must be valid, a letter with instructions will be sent to it.'),
             'password' => Yii::t('app', 'Set a complex password using uppercase and lowercase letters, numbers and special characters.'),
+            'verifyRules' => Html::a(Yii::t('app', 'Rules'), ['/static/index', 'meta_url' => 'rules'], ['class' => 'label label-success', 'target' => '_blank']),
         ];
         return ArrayHelper::merge(parent::attributeHints(), $hints);
     }
