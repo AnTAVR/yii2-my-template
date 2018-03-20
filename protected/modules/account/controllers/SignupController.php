@@ -3,7 +3,7 @@
 namespace app\modules\account\controllers;
 
 use app\modules\account\models\SignupForm;
-use app\modules\account\models\Token;
+use app\modules\account\models\UserToken;
 use Yii;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -48,10 +48,10 @@ class SignupController extends Controller
 
                 Yii::$app->session->addFlash('success', Yii::t('app', 'Account successfully registered.'));
 
-                $tokenModel = new Token([
+                $tokenModel = new UserToken([
                     'user_id' => $model->id,
                     'code' => $model->token,
-                    'type' => Token::TYPE_CONFIRM_EMAIL,
+                    'type' => UserToken::TYPE_CONFIRM_EMAIL,
                     'expires_on' => time() + $this->module->params['expires_confirm_email'],
                 ]);
 
@@ -105,7 +105,7 @@ class SignupController extends Controller
             return $this->goHome();
         }
 
-        $tokenModel = Token::findByCode($token, Token::TYPE_CONFIRM_EMAIL);
+        $tokenModel = UserToken::findByCode($token, UserToken::TYPE_CONFIRM_EMAIL);
 
         $model = SignupForm::findOne($tokenModel->user_id);
         $tokenModel->delete();
