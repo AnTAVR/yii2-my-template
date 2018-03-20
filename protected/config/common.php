@@ -84,7 +84,7 @@ $__config = [
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'showScriptName' => false,
+            'showScriptName' => YII_ENV_TEST,
             'rules' => [
                 '/login' => '/account/login',
                 '/logout' => '/account/logout',
