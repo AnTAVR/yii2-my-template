@@ -23,6 +23,7 @@ $__config = [
             'yii\web\View' => 'app\components\View',
             'yii\web\Session' => [
                 'class' => 'app\components\Session',
+//                 @todo: Из за установки не работают тесты!!!
 //                'savePath' => '@runtime/session',
             ],
         ],
