@@ -31,7 +31,7 @@ class PasswordController extends Controller
             if ($user->status == User::STATUS_ACTIVE) {
                 $tokenModel = new UserToken([
                     'user_id' => $user->id,
-                    'code' => $user->token,
+                    'code' => $user->tokenPassword,
                     'type' => UserToken::TYPE_RECOVERY_PASSWORD,
                     'expires_on' => time() + $this->module->params['expires_recovery_password'],
                 ]);
@@ -94,7 +94,7 @@ class PasswordController extends Controller
 
         $model = PasswordNewForm::findOne($tokenModel->user_id);
         if ($model->status == User::STATUS_ACTIVE) {
-            if ($model->token !== $tokenModel->code) {
+            if ($model->tokenPassword !== $tokenModel->code) {
                 $tokenModel->delete();
                 throw new NotFoundHttpException(Yii::t('app', 'Token not found!'));
             }

@@ -3,20 +3,20 @@
 namespace app\modules\account\models;
 
 /**
- * @property string $tokenRaw
- * @property string $token
+ * @property string $tokenPasswordRaw
+ * @property string $tokenPassword
  * @property string $salt
  * @property string $password_hash
  */
 trait PasswordTrait
 {
-    public function getTokenRaw()
+    public function getTokenPasswordRaw()
     {
         return $this->salt . $this->password_hash;
     }
 
     public function getToken()
     {
-        return hash('sha256', $this->tokenRaw);
+        return hash('sha256', $this->tokenPasswordRaw);
     }
 }
