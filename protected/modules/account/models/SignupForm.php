@@ -87,14 +87,4 @@ class SignupForm extends User
         ];
         return ArrayHelper::merge(parent::attributeHints(), $hints);
     }
-
-    public function getTokenEmailRaw()
-    {
-        return $this->salt . $this->email_confirmed . $this->email;
-    }
-
-    public function getTokenEmail()
-    {
-        return hash('sha256', $this->tokenEmailRaw);
-    }
 }
