@@ -6,7 +6,6 @@ use app\modules\account\models\SignupForm;
 use app\modules\account\models\User;
 use app\modules\account\models\UserToken;
 use Yii;
-use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -51,28 +50,13 @@ class SignupController extends Controller
 
                 $tokenModel = new UserToken([
                     'user_id' => $model->id,
-                    'code' => $model->token,
+                    'code' => $model->tokenEmail,
                     'type' => UserToken::TYPE_CONFIRM_EMAIL,
                     'expires_on' => time() + $this->module->params['expires_confirm_email'],
                 ]);
 
                 if ($tokenModel->save()) {
-                    $url = Url::to(['verify-email', 'token' => $tokenModel->code], true);
-                    $body = Yii::t('app', 'To confirm E-Mail, follow the link: {url}', ['url' => $url]);
-                    $body .= "\n";
-                    $body .= Yii::t('app', 'Is valid until: {expires}', ['expires' => $tokenModel->getExpiresTxt()]);
-                    $body .= "\n";
-                    $body .= "\n";
-                    $body .= Yii::t('app', 'IP: {ip}', ['ip' => Yii::$app->request->userIP]);
-                    $subject = Yii::t('app', 'Registration on the site {site}', ['site' => Yii::$app->name]);
-
-                    $ret = Yii::$app->mailer->compose()
-                        ->setTo($model->email)
-                        ->setFrom([Yii::$app->params['supportEmail'] => Yii::t('app', '{appname} robot', ['appname' => Yii::$app->name])])
-                        ->setSubject($subject)
-                        ->setTextBody($body)
-                        ->send();
-                    if ($ret) {
+                    if ($model->sendEmail_VerifyEmail($tokenModel)) {
                         Yii::$app->session->addFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
                     } else {
                         Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
