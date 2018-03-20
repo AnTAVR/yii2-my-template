@@ -15,7 +15,7 @@ trait PasswordTrait
         return $this->salt . $this->password_hash;
     }
 
-    public function getToken()
+    public function getTokenPassword()
     {
         return hash('sha256', $this->tokenPasswordRaw);
     }
