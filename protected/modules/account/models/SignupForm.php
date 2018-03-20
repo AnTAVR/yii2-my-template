@@ -6,11 +6,6 @@ use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
-/**
- *
- * @property string $tokenEmailRaw
- * @property mixed $tokenEmail
- */
 class SignupForm extends User
 {
     public $password;
@@ -86,5 +81,13 @@ class SignupForm extends User
             'verifyRules' => Html::a(Yii::t('app', 'Rules'), ['/static/index', 'meta_url' => 'rules'], ['class' => 'label label-success', 'target' => '_blank']),
         ];
         return ArrayHelper::merge(parent::attributeHints(), $hints);
+    }
+
+    public function signup($runValidation = true)
+    {
+        if ($runValidation && !$this->validate()) {
+            return false;
+        }
+        return true;
     }
 }
