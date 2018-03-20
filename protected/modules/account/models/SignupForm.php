@@ -5,6 +5,7 @@ namespace app\modules\account\models;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 class SignupForm extends User
 {
@@ -89,5 +90,33 @@ class SignupForm extends User
             return false;
         }
         return true;
+    }
+
+    /**
+     * Sends an email to the specified email address using the information collected by this model.
+     *
+     * @param UserToken $tokenModel
+     * @param string $url
+     * @return boolean whether the email was sent
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function sendEmail_VerifyEmail(UserToken $tokenModel)
+    {
+        $url = Url::to(['/account/signup/verify-email', 'token' => $tokenModel->code], true);
+        $body = Yii::t('app', 'To confirm E-Mail, follow the link: {url}', ['url' => $url]);
+        $body .= "\n";
+        $body .= Yii::t('app', 'Is valid until: {expires}', ['expires' => $tokenModel->getExpiresTxt()]);
+        $body .= "\n";
+        $body .= "\n";
+        $body .= Yii::t('app', 'IP: {ip}', ['ip' => Yii::$app->request->userIP]);
+        $subject = Yii::t('app', 'Registration on the site {site}', ['site' => Yii::$app->name]);
+
+        return Yii::$app->mailer->compose()
+            ->setTo($this->email)
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::t('app', '{appname} robot', ['appname' => Yii::$app->name])])
+            ->setSubject($subject)
+            ->setTextBody($body)
+            ->send();
+
     }
 }
