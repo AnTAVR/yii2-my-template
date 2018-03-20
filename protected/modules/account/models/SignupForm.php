@@ -105,24 +105,7 @@ class SignupForm extends User
 //        $authorRole = $auth->getRole('author');
 //        $auth->assign($authorRole, $this->id);
 
-        Yii::$app->session->addFlash('success', Yii::t('app', 'Account successfully registered.'));
-
-        $tokenModel = UserToken::createConfirmEmailToken($this->id, $this->tokenEmail);
-
-        if ($tokenModel) {
-            if ($this->sendEmail_VerifyEmail($tokenModel)) {
-                Yii::$app->session->addFlash('success', Yii::t('app', 'A letter with instructions was sent to E-Mail.'));
-            } else {
-                Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
-            }
-            return true;
-        } else {
-            $txt = Yii::t('app', 'A letter with instructions has already been sent to E-Mail.');
-            Yii::$app->session->addFlash('error', $txt);
-            $this->addError('email', $txt);
-        }
-        return false;
-
+        return true;
     }
 
     /**
@@ -149,6 +132,5 @@ class SignupForm extends User
             ->setSubject($subject)
             ->setTextBody($body)
             ->send();
-
     }
 }
