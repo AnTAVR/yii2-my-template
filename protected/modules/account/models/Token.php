@@ -9,7 +9,7 @@ use yii\web\NotFoundHttpException;
 /** @noinspection MissingPropertyAnnotationsInspection */
 
 /**
- * This is the model class for table "token".
+ * This is the model class for table "user_token".
  *
  * @property bool $isExpired
  *
