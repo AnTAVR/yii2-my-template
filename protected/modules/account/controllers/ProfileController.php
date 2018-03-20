@@ -3,6 +3,7 @@
 namespace app\modules\account\controllers;
 
 use app\modules\account\models\PasswordEditForm;
+use app\modules\account\models\User;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
@@ -21,6 +22,12 @@ class ProfileController extends Controller
                     ],
                 ],
             ],
+            'verbs' => [
+                'class' => 'yii\filters\VerbFilter',
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
         ]);
     }
 
@@ -35,6 +42,17 @@ class ProfileController extends Controller
         return $this->render('index', [
             'identity' => $identity,
         ]);
+    }
+
+    public function actionDelete()
+    {
+        /** @var $identity \app\modules\account\models\User */
+        $identity = Yii::$app->user->identity;
+        $identity->status = User::STATUS_DELETED;
+        $identity->save();
+        Yii::$app->user->logout(false);
+
+        return $this->goHome();
     }
 
     /**
