@@ -4,6 +4,7 @@ namespace app\modules\account\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 
 /**
  * LoginForm is the model behind the login form.
@@ -54,6 +55,22 @@ class LoginForm extends User
             'verifyCode' => Yii::t('app', 'Verification Code'),
         ];
         return ArrayHelper::merge(parent::attributeLabels(), $labels);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeHints()
+    {
+        $params = Yii::$app->getModule('account')->params;
+        $hints = [
+            'password' => Html::a(Yii::t('app', 'Password Reset'), ['/account/password'], ['class' => 'label label-danger']),
+        ];
+        if ($params['signup']) {
+            $hints['username'] = Html::a(Yii::t('app', 'Signup'), ['/account/signup'], ['class' => 'label label-success']);
+        }
+
+        return ArrayHelper::merge(parent::attributeHints(), $hints);
     }
 
     /**
