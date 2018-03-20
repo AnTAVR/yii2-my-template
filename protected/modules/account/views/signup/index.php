@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?= $form->field($model, 'repeatPassword')->passwordInput() ?>
 
-<?= $form->field($model, 'verifyRules')->checkbox()->hint(Html::a(Yii::t('app', 'Rules'), ['/static/index', 'meta_url' => 'rules'], ['class' => 'label label-success', 'target' => '_blank'])) ?>
+<?= $form->field($model, 'verifyRules')->checkbox() ?>
 
 <?= $form->field($model, 'verifyCode')->widget(Captcha::class) ?>
 
