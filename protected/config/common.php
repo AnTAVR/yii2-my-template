@@ -100,7 +100,7 @@ $__config = [
         'user' => [
             'identityClass' => 'app\modules\account\models\User',
             'enableAutoLogin' => true,
-            'loginUrl' => '/login',
+            'loginUrl' => ['/login'],
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
