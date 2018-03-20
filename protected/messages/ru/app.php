@@ -74,6 +74,7 @@ return [
     'All rights, including related copyrights are<br>reserved by the respective owners.' => 'Все авторские права, включая смежные авторские,<br>сохраняются за правообладателями.',
     'Application for a callback' => 'Заявка на обратный звонок',
     'Application for a callback from {site}' => 'Заявка на обратный звонок с {site}',
+    'Are you sure you want to delete account?' => 'Вы действительно хотите удалить учетную запись?',
     'Are you sure you want to delete this item?' => 'Вы уверены, что хотите удалить этот элемент?',
     'Articles' => 'Статьи',
     'Articles Url' => 'Урл статьи',
