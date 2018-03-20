@@ -1,10 +1,7 @@
 #!/bin/bash
-cd ..
 
-php -S localhost:8080 &
+./yii serve -t '@webroot' &
 PHP_PID=${!}
-
-cd protected
 
 #./tests/bin/yii migrate
 #./vendor/bin/codecept -vvv build
