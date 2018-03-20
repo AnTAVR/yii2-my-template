@@ -55,7 +55,7 @@ if (Yii::$app->user->isGuest) {
         ['label' => Yii::t('app', 'Profile'), 'url' => ['/account']],
         '<li class="divider"></li>',
         ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-out"></span> ' . Yii::t('app', 'Logout'),
-            'url' => ['/account/logout'], 'linkOptions' => ['data' => ['method' => 'post']]],
+            'url' => ['/logout'], 'linkOptions' => ['data' => ['method' => 'post']]],
     ]);
 
     /** @var $identity \app\modules\account\models\User */
