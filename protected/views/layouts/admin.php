@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use app\assets\AppSiteAsset;
+use app\widgets\Alert;
 use app\widgets\Thumbnail\Thumbnail;
 use app\widgets\TopLink\TopLink;
 use yii\bootstrap\Nav;
@@ -101,6 +102,8 @@ $moduleId = Yii::$app->controller->module->id;
             'homeLink' => ['label' => Yii::t('app', 'Admin panel'), 'url' => ['/admin-site']],
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
+
+        <?= Alert::widget() ?>
 
         <div class="content">
             <?= $content ?>
