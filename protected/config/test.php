@@ -5,16 +5,16 @@ use yii\helpers\ArrayHelper;
 return ArrayHelper::merge(require __DIR__ . '/common.php', require __DIR__ . '/common_web.php', [
     'language' => 'en-US',
     'id' => 'basic-tests',
-    'container' => [
-        'definitions' => [
-            'yii\bootstrap\ActiveForm' => [
-                'enableClientValidation' => false,
-            ],
-            'yii\widgets\ActiveForm' => [
-                'enableClientValidation' => false,
-            ],
-        ],
-    ],
+//    'container' => [
+//        'definitions' => [
+//            'yii\bootstrap\ActiveForm' => [
+//                'enableClientValidation' => false,
+//            ],
+//            'yii\widgets\ActiveForm' => [
+//                'enableClientValidation' => false,
+//            ],
+//        ],
+//    ],
     'components' => [
         'request' => [
             'cookieValidationKey' => 'test',
