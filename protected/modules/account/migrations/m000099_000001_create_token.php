@@ -1,7 +1,7 @@
 <?php
 
-use app\modules\account\models\Token;
 use app\modules\account\models\User;
+use app\modules\account\models\UserToken;
 use yii\db\Migration;
 
 
@@ -15,7 +15,7 @@ class m000099_000001_create_token extends Migration
     public function init()
     {
         parent::init();
-        $this->tableName = Token::tableName();
+        $this->tableName = UserToken::tableName();
     }
 
     public function up()
