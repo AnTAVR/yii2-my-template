@@ -75,7 +75,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne(['id' => $id, 'status' => static::STATUS_ACTIVE]);
+        return static::findUserActive($id);
     }
 
     /**
@@ -98,7 +98,7 @@ class User extends ActiveRecord implements IdentityInterface
             throw new UnauthorizedHttpException(Yii::t('app', 'Auth code not found or expired!'));
         }
 
-        return static::findOne(['id' => $tokenModel->user_id, 'status' => static::STATUS_ACTIVE]);
+        return static::findUserActive($tokenModel->user_id);
     }
 
     /**
@@ -147,4 +147,10 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return isset(self::$statusName[$this->status]) ? self::$statusName[$this->status] : 'None';
     }
+
+    public static function findUserActive($id)
+    {
+        return static::findOne(['id' => $id, 'status' => static::STATUS_ACTIVE]);
+    }
+
 }
