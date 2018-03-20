@@ -94,7 +94,7 @@ class SignupForm extends User
         $this->password_hash = $security->generatePasswordHash($this->password);
         $this->salt = $security->generateRandomString(64);
         $this->auth_key = $security->generateRandomString();
-        $this->created_ip = Yii::$app->request->isConsoleRequest ? '127.0.0.1' : Yii::$app->request->userIP;
+        $this->created_ip = Yii::$app->request->isConsoleRequest ? '0.0.0.0' : Yii::$app->request->userIP;
         $this->email_confirmed = (int)false;
 
         if (!$this->save(false)) {
