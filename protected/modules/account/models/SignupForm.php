@@ -99,7 +99,6 @@ class SignupForm extends User
 
         if (!$this->save(false)) {
             return false;
-
         }
         //the following three lines were added:
 //        $auth = Yii::$app->authManager;
@@ -122,7 +121,7 @@ class SignupForm extends User
             Yii::$app->session->addFlash('error', $txt);
             $this->addError('email', $txt);
         }
-        return true;
+        return false;
 
     }
 
