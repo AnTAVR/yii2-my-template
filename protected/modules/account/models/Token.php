@@ -108,7 +108,7 @@ class Token extends ActiveRecord
      *
      * @param string $code
      * @param integer $type The type of the token
-     * @return Token
+     * @return static
      * @throws NotFoundHttpException
      * @throws \Exception
      * @throws \Throwable
@@ -163,7 +163,7 @@ class Token extends ActiveRecord
      * @param integer $userId
      * @param string $code
      * @param integer $expiresOn
-     * @return Token|null
+     * @return static|null
      * @throws \yii\base\InvalidConfigException
      */
     public static function createApiAuthToken($userId, $code, $expiresOn)
