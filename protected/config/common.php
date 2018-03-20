@@ -122,7 +122,7 @@ if (YII_ENV_DEV) {
     ];
 }
 
-if (YII_DEBUG) {
+if (YII_DEBUG and !YII_ENV_TEST) {
     $__config['bootstrap'][] = 'debug';
     $__config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
