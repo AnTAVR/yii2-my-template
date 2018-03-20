@@ -120,7 +120,9 @@ if (YII_ENV_DEV) {
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
     ];
+}
 
+if (YII_DEBUG) {
     $__config['bootstrap'][] = 'debug';
     $__config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
