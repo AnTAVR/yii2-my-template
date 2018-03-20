@@ -88,6 +88,8 @@ $__config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '/login' => '/account/login',
+                '/logout' => '/account/logout',
                 '/static/<meta_url>' => '/static/index',
             ],
         ],
@@ -98,7 +100,7 @@ $__config = [
         'user' => [
             'identityClass' => 'app\modules\account\models\User',
             'enableAutoLogin' => true,
-            'loginUrl' => '/account/login'
+            'loginUrl' => '/login',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
