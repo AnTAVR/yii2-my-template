@@ -20,6 +20,9 @@ class DumpController extends Controller
 
     public function actionCreate()
     {
+        if ($this->confirm('Create dump?')) {
+            return ExitCode::UNSPECIFIED_ERROR;
+        }
         $dbInfo = BaseDump::getDbInfo();
         if ($dbInfo['driverName'] === 'mysql') {
             $manager = new MysqlDump();
@@ -52,6 +55,9 @@ class DumpController extends Controller
             throw new NotSupportedException('File not found.');
         }
 
+        if (!$this->confirm("Restore dump '{$fileName}'?")) {
+            return ExitCode::UNSPECIFIED_ERROR;
+        }
         $dbInfo = BaseDump::getDbInfo();
         if ($dbInfo['driverName'] === 'mysql') {
             $manager = new MysqlDump();
@@ -70,10 +76,9 @@ class DumpController extends Controller
         if ($process->isSuccessful()) {
             Console::output('Dump successfully restored.');
             return ExitCode::OK;
-        } else {
-            Console::output('Dump failed restored.');
-            return ExitCode::UNSPECIFIED_ERROR;
         }
+        Console::output('Dump failed restored.');
+        return ExitCode::UNSPECIFIED_ERROR;
     }
 
     public function actionTest()
