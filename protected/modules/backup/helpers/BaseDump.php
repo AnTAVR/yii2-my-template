@@ -3,6 +3,8 @@
 namespace app\modules\backup\helpers;
 
 use Yii;
+use yii\db\Connection;
+use yii\di\Instance;
 use yii\helpers\FileHelper;
 use yii\helpers\StringHelper;
 
@@ -72,6 +74,38 @@ abstract class BaseDump
     public static function isWindows()
     {
         return strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
+    }
+
+    public static function getDbInfo($db = 'db')
+    {
+        $db = Instance::ensure($db, Connection::class);
+        $dbInfo = [];
+        $dbInfo['driverName'] = $db->driverName;
+        $dbInfo['dsn'] = $db->dsn;
+        $dbInfo['host'] = static::getDsnAttribute('host', $db->dsn);
+        $dbInfo['port'] = static::getDsnAttribute('port', $db->dsn);
+        $dbInfo['dbName'] = static::getDsnAttribute('dbname', $db->dsn);
+        $dbInfo['username'] = $db->username;
+        $dbInfo['password'] = $db->password;
+        $dbInfo['prefix'] = $db->tablePrefix;
+
+        if (!$dbInfo['port']) {
+            if ($dbInfo['driverName'] === 'mysql') {
+                $dbInfo['port'] = '3306';
+            } elseif ($dbInfo['driverName'] === 'pgsql') {
+                $dbInfo['port'] = '5432';
+            }
+        }
+        return $dbInfo;
+    }
+
+    protected static function getDsnAttribute($name, $dsn)
+    {
+        if (preg_match('/' . $name . '=([^;]*)/', $dsn, $match)) {
+            return $match[1];
+        } else {
+            return null;
+        }
     }
 
 }
