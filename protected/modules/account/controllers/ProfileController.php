@@ -37,10 +37,10 @@ class ProfileController extends Controller
      */
     public function actionIndex()
     {
-        $identity = Yii::$app->user->identity;
+        $user = User::findOne(Yii::$app->user->id);
 
         return $this->render('index', [
-            'identity' => $identity,
+            'user' => $user,
         ]);
     }
 

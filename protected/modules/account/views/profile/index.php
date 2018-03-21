@@ -1,12 +1,12 @@
 <?php
 /* @var $this \app\components\View */
 
-/** @var $identity \app\modules\account\models\User */
+/** @var $user \app\modules\account\models\User */
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-$this->title = $identity->username;
+$this->title = $user->username;
 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <div class="panel-body">
         <?= DetailView::widget([
-            'model' => $identity,
+            'model' => $user,
             'attributes' => [
                 'id',
                 'username',
@@ -25,9 +25,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'avatar:image',
                 'status_txt',
                 'created_at',
+                'last_request_at',
                 [
                     'attribute' => 'created_ip',
-                    'value' => Html::a($identity->created_ip, 'http://ipinfo.io/' . $identity->created_ip, ['target' => '_blank']),
+                    'value' => Html::a($user->created_ip, 'http://ipinfo.io/' . $user->created_ip, ['target' => '_blank']),
                     'format' => 'raw',
                 ],
                 'session_at',
