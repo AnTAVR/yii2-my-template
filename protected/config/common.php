@@ -4,8 +4,8 @@ use yii\helpers\ArrayHelper;
 
 $params = require __DIR__ . '/common/params.php';
 
-//Yii::setAlias('@webroot', dirname(dirname(__DIR__)));
-//Yii::setAlias('@web', '/');
+Yii::setAlias('@webroot', dirname(dirname(__DIR__)));
+Yii::setAlias('@web', '/');
 
 /** @noinspection HtmlUnknownTag */
 $__config = [
