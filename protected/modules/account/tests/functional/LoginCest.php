@@ -1,15 +1,17 @@
 <?php
 
-namespace tests\functional;
+namespace account\tests\functional;
 
 use tests\FunctionalTester;
 use Yii;
 
-class HomeCest
+class LoginCest
 {
     public function checkOpen(FunctionalTester $I)
     {
         $I->amOnPage(Yii::$app->homeUrl);
-        $I->see('brandLabel');
+        $I->seeLink('Login');
+        $I->click('Login');
+        $I->see('Login', 'h1');
     }
 }
