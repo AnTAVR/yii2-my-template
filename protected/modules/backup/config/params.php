@@ -1,5 +1,5 @@
 <?php
 return [
     'adminPageSize' => 10,
-    'savePath' => '@app/backups',
+    'savePath' => '@app/backups/db',
 ];
