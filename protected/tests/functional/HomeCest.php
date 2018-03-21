@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\tests\functional;
+namespace tests\functional;
 
 use Yii;
 
