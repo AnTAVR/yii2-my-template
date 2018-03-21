@@ -11,12 +11,8 @@ use Symfony\Component\Process\Process;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\console\Controller;
-use yii\db\Connection;
-use yii\di\Instance;
-use yii\helpers\ArrayHelper;
+use yii\console\ExitCode;
 use yii\helpers\Console;
-use yii\helpers\FileHelper;
-use yii\helpers\StringHelper;
 
 class DumpController extends Controller
 {
@@ -24,7 +20,7 @@ class DumpController extends Controller
 
     public function actionCreate()
     {
-        $dbInfo = static::getDbInfo();
+        $dbInfo = BaseDump::getDbInfo();
         if ($dbInfo['driverName'] === 'mysql') {
             $manager = new MysqlDump();
         } elseif ($dbInfo['driverName'] === 'pgsql') {
@@ -42,126 +38,54 @@ class DumpController extends Controller
         $process->run();
         if ($process->isSuccessful()) {
             Console::output('Dump successfully created.');
+            return ExitCode::OK;
         } else {
             Console::output('Dump failed create.');
-        }
-    }
-
-    protected static function getDbInfo($db = 'db')
-    {
-        $db = Instance::ensure($db, Connection::class);
-        $dbInfo = [];
-        $dbInfo['driverName'] = $db->driverName;
-        $dbInfo['dsn'] = $db->dsn;
-        $dbInfo['host'] = static::getDsnAttribute('host', $db->dsn);
-        $dbInfo['port'] = static::getDsnAttribute('port', $db->dsn);
-        $dbInfo['dbName'] = static::getDsnAttribute('dbname', $db->dsn);
-        $dbInfo['username'] = $db->username;
-        $dbInfo['password'] = $db->password;
-        $dbInfo['prefix'] = $db->tablePrefix;
-
-        if (!$dbInfo['port']) {
-            if ($dbInfo['driverName'] === 'mysql') {
-                $dbInfo['port'] = '3306';
-            } elseif ($dbInfo['driverName'] === 'pgsql') {
-                $dbInfo['port'] = '5432';
-            }
-        }
-        return $dbInfo;
-    }
-
-    protected static function getDsnAttribute($name, $dsn)
-    {
-        if (preg_match('/' . $name . '=([^;]*)/', $dsn, $match)) {
-            return $match[1];
-        } else {
-            return null;
+            return ExitCode::UNSPECIFIED_ERROR;
         }
     }
 
     public function actionRestore(string $fileName)
     {
-        $model = new Restore($this->getModule()->dbList);
-        if (is_null($this->file)) {
-            if ($this->storage) {
-                if (Yii::$app->has('backupStorage')) {
-                    foreach (Yii::$app->backupStorage->listContents() as $file) {
-                        $fileList[] = [
-                            'basename' => $file['basename'],
-                            'timestamp' => $file['timestamp'],
-                        ];
-                    }
-                } else {
-                    Console::output('Storage component is not configured.');
-                }
-            } else {
-                foreach ($this->getModule()->getFileList() as $file) {
-                    $fileList[] = [
-                        'basename' => StringHelper::basename($file),
-                        'timestamp' => filectime($file),
-                    ];
-                }
-            }
-            ArrayHelper::multisort($fileList, ['timestamp'], [SORT_DESC]);
-            $this->file = ArrayHelper::getValue(array_shift($fileList), 'basename');
+        $dumpFile = BaseDump::getPath() . DIRECTORY_SEPARATOR . $fileName;
+        if (!file_exists($dumpFile)) {
+            throw new NotSupportedException('File not found.');
         }
 
-        $runtime = null;
-        $dumpFile = null;
-        if ($this->storage) {
-            if (Yii::$app->has('backupStorage')) {
-                if (Yii::$app->backupStorage->has($this->file)) {
-                    $runtime = Yii::getAlias('@runtime/backups');
-                    if (!is_dir($runtime)) {
-                        FileHelper::createDirectory($runtime);
-                    }
-                    $dumpFile = $runtime . '/' . $this->file;
-                    file_put_contents($dumpFile, Yii::$app->backupStorage->read($this->file));
-                } else {
-                    Console::output('File not found.');
-                }
-            } else {
-                Console::output('Storage component is not configured.');
-            }
+        $dbInfo = BaseDump::getDbInfo();
+        if ($dbInfo['driverName'] === 'mysql') {
+            $manager = new MysqlDump();
+        } elseif ($dbInfo['driverName'] === 'pgsql') {
+            $manager = new PostgresDump();
         } else {
-            $fileExists = $this->getModule()->path . $this->file;
-            if (file_exists($fileExists)) {
-                $dumpFile = $fileExists;
-            } else {
-                Console::output('File not found.');
-            }
+            throw new NotSupportedException($dbInfo['driverName'] . ' driver unsupported!');
         }
 
+        $restoreCommand = $manager::makeRestoreCommand($dumpFile, $dbInfo['dbName'], $dbInfo['host'], $dbInfo['username'], $dbInfo['password'], $dbInfo['port']);
 
-        if (ArrayHelper::isIn($this->db, $this->getModule()->dbList)) {
-            $dbInfo = $this->getModule()->getDbInfo($this->db);
-            $restoreOptions = $model->makeRestoreOptions();
-            $manager = $this->getModule()->createManager($dbInfo);
-            $restoreCommand = $manager->makeRestoreCommand($dumpFile, $dbInfo, $restoreOptions);
-            Yii::trace(compact('restoreCommand', 'dumpFile', 'restoreOptions'), get_called_class());
-            $process = new Process($restoreCommand);
-            $process->run();
-            if (!is_null($runtime)) {
-                FileHelper::removeDirectory($runtime);
-            }
-            if ($process->isSuccessful()) {
-                Console::output('Dump successfully restored.');
-            } else {
-                Console::output('Dump failed restored.');
-            }
+        Yii::debug(compact('restoreCommand', 'dumpFile'), get_called_class());
+
+        $process = new Process($restoreCommand);
+        $process->run();
+        if ($process->isSuccessful()) {
+            Console::output('Dump successfully restored.');
+            return ExitCode::OK;
         } else {
-            Console::output('Database configuration not found.');
+            Console::output('Dump failed restored.');
+            return ExitCode::UNSPECIFIED_ERROR;
         }
     }
 
     public function actionTest()
     {
-        $dbInfo = static::getDbInfo();
+        $dbInfo = BaseDump::getDbInfo();
         try {
             new PDO($dbInfo['dsn'], $dbInfo['username'], $dbInfo['password']);
             Console::output('Connection success.');
+            return ExitCode::OK;
         } catch (PDOException $e) {
             Console::output('Connection failed: ' . $e->getMessage());
+            return ExitCode::UNSPECIFIED_ERROR;
         }
     }
 
@@ -171,5 +95,6 @@ class DumpController extends Controller
         foreach ($fileList as $file) {
             Console::output($file['basename']);
         }
+        return ExitCode::OK;
     }
 }
