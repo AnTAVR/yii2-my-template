@@ -1,6 +1,6 @@
 <?php
 
-namespace app\helpers;
+namespace app\modules\backup\helpers;
 
 abstract class BaseDump
 {
