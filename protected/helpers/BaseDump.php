@@ -2,7 +2,7 @@
 
 namespace app\helpers;
 
-abstract class BaseDumpManager
+abstract class BaseDump
 {
     /**
      * @param string $path
