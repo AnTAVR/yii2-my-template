@@ -1,6 +1,8 @@
 <?php
 
-use \Codeception\Actor;
+namespace tests;
+
+use Codeception\Actor;
 
 
 /**
@@ -22,11 +24,9 @@ use \Codeception\Actor;
 /** @noinspection PhpUndefinedClassInspection */
 class UnitTester extends Actor
 {
-    use/** @noinspection PhpUndefinedNamespaceInspection */
-        /** @noinspection PhpUndefinedClassInspection */
-        _generated\UnitTesterActions;
+    use _generated\UnitTesterActions;
 
-   /**
-    * Define custom actions here
-    */
+    /**
+     * Define custom actions here
+     */
 }

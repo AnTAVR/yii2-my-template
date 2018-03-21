@@ -1,5 +1,7 @@
 <?php
 
+namespace tests;
+
 use Codeception\Actor;
 
 

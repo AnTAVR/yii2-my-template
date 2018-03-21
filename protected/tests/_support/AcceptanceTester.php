@@ -1,6 +1,8 @@
 <?php
 
-use \Codeception\Actor;
+namespace tests;
+
+use Codeception\Actor;
 
 /**
  * Inherited Methods
@@ -26,9 +28,7 @@ use \Codeception\Actor;
  */
 class AcceptanceTester extends Actor
 {
-    use/** @noinspection PhpUndefinedNamespaceInspection */
-        /** @noinspection PhpUndefinedClassInspection */
-        _generated\AcceptanceTesterActions;
+    use _generated\AcceptanceTesterActions;
 
     /**
      * Define custom actions here
