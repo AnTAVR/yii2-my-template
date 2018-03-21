@@ -79,7 +79,7 @@ class DumpController extends Controller
         }
     }
 
-    public function actionRestore()
+    public function actionRestore(string $fileName)
     {
         $model = new Restore($this->getModule()->dbList);
         if (is_null($this->file)) {
@@ -168,7 +168,8 @@ class DumpController extends Controller
     public function actionList()
     {
         $fileList = BaseDump::getFilesList();
-        for
-            Console::output(var_export($fileList));
+        foreach ($fileList as $file) {
+            Console::output($file['basename']);
+        }
     }
 }
