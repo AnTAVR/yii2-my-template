@@ -4,9 +4,12 @@ use yii\helpers\ArrayHelper;
 
 $params = require __DIR__ . '/common/params.php';
 
+//Yii::setAlias('@webroot', dirname(dirname(__DIR__)));
+//Yii::setAlias('@web', '/');
+
 /** @noinspection HtmlUnknownTag */
 $__config = [
-    'language' => $params['language'],
+    'language' => YII_ENV_TEST ? 'en-US' : $params['language'],
     'name' => $params['appName'],
     'id' => 'common',
     'basePath' => dirname(__DIR__),
@@ -14,8 +17,6 @@ $__config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
-        '@webroot' => dirname(dirname(__DIR__)),
-        '@web' => '/',
     ],
     'container' => [
         'definitions' => [
