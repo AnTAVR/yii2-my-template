@@ -33,7 +33,7 @@ abstract class BaseDump
 
     public static function getFilesList()
     {
-        $files = FileHelper::findFiles(MysqlDump::getPath(), ['only' => ['*.sql', '*.gz']]);
+        $files = FileHelper::findFiles(static::getPath(), ['only' => ['*.sql', '*.gz']]);
         $fileList = [];
         foreach ($files as $file) {
             $fileList[] = [
