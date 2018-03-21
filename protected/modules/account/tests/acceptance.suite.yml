@@ -9,4 +9,3 @@ modules:
         - Yii2:
             part: [orm,fixtures]
             entryScript: index-test.php
-#            cleanup: false
