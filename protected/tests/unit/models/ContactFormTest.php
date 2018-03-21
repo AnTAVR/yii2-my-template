@@ -7,9 +7,8 @@ use Codeception\Test\Unit;
 
 class ContactFormTest extends Unit
 {
-    /** @noinspection PhpUndefinedClassInspection */
     /**
-     * @var \UnitTester
+     * @var \tests\UnitTester
      */
     public $tester;
 
