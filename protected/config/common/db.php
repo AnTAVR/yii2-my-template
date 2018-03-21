@@ -6,4 +6,5 @@ return [
     'username' => 'tests',
     'password' => 'teststests',
     'charset' => 'utf8',
+    'enableSchemaCache' => !YII_ENV_DEV,
 ];
