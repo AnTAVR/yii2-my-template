@@ -2,6 +2,8 @@
 
 namespace tests\functional;
 
+/* @var $scenario \Codeception\Scenario */
+
 class ContactCest
 {
     public function _before(\FunctionalTester $I)
