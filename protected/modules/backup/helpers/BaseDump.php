@@ -2,21 +2,32 @@
 
 namespace app\modules\backup\helpers;
 
+use Yii;
+use yii\helpers\FileHelper;
+
 abstract class BaseDump
 {
     /**
-     * @param string $path
      * @param string $dbName
      * @return string
      */
-    public static function makePath($path, $dbName)
+    public static function makePath($dbName)
     {
-        return sprintf('%s%s_%s.%s',
-            $path,
-            $dbName,
-            date('Y-m-d_H-i-s'),
-            'sql.gz'
-        );
+        return static::getPath() . DIRECTORY_SEPARATOR . sprintf('%s_%s.%s',
+                $dbName,
+                date('Y-m-d_H-i-s'),
+                'sql.gz'
+            );
+    }
+
+    public static function getPath()
+    {
+        $params = Yii::$app->getModule('backup')->params;
+        $path = Yii::getAlias($params['savePath']);
+        if (!is_dir($path)) {
+            FileHelper::createDirectory($path);
+        }
+        return $path;
     }
 
     /**
@@ -48,4 +59,5 @@ abstract class BaseDump
     {
         return strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
     }
+
 }
