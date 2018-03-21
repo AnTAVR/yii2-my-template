@@ -4,6 +4,7 @@ namespace app\modules\backup\helpers;
 
 use Yii;
 use yii\helpers\FileHelper;
+use yii\helpers\StringHelper;
 
 abstract class BaseDump
 {
@@ -28,6 +29,19 @@ abstract class BaseDump
             FileHelper::createDirectory($path);
         }
         return $path;
+    }
+
+    public static function getFilesList()
+    {
+        $files = FileHelper::findFiles(MysqlDump::getPath(), ['only' => ['*.sql', '*.gz']]);
+        $fileList = [];
+        foreach ($files as $file) {
+            $fileList[] = [
+                'basename' => StringHelper::basename($file),
+                'timestamp' => filectime($file),
+            ];
+        }
+        return $fileList;
     }
 
     /**
