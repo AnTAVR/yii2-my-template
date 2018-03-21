@@ -4,7 +4,7 @@ namespace app\helpers;
 
 use yii\helpers\StringHelper;
 
-class MysqlDump extends BaseDumpManager
+class MysqlDump extends BaseDump
 {
     public static function makeDumpCommand($path, $dbName, $host, $username, $password, $port = '3306')
     {
