@@ -5,6 +5,7 @@ PHP_PID=${!}
 
 #./tests/bin/yii migrate --interactive=0
 #./vendor/bin/codecept -vvv build
-./vendor/bin/codecept -vvv run
+cd ..
+./protected/vendor/bin/codecept -vvv run -c ./protected
 
 kill ${PHP_PID}
