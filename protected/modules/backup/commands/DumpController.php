@@ -26,7 +26,6 @@ class DumpController extends Controller
     public function actionTestConnection()
     {
         $dbInfo = static::getDbInfo();
-        var_dump($dbInfo);
         try {
             new PDO($dbInfo['dsn'], $dbInfo['username'], $dbInfo['password']);
             Console::output('Connection success.');
