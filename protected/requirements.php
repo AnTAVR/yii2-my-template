@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 /**
  * Application requirement checker script.
@@ -151,7 +152,7 @@ $requirements = array(
 );
 
 // OPcache check
-if (!version_compare(phpversion(), '5.5', '>=')) {
+if (!version_compare(phpversion(), '7.0', '>=')) {
     $requirements[] = array(
         'name' => 'APC extension',
         'mandatory' => false,
