@@ -5,7 +5,7 @@ namespace app\modules\uploader;
 use app\components\Module as ModuleOld;
 
 /**
- * uploader module definition class
+ * module definition class
  */
 class Module extends ModuleOld
 {

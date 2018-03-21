@@ -6,7 +6,7 @@ use app\components\Module as ModuleOld;
 use Yii;
 
 /**
- * news module definition class
+ * module definition class
  */
 class Module extends ModuleOld
 {

@@ -7,7 +7,7 @@ use yii\base\Module as ModuleOld;
 use yii\console\Application;
 
 /**
- * articles module definition class
+ * module definition class
  */
 class Module extends ModuleOld
 {

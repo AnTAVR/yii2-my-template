@@ -9,7 +9,7 @@ use yii\web\Application;
 use yii\web\User;
 
 /**
- * account module definition class
+ * module definition class
  */
 class Module extends ModuleOld implements BootstrapInterface
 {
