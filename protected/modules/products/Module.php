@@ -13,11 +13,6 @@ class Module extends ModuleOld
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'app\modules\products\controllers';
-
-    /**
-     * @inheritdoc
-     */
     public function init()
     {
         parent::init();

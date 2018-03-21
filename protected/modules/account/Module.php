@@ -16,7 +16,6 @@ class Module extends ModuleOld implements BootstrapInterface
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'app\modules\account\controllers';
     public $defaultRoute = 'profile';
 
     /**

@@ -12,11 +12,6 @@ class Module extends ModuleOld
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'app\modules\uploader\controllers';
-
-    /**
-     * @inheritdoc
-     */
     public function init()
     {
         parent::init();
