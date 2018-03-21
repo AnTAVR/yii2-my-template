@@ -1,11 +1,12 @@
 namespace: tests
 include:
     - modules/account
-    - modules/articles
-    - modules/news
-    - modules/products
-    - modules/rbac
-    - modules/uploader
+    - modules/backup
+#    - modules/uploader
+#    - modules/articles
+#    - modules/news
+#    - modules/products
+#    - modules/rbac
 paths:
     tests: tests
     log: runtime/logs
