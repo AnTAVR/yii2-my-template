@@ -1,8 +1,7 @@
 namespace: tests
-#actor_suffix: Tester
 actor: Tester
 include:
-    - modules
+    - modules/account
 paths:
     tests: tests
     log: tests/_output
@@ -18,7 +17,7 @@ modules:
     config:
         Yii2:
             configFile: 'config/test.php'
-            cleanup: false
+#            cleanup: false
 
 # To enable code coverage:
 #coverage:
