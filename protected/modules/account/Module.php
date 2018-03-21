@@ -26,6 +26,15 @@ class Module extends ModuleOld implements BootstrapInterface
         parent::init();
         $this->params = require __DIR__ . '/config/params.php';
 
+        $i18n = Yii::$app->i18n;
+        if (!isset($i18n->translations['account'])) {
+            $i18n->translations['account'] = [
+                'class' => 'yii\i18n\PhpMessageSource',
+//                'sourceLanguage' => 'en-US',
+                'basePath' => $this->basePath . DIRECTORY_SEPARATOR . 'messages',
+            ];
+        }
+
         /** @noinspection HtmlUnknownTag */
         Yii::$app->urlManager->addRules(
             [
