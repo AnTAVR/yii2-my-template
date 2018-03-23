@@ -4,10 +4,13 @@ namespace app\controllers;
 
 use app\components\AdminController;
 use app\helpers\BaseDump;
+use app\helpers\DumpInterface;
 use Symfony\Component\Process\Process;
 use Yii;
+use yii\base\NotSupportedException;
 use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -48,6 +51,26 @@ class AdminDumpController extends AdminController
         ]);
     }
 
+    public function actionCreate()
+    {
+        try {
+            $dbInfo = BaseDump::getDbInfo();
+        } catch (NotSupportedException $e) {
+            throw new HttpException($e->getMessage());
+        }
+
+        $dumpFile = BaseDump::makePath($dbInfo['dbName']);
+
+        /** @var DumpInterface $manager */
+        $manager = $dbInfo['manager'];
+        $command = $manager::makeDumpCommand($dumpFile, $dbInfo);
+
+        Yii::debug(compact('dumpFile', 'command'), get_called_class());
+
+        $this->runProcess($command);
+
+        return $this->redirect(['index']);
+    }
     /**
      * @return array
      */
@@ -81,7 +104,7 @@ class AdminDumpController extends AdminController
         $fileList = BaseDump::getFilesList();
         $in_array = false;
         foreach ($fileList as $file) {
-            if ($fileName === $file['basename']) {
+            if ($fileName === $file['file']) {
                 $in_array = true;
                 break;
             }
@@ -101,7 +124,7 @@ class AdminDumpController extends AdminController
         $fileList = BaseDump::getFilesList();
         $in_array = false;
         foreach ($fileList as $file) {
-            if ($fileName === $file['basename']) {
+            if ($fileName === $file['file']) {
                 $in_array = true;
                 break;
             }
@@ -130,7 +153,7 @@ class AdminDumpController extends AdminController
             $fail = [];
             $path = BaseDump::getPath() . DIRECTORY_SEPARATOR;
             foreach ($fileList as $file) {
-                $fileName = $path . $file['basename'];
+                $fileName = $path . $file['file'];
                 if (!unlink($fileName)) {
                     $fail[] = $file;
                 }
@@ -147,10 +170,10 @@ class AdminDumpController extends AdminController
     }
 
     /**
-     * @param $command
+     * @param string $command
      * @param bool $isRestore
      */
-    protected function runProcess($command, $isRestore = false)
+    protected static function runProcess($command, $isRestore = false)
     {
         $process = new Process($command);
         $process->run();
@@ -161,32 +184,6 @@ class AdminDumpController extends AdminController
             $msg = !$isRestore ? Yii::t('app', 'Dump failed.') : Yii::t('app', 'Restore failed.');
             Yii::$app->session->addFlash('error', $msg . '<br>' . 'Command - ' . $command . '<br>' . $process->getOutput() . $process->getErrorOutput());
             Yii::error($msg . PHP_EOL . 'Command - ' . $command . PHP_EOL . $process->getOutput() . PHP_EOL . $process->getErrorOutput());
-        }
-    }
-
-    /**
-     * @param $command
-     * @param bool $isRestore
-     */
-    protected function runProcessAsync($command, $isRestore = false)
-    {
-        $process = new Process($command);
-        $process->start();
-        $pid = $process->getPid();
-        $activePids = Yii::$app->session->get('backupPids', []);
-        if (!$process->isRunning()) {
-            if ($process->isSuccessful()) {
-                $msg = !$isRestore ? Yii::t('app', 'Dump successfully created.') : Yii::t('app', 'Dump successfully restored.');
-                Yii::$app->session->addFlash('success', $msg);
-            } else {
-                $msg = !$isRestore ? Yii::t('app', 'Dump failed.') : Yii::t('app', 'Restore failed.');
-                Yii::$app->session->addFlash('error', $msg . '<br>' . 'Command - ' . $command . '<br>' . $process->getOutput() . $process->getErrorOutput());
-                Yii::error($msg . PHP_EOL . 'Command - ' . $command . PHP_EOL . $process->getOutput() . PHP_EOL . $process->getErrorOutput());
-            }
-        } else {
-            $activePids[$pid] = $command;
-            Yii::$app->session->set('backupPids', $activePids);
-            Yii::$app->session->addFlash('info', Yii::t('app', 'Process running with pid={pid}', ['pid' => $pid]) . '<br>' . $command);
         }
     }
 }
