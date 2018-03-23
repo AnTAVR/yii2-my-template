@@ -32,7 +32,7 @@ return [
     'Author' => '@@Автор@@',
     'Check your email for further instructions.' => '@@Проверьте свою электронную почту для получения дальнейших инструкций.@@',
     'Congratulations!' => '@@Поздравляем!@@',
-    'Create time' => '@@Время создания@@',
+    'Create At' => '@@Время создания@@',
     'Created By' => '@@Создатель@@',
     'Custom dump preset' => '@@Свой шаблон опций для дампа@@',
     'Custom restore preset' => '@@Свой шаблон опций для восстановлений@@',
