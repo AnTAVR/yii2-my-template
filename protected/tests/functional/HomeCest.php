@@ -7,9 +7,13 @@ use Yii;
 
 class HomeCest
 {
-    public function checkOpen(FunctionalTester $I)
+    public function _before(FunctionalTester $I)
     {
         $I->amOnPage(Yii::$app->homeUrl);
+    }
+
+    public function checkOpen(FunctionalTester $I)
+    {
         $I->see('brandLabel');
     }
 }
