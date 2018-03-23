@@ -15,13 +15,15 @@ use yii\console\ExitCode;
 use yii\helpers\Console;
 
 /**
- * Allows you to combine and compress your JavaScript and CSS files.
- **/
+ * Backup Dump DB.
+ */
 class DumpController extends Controller
 {
     public $defaultAction = 'create';
 
     /**
+     * Create Dump DB
+     *
      * @return int
      * @throws NotSupportedException
      */
@@ -53,7 +55,14 @@ class DumpController extends Controller
         }
     }
 
-    public function actionRestore(string $fileName)
+    /**
+     * Restore Dump DB
+     *
+     * @param string $fileName Name Dump
+     * @return int
+     * @throws NotSupportedException
+     */
+    public function actionRestore($fileName)
     {
         $fileList = BaseDump::getFilesList();
         $in_array = false;
@@ -94,6 +103,12 @@ class DumpController extends Controller
         return ExitCode::UNSPECIFIED_ERROR;
     }
 
+    /**
+     * Test DB Connection
+     *
+     * @return int
+     * @throws NotSupportedException
+     */
     public function actionTest()
     {
         $dbInfo = BaseDump::getDbInfo();
@@ -107,6 +122,11 @@ class DumpController extends Controller
         }
     }
 
+    /**
+     * List Dumps DB
+     *
+     * @return int
+     */
     public function actionList()
     {
         $fileList = BaseDump::getFilesList();
