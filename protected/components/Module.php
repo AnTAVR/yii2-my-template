@@ -7,7 +7,7 @@ use yii\base\Module as ModuleOld;
 use yii\console\Application;
 
 /**
- * articles module definition class
+ * module definition class
  */
 class Module extends ModuleOld
 {
@@ -18,7 +18,7 @@ class Module extends ModuleOld
     {
         parent::init();
         if (Yii::$app instanceof Application) {
-            $this->controllerNamespace = str_replace('\controllers', '\commands', $this->controllerNamespace);
+            $this->controllerNamespace = str_replace('\\controllers', '\\commands', $this->controllerNamespace);
         }
 
         // custom initialization code goes here
