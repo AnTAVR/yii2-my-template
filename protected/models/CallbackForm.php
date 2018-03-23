@@ -19,12 +19,17 @@ class CallbackForm extends Model
      */
     public function rules()
     {
+        $params = Yii::$app->params;
         return [
-            // phone, name are required
-            [['phone', 'name'], 'required'],
-            ['phone', 'string', 'max' => 20, 'min' => 11],
-            ['name', 'string', 'max' => Yii::$app->params['contact.name.max']],
-            // verifyCode needs to be entered correctly
+            ['phone', 'required'],
+            ['phone', 'string',
+                'max' => 20,
+                'min' => 11],
+
+            ['name', 'required'],
+            ['name', 'string',
+                'max' => $params['string.max']],
+
             ['verifyCode', 'captcha'],
         ];
     }

@@ -33,15 +33,32 @@ class StaticPage extends ActiveRecord
      */
     public function rules()
     {
+        $params = Yii::$app->params;
         return [
-            [['content_title', 'content_full', 'meta_url', 'meta_description', 'meta_keywords'], 'trim'],
+            ['content_title', 'trim'],
+            ['content_title', 'required'],
+            ['content_title', 'string',
+                'max' => 255],
 
-            [['content_title', 'content_full', 'meta_url'], 'required'],
-            [['content_full'], 'string'],
-            [['content_title', 'meta_url', 'meta_description', 'meta_keywords'], 'string', 'max' => 255],
+            ['content_full', 'trim'],
+            ['content_full', 'required'],
+            ['content_full', 'string'],
 
-            ['meta_url', 'match', 'pattern' => Yii::$app->params['meta_url_pattern']],
-            [['meta_url'], 'unique'],
+            ['meta_url', 'trim'],
+            ['meta_url', 'required'],
+            ['meta_url', 'string',
+                'max' => 255],
+            ['meta_url', 'match',
+                'pattern' => $params['meta_url_pattern']],
+            ['meta_url', 'unique'],
+
+            ['meta_description', 'trim'],
+            ['meta_description', 'string',
+                'max' => 255],
+
+            ['meta_keywords', 'trim'],
+            ['meta_keywords', 'string',
+                'max' => 255],
         ];
     }
 

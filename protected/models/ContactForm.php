@@ -22,17 +22,29 @@ class ContactForm extends Model
      */
     public function rules()
     {
+        $params = Yii::$app->params;
         return [
-            [['name', 'email', 'subject', 'body'], 'trim'],
-            // name, email, subject and body are required
-            [['name', 'email', 'subject', 'body'], 'required'],
-            ['name', 'string', 'max' => Yii::$app->params['contact.name.max']],
-            ['email', 'string', 'max' => Yii::$app->params['email.max']],
-            ['subject', 'string', 'max' => Yii::$app->params['contact.subject.max']],
-            ['body', 'string', 'max' => Yii::$app->params['contact.body.max']],
-            // email has to be a valid email address
+            ['name', 'trim'],
+            ['name', 'required'],
+            ['name', 'string',
+                'max' => $params['string.max']],
+
+            ['subject', 'trim'],
+            ['subject', 'required'],
+            ['subject', 'string',
+                'max' => $params['string.max']],
+
+            ['body', 'trim'],
+            ['body', 'required'],
+            ['body', 'string',
+                'max' => $params['contact.body.max']],
+
+            ['email', 'trim'],
+            ['email', 'required'],
+            ['email', 'string',
+                'max' => $params['email.max']],
             ['email', 'email'],
-            // verifyCode needs to be entered correctly
+
             ['verifyCode', 'captcha'],
         ];
     }
@@ -56,18 +68,13 @@ class ContactForm extends Model
      * @param string $email the target email address
      * @return bool whether the model passes validation
      */
-    public function contact($email)
+    public function sendEmail($email)
     {
-        if ($this->validate()) {
-            Yii::$app->mailer->compose()
-                ->setTo($email)
-                ->setFrom([$this->email => $this->name])
-                ->setSubject($this->subject)
-                ->setTextBody($this->body)
-                ->send();
-
-            return true;
-        }
-        return false;
+        return Yii::$app->mailer->compose()
+            ->setTo($email)
+            ->setFrom([$this->email => $this->name])
+            ->setSubject($this->subject)
+            ->setTextBody($this->body)
+            ->send();
     }
 }
