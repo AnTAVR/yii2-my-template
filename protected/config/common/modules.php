@@ -1,8 +1,5 @@
 <?php
 return [
-    'backup' => [
-        'class' => 'app\modules\backup\Module',
-    ],
     'account' => [
         'class' => 'app\modules\account\Module',
     ],
