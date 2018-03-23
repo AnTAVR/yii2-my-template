@@ -22,7 +22,7 @@ use yii\helpers\FileHelper;
 class UploaderImage extends ActiveRecord
 {
     const PATH_IMAGES = 'images';
-    const PATH_THUMBNAIL = 'images/thumbnail';
+    const PATH_THUMBNAIL = 'thumbnail';
 
     /**
      * @inheritdoc
