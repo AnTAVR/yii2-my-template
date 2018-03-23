@@ -17,6 +17,9 @@ $__config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
+        '@backups' => '@app/backups',
+        '@upload' => '@webroot/upload',
+        '@web_upload' => '@web/upload',
     ],
     'container' => [
         'definitions' => [
