@@ -44,8 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
     'dataProvider' => $dataProvider,
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
-//        'basename',
-//        'basename',
+        'basename',
+        'timestamp:datetime',
 //        [
 //            'attribute' => 'name',
 //            'label' => Yii::t('app', 'Name'),
@@ -60,44 +60,48 @@ $this->params['breadcrumbs'][] = $this->title;
 //        ],
         [
             'class' => 'yii\grid\ActionColumn',
-//            'template' => '{download} {restore} {delete}',
-//            'buttons' => [
-//                'download' => function ($url, $model) {
-//                    return Html::a('<span class="glyphicon glyphicon-download-alt"></span>',
-//                        [
-//                            'download',
-//                            'id' => $model['id'],
-//                        ],
-//                        [
-//                            'title' => Yii::t('app', 'Download'),
-//                            'class' => 'btn btn-sm btn-default',
-//                        ]);
-//                },
-//                'restore' => function ($url, $model) {
-//                    return Html::a('<span class="glyphicon glyphicon-import"></span>',
-//                        [
-//                            'restore',
-//                            'id' => $model['id'],
-//                        ],
-//                        [
-//                            'title' => Yii::t('app', 'Restore'),
-//                            'class' => 'btn btn-sm btn-default',
-//                        ]);
-//                },
-//                'delete' => function ($url, $model) {
-//                    return Html::a('<span class="glyphicon glyphicon-trash"></span>',
-//                        [
-//                            'delete',
-//                            'id' => $model['id'],
-//                        ],
-//                        [
-//                            'title' => Yii::t('app', 'Delete'),
-//                            'data-method' => 'post',
-//                            'data-confirm' => Yii::t('app', 'Are you sure?'),
-//                            'class' => 'btn btn-sm btn-danger',
-//                        ]);
-//                },
-//            ],
+            'template' => '{download} {restore} {delete}',
+            'buttons' => [
+                'download' => function ($url, $model) {
+                    return Html::a('<span class="glyphicon glyphicon-download-alt"></span>',
+                        [
+                            'download/',
+                            'fileName' => $model['basename'],
+                        ],
+                        [
+                            'title' => Yii::t('app', 'Download'),
+                            'data-method' => 'post',
+                            'data-fileName' => $model['basename'],
+                            'class' => 'btn btn-sm btn-default',
+                        ]);
+                },
+                'restore' => function ($url, $model) {
+                    return Html::a('<span class="glyphicon glyphicon-import"></span>',
+                        [
+                            'restore',
+                            'fileName' => $model['basename'],
+                        ],
+                        [
+                            'title' => Yii::t('app', 'Restore'),
+                            'data-method' => 'post',
+                            'data-confirm' => Yii::t('app', 'Are you sure?'),
+                            'class' => 'btn btn-sm btn-default',
+                        ]);
+                },
+                'delete' => function ($url, $model) {
+                    return Html::a('<span class="glyphicon glyphicon-trash"></span>',
+                        [
+                            'delete',
+                            'fileName' => $model['basename'],
+                        ],
+                        [
+                            'title' => Yii::t('app', 'Delete'),
+                            'data-method' => 'post',
+                            'data-confirm' => Yii::t('app', 'Are you sure?'),
+                            'class' => 'btn btn-sm btn-danger',
+                        ]);
+                },
+            ],
         ],
     ],
 ]) ?>
