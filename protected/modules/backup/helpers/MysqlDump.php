@@ -6,15 +6,15 @@ use yii\helpers\StringHelper;
 
 class MysqlDump extends BaseDump
 {
-    public static function makeDumpCommand($path, $dbName, $host, $username, $password, $port = '3306')
+    public static function makeDumpCommand($path, $dbInfo)
     {
         $arguments = [];
         $arguments[] = 'mysqldump';
-        $arguments[] = '--host=' . $host;
-        $arguments[] = '--port=' . $port;
-        $arguments[] = '--user=' . $username;
-        $arguments[] = "--password='{$password}'";
-        $arguments[] = $dbName;
+        $arguments[] = '--host=' . $dbInfo['host'];
+        $arguments[] = '--port=' . $dbInfo['port'];
+        $arguments[] = '--user=' . $dbInfo['username'];
+        $arguments[] = "--password='{$dbInfo['password']}'";
+        $arguments[] = $dbInfo['dbName'];
         $arguments[] = '|';
         $arguments[] = 'gzip';
         $arguments[] = '>';
@@ -23,7 +23,7 @@ class MysqlDump extends BaseDump
         return implode(' ', $arguments);
     }
 
-    public static function makeRestoreCommand($path, $dbName, $host, $username, $password, $port = '3306')
+    public static function makeRestoreCommand($path, $dbInfo)
     {
         $arguments = [];
         if (StringHelper::endsWith($path, '.gz', false)) {
@@ -32,11 +32,11 @@ class MysqlDump extends BaseDump
             $arguments[] = '|';
         }
         $arguments[] = 'mysql';
-        $arguments[] = '--host=' . $host;
-        $arguments[] = '--port=' . $port;
-        $arguments[] = '--user=' . $username;
-        $arguments[] = "--password='{$password}'";
-        $arguments[] = $dbName;
+        $arguments[] = '--host=' . $dbInfo['host'];
+        $arguments[] = '--port=' . $dbInfo['port'];
+        $arguments[] = '--user=' . $dbInfo['username'];
+        $arguments[] = "--password='{$dbInfo['password']}'";
+        $arguments[] = $dbInfo['dbName'];
         if (!StringHelper::endsWith($path, '.gz', false)) {
             $arguments[] = '<';
             $arguments[] = $path;

@@ -6,21 +6,21 @@ use yii\helpers\StringHelper;
 
 class PostgresDump extends BaseDump
 {
-    public static function makeDumpCommand($path, $dbName, $host, $username, $password, $port = '5432')
+    public static function makeDumpCommand($path, $dbInfo)
     {
         $arguments = [];
         if (static::isWindows()) {
-            $arguments[] = "set PGPASSWORD='{$password}'";
+            $arguments[] = "set PGPASSWORD='{$dbInfo['password']}'";
             $arguments[] = '&';
         } else {
-            $arguments[] = "PGPASSWORD='{$password}'";
+            $arguments[] = "PGPASSWORD='{$dbInfo['password']}'";
         }
         $arguments[] = 'pg_dump';
-        $arguments[] = '--host=' . $host;
-        $arguments[] = '--port=' . $port;
-        $arguments[] = '--username=' . $username;
+        $arguments[] = '--host=' . $dbInfo['host'];
+        $arguments[] = '--port=' . $dbInfo['port'];
+        $arguments[] = '--username=' . $dbInfo['username'];
         $arguments[] = '--no-password';
-        $arguments[] = $dbName;
+        $arguments[] = $dbInfo['dbName'];
         $arguments[] = '|';
         $arguments[] = 'gzip';
         $arguments[] = '>';
@@ -28,7 +28,7 @@ class PostgresDump extends BaseDump
         return implode(' ', $arguments);
     }
 
-    public static function makeRestoreCommand($path, $dbName, $host, $username, $password, $port = '5432')
+    public static function makeRestoreCommand($path, $dbInfo)
     {
         $arguments = [];
         if (StringHelper::endsWith($path, '.gz', false)) {
@@ -37,17 +37,17 @@ class PostgresDump extends BaseDump
             $arguments[] = '|';
         }
         if (static::isWindows()) {
-            $arguments[] = "set PGPASSWORD='{$password}'";
+            $arguments[] = "set PGPASSWORD='{$dbInfo['password']}'";
             $arguments[] = '&';
         } else {
-            $arguments[] = "PGPASSWORD='{$password}'";
+            $arguments[] = "PGPASSWORD='{$dbInfo['password']}'";
         }
         $arguments[] = 'psql';
-        $arguments[] = '--host=' . $host;
-        $arguments[] = '--port=' . $port;
-        $arguments[] = '--username=' . $username;
+        $arguments[] = '--host=' . $dbInfo['host'];
+        $arguments[] = '--port=' . $dbInfo['port'];
+        $arguments[] = '--username=' . $dbInfo['username'];
         $arguments[] = '--no-password';
-        $arguments[] = $dbName;
+        $arguments[] = $dbInfo['dbName'];
         if (!StringHelper::endsWith($path, '.gz', false)) {
             $arguments[] = '<';
             $arguments[] = $path;

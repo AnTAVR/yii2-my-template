@@ -49,25 +49,17 @@ abstract class BaseDump
 
     /**
      * @param string $path
-     * @param string $dbName
-     * @param string $host
-     * @param string $username
-     * @param string $password
-     * @param string $port
+     * @param array $dbInfo
      * @return string
      */
-    abstract public static function makeDumpCommand($path, $dbName, $host, $username, $password, $port);
+    abstract public static function makeDumpCommand($path, $dbInfo);
 
     /**
      * @param string $path
-     * @param string $dbName
-     * @param string $host
-     * @param string $username
-     * @param string $password
-     * @param string $port
+     * @param array $dbInfo
      * @return string
      */
-    abstract public static function makeRestoreCommand($path, $dbName, $host, $username, $password, $port);
+    abstract public static function makeRestoreCommand($path, $dbInfo);
 
     /**
      * @return bool
