@@ -10,7 +10,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
 use yii\helpers\StringHelper;
 
-abstract class BaseDump
+class BaseDump
 {
     /**
      * @param string $dbName
@@ -49,28 +49,6 @@ abstract class BaseDump
         return $fileList;
     }
 
-    /**
-     * @param string $dumpFile
-     * @param array $dbInfo
-     * @return string
-     */
-    abstract public static function makeDumpCommand($dumpFile, $dbInfo);
-
-    /**
-     * @param string $dumpFile
-     * @param array $dbInfo
-     * @return string
-     */
-    abstract public static function makeRestoreCommand($dumpFile, $dbInfo);
-
-    /**
-     * @return bool
-     */
-    public static function isWindows()
-    {
-        return strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
-    }
-
     public static function getDbInfo($db = 'db')
     {
         $dbInfo = [];
@@ -88,8 +66,10 @@ abstract class BaseDump
 
         if ($dbInfo['driverName'] === 'mysql') {
             $port = '3306';
+            $dbInfo['manager'] = new MysqlDump();
         } elseif ($dbInfo['driverName'] === 'pgsql') {
             $port = '5432';
+            $dbInfo['manager'] = new PostgresDump();
         } else {
             throw new NotSupportedException($dbInfo['driverName'] . ' driver unsupported!');
         }
