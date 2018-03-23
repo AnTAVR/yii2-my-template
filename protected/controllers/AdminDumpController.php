@@ -6,6 +6,7 @@ use app\components\AdminController;
 use app\helpers\BaseDump;
 use Symfony\Component\Process\Process;
 use Yii;
+use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 
@@ -33,7 +34,18 @@ class AdminDumpController extends AdminController
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $fileList = BaseDump::getFilesList();
+
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $fileList,
+        ]);
+
+        $activePids = $this->checkActivePids();
+
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+            'activePids' => $activePids,
+        ]);
     }
 
     /**
