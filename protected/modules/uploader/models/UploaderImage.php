@@ -4,6 +4,7 @@ namespace app\modules\uploader\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\helpers\FileHelper;
 
 /**
  * This is the model class for table "uploader_image".
@@ -20,8 +21,8 @@ use yii\db\ActiveRecord;
  */
 class UploaderImage extends ActiveRecord
 {
-    const PATH_IMAGES = '/upload/images';
-    const PATH_THUMBNAIL = '/upload/images/thumbnail';
+    const PATH_IMAGES = 'images';
+    const PATH_THUMBNAIL = 'thumbnail';
 
     /**
      * @inheritdoc
@@ -36,8 +37,16 @@ class UploaderImage extends ActiveRecord
      */
     public function rules()
     {
+        $params = Yii::$app->params;
         return [
-            [['comment', 'file', 'meta_url'], 'string', 'max' => 255],
+            ['comment', 'string',
+                'max' => $params['string.max']],
+
+            ['file', 'string',
+                'max' => $params['string.max']],
+
+            ['meta_url', 'string',
+                'max' => $params['string.max']],
         ];
     }
 
@@ -58,12 +67,40 @@ class UploaderImage extends ActiveRecord
         ];
     }
 
+    public static function getUploadUrl()
+    {
+        return Yii::getAlias('@web_upload') . '/' . static::PATH_IMAGES . '/';
+    }
+
+    public static function getUploadPath()
+    {
+        $path = Yii::getAlias('@upload') . DIRECTORY_SEPARATOR . static::PATH_IMAGES;
+        if (!is_dir($path)) {
+            FileHelper::createDirectory($path, 0775, true);
+        }
+        return $path . DIRECTORY_SEPARATOR;
+    }
+
+    public static function getUploadThumbnailUrl()
+    {
+        return static::getUploadUrl() . self::PATH_THUMBNAIL . '/';
+    }
+
+    public static function getUploadThumbnailPath()
+    {
+        $path = static::getUploadPath() . self::PATH_THUMBNAIL;
+        if (!is_dir($path)) {
+            FileHelper::createDirectory($path, 0775, true);
+        }
+        return $path . DIRECTORY_SEPARATOR;
+    }
+
     /**
      * @inheritdoc
      */
     public function getImageUrl()
     {
-        return Yii::getAlias('@web' . self::PATH_IMAGES) . '/' . $this->meta_url;
+        return static::getUploadUrl() . $this->meta_url;
     }
 
     /**
@@ -71,7 +108,7 @@ class UploaderImage extends ActiveRecord
      */
     public function getImagePath()
     {
-        return Yii::getAlias('@webroot' . self::PATH_IMAGES) . '/' . $this->meta_url;
+        return static::getUploadPath() . $this->meta_url;
     }
 
     /**
@@ -79,7 +116,7 @@ class UploaderImage extends ActiveRecord
      */
     public function getThumbnailUrl()
     {
-        return Yii::getAlias('@web' . self::PATH_THUMBNAIL) . '/' . $this->meta_url;
+        return static::getUploadThumbnailUrl() . $this->meta_url;
     }
 
     /**
@@ -87,6 +124,23 @@ class UploaderImage extends ActiveRecord
      */
     public function getThumbnailPath()
     {
-        return Yii::getAlias('@webroot' . self::PATH_THUMBNAIL) . '/' . $this->meta_url;
+        return static::getUploadThumbnailPath() . $this->meta_url;
+    }
+
+    public function beforeDelete()
+    {
+        if (!parent::beforeDelete()) {
+            return false;
+        }
+
+        if (is_file($this->thumbnailPath)) {
+            unlink($this->thumbnailPath);
+        }
+
+        if (is_file($this->imagePath)) {
+            unlink($this->imagePath);
+        }
+
+        return true;
     }
 }

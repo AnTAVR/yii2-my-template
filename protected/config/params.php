@@ -8,6 +8,7 @@ return [
     'adminEmail' => 'info@' . $domen,
     'supportEmail' => 'robot@' . $domen,
     'language' => 'ru',
+    'string.max' => 255,
     'user.passwordResetTokenExpire' => 60 * 60,
     'password.min' => 6,
     'username.max' => 16,

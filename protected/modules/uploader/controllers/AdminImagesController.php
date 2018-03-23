@@ -7,7 +7,8 @@ use app\modules\uploader\models\UploaderImage;
 use app\modules\uploader\models\UploaderImageForm;
 use Yii;
 use yii\data\ActiveDataProvider;
-use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -20,17 +21,15 @@ class AdminImagesController extends AdminController
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::class,
-                    'actions' => [
-                        'delete' => ['POST'],
-                        'upload' => ['POST'],
-                    ],
+        return ArrayHelper::merge(parent::behaviors(), [
+            'verbs' => [
+                'class' => 'yii\filters\VerbFilter',
+                'actions' => [
+                    'delete' => ['POST'],
+                    'upload' => ['POST'],
                 ],
-            ]);
+            ],
+        ]);
     }
 
     /**
@@ -118,7 +117,7 @@ class AdminImagesController extends AdminController
         $model = new UploaderImageForm();
 
         if (!$model->load(Yii::$app->request->post())) {
-            return $model->errors;
+            return Json::encode($model->errors);
         }
 
         return $model->upload();
@@ -138,8 +137,6 @@ class AdminImagesController extends AdminController
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
-        unlink($model->thumbnailPath);
-        unlink($model->imagePath);
         $model->delete();
 
         return $this->redirect(['index']);

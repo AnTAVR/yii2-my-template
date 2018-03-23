@@ -4,6 +4,7 @@ namespace app\modules\uploader\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\helpers\FileHelper;
 
 /**
  * This is the model class for table "uploader_file".
@@ -18,7 +19,7 @@ use yii\db\ActiveRecord;
  */
 class UploaderFile extends ActiveRecord
 {
-    const PATH_FILES = '/upload/files';
+    const PATH_FILES = 'files';
 
     /**
      * @inheritdoc
@@ -33,8 +34,16 @@ class UploaderFile extends ActiveRecord
      */
     public function rules()
     {
+        $params = Yii::$app->params;
         return [
-            [['comment', 'file', 'meta_url'], 'string', 'max' => 255],
+            ['comment', 'string',
+                'max' => $params['string.max']],
+
+            ['file', 'string',
+                'max' => $params['string.max']],
+
+            ['meta_url', 'string',
+                'max' => $params['string.max']],
         ];
     }
 
@@ -53,12 +62,26 @@ class UploaderFile extends ActiveRecord
         ];
     }
 
+    public static function getUploadUrl()
+    {
+        return Yii::getAlias('@web_upload') . '/' . static::PATH_FILES . '/';
+    }
+
+    public static function getUploadPath()
+    {
+        $path = Yii::getAlias('@upload') . DIRECTORY_SEPARATOR . static::PATH_FILES;
+        if (!is_dir($path)) {
+            FileHelper::createDirectory($path, 0775, true);
+        }
+        return $path . DIRECTORY_SEPARATOR;
+    }
+
     /**
      * @inheritdoc
      */
     public function getFileUrl()
     {
-        return Yii::getAlias('@web' . self::PATH_FILES) . '/' . $this->meta_url;
+        return static::getUploadUrl() . $this->meta_url;
     }
 
     /**
@@ -66,6 +89,19 @@ class UploaderFile extends ActiveRecord
      */
     public function getFilePath()
     {
-        return Yii::getAlias('@webroot' . self::PATH_FILES) . '/' . $this->meta_url;
+        return static::getUploadPath() . $this->meta_url;
+    }
+
+    public function beforeDelete()
+    {
+        if (!parent::beforeDelete()) {
+            return false;
+        }
+
+        if (is_file($this->filePath)) {
+            unlink($this->filePath);
+        }
+
+        return true;
     }
 }

@@ -1,6 +1,10 @@
 <?php
 
 $params = require __DIR__ . '/params.php';
+
+Yii::setAlias('@webroot', dirname(dirname(__DIR__)));
+Yii::setAlias('@web', '/');
+
 $db = require __DIR__ . '/db.php';
 $i18n = require __DIR__ . '/i18n.php';
 $modules = require __DIR__ . '/modules.php';
@@ -16,6 +20,8 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
         '@backups' => '@app/backups',
+        '@upload' => '@webroot/upload',
+        '@web_upload' => '@web/upload',
     ],
     'components' => [
         'cache' => [
