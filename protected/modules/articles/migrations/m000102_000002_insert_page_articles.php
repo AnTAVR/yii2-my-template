@@ -1,15 +1,22 @@
 <?php
 
 use app\migrations\DefaultContent;
+use app\modules\articles\models\Articles;
 use yii\db\Expression;
 use yii\db\Migration;
 
 class m000102_000002_insert_page_articles extends Migration
 {
-    public $tableName = '{{%page_articles}}';
+    public $tableName;
 
     const CONTENT_TITLE = 'article';
     const COUNT = 3;
+
+    public function init()
+    {
+        parent::init();
+        $this->tableName = Articles::tableName();
+    }
 
     /**
      * @inheritdoc

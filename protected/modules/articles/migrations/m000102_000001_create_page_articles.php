@@ -1,5 +1,6 @@
 <?php
 
+use app\modules\articles\models\Articles;
 use yii\db\Migration;
 
 /**
@@ -7,10 +8,16 @@ use yii\db\Migration;
  */
 class m000102_000001_create_page_articles extends Migration
 {
-    public $tableName = '{{%page_articles}}';
+    public $tableName;
 
     // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
     public $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
+
+    public function init()
+    {
+        parent::init();
+        $this->tableName = Articles::tableName();
+    }
 
     /**
      * @inheritdoc

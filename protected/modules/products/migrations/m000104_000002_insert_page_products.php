@@ -1,15 +1,22 @@
 <?php
 
 use app\migrations\DefaultContent;
+use app\modules\products\models\Products;
 use yii\db\Expression;
 use yii\db\Migration;
 
 class m000104_000002_insert_page_products extends Migration
 {
-    public $tableName = '{{%page_products}}';
+    public $tableName;
 
     const CONTENT_TITLE = 'product';
     const COUNT = 3;
+
+    public function init()
+    {
+        parent::init();
+        $this->tableName = Products::tableName();
+    }
 
     /**
      * @inheritdoc

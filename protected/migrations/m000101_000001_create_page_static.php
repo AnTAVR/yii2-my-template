@@ -1,5 +1,6 @@
 <?php
 
+use app\models\StaticPage;
 use yii\db\Migration;
 
 /**
@@ -7,10 +8,16 @@ use yii\db\Migration;
  */
 class m000101_000001_create_page_static extends Migration
 {
-    public $tableName = '{{%page_static}}';
+    public $tableName;
 
     // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
     public $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
+
+    public function init()
+    {
+        parent::init();
+        $this->tableName = StaticPage::tableName();
+    }
 
     /**
      * @inheritdoc
