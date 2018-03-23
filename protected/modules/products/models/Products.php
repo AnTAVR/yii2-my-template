@@ -11,6 +11,7 @@ use yii\validators\DateValidator;
 /**
  * This is the model class for table "page_products".
  *
+ * Database fields:
  * @property integer $id
  *
  * @property integer $published_at
@@ -67,23 +68,49 @@ class Products extends ActiveRecord
      */
     public function rules()
     {
+        $params = Yii::$app->params;
         return [
-            [['published_at', 'content_title', 'content_short', 'content_full', 'meta_url', 'meta_description', 'meta_keywords'], 'trim'],
+            ['published_at', 'trim'],
+            ['published_at', 'date',
+                'type' => DateValidator::TYPE_DATETIME,
+                'format' => 'Y-MM-dd HH:mm:ss'],
 
-            [['status', 'content_title', 'content_short', 'content_full', 'meta_url'], 'required'],
-            [['status'], 'integer'],
-            ['published_at', 'date', 'type' => DateValidator::TYPE_DATETIME, 'format' => 'Y-MM-dd HH:mm:ss'],
-            ['content_short', 'string', 'max' => self::CONTENT_SHORT_MAX_SIZE],
+            ['content_title', 'trim'],
+            ['content_title', 'required'],
+            ['content_title', 'string',
+                'max' => $params['string.max']],
+
+            ['content_short', 'trim'],
+            ['content_short', 'required'],
+            ['content_short', 'string',
+                'max' => self::CONTENT_SHORT_MAX_SIZE],
+
+            ['content_full', 'trim'],
+            ['content_full', 'required'],
             ['content_full', 'string'],
-            [['content_title', 'meta_url', 'meta_description', 'meta_keywords'], 'string', 'max' => 255],
 
-            ['content_title', 'safe'],
+            ['meta_description', 'trim'],
+            ['meta_description', 'string',
+                'max' => $params['string.max']],
 
-            ['meta_url', 'match', 'pattern' => Yii::$app->params['meta_url_pattern']],
-            [['meta_url'], 'unique'],
+            ['meta_keywords', 'trim'],
+            ['meta_keywords', 'string',
+                'max' => $params['string.max']],
 
-            ['status', 'default', 'value' => self::STATUS_DRAFT],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DRAFT, self::STATUS_DELETED]],
+            ['meta_url', 'trim'],
+            ['meta_url', 'required'],
+            ['meta_url', 'string',
+                'max' => $params['string.max']],
+            ['meta_url', 'match',
+                'pattern' => $params['meta_url_pattern']],
+            ['meta_url', 'unique'],
+
+            ['status', 'required'],
+            ['status', 'integer'],
+            ['status', 'default',
+                'value' => self::STATUS_DRAFT],
+            ['status', 'in',
+                'range' => array_keys(self::$statusName)],
         ];
     }
 

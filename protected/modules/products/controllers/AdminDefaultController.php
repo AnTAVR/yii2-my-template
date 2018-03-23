@@ -6,7 +6,7 @@ use app\components\AdminController;
 use app\modules\products\models\Products;
 use Yii;
 use yii\data\ActiveDataProvider;
-use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -19,16 +19,14 @@ class AdminDefaultController extends AdminController
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::class,
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
+        return ArrayHelper::merge(parent::behaviors(), [
+            'verbs' => [
+                'class' => 'yii\filters\VerbFilter',
+                'actions' => [
+                    'delete' => ['POST'],
                 ],
-            ]);
+            ],
+        ]);
     }
 
     /**
