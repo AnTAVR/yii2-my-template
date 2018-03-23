@@ -5,7 +5,7 @@ namespace app\controllers;
 use app\components\AdminController;
 
 /**
- * AdminStaticPageController implements the CRUD actions for StaticPage model.
+ * AdminSiteController.
  */
 class AdminSiteController extends AdminController
 {

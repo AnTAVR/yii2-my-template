@@ -21,7 +21,9 @@ use app\widgets\Alert;
 <div class="col-sm-9">
     <?= Alert::widget() ?>
 
-    <?= $content ?>
+    <div class="content">
+        <?= $content ?>
+    </div>
 </div>
 
 <?php $this->endContent(); ?>

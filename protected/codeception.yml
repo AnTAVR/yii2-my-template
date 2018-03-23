@@ -1,5 +1,7 @@
 namespace: tests
 include:
+    - modules/account
+#    - modules/rbac
 #    - modules/uploader
 #    - modules/articles
 #    - modules/news

@@ -18,7 +18,7 @@ class SiteController extends Controller
             ],
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+                'fixedVerifyCode' => (YII_ENV_TEST or YII_ENV_DEV) ? 'testme' : null,
             ],
         ];
     }
@@ -45,10 +45,10 @@ class SiteController extends Controller
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->contact(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', Yii::t('app', 'Thank you for contacting us.') . ' ' . Yii::t('app', 'We will respond to you as soon as possible.'));
+            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
+                Yii::$app->session->addFlash('success', Yii::t('app', 'Thank you for contacting us.') . ' ' . Yii::t('app', 'We will respond to you as soon as possible.'));
             } else {
-                Yii::$app->session->setFlash('error', Yii::t('app', 'There was an error sending email.'));
+                Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
             }
 
             return $this->refresh();
@@ -64,9 +64,9 @@ class SiteController extends Controller
         $model = new CallbackForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', Yii::t('app', 'Thank you for contacting us.') . ' ' . Yii::t('app', 'We will respond to you as soon as possible.'));
+                Yii::$app->session->addFlash('success', Yii::t('app', 'Thank you for contacting us.') . ' ' . Yii::t('app', 'We will respond to you as soon as possible.'));
             } else {
-                Yii::$app->session->setFlash('error', Yii::t('app', 'There was an error sending email.'));
+                Yii::$app->session->addFlash('error', Yii::t('app', 'There was an error sending email.'));
             }
 
             return $this->refresh();

@@ -7,7 +7,7 @@ use yii\base\Widget;
 class TopLink extends Widget
 {
     public $idw = 'toplink';
-    public $icon = 'arrow-up';
+    public $icon = 'chevron-up';
     public $text;
     public $echoText = false;
 

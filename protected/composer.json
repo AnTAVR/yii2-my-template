@@ -1,7 +1,12 @@
 {
     "name": "yiisoft/yii2-app-basic",
     "description": "Yii 2 Basic Project Template",
-    "keywords": ["yii2", "framework", "basic", "project template"],
+  "keywords": [
+    "yii2",
+    "framework",
+    "basic",
+    "project template"
+  ],
     "homepage": "http://www.yiiframework.com/",
     "type": "project",
     "license": "BSD-3-Clause",
@@ -19,11 +24,13 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "yiisoft/yii2-imagine": "*",
-        "ckeditor/ckeditor": "~4.8.0+full",
+      "yiisoft/yii2-jui": "^2.0",
         "bower-asset/smalot-bootstrap-datetimepicker": "2.4.4",
         "bower-asset/normalize-css": "8.0.0",
+      "ckeditor/ckeditor": "~4.8.0+full",
       "bariew/yii2-module-migration-controller": "*",
-        "2amigos/yii2-file-upload-widget": "~1.0"
+      "2amigos/yii2-file-upload-widget": "~1.0",
+      "yiisoft/yii2-authclient": "^2.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -54,8 +61,9 @@
             "setPermission": [
                 {
                     "runtime": "0777",
-                    "web/assets": "0777",
-                    "yii": "0755"
+                  "../assets": "0777",
+                  "yii": "0755",
+                  "yii-test": "0755"
                 }
             ]
         },
