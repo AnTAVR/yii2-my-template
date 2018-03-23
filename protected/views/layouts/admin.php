@@ -9,6 +9,7 @@ use app\widgets\Thumbnail\Thumbnail;
 use app\widgets\TopLink\TopLink;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 use yii\widgets\Menu;
@@ -30,6 +31,7 @@ $asset = AppSiteAsset::register($this);
 <?php $this->beginBody() ?>
 
 <?php
+$fixed_top = false;
 NavBar::begin([
     'brandLabel' => Yii::t('app', 'View site'),
     'brandUrl' => Yii::$app->homeUrl,
@@ -37,27 +39,31 @@ NavBar::begin([
         'target' => '_blank',
     ],
     'options' => [
-        'class' => 'navbar-inverse',
+        'class' => 'navbar-inverse' . ($fixed_top ? ' navbar-fixed-top' : ''),
     ],
 ]);
 $menuItems = [
 ];
 
-$profileItems = [];
-
 if (Yii::$app->user->isGuest) {
-    $profileItems[] = ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-in"></span> ' . Yii::t('app', 'Login'), 'url' => [Yii::$app->user->loginUrl]];
+    $profileItems = ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-in"></span> ' .
+        Yii::t('app', 'Login'), 'url' => [Yii::$app->user->loginUrl]];
 } else {
-    /** @var $identity \app\modules\user\models\User */
-    $identity = Yii::$app->user->identity;
-    $profileItems = [
-        ['label' => Yii::t('app', 'Edit'), 'url' => ['/user']],
+    $profileItems = [];
+
+    $profileItems = ArrayHelper::merge($profileItems, [
+        ['label' => Yii::t('app', 'Profile'), 'url' => ['/account']],
         '<li class="divider"></li>',
-        ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-out"></span> ' . Yii::t('app', 'Logout ({username})', ['username' => $identity->username]), 'url' => ['/user/default/logout']],
-    ];
+        ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-out"></span> ' . Yii::t('app', 'Logout'),
+            'url' => ['/logout'], 'linkOptions' => ['data' => ['method' => 'POST']]],
+    ]);
+
+    /** @var $identity \app\modules\account\models\User */
+    $identity = Yii::$app->user->identity;
+    $profileItems = ['label' => $identity->username, 'items' => $profileItems,];
 }
 
-$menuItems[] = ['label' => Yii::t('app', 'Profile'), 'items' => $profileItems,];
+$menuItems[] =  $profileItems;
 
 echo Nav::widget([
     'options' => ['class' => 'navbar-nav navbar-right'],
@@ -67,7 +73,7 @@ NavBar::end();
 $controllerId = Yii::$app->controller->id;
 $moduleId = Yii::$app->controller->module->id;
 ?>
-<div class="wrap">
+<div class="wrap<?= $fixed_top ? ' fixed-top' : '' ?>">
     <div class="container">
         <?= Menu::widget([
             'options' => ['class' => 'nav nav-tabs'],
@@ -102,7 +108,9 @@ $moduleId = Yii::$app->controller->module->id;
 
         <?= Alert::widget() ?>
 
-        <?= $content ?>
+        <div class="content">
+            <?= $content ?>
+        </div>
     </div>
 </div>
 

@@ -1,7 +1,7 @@
 <?php
 
-/* @var $this yii\web\View */
-/* @var $model app\models\StaticPage */
+/* @var $this \yii\web\View */
+/* @var $model \app\models\StaticPage */
 /* @var $breadcrumbs boolean */
 
 $this->title = $model->content_title;
@@ -21,8 +21,4 @@ if (!isset($breadcrumbs)) {
     $this->params['breadcrumbs'][] = $this->title;
 }
 ?>
-<div class="static-view static-<?= $model->meta_url ?>">
-
-    <?= $model->content_full ?>
-
-</div>
+<?= $model->content_full ?>

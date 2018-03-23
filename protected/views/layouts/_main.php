@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
+
 /* @var $content string */
 
 use app\assets\AppSiteAsset;
@@ -9,10 +10,12 @@ use app\widgets\TopLink\TopLink;
 use yii\bootstrap\Carousel;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 
 $asset = AppSiteAsset::register($this);
+/** @var yii\web\AssetBundle $asset */
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -29,11 +32,12 @@ $asset = AppSiteAsset::register($this);
 <?php $this->beginBody() ?>
 
 <?php
+$fixed_top = true;
 NavBar::begin([
     'brandLabel' => Yii::$app->params['brandLabel'],
     'brandUrl' => Yii::$app->homeUrl,
     'options' => [
-        'class' => 'navbar-default navbar-fixed-top',
+        'class' => 'navbar-default' . ($fixed_top ? ' navbar-fixed-top' : ''),
     ],
 ]); ?>
 <p class="navbar-text">
@@ -59,25 +63,30 @@ $menuItems = [
     ],
 ];
 
-$profileItems = [];
-
 if (Yii::$app->user->isGuest) {
-    $profileItems[] = ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-in"></span> ' . Yii::t('app', 'Login'), 'url' => [Yii::$app->user->loginUrl]];
+    $profileItems = ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-in"></span> ' .
+        Yii::t('app', 'Login'), 'url' => Yii::$app->user->loginUrl];
 } else {
-    /** @var $identity \app\modules\user\models\User */
-    $identity = Yii::$app->user->identity;
     $profileItems = [
-        ['label' => Yii::t('app', 'Edit'), 'url' => ['/user']],
+        ['label' => Yii::t('app', 'Admin panel'), 'url' => ['/admin-site'], 'linkOptions' => ['target' => '_blank']],
         '<li class="divider"></li>',
-        ['label' => Yii::t('app', 'Admin panel'), 'url' => ['/admin-site'], 'options' => ['target' => '_blank']],
-        '<li class="divider"></li>',
-        ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-out"></span> ' . Yii::t('app', 'Logout ({username})', ['username' => $identity->username]), 'url' => ['/user/default/logout']],
     ];
+
+    $profileItems = ArrayHelper::merge($profileItems, [
+        ['label' => Yii::t('app', 'Profile'), 'url' => ['/account']],
+        '<li class="divider"></li>',
+        ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-out"></span> ' . Yii::t('app', 'Logout'),
+            'url' => ['/logout'], 'linkOptions' => ['data' => ['method' => 'POST']]],
+    ]);
+
+    /** @var $identity \app\modules\account\models\User */
+    $identity = Yii::$app->user->identity;
+    $profileItems = ['label' => $identity->username, 'items' => $profileItems,];
 }
 
-if (!Yii::$app->user->isGuest) {
-    $menuItems[] = ['label' => Yii::t('app', 'Profile'), 'items' => $profileItems,];
-}
+//if (!Yii::$app->user->isGuest) {
+$menuItems[] = $profileItems;
+//}
 
 echo Nav::widget([
     'options' => ['class' => 'navbar-nav navbar-right'],
@@ -85,13 +94,13 @@ echo Nav::widget([
 ]);
 NavBar::end();
 ?>
-<div class="wrap fixed-top">
+<div class="wrap<?= $fixed_top ? ' fixed-top' : '' ?>">
     <div class="container">
         <?= Carousel::widget([
             'showIndicators' => true,
             'controls' => [
-//                '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>',
-//                '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>',
+                '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>',
+                '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>',
                 '',
                 '',
             ],
