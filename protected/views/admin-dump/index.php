@@ -5,22 +5,12 @@ use yii\helpers\Html;
 
 /* @var $this \app\components\View */
 /* @var $dataProvider \yii\data\ArrayDataProvider */
-/* @var $activePids array */
 
 $this->title = Yii::t('app', 'Dump');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 <h1><?= Html::encode($this->title) ?></h1>
-
-<?php if (!empty($activePids)): ?>
-    <div class="well">
-        <h4><?= Yii::t('app', 'Active processes:') ?></h4>
-        <?php foreach ($activePids as $pid => $cmd): ?>
-            <b><?= $pid ?></b>: <?= $cmd ?><br>
-        <?php endforeach ?>
-    </div>
-<?php endif ?>
 
 <p>
     <?= Html::a('<span class="glyphicon glyphicon-trash"></span>' . Yii::t('app', 'Delete all'),
