@@ -93,7 +93,14 @@ $__config = [
                 '/static/<meta_url>' => '/static/index',
             ],
         ],
-        'db' => require __DIR__ . '/common/db.php',
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => "mysql:host={$params['db.host']};dbname={$params['db.dbname']}" . (YII_ENV_TEST ? '_tests' : ''),
+            'username' => $params['db.username'],
+            'password' => $params['db.password'],
+            'charset' => 'utf8',
+            'enableSchemaCache' => !YII_ENV_DEV,
+        ],
         'view' => [
             'theme' => $params['theme'],
         ],
