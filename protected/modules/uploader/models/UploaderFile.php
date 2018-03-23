@@ -18,7 +18,7 @@ use yii\db\ActiveRecord;
  */
 class UploaderFile extends ActiveRecord
 {
-    const PATH_FILES = '/upload/files';
+    const PATH_FILES = 'files';
 
     /**
      * @inheritdoc
@@ -61,12 +61,22 @@ class UploaderFile extends ActiveRecord
         ];
     }
 
+    public static function getUploadUrl()
+    {
+        return Yii::getAlias('@web_upload') . '/' . static::PATH_FILES . '/';
+    }
+
+    public static function getUploadPath()
+    {
+        return Yii::getAlias('@upload') . DIRECTORY_SEPARATOR . static::PATH_FILES . DIRECTORY_SEPARATOR;
+    }
+
     /**
      * @inheritdoc
      */
     public function getFileUrl()
     {
-        return Yii::getAlias('@web' . self::PATH_FILES) . '/' . $this->meta_url;
+        return static::getUploadUrl() . $this->meta_url;
     }
 
     /**
@@ -74,7 +84,7 @@ class UploaderFile extends ActiveRecord
      */
     public function getFilePath()
     {
-        return Yii::getAlias('@webroot' . self::PATH_FILES) . '/' . $this->meta_url;
+        return static::getUploadPath() . $this->meta_url;
     }
 
     public function beforeDelete()
