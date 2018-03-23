@@ -58,7 +58,7 @@ class DumpController extends Controller
     /**
      * Restore Dump DB
      *
-     * @param string $fileName Name Dump
+     * @param string $fileName Name File Dump
      * @return int
      * @throws NotSupportedException
      */
