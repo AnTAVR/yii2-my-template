@@ -3,30 +3,23 @@
 namespace app\modules\news;
 
 use app\components\Module as ModuleOld;
+use Yii;
 
 /**
- * news module definition class
+ * module definition class
  */
 class Module extends ModuleOld
 {
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'app\modules\news\controllers';
-    public $params = [
-        'pageSize' => 10,
-        'adminPageSize' => 10,
-    ];
-
-    /**
-     * @inheritdoc
-     */
     public function init()
     {
         parent::init();
+        $this->params = require __DIR__ . '/config/params.php';
 
         /** @noinspection HtmlUnknownTag */
-        \Yii::$app->urlManager->addRules(
+        Yii::$app->urlManager->addRules(
             [
                 '/news/admin-<controller>' => '/news/admin-<controller>',
                 '/news/page-<page\d+>' => '/news/default/index',

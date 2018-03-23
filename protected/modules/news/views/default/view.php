@@ -1,7 +1,7 @@
 <?php
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\news\models\News */
+/* @var $this \yii\web\View */
+/* @var $model \app\modules\news\models\News */
 
 $this->title = $model->content_title;
 if (!empty($model->meta_description)) {
@@ -19,8 +19,4 @@ if (!empty($model->meta_keywords)) {
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'News'), 'url' => ['/news']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="news-view news-<?= $model->meta_url ?>">
-
-    <?= $model->content_full ?>
-
-</div>
+<?= $model->content_full ?>
