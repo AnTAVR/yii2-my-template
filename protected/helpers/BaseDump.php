@@ -12,6 +12,8 @@ use yii\helpers\StringHelper;
 
 class BaseDump
 {
+    const PATH_DB = 'db';
+
     /**
      * @param string $dbName
      * @return string
@@ -27,8 +29,7 @@ class BaseDump
 
     public static function getPath()
     {
-        $params = Yii::$app->params;
-        $path = Yii::getAlias($params['backups_path']) . DIRECTORY_SEPARATOR . 'db';
+        $path = Yii::getAlias('@backups') . DIRECTORY_SEPARATOR . static::PATH_DB;
         if (!is_dir($path)) {
             FileHelper::createDirectory($path, 0775, true);
         }
