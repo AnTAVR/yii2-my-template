@@ -6,7 +6,7 @@ use yii\helpers\StringHelper;
 
 class MysqlDump extends BaseDump
 {
-    public static function makeDumpCommand($path, $dbInfo)
+    public static function makeDumpCommand($dumpFile, $dbInfo)
     {
         $arguments = [];
         $arguments[] = 'mysqldump';
@@ -18,7 +18,7 @@ class MysqlDump extends BaseDump
         $arguments[] = '|';
         $arguments[] = 'gzip';
         $arguments[] = '>';
-        $arguments[] = $path;
+        $arguments[] = $dumpFile;
 
         return implode(' ', $arguments);
     }

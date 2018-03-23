@@ -6,7 +6,7 @@ use yii\helpers\StringHelper;
 
 class PostgresDump extends BaseDump
 {
-    public static function makeDumpCommand($path, $dbInfo)
+    public static function makeDumpCommand($dumpFile, $dbInfo)
     {
         $arguments = [];
         if (static::isWindows()) {
@@ -24,7 +24,7 @@ class PostgresDump extends BaseDump
         $arguments[] = '|';
         $arguments[] = 'gzip';
         $arguments[] = '>';
-        $arguments[] = $path;
+        $arguments[] = $dumpFile;
         return implode(' ', $arguments);
     }
 

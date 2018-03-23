@@ -48,11 +48,11 @@ abstract class BaseDump
     }
 
     /**
-     * @param string $path
+     * @param string $dumpFile
      * @param array $dbInfo
      * @return string
      */
-    abstract public static function makeDumpCommand($path, $dbInfo);
+    abstract public static function makeDumpCommand($dumpFile, $dbInfo);
 
     /**
      * @param string $dumpFile
