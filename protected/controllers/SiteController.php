@@ -14,6 +14,7 @@ class SiteController extends Controller
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
+                'layout' => 'error'
             ],
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
@@ -29,6 +30,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        /** @noinspection RequireParameterInspection */
         return $this->render('@app/views/static/index', [
             'model' => StaticController::findModel('index'),
         ]);
