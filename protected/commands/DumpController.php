@@ -75,7 +75,7 @@ class DumpController extends Controller
         $fileList = BaseDump::getFilesList();
         $in_array = false;
         foreach ($fileList as $file) {
-            if ($fileName === $file['basename']) {
+            if ($fileName === $file['file']) {
                 $in_array = true;
                 break;
             }
@@ -142,7 +142,7 @@ class DumpController extends Controller
     {
         $fileList = BaseDump::getFilesList();
         foreach ($fileList as $file) {
-            Console::output($file['basename']);
+            Console::output($file['file']);
         }
         return ExitCode::OK;
     }
