@@ -46,18 +46,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ['class' => 'yii\grid\SerialColumn'],
         'basename',
         'timestamp:datetime',
-//        [
-//            'attribute' => 'name',
-//            'label' => Yii::t('app', 'Name'),
-//        ],
-//        [
-//            'attribute' => 'size',
-//            'label' => Yii::t('app', 'Size'),
-//        ],
-//        [
-//            'attribute' => 'create_at',
-//            'label' => Yii::t('app', 'Create time'),
-//        ],
         [
             'class' => 'yii\grid\ActionColumn',
             'template' => '{download} {restore} {delete}',
@@ -65,13 +53,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'download' => function ($url, $model) {
                     return Html::a('<span class="glyphicon glyphicon-download-alt"></span>',
                         [
-                            'download/',
+                            'download',
                             'fileName' => $model['basename'],
                         ],
                         [
                             'title' => Yii::t('app', 'Download'),
                             'data-method' => 'post',
-                            'data-fileName' => $model['basename'],
                             'class' => 'btn btn-sm btn-default',
                         ]);
                 },
