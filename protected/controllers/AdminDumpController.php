@@ -120,18 +120,7 @@ class AdminDumpController extends AdminController
      */
     public function actionDownload($fileName)
     {
-        $fileList = BaseDump::getFilesList();
-        $in_array = false;
-        foreach ($fileList as $file) {
-            if ($fileName === $file['file']) {
-                $in_array = true;
-                break;
-            }
-        }
-
-        if (!$in_array) {
-            throw new NotFoundHttpException('File not found.');
-        }
+        static::testFileName($fileName);
 
         $dumpFile = BaseDump::getPath() . DIRECTORY_SEPARATOR . $fileName;
 
@@ -140,18 +129,7 @@ class AdminDumpController extends AdminController
 
     public function actionDelete($fileName)
     {
-        $fileList = BaseDump::getFilesList();
-        $in_array = false;
-        foreach ($fileList as $file) {
-            if ($fileName === $file['file']) {
-                $in_array = true;
-                break;
-            }
-        }
-
-        if (!$in_array) {
-            throw new NotFoundHttpException('File not found.');
-        }
+        static::testFileName($fileName);
 
         $dumpFile = BaseDump::getPath() . DIRECTORY_SEPARATOR . $fileName;
 
@@ -186,5 +164,25 @@ class AdminDumpController extends AdminController
         }
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * @param string $fileName
+     * @throws NotFoundHttpException
+     */
+    public static function testFileName($fileName)
+    {
+        $fileList = BaseDump::getFilesList();
+        $in_array = false;
+        foreach ($fileList as $file) {
+            if ($fileName === $file['file']) {
+                $in_array = true;
+                break;
+            }
+        }
+
+        if (!$in_array) {
+            throw new NotFoundHttpException('File not found.');
+        }
     }
 }
