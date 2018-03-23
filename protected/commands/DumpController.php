@@ -12,6 +12,7 @@ use yii\base\NotSupportedException;
 use yii\console\Controller;
 use yii\console\ExitCode;
 use yii\helpers\Console;
+use yii\web\NotFoundHttpException;
 
 /**
  * Backup Dump DB.
@@ -58,6 +59,26 @@ class DumpController extends Controller
     }
 
     /**
+     * @param string $fileName Name File Dump
+     * @throws NotFoundHttpException
+     */
+    public static function testFileName($fileName)
+    {
+        $fileList = BaseDump::getFilesList();
+        $in_array = false;
+        foreach ($fileList as $file) {
+            if ($fileName === $file['file']) {
+                $in_array = true;
+                break;
+            }
+        }
+
+        if (!$in_array) {
+            throw new NotFoundHttpException('File not found.');
+        }
+    }
+
+    /**
      * Restore Dump DB
      *
      * @param string $fileName Name File Dump
@@ -72,17 +93,10 @@ class DumpController extends Controller
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
-        $fileList = BaseDump::getFilesList();
-        $in_array = false;
-        foreach ($fileList as $file) {
-            if ($fileName === $file['file']) {
-                $in_array = true;
-                break;
-            }
-        }
-
-        if (!$in_array) {
-            Console::output('File not found.');
+        try {
+            static::testFileName($fileName);
+        } catch (NotFoundHttpException $e) {
+            Console::output($e->getMessage());
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
