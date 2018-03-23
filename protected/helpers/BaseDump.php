@@ -42,11 +42,11 @@ class BaseDump
         $fileList = [];
         foreach ($files as $file) {
             $fileList[] = [
-                'basename' => StringHelper::basename($file),
-                'timestamp' => filectime($file),
+                'file' => StringHelper::basename($file),
+                'created_at' => filectime($file),
             ];
         }
-        ArrayHelper::multisort($fileList, ['timestamp'], [SORT_DESC]);
+        ArrayHelper::multisort($fileList, ['created_at'], [SORT_DESC]);
         return $fileList;
     }
 
