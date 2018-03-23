@@ -15,4 +15,8 @@ return [
     'meta_url_hint' => 'a-z 0-9 -',
     'theme' => 'app\themes\BasicTheme',
     'backups_path' => '@app/backups',
+    'db.host' => 'localhost',
+    'db.dbname' => 'tests',
+    'db.username' => 'tests',
+    'db.password' => 'teststests',
 ];
