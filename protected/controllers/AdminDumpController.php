@@ -7,7 +7,6 @@ use app\helpers\BaseDump;
 use app\helpers\DumpInterface;
 use Symfony\Component\Process\Process;
 use Yii;
-use yii\base\NotSupportedException;
 use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\web\HttpException;
@@ -37,6 +36,7 @@ class AdminDumpController extends AdminController
 
     /**
      * @return string
+     * @throws \yii\base\Exception
      */
     public function actionIndex()
     {
@@ -54,14 +54,12 @@ class AdminDumpController extends AdminController
     /**
      * @return \yii\web\Response
      * @throws HttpException
+     * @throws \yii\base\Exception
+     * @throws \yii\base\InvalidConfigException
      */
     public function actionCreate()
     {
-        try {
-            $dbInfo = BaseDump::getDbInfo();
-        } catch (NotSupportedException $e) {
-            throw new HttpException($e->getMessage());
-        }
+        $dbInfo = BaseDump::getDbInfo();
 
         $dumpFile = BaseDump::makePath($dbInfo['dbName']);
 
@@ -77,9 +75,76 @@ class AdminDumpController extends AdminController
     }
 
     /**
+     * @param string $command
+     * @param bool $isRestore
+     */
+    protected static function runProcess($command, $isRestore = false)
+    {
+        $process = new Process($command);
+        $process->run();
+        if ($process->isSuccessful()) {
+            $msg = !$isRestore ? Yii::t('app', 'Dump successfully created.') : Yii::t('app', 'Dump successfully restored.');
+            Yii::$app->session->addFlash('success', $msg);
+        } else {
+            $msg = !$isRestore ? Yii::t('app', 'Dump failed.') : Yii::t('app', 'Restore failed.');
+            Yii::$app->session->addFlash('error', $msg . '<br>' . 'Command - ' . $command . '<br>' . $process->getOutput() . $process->getErrorOutput());
+            Yii::error($msg . PHP_EOL . 'Command - ' . $command . PHP_EOL . $process->getOutput() . PHP_EOL . $process->getErrorOutput());
+        }
+    }
+
+    /**
+     * @param string $fileName Name File Dump
+     * @return \yii\web\Response
+     * @throws HttpException
+     * @throws NotFoundHttpException
+     * @throws \yii\base\Exception
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function actionRestore($fileName)
+    {
+        $dbInfo = BaseDump::getDbInfo();
+
+        static::testFileName($fileName);
+
+        $dumpFile = BaseDump::getPath() . DIRECTORY_SEPARATOR . $fileName;
+
+        /** @var DumpInterface $manager */
+        $manager = $dbInfo['manager'];
+        $command = $manager::makeRestoreCommand($dumpFile, $dbInfo);
+
+        Yii::debug(compact('dumpFile', 'command'), get_called_class());
+
+        $this->runProcess($command, true);
+
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * @param string $fileName Name File Dump
+     * @throws NotFoundHttpException
+     * @throws \yii\base\Exception
+     */
+    public static function testFileName($fileName)
+    {
+        $fileList = BaseDump::getFilesList();
+        $in_array = false;
+        foreach ($fileList as $file) {
+            if ($fileName === $file['file']) {
+                $in_array = true;
+                break;
+            }
+        }
+
+        if (!$in_array) {
+            throw new NotFoundHttpException('File not found.');
+        }
+    }
+
+    /**
      * @param string $fileName Name File Dump
      * @return \yii\web\Response
      * @throws NotFoundHttpException
+     * @throws \yii\base\Exception
      */
     public function actionDownload($fileName)
     {
@@ -94,6 +159,7 @@ class AdminDumpController extends AdminController
      * @param string $fileName Name File Dump
      * @return \yii\web\Response
      * @throws NotFoundHttpException
+     * @throws \yii\base\Exception
      */
     public function actionDelete($fileName)
     {
@@ -112,6 +178,7 @@ class AdminDumpController extends AdminController
 
     /**
      * @return \yii\web\Response
+     * @throws \yii\base\Exception
      */
     public function actionDeleteAll()
     {
@@ -135,43 +202,5 @@ class AdminDumpController extends AdminController
         }
 
         return $this->redirect(['index']);
-    }
-
-    /**
-     * @param string $fileName Name File Dump
-     * @throws NotFoundHttpException
-     */
-    public static function testFileName($fileName)
-    {
-        $fileList = BaseDump::getFilesList();
-        $in_array = false;
-        foreach ($fileList as $file) {
-            if ($fileName === $file['file']) {
-                $in_array = true;
-                break;
-            }
-        }
-
-        if (!$in_array) {
-            throw new NotFoundHttpException('File not found.');
-        }
-    }
-
-    /**
-     * @param string $command
-     * @param bool $isRestore
-     */
-    protected static function runProcess($command, $isRestore = false)
-    {
-        $process = new Process($command);
-        $process->run();
-        if ($process->isSuccessful()) {
-            $msg = !$isRestore ? Yii::t('app', 'Dump successfully created.') : Yii::t('app', 'Dump successfully restored.');
-            Yii::$app->session->addFlash('success', $msg);
-        } else {
-            $msg = !$isRestore ? Yii::t('app', 'Dump failed.') : Yii::t('app', 'Restore failed.');
-            Yii::$app->session->addFlash('error', $msg . '<br>' . 'Command - ' . $command . '<br>' . $process->getOutput() . $process->getErrorOutput());
-            Yii::error($msg . PHP_EOL . 'Command - ' . $command . PHP_EOL . $process->getOutput() . PHP_EOL . $process->getErrorOutput());
-        }
     }
 }
