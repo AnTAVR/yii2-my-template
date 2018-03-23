@@ -42,7 +42,6 @@ class AdminDumpController extends AdminController
      */
     public function actionDownload($fileName)
     {
-
         $fileList = BaseDump::getFilesList();
         $in_array = false;
         foreach ($fileList as $file) {
