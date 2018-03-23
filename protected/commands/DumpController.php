@@ -1,10 +1,10 @@
 <?php
 
-namespace app\modules\backup\commands;
+namespace app\commands;
 
-use app\modules\backup\helpers\BaseDump;
-use app\modules\backup\helpers\MysqlDump;
-use app\modules\backup\helpers\PostgresDump;
+use app\helpers\BaseDump;
+use app\helpers\MysqlDump;
+use app\helpers\PostgresDump;
 use PDO;
 use PDOException;
 use Symfony\Component\Process\Process;
