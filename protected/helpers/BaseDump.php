@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\backup\helpers;
+namespace app\helpers;
 
 use Yii;
 use yii\base\NotSupportedException;
