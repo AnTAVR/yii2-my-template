@@ -14,6 +14,6 @@ class HomeCest
 
     public function checkOpen(FunctionalTester $I)
     {
-        $I->see('brandLabel');
+        $I->see(Yii::$app->params['brandLabel']);
     }
 }
