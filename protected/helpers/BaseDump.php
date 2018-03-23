@@ -6,6 +6,7 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\db\Connection;
 use yii\di\Instance;
+use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
 use yii\helpers\StringHelper;
 
@@ -44,6 +45,7 @@ abstract class BaseDump
                 'timestamp' => filectime($file),
             ];
         }
+        ArrayHelper::multisort($fileList, ['timestamp'], [SORT_DESC]);
         return $fileList;
     }
 
