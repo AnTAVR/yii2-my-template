@@ -44,8 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
     'dataProvider' => $dataProvider,
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
-        'basename',
-        'timestamp:datetime',
+        'file',
+        'created_at:datetime',
         [
             'class' => 'yii\grid\ActionColumn',
             'template' => '{download} {restore} {delete}',
@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a('<span class="glyphicon glyphicon-download-alt"></span>',
                         [
                             'download',
-                            'fileName' => $model['basename'],
+                            'fileName' => $model['file'],
                         ],
                         [
                             'title' => Yii::t('app', 'Download'),
@@ -66,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a('<span class="glyphicon glyphicon-import"></span>',
                         [
                             'restore',
-                            'fileName' => $model['basename'],
+                            'fileName' => $model['file'],
                         ],
                         [
                             'title' => Yii::t('app', 'Restore'),
@@ -79,7 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a('<span class="glyphicon glyphicon-trash"></span>',
                         [
                             'delete',
-                            'fileName' => $model['basename'],
+                            'fileName' => $model['file'],
                         ],
                         [
                             'title' => Yii::t('app', 'Delete'),
