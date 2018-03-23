@@ -8,10 +8,10 @@ use PDO;
 use PDOException;
 use Symfony\Component\Process\Process;
 use Yii;
-use yii\base\NotSupportedException;
 use yii\console\Controller;
 use yii\console\ExitCode;
 use yii\helpers\Console;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -25,12 +25,14 @@ class DumpController extends Controller
      * Create Dump DB
      *
      * @return int
+     * @throws \yii\base\Exception
+     * @throws \yii\base\InvalidConfigException
      */
     public function actionCreate()
     {
         try {
             $dbInfo = BaseDump::getDbInfo();
-        } catch (NotSupportedException $e) {
+        } catch (HttpException $e) {
             Console::output($e->getMessage());
             return ExitCode::UNSPECIFIED_ERROR;
         }
@@ -59,36 +61,18 @@ class DumpController extends Controller
     }
 
     /**
-     * @param string $fileName Name File Dump
-     * @throws NotFoundHttpException
-     */
-    public static function testFileName($fileName)
-    {
-        $fileList = BaseDump::getFilesList();
-        $in_array = false;
-        foreach ($fileList as $file) {
-            if ($fileName === $file['file']) {
-                $in_array = true;
-                break;
-            }
-        }
-
-        if (!$in_array) {
-            throw new NotFoundHttpException('File not found.');
-        }
-    }
-
-    /**
      * Restore Dump DB
      *
      * @param string $fileName Name File Dump
      * @return int
+     * @throws \yii\base\Exception
+     * @throws \yii\base\InvalidConfigException
      */
     public function actionRestore($fileName)
     {
         try {
             $dbInfo = BaseDump::getDbInfo();
-        } catch (NotSupportedException $e) {
+        } catch (HttpException $e) {
             Console::output($e->getMessage());
             return ExitCode::UNSPECIFIED_ERROR;
         }
@@ -124,15 +108,37 @@ class DumpController extends Controller
     }
 
     /**
+     * @param string $fileName Name File Dump
+     * @throws NotFoundHttpException
+     * @throws \yii\base\Exception
+     */
+    public static function testFileName($fileName)
+    {
+        $fileList = BaseDump::getFilesList();
+        $in_array = false;
+        foreach ($fileList as $file) {
+            if ($fileName === $file['file']) {
+                $in_array = true;
+                break;
+            }
+        }
+
+        if (!$in_array) {
+            throw new NotFoundHttpException('File not found.');
+        }
+    }
+
+    /**
      * Test DB Connection
      *
      * @return int
+     * @throws \yii\base\InvalidConfigException
      */
     public function actionTest()
     {
         try {
             $dbInfo = BaseDump::getDbInfo();
-        } catch (NotSupportedException $e) {
+        } catch (HttpException $e) {
             Console::output($e->getMessage());
             return ExitCode::UNSPECIFIED_ERROR;
         }
@@ -151,6 +157,7 @@ class DumpController extends Controller
      * List Dumps DB
      *
      * @return int
+     * @throws \yii\base\Exception
      */
     public function actionList()
     {
