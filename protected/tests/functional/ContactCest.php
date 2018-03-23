@@ -3,6 +3,7 @@
 namespace tests\functional;
 
 use tests\FunctionalTester;
+use Yii;
 
 /* @var $scenario \Codeception\Scenario */
 class ContactCest
@@ -10,6 +11,14 @@ class ContactCest
     public function _before(FunctionalTester $I)
     {
         $I->amOnPage(['site/contact']);
+    }
+
+    public function checkOpen(FunctionalTester $I)
+    {
+        $I->amOnPage(Yii::$app->homeUrl);
+        $I->seeLink('Feedback');
+        $I->click('Feedback');
+        $I->see('Feedback', 'h1');
     }
 
     public function checkContact(FunctionalTester $I)
