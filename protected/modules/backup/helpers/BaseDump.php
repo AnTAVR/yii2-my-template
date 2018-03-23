@@ -3,6 +3,7 @@
 namespace app\modules\backup\helpers;
 
 use Yii;
+use yii\base\NotSupportedException;
 use yii\db\Connection;
 use yii\di\Instance;
 use yii\helpers\FileHelper;
@@ -89,13 +90,17 @@ abstract class BaseDump
         $dbInfo['password'] = $db->password;
         $dbInfo['prefix'] = $db->tablePrefix;
 
-        if (!$dbInfo['port']) {
-            if ($dbInfo['driverName'] === 'mysql') {
-                $dbInfo['port'] = '3306';
-            } elseif ($dbInfo['driverName'] === 'pgsql') {
-                $dbInfo['port'] = '5432';
-            }
+        if ($dbInfo['driverName'] === 'mysql') {
+            $port = '3306';
+        } elseif ($dbInfo['driverName'] === 'pgsql') {
+            $port = '5432';
+        } else {
+            throw new NotSupportedException($dbInfo['driverName'] . ' driver unsupported!');
         }
+        if (!$dbInfo['port']) {
+            $dbInfo['port'] = $port;
+        }
+
         return $dbInfo;
     }
 
