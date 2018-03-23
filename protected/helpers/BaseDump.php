@@ -3,12 +3,12 @@
 namespace app\helpers;
 
 use Yii;
-use yii\base\NotSupportedException;
 use yii\db\Connection;
 use yii\di\Instance;
 use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
 use yii\helpers\StringHelper;
+use yii\web\HttpException;
 
 class BaseDump
 {
@@ -17,6 +17,7 @@ class BaseDump
     /**
      * @param string $dbName
      * @return string
+     * @throws \yii\base\Exception
      */
     public static function makePath($dbName)
     {
@@ -27,6 +28,10 @@ class BaseDump
             );
     }
 
+    /**
+     * @return string
+     * @throws \yii\base\Exception
+     */
     public static function getPath()
     {
         $path = Yii::getAlias('@backups') . DIRECTORY_SEPARATOR . static::PATH_DB;
@@ -36,6 +41,10 @@ class BaseDump
         return $path;
     }
 
+    /**
+     * @return array
+     * @throws \yii\base\Exception
+     */
     public static function getFilesList()
     {
         $files = FileHelper::findFiles(static::getPath(), ['only' => ['*.sql', '*.gz']]);
@@ -50,6 +59,12 @@ class BaseDump
         return $fileList;
     }
 
+    /**
+     * @param string $db
+     * @return array
+     * @throws HttpException
+     * @throws \yii\base\InvalidConfigException
+     */
     public static function getDbInfo($db = 'db')
     {
         $dbInfo = [];
@@ -72,7 +87,7 @@ class BaseDump
             $port = '5432';
             $dbInfo['manager'] = new PostgresDump();
         } else {
-            throw new NotSupportedException($dbInfo['driverName'] . ' driver unsupported!');
+            throw new HttpException($dbInfo['driverName'] . ' driver unsupported!');
         }
         if (!$dbInfo['port']) {
             $dbInfo['port'] = $port;
@@ -81,6 +96,11 @@ class BaseDump
         return $dbInfo;
     }
 
+    /**
+     * @param string $name
+     * @param string $dsn
+     * @return string | null
+     */
     protected static function getDsnAttribute($name, $dsn)
     {
         if (preg_match('/' . $name . '=([^;]*)/', $dsn, $match)) {
