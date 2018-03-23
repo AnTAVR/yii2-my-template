@@ -4,6 +4,7 @@ namespace app\modules\uploader\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\helpers\FileHelper;
 
 /**
  * This is the model class for table "uploader_file".
@@ -68,7 +69,11 @@ class UploaderFile extends ActiveRecord
 
     public static function getUploadPath()
     {
-        return Yii::getAlias('@upload') . DIRECTORY_SEPARATOR . static::PATH_FILES . DIRECTORY_SEPARATOR;
+        $path = Yii::getAlias('@upload') . DIRECTORY_SEPARATOR . static::PATH_FILES;
+        if (!is_dir($path)) {
+            FileHelper::createDirectory($path, 0775, true);
+        }
+        return $path . DIRECTORY_SEPARATOR;
     }
 
     /**

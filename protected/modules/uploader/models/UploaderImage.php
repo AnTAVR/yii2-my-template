@@ -4,6 +4,7 @@ namespace app\modules\uploader\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\helpers\FileHelper;
 
 /**
  * This is the model class for table "uploader_image".
@@ -73,7 +74,11 @@ class UploaderImage extends ActiveRecord
 
     public static function getUploadPath()
     {
-        return Yii::getAlias('@upload') . DIRECTORY_SEPARATOR . static::PATH_IMAGES . DIRECTORY_SEPARATOR;
+        $path = Yii::getAlias('@upload') . DIRECTORY_SEPARATOR . static::PATH_IMAGES;
+        if (!is_dir($path)) {
+            FileHelper::createDirectory($path, 0775, true);
+        }
+        return $path . DIRECTORY_SEPARATOR;
     }
 
     public static function getUploadThumbnailUrl()
@@ -83,7 +88,11 @@ class UploaderImage extends ActiveRecord
 
     public static function getUploadThumbnailPath()
     {
-        return static::getUploadPath() . self::PATH_THUMBNAIL . DIRECTORY_SEPARATOR;
+        $path = static::getUploadPath() . self::PATH_THUMBNAIL;
+        if (!is_dir($path)) {
+            FileHelper::createDirectory($path, 0775, true);
+        }
+        return $path . DIRECTORY_SEPARATOR;
     }
 
     /**
