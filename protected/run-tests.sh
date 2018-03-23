@@ -1,12 +1,11 @@
 #!/bin/bash
+
+#./yii serve -t '@webroot' &
+#PHP_PID=${!}
+
+#./tests/bin/yii migrate --interactive=0
+#./vendor/bin/codecept -vvv build
 cd ..
+./protected/vendor/bin/codecept run -c ./protected
 
-php -S localhost:8080 &
-PHP_PID=${!}
-
-cd protected
-
-./vendor/bin/codecept -vvv build
-./vendor/bin/codecept -vvv run
-
-kill ${PHP_PID}
+#kill ${PHP_PID}
