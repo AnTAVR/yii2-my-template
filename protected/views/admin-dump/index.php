@@ -50,7 +50,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'class' => 'yii\grid\ActionColumn',
             'template' => '{download} {restore} {delete}',
             'buttons' => [
-                'download' => function ($url, $model) {
+                'download' => function (/** @noinspection PhpUnusedParameterInspection */
+                    $url, $model) {
                     return Html::a('<span class="glyphicon glyphicon-download-alt"></span>',
                         [
                             'download',
@@ -62,7 +63,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             'class' => 'btn btn-sm btn-default',
                         ]);
                 },
-                'restore' => function ($url, $model) {
+                'restore' => function (/** @noinspection PhpUnusedParameterInspection */
+                    $url, $model) {
                     return Html::a('<span class="glyphicon glyphicon-import"></span>',
                         [
                             'restore',
@@ -75,7 +77,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             'class' => 'btn btn-sm btn-default',
                         ]);
                 },
-                'delete' => function ($url, $model) {
+                'delete' => function (/** @noinspection PhpUnusedParameterInspection */
+                    $url, $model) {
                     return Html::a('<span class="glyphicon glyphicon-trash"></span>',
                         [
                             'delete',
