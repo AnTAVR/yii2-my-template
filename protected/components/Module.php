@@ -18,7 +18,7 @@ class Module extends ModuleOld
     {
         parent::init();
         if (Yii::$app instanceof Application) {
-            $this->controllerNamespace = str_replace('\controllers', '\commands', $this->controllerNamespace);
+            $this->controllerNamespace = str_replace('\\controllers', '\\commands', $this->controllerNamespace);
         }
 
         // custom initialization code goes here
