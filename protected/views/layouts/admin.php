@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use app\assets\AppSiteAsset;
+use app\widgets\Alert;
 use app\widgets\Thumbnail\Thumbnail;
 use app\widgets\TopLink\TopLink;
 use yii\bootstrap\Nav;
@@ -71,6 +72,9 @@ $moduleId = Yii::$app->controller->module->id;
         <?= Menu::widget([
             'options' => ['class' => 'nav nav-tabs'],
             'items' => [
+                ['label' => Yii::t('app', 'Dump'),
+                    'active' => $controllerId === 'admin-dump',
+                    'url' => ['/admin-dump']],
                 ['label' => Yii::t('app', 'Static Pages'),
                     'active' => $controllerId === 'admin-static',
                     'url' => ['/admin-static']],
@@ -95,6 +99,8 @@ $moduleId = Yii::$app->controller->module->id;
             'homeLink' => ['label' => Yii::t('app', 'Admin panel'), 'url' => ['/admin-site']],
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
+
+        <?= Alert::widget() ?>
 
         <?= $content ?>
     </div>
