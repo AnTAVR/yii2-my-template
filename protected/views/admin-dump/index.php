@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php endif ?>
 
 <p>
-    <?= Html::a(Yii::t('app', 'Delete all'),
+    <?= Html::a('<span class="glyphicon glyphicon-trash"></span>' . Yii::t('app', 'Delete all'),
         ['delete-all'],
         [
             'class' => 'btn btn-danger',
@@ -31,13 +31,21 @@ $this->params['breadcrumbs'][] = $this->title;
             'data-confirm' => Yii::t('app', 'Are you sure?'),
         ]
     ) ?>
+    <?= Html::a('<span class="glyphicon glyphicon-plus"></span>' . Yii::t('app', 'Create dump'),
+        ['create'],
+        [
+            'class' => 'btn btn-success',
+            'data-method' => 'post',
+        ]) ?>
+
 </p>
 
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
-        'basename',
+//        'basename',
+//        'basename',
 //        [
 //            'attribute' => 'name',
 //            'label' => Yii::t('app', 'Name'),
