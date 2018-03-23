@@ -96,24 +96,6 @@ class AdminDumpController extends AdminController
     }
 
     /**
-     * @param string $command
-     * @param bool $isRestore
-     */
-    protected static function runProcess($command, $isRestore = false)
-    {
-        $process = new Process($command);
-        $process->run();
-        if ($process->isSuccessful()) {
-            $msg = !$isRestore ? Yii::t('app', 'Dump successfully created.') : Yii::t('app', 'Dump successfully restored.');
-            Yii::$app->session->addFlash('success', $msg);
-        } else {
-            $msg = !$isRestore ? Yii::t('app', 'Dump failed.') : Yii::t('app', 'Restore failed.');
-            Yii::$app->session->addFlash('error', $msg . '<br>' . 'Command - ' . $command . '<br>' . $process->getOutput() . $process->getErrorOutput());
-            Yii::error($msg . PHP_EOL . 'Command - ' . $command . PHP_EOL . $process->getOutput() . PHP_EOL . $process->getErrorOutput());
-        }
-    }
-
-    /**
      * @param string $fileName Name File Dump
      * @return \yii\web\Response
      * @throws NotFoundHttpException
@@ -183,6 +165,24 @@ class AdminDumpController extends AdminController
 
         if (!$in_array) {
             throw new NotFoundHttpException('File not found.');
+        }
+    }
+
+    /**
+     * @param string $command
+     * @param bool $isRestore
+     */
+    protected static function runProcess($command, $isRestore = false)
+    {
+        $process = new Process($command);
+        $process->run();
+        if ($process->isSuccessful()) {
+            $msg = !$isRestore ? Yii::t('app', 'Dump successfully created.') : Yii::t('app', 'Dump successfully restored.');
+            Yii::$app->session->addFlash('success', $msg);
+        } else {
+            $msg = !$isRestore ? Yii::t('app', 'Dump failed.') : Yii::t('app', 'Restore failed.');
+            Yii::$app->session->addFlash('error', $msg . '<br>' . 'Command - ' . $command . '<br>' . $process->getOutput() . $process->getErrorOutput());
+            Yii::error($msg . PHP_EOL . 'Command - ' . $command . PHP_EOL . $process->getOutput() . PHP_EOL . $process->getErrorOutput());
         }
     }
 }
