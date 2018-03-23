@@ -3,8 +3,7 @@
 namespace app\commands;
 
 use app\helpers\BaseDump;
-use app\helpers\MysqlDump;
-use app\helpers\PostgresDump;
+use app\helpers\DumpInterface;
 use PDO;
 use PDOException;
 use Symfony\Component\Process\Process;
@@ -41,11 +40,9 @@ class DumpController extends Controller
 
         $dumpFile = BaseDump::makePath($dbInfo['dbName']);
 
-        if ($dbInfo['driverName'] === 'mysql') {
-            $command = MysqlDump::makeDumpCommand($dumpFile, $dbInfo);
-        } else {
-            $command = PostgresDump::makeDumpCommand($dumpFile, $dbInfo);
-        }
+        /** @var DumpInterface $manager */
+        $manager = $dbInfo['manager'];
+        $command = $manager::makeDumpCommand($dumpFile, $dbInfo);
 
         Yii::debug(compact('dumpFile', 'command'), get_called_class());
 
@@ -95,11 +92,9 @@ class DumpController extends Controller
 
         $dumpFile = BaseDump::getPath() . DIRECTORY_SEPARATOR . $fileName;
 
-        if ($dbInfo['driverName'] === 'mysql') {
-            $command = MysqlDump::makeRestoreCommand($dumpFile, $dbInfo);
-        } else {
-            $command = PostgresDump::makeRestoreCommand($dumpFile, $dbInfo);
-        }
+        /** @var DumpInterface $manager */
+        $manager = $dbInfo['manager'];
+        $command = $manager::makeRestoreCommand($dumpFile, $dbInfo);
 
         Yii::debug(compact('dumpFile', 'command'), get_called_class());
 
