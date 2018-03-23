@@ -1,18 +1,21 @@
 <?php
 return [
-    'user' => [
-        'class' => 'app\modules\user\Module',
+    'account' => [
+        'class' => 'app\modules\account\Module',
     ],
-    'products' => [
-        'class' => 'app\modules\products\Module',
-    ],
+//    'rbac' => [
+//        'class' => 'app\modules\rbac\Module',
+//    ],
     'uploader' => [
         'class' => 'app\modules\uploader\Module',
+    ],
+    'articles' => [
+        'class' => 'app\modules\articles\Module',
     ],
     'news' => [
         'class' => 'app\modules\news\Module',
     ],
-    'articles' => [
-        'class' => 'app\modules\articles\Module',
+    'products' => [
+        'class' => 'app\modules\products\Module',
     ],
 ];
