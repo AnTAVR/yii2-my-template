@@ -106,10 +106,10 @@ class AdminDumpController extends AdminController
         if ($fileList) {
             $fail = [];
             $path = BaseDump::getPath() . DIRECTORY_SEPARATOR;
-            foreach ($fileList as $fileName) {
-                $dumpFile = $path . $fileName;
-                if (!unlink($dumpFile)) {
-                    $fail[] = $fileName;
+            foreach ($fileList as $file) {
+                $fileName = $path . $file['basename'];
+                if (!unlink($fileName)) {
+                    $fail[] = $file;
                 }
             }
 
