@@ -31,27 +31,37 @@ class PostgresDump extends BaseDump
     public static function makeRestoreCommand($dumpFile, $dbInfo)
     {
         $arguments = [];
-        if (StringHelper::endsWith($dumpFile, '.gz', false)) {
+
+        $endsWithGZ = StringHelper::endsWith($dumpFile, '.gz', false);
+        $isWindows = static::isWindows();
+
+        if ($isWindows) {
+            $arguments[] = "set PGPASSWORD='{$dbInfo['password']}'";
+            $arguments[] = '&';
+        }
+
+        if ($endsWithGZ) {
             $arguments[] = 'gunzip -c';
             $arguments[] = $dumpFile;
             $arguments[] = '|';
         }
-        if (static::isWindows()) {
-            $arguments[] = "set PGPASSWORD='{$dbInfo['password']}'";
-            $arguments[] = '&';
-        } else {
+
+        if (!$isWindows) {
             $arguments[] = "PGPASSWORD='{$dbInfo['password']}'";
         }
+
         $arguments[] = 'psql';
         $arguments[] = '--host=' . $dbInfo['host'];
         $arguments[] = '--port=' . $dbInfo['port'];
         $arguments[] = '--username=' . $dbInfo['username'];
         $arguments[] = '--no-password';
         $arguments[] = $dbInfo['dbName'];
-        if (!StringHelper::endsWith($dumpFile, '.gz', false)) {
+
+        if (!$endsWithGZ) {
             $arguments[] = '<';
             $arguments[] = $dumpFile;
         }
+
         return implode(' ', $arguments);
     }
 }
