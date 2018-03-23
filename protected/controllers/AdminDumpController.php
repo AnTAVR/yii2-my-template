@@ -35,6 +35,9 @@ class AdminDumpController extends AdminController
         ]);
     }
 
+    /**
+     * @return string
+     */
     public function actionIndex()
     {
         $fileList = BaseDump::getFilesList();
@@ -43,37 +46,15 @@ class AdminDumpController extends AdminController
             'allModels' => $fileList,
         ]);
 
-        $activePids = $this->checkActivePids();
-
         return $this->render('index', [
             'dataProvider' => $dataProvider,
-            'activePids' => $activePids,
         ]);
     }
 
     /**
-     * @return array
+     * @return \yii\web\Response
+     * @throws HttpException
      */
-    protected function checkActivePids()
-    {
-        $activePids = Yii::$app->session->get('backupPids', []);
-        $newActivePids = [];
-        if (!empty($activePids)) {
-            foreach ($activePids as $pid => $cmd) {
-                $process = new Process('ps -p ' . $pid);
-                $process->run();
-                if (!$process->isSuccessful()) {
-                    Yii::$app->session->addFlash('success',
-                        Yii::t('app', 'Process complete!') . '<br> PID=' . $pid . ' ' . $cmd);
-                } else {
-                    $newActivePids[$pid] = $cmd;
-                }
-            }
-        }
-        Yii::$app->session->set('backupPids', $newActivePids);
-        return $newActivePids;
-    }
-
     public function actionCreate()
     {
         try {
@@ -109,6 +90,11 @@ class AdminDumpController extends AdminController
         return Yii::$app->response->sendFile($dumpFile);
     }
 
+    /**
+     * @param string $fileName Name File Dump
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException
+     */
     public function actionDelete($fileName)
     {
         static::testFileName($fileName);
@@ -124,6 +110,9 @@ class AdminDumpController extends AdminController
         return $this->redirect(['index']);
     }
 
+    /**
+     * @return \yii\web\Response
+     */
     public function actionDeleteAll()
     {
         $fileList = BaseDump::getFilesList();
@@ -149,7 +138,7 @@ class AdminDumpController extends AdminController
     }
 
     /**
-     * @param string $fileName
+     * @param string $fileName Name File Dump
      * @throws NotFoundHttpException
      */
     public static function testFileName($fileName)
