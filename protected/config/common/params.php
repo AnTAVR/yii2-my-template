@@ -14,4 +14,5 @@ return [
     'meta_url_pattern' => '/^[a-z1-9\-]*$/s',
     'meta_url_hint' => 'a-z 0-9 -',
     'theme' => 'app\themes\BasicTheme',
+    'backups_path' => '@app/backups',
 ];
