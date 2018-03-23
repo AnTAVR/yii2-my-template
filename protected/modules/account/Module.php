@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\user;
+namespace app\modules\account;
 
 use app\components\Module as ModuleOld;
 
@@ -12,7 +12,7 @@ class Module extends ModuleOld
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'app\modules\user\controllers';
+    public $controllerNamespace = 'app\modules\account\controllers';
 
     /**
      * @inheritdoc

@@ -1,8 +1,8 @@
 <?php
 
-namespace app\modules\user\controllers;
+namespace app\modules\account\controllers;
 
-use app\modules\user\models\LoginForm;
+use app\modules\account\models\LoginForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
