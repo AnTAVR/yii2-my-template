@@ -20,8 +20,8 @@ use yii\db\ActiveRecord;
  */
 class UploaderImage extends ActiveRecord
 {
-    const PATH_IMAGES = '/upload/images';
-    const PATH_THUMBNAIL = '/upload/images/thumbnail';
+    const PATH_IMAGES = 'images';
+    const PATH_THUMBNAIL = 'images/thumbnail';
 
     /**
      * @inheritdoc
@@ -66,12 +66,32 @@ class UploaderImage extends ActiveRecord
         ];
     }
 
+    public static function getUploadUrl()
+    {
+        return Yii::getAlias('@web_upload') . '/' . static::PATH_IMAGES . '/';
+    }
+
+    public static function getUploadPath()
+    {
+        return Yii::getAlias('@upload') . DIRECTORY_SEPARATOR . static::PATH_IMAGES . DIRECTORY_SEPARATOR;
+    }
+
+    public static function getUploadThumbnailUrl()
+    {
+        return static::getUploadUrl() . self::PATH_THUMBNAIL . '/';
+    }
+
+    public static function getUploadThumbnailPath()
+    {
+        return static::getUploadPath() . self::PATH_THUMBNAIL . DIRECTORY_SEPARATOR;
+    }
+
     /**
      * @inheritdoc
      */
     public function getImageUrl()
     {
-        return Yii::getAlias('@web' . self::PATH_IMAGES) . '/' . $this->meta_url;
+        return static::getUploadUrl() . $this->meta_url;
     }
 
     /**
@@ -79,7 +99,7 @@ class UploaderImage extends ActiveRecord
      */
     public function getImagePath()
     {
-        return Yii::getAlias('@webroot' . self::PATH_IMAGES) . '/' . $this->meta_url;
+        return static::getUploadPath() . $this->meta_url;
     }
 
     /**
@@ -87,7 +107,7 @@ class UploaderImage extends ActiveRecord
      */
     public function getThumbnailUrl()
     {
-        return Yii::getAlias('@web' . self::PATH_THUMBNAIL) . '/' . $this->meta_url;
+        return static::getUploadThumbnailUrl() . $this->meta_url;
     }
 
     /**
@@ -95,7 +115,7 @@ class UploaderImage extends ActiveRecord
      */
     public function getThumbnailPath()
     {
-        return Yii::getAlias('@webroot' . self::PATH_THUMBNAIL) . '/' . $this->meta_url;
+        return static::getUploadThumbnailPath() . $this->meta_url;
     }
 
     public function beforeDelete()
