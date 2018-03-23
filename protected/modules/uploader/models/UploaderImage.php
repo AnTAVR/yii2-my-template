@@ -133,8 +133,12 @@ class UploaderImage extends ActiveRecord
             return false;
         }
 
-        unlink($this->thumbnailPath);
-        unlink($this->imagePath);
+        if (is_file($this->thumbnailPath)) {
+            unlink($this->thumbnailPath);
+        }
+        if (is_file($this->imagePath)) {
+            unlink($this->imagePath);
+        }
 
         return true;
     }
