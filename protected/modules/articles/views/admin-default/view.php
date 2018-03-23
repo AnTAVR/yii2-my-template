@@ -3,8 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\articles\models\Articles */
+/* @var $this \yii\web\View */
+/* @var $model \app\modules\articles\models\Articles */
 
 $this->title = $model->content_title;
 if (!empty($model->meta_description)) {
@@ -21,31 +21,28 @@ if (!empty($model->meta_keywords)) {
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Articles'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="articles-view articles-<?= $model->meta_url ?>">
-    <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'meta_url',
-            'articlesUrl',
-            'content_title',
-            'content_short:raw',
-            'content_full:raw',
-            'published_at',
-            'status_txt',
-            'meta_description',
-            'meta_keywords',
+<p>
+    <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
+        'class' => 'btn btn-danger',
+        'data' => [
+            'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+            'method' => 'POST',
         ],
     ]) ?>
+</p>
 
-</div>
+<?= DetailView::widget([
+    'model' => $model,
+    'attributes' => [
+        'meta_url',
+        'articlesUrl',
+        'content_title',
+        'content_short:raw',
+        'content_full:raw',
+        'published_at',
+        'status_txt',
+        'meta_description',
+        'meta_keywords',
+    ],
+]) ?>

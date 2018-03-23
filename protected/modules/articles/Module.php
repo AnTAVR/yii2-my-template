@@ -3,30 +3,23 @@
 namespace app\modules\articles;
 
 use app\components\Module as ModuleOld;
+use Yii;
 
 /**
- * articles module definition class
+ * module definition class
  */
 class Module extends ModuleOld
 {
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'app\modules\articles\controllers';
-    public $params = [
-        'pageSize' => 10,
-        'adminPageSize' => 10,
-    ];
-
-    /**
-     * @inheritdoc
-     */
     public function init()
     {
         parent::init();
+        $this->params = require __DIR__ . '/config/params.php';
 
         /** @noinspection HtmlUnknownTag */
-        \Yii::$app->urlManager->addRules(
+        Yii::$app->urlManager->addRules(
             [
                 '/articles/admin-<controller>' => '/articles/admin-<controller>',
                 '/articles/page-<page\d+>' => '/articles/default/index',
