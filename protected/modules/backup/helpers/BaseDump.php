@@ -26,8 +26,8 @@ abstract class BaseDump
 
     public static function getPath()
     {
-        $params = Yii::$app->getModule('backup')->params;
-        $path = Yii::getAlias($params['savePath']);
+        $params = Yii::$app->params;
+        $path = Yii::getAlias($params['backups_path']) . DIRECTORY_SEPARATOR . 'db';
         if (!is_dir($path)) {
             FileHelper::createDirectory($path, 0775, true);
         }
