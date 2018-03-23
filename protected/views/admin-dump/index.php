@@ -1,5 +1,6 @@
 <?php
 
+use yii\grid\GridView;
 use yii\helpers\Html;
 
 /* @var $this \app\components\View */
@@ -11,3 +12,85 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 <h1><?= Html::encode($this->title) ?></h1>
+
+<?php if (!empty($activePids)): ?>
+    <div class="well">
+        <h4><?= Yii::t('app', 'Active processes:') ?></h4>
+        <?php foreach ($activePids as $pid => $cmd): ?>
+            <b><?= $pid ?></b>: <?= $cmd ?><br>
+        <?php endforeach ?>
+    </div>
+<?php endif ?>
+
+<p>
+    <?= Html::a(Yii::t('app', 'Delete all'),
+        ['delete-all'],
+        [
+            'class' => 'btn btn-danger',
+            'data-method' => 'post',
+            'data-confirm' => Yii::t('app', 'Are you sure?'),
+        ]
+    ) ?>
+</p>
+
+<?= GridView::widget([
+    'dataProvider' => $dataProvider,
+    'columns' => [
+        ['class' => 'yii\grid\SerialColumn'],
+        'basename',
+//        [
+//            'attribute' => 'name',
+//            'label' => Yii::t('app', 'Name'),
+//        ],
+//        [
+//            'attribute' => 'size',
+//            'label' => Yii::t('app', 'Size'),
+//        ],
+//        [
+//            'attribute' => 'create_at',
+//            'label' => Yii::t('app', 'Create time'),
+//        ],
+        [
+            'class' => 'yii\grid\ActionColumn',
+//            'template' => '{download} {restore} {delete}',
+//            'buttons' => [
+//                'download' => function ($url, $model) {
+//                    return Html::a('<span class="glyphicon glyphicon-download-alt"></span>',
+//                        [
+//                            'download',
+//                            'id' => $model['id'],
+//                        ],
+//                        [
+//                            'title' => Yii::t('app', 'Download'),
+//                            'class' => 'btn btn-sm btn-default',
+//                        ]);
+//                },
+//                'restore' => function ($url, $model) {
+//                    return Html::a('<span class="glyphicon glyphicon-import"></span>',
+//                        [
+//                            'restore',
+//                            'id' => $model['id'],
+//                        ],
+//                        [
+//                            'title' => Yii::t('app', 'Restore'),
+//                            'class' => 'btn btn-sm btn-default',
+//                        ]);
+//                },
+//                'delete' => function ($url, $model) {
+//                    return Html::a('<span class="glyphicon glyphicon-trash"></span>',
+//                        [
+//                            'delete',
+//                            'id' => $model['id'],
+//                        ],
+//                        [
+//                            'title' => Yii::t('app', 'Delete'),
+//                            'data-method' => 'post',
+//                            'data-confirm' => Yii::t('app', 'Are you sure?'),
+//                            'class' => 'btn btn-sm btn-danger',
+//                        ]);
+//                },
+//            ],
+        ],
+    ],
+]) ?>
+
