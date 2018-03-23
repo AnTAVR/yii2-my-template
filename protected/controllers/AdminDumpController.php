@@ -59,4 +59,53 @@ class AdminDumpController extends AdminController
 
         return Yii::$app->response->sendFile($dumpFile);
     }
+
+    public function actionDelete($fileName)
+    {
+        $fileList = BaseDump::getFilesList();
+        $in_array = false;
+        foreach ($fileList as $file) {
+            if ($fileName === $file['basename']) {
+                $in_array = true;
+                break;
+            }
+        }
+
+        if (!$in_array) {
+            throw new NotFoundHttpException('File not found.');
+        }
+
+        $dumpFile = BaseDump::getPath() . DIRECTORY_SEPARATOR . $fileName;
+
+        if (unlink($dumpFile)) {
+            Yii::$app->session->setFlash('success', Yii::t('app', 'Dump deleted successfully.'));
+        } else {
+            Yii::$app->session->setFlash('error', Yii::t('app', 'Error deleting dump.'));
+        }
+
+        return $this->redirect(['index']);
+    }
+
+    public function actionDeleteAll()
+    {
+        $fileList = BaseDump::getFilesList();
+
+        if ($fileList) {
+            $fail = [];
+            foreach ($fileList as $fileName) {
+                $dumpFile = BaseDump::getPath() . DIRECTORY_SEPARATOR . $fileName;
+                if (!unlink($dumpFile)) {
+                    $fail[] = $fileName;
+                }
+            }
+
+            if (empty($fail)) {
+                Yii::$app->session->setFlash('success', Yii::t('app', 'All dumps successfully removed.'));
+            } else {
+                Yii::$app->session->setFlash('error', Yii::t('app', 'Error deleting dumps.'));
+            }
+        }
+
+        return $this->redirect(['index']);
+    }
 }
