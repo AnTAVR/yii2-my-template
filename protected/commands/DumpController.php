@@ -25,20 +25,25 @@ class DumpController extends Controller
      * Create Dump DB
      *
      * @return int
-     * @throws NotSupportedException
      */
     public function actionCreate()
     {
+        try {
+            $dbInfo = BaseDump::getDbInfo();
+        } catch (NotSupportedException $e) {
+            Console::output($e->getMessage());
+            return ExitCode::UNSPECIFIED_ERROR;
+        }
+
         if (!$this->confirm('Create dump?')) {
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
-        $dbInfo = BaseDump::getDbInfo();
         $dumpFile = BaseDump::makePath($dbInfo['dbName']);
 
         if ($dbInfo['driverName'] === 'mysql') {
             $command = MysqlDump::makeDumpCommand($dumpFile, $dbInfo);
-        } elseif ($dbInfo['driverName'] === 'pgsql') {
+        } else {
             $command = PostgresDump::makeDumpCommand($dumpFile, $dbInfo);
         }
 
@@ -49,10 +54,10 @@ class DumpController extends Controller
         if ($process->isSuccessful()) {
             Console::output('Dump successfully created.');
             return ExitCode::OK;
-        } else {
-            Console::output('Dump failed create.');
-            return ExitCode::UNSPECIFIED_ERROR;
         }
+
+        Console::output('Dump failed create.');
+        return ExitCode::UNSPECIFIED_ERROR;
     }
 
     /**
@@ -60,10 +65,16 @@ class DumpController extends Controller
      *
      * @param string $fileName Name File Dump
      * @return int
-     * @throws NotSupportedException
      */
     public function actionRestore($fileName)
     {
+        try {
+            $dbInfo = BaseDump::getDbInfo();
+        } catch (NotSupportedException $e) {
+            Console::output($e->getMessage());
+            return ExitCode::UNSPECIFIED_ERROR;
+        }
+
         $fileList = BaseDump::getFilesList();
         $in_array = false;
         foreach ($fileList as $file) {
@@ -82,12 +93,11 @@ class DumpController extends Controller
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
-        $dbInfo = BaseDump::getDbInfo();
         $dumpFile = BaseDump::getPath() . DIRECTORY_SEPARATOR . $fileName;
 
         if ($dbInfo['driverName'] === 'mysql') {
             $command = MysqlDump::makeRestoreCommand($dumpFile, $dbInfo);
-        } elseif ($dbInfo['driverName'] === 'pgsql') {
+        } else {
             $command = PostgresDump::makeRestoreCommand($dumpFile, $dbInfo);
         }
 
@@ -99,6 +109,7 @@ class DumpController extends Controller
             Console::output('Dump successfully restored.');
             return ExitCode::OK;
         }
+
         Console::output('Dump failed restored.');
         return ExitCode::UNSPECIFIED_ERROR;
     }
@@ -107,11 +118,16 @@ class DumpController extends Controller
      * Test DB Connection
      *
      * @return int
-     * @throws NotSupportedException
      */
     public function actionTest()
     {
-        $dbInfo = BaseDump::getDbInfo();
+        try {
+            $dbInfo = BaseDump::getDbInfo();
+        } catch (NotSupportedException $e) {
+            Console::output($e->getMessage());
+            return ExitCode::UNSPECIFIED_ERROR;
+        }
+
         try {
             new PDO($dbInfo['dsn'], $dbInfo['username'], $dbInfo['password']);
             Console::output('Connection success.');
