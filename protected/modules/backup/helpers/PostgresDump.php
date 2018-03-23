@@ -9,12 +9,14 @@ class PostgresDump extends BaseDump
     public static function makeDumpCommand($dumpFile, $dbInfo)
     {
         $arguments = [];
+
         if (static::isWindows()) {
             $arguments[] = "set PGPASSWORD='{$dbInfo['password']}'";
             $arguments[] = '&';
         } else {
             $arguments[] = "PGPASSWORD='{$dbInfo['password']}'";
         }
+
         $arguments[] = 'pg_dump';
         $arguments[] = '--host=' . $dbInfo['host'];
         $arguments[] = '--port=' . $dbInfo['port'];
@@ -25,6 +27,7 @@ class PostgresDump extends BaseDump
         $arguments[] = 'gzip';
         $arguments[] = '>';
         $arguments[] = $dumpFile;
+
         return implode(' ', $arguments);
     }
 

@@ -71,8 +71,10 @@ abstract class BaseDump
 
     public static function getDbInfo($db = 'db')
     {
-        $db = Instance::ensure($db, Connection::class);
         $dbInfo = [];
+
+        $db = Instance::ensure($db, Connection::class);
+
         $dbInfo['driverName'] = $db->driverName;
         $dbInfo['dsn'] = $db->dsn;
         $dbInfo['host'] = static::getDsnAttribute('host', $db->dsn);

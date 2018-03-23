@@ -9,6 +9,7 @@ class MysqlDump extends BaseDump
     public static function makeDumpCommand($dumpFile, $dbInfo)
     {
         $arguments = [];
+
         $arguments[] = 'mysqldump';
         $arguments[] = '--host=' . $dbInfo['host'];
         $arguments[] = '--port=' . $dbInfo['port'];
