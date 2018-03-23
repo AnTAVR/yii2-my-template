@@ -154,4 +154,27 @@ class AdminDumpController extends AdminController
             Yii::$app->session->addFlash('info', Yii::t('app', 'Process running with pid={pid}', ['pid' => $pid]) . '<br>' . $command);
         }
     }
+
+    /**
+     * @return array
+     */
+    protected function checkActivePids()
+    {
+        $activePids = Yii::$app->session->get('backupPids', []);
+        $newActivePids = [];
+        if (!empty($activePids)) {
+            foreach ($activePids as $pid => $cmd) {
+                $process = new Process('ps -p ' . $pid);
+                $process->run();
+                if (!$process->isSuccessful()) {
+                    Yii::$app->session->addFlash('success',
+                        Yii::t('app', 'Process complete!') . '<br> PID=' . $pid . ' ' . $cmd);
+                } else {
+                    $newActivePids[$pid] = $cmd;
+                }
+            }
+        }
+        Yii::$app->session->set('backupPids', $newActivePids);
+        return $newActivePids;
+    }
 }
