@@ -4,7 +4,7 @@ namespace app\helpers;
 
 use yii\helpers\StringHelper;
 
-class PostgresDump extends BaseDump
+class PostgresDump extends DumpInterface
 {
     public static function makeDumpCommand($dumpFile, $dbInfo)
     {
