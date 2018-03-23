@@ -14,30 +14,35 @@ use yii\console\Controller;
 use yii\console\ExitCode;
 use yii\helpers\Console;
 
+/**
+ * Allows you to combine and compress your JavaScript and CSS files.
+ **/
 class DumpController extends Controller
 {
     public $defaultAction = 'create';
 
+    /**
+     * @return int
+     * @throws NotSupportedException
+     */
     public function actionCreate()
     {
-        if ($this->confirm('Create dump?')) {
+        if (!$this->confirm('Create dump?')) {
             return ExitCode::UNSPECIFIED_ERROR;
         }
+
         $dbInfo = BaseDump::getDbInfo();
+        $dumpFile = BaseDump::makePath($dbInfo['dbName']);
+
         if ($dbInfo['driverName'] === 'mysql') {
-            $manager = new MysqlDump();
+            $command = MysqlDump::makeDumpCommand($dumpFile, $dbInfo);
         } elseif ($dbInfo['driverName'] === 'pgsql') {
-            $manager = new PostgresDump();
-        } else {
-            throw new NotSupportedException($dbInfo['driverName'] . ' driver unsupported!');
+            $command = PostgresDump::makeDumpCommand($dumpFile, $dbInfo);
         }
 
-        $dumpPath = BaseDump::makePath($dbInfo['dbName']);
-        $dumpCommand = $manager::makeDumpCommand($dumpPath, $dbInfo['dbName'], $dbInfo['host'], $dbInfo['username'], $dbInfo['password'], $dbInfo['port']);
+        Yii::debug(compact('dumpFile', 'command'), get_called_class());
 
-        Yii::debug(compact('dumpPath', 'dumpCommand'), get_called_class());
-
-        $process = new Process($dumpCommand);
+        $process = new Process($command);
         $process->run();
         if ($process->isSuccessful()) {
             Console::output('Dump successfully created.');
@@ -50,28 +55,36 @@ class DumpController extends Controller
 
     public function actionRestore(string $fileName)
     {
-        $dumpFile = BaseDump::getPath() . DIRECTORY_SEPARATOR . $fileName;
-        if (!file_exists($dumpFile)) {
-            throw new NotSupportedException('File not found.');
+        $fileList = BaseDump::getFilesList();
+        $in_array = false;
+        foreach ($fileList as $file) {
+            if ($fileName === $file['basename']) {
+                $in_array = true;
+                break;
+            }
+        }
+
+        if (!$in_array) {
+            Console::output('File not found.');
+            return ExitCode::UNSPECIFIED_ERROR;
         }
 
         if (!$this->confirm("Restore dump '{$fileName}'?")) {
             return ExitCode::UNSPECIFIED_ERROR;
         }
+
         $dbInfo = BaseDump::getDbInfo();
+        $dumpFile = BaseDump::getPath() . DIRECTORY_SEPARATOR . $fileName;
+
         if ($dbInfo['driverName'] === 'mysql') {
-            $manager = new MysqlDump();
+            $command = MysqlDump::makeRestoreCommand($dumpFile, $dbInfo);
         } elseif ($dbInfo['driverName'] === 'pgsql') {
-            $manager = new PostgresDump();
-        } else {
-            throw new NotSupportedException($dbInfo['driverName'] . ' driver unsupported!');
+            $command = PostgresDump::makeRestoreCommand($dumpFile, $dbInfo);
         }
 
-        $restoreCommand = $manager::makeRestoreCommand($dumpFile, $dbInfo['dbName'], $dbInfo['host'], $dbInfo['username'], $dbInfo['password'], $dbInfo['port']);
+        Yii::debug(compact('dumpFile', 'command'), get_called_class());
 
-        Yii::debug(compact('restoreCommand', 'dumpFile'), get_called_class());
-
-        $process = new Process($restoreCommand);
+        $process = new Process($command);
         $process->run();
         if ($process->isSuccessful()) {
             Console::output('Dump successfully restored.');
