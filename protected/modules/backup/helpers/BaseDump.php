@@ -55,11 +55,11 @@ abstract class BaseDump
     abstract public static function makeDumpCommand($path, $dbInfo);
 
     /**
-     * @param string $path
+     * @param string $dumpFile
      * @param array $dbInfo
      * @return string
      */
-    abstract public static function makeRestoreCommand($path, $dbInfo);
+    abstract public static function makeRestoreCommand($dumpFile, $dbInfo);
 
     /**
      * @return bool

@@ -23,12 +23,12 @@ class MysqlDump extends BaseDump
         return implode(' ', $arguments);
     }
 
-    public static function makeRestoreCommand($path, $dbInfo)
+    public static function makeRestoreCommand($dumpFile, $dbInfo)
     {
         $arguments = [];
-        if (StringHelper::endsWith($path, '.gz', false)) {
+        if (StringHelper::endsWith($dumpFile, '.gz', false)) {
             $arguments[] = 'gunzip -c';
-            $arguments[] = $path;
+            $arguments[] = $dumpFile;
             $arguments[] = '|';
         }
         $arguments[] = 'mysql';
@@ -37,9 +37,9 @@ class MysqlDump extends BaseDump
         $arguments[] = '--user=' . $dbInfo['username'];
         $arguments[] = "--password='{$dbInfo['password']}'";
         $arguments[] = $dbInfo['dbName'];
-        if (!StringHelper::endsWith($path, '.gz', false)) {
+        if (!StringHelper::endsWith($dumpFile, '.gz', false)) {
             $arguments[] = '<';
-            $arguments[] = $path;
+            $arguments[] = $dumpFile;
         }
 
         return implode(' ', $arguments);

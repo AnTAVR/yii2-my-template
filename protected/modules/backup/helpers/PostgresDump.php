@@ -28,12 +28,12 @@ class PostgresDump extends BaseDump
         return implode(' ', $arguments);
     }
 
-    public static function makeRestoreCommand($path, $dbInfo)
+    public static function makeRestoreCommand($dumpFile, $dbInfo)
     {
         $arguments = [];
-        if (StringHelper::endsWith($path, '.gz', false)) {
+        if (StringHelper::endsWith($dumpFile, '.gz', false)) {
             $arguments[] = 'gunzip -c';
-            $arguments[] = $path;
+            $arguments[] = $dumpFile;
             $arguments[] = '|';
         }
         if (static::isWindows()) {
@@ -48,9 +48,9 @@ class PostgresDump extends BaseDump
         $arguments[] = '--username=' . $dbInfo['username'];
         $arguments[] = '--no-password';
         $arguments[] = $dbInfo['dbName'];
-        if (!StringHelper::endsWith($path, '.gz', false)) {
+        if (!StringHelper::endsWith($dumpFile, '.gz', false)) {
             $arguments[] = '<';
-            $arguments[] = $path;
+            $arguments[] = $dumpFile;
         }
         return implode(' ', $arguments);
     }
