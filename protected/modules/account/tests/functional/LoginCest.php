@@ -12,6 +12,11 @@ class LoginCest
         $I->amOnPage(Yii::$app->user->loginUrl);
     }
 
+    public function checkLogin(FunctionalTester $I)
+    {
+        $I->see('Login', 'h1');
+    }
+
     public function checkOpen(FunctionalTester $I)
     {
         $I->amOnPage(Yii::$app->homeUrl);

@@ -13,16 +13,16 @@ class ContactCest
         $I->amOnPage(['site/contact']);
     }
 
+    public function checkContact(FunctionalTester $I)
+    {
+        $I->see('Feedback', 'h1');
+    }
+
     public function checkOpen(FunctionalTester $I)
     {
         $I->amOnPage(Yii::$app->homeUrl);
         $I->seeLink('Feedback');
         $I->click('Feedback');
-        $I->see('Feedback', 'h1');
-    }
-
-    public function checkContact(FunctionalTester $I)
-    {
         $I->see('Feedback', 'h1');
     }
 
