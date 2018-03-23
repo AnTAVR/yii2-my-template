@@ -7,10 +7,10 @@ use yii\db\Migration;
 
 class m000102_000002_insert_page_articles extends Migration
 {
-    public $tableName;
-
     const CONTENT_TITLE = 'article';
     const COUNT = 3;
+
+    public $tableName;
 
     public function init()
     {
