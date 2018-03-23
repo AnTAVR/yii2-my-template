@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'title' => Yii::t('app', 'Download'),
                             'data-method' => 'post',
-                            'class' => 'btn btn-sm btn-default',
+                            'class' => 'btn btn-sm btn-success',
                         ]);
                 },
                 'restore' => function (/** @noinspection PhpUnusedParameterInspection */
