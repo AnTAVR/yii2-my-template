@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php $form = ActiveForm::begin(['options' => ['class' => 'col-lg-6']]); /* @var $form \yii\bootstrap\ActiveForm */ ?>
 
-<?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
+<?= $form->field($model, 'email')->textInput() ?>
 
 <?= $form->field($model, 'verifyCode')->widget(Captcha::class) ?>
 

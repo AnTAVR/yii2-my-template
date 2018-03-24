@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php $form = ActiveForm::begin(['options' => ['class' => 'col-lg-6']]); /* @var $form \yii\bootstrap\ActiveForm */ ?>
 
-<?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+<?= $form->field($model, 'username')->textInput() ?>
 
 <?= $form->field($model, 'password')->passwordInput() ?>
 

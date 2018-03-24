@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); /* @var $form \yii\bootstrap\ActiveForm */ ?>
 
-<?= $form->field($model, 'comment')->textarea(['rows' => 6, 'autofocus' => true]) ?>
+<?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
 
 <?= $form->field($model, 'fileUpload')->widget(FileUploadUI::class, [
     'url' => ['upload'],

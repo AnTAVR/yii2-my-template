@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 
 <?= $form->field($model, 'meta_url')->textInput(['maxlength' => true]) ?>
 
-<?= $form->field($model, 'content_title')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
+<?= $form->field($model, 'content_title')->textInput(['maxlength' => true]) ?>
 
 <?= $form->field($model, 'content_full')->widget(CKEditor::class, [
     'options' => ['rows' => 6],
