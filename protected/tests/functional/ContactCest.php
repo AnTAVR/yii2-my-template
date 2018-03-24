@@ -18,7 +18,7 @@ class ContactCest
         $I->see('Contact', 'h1');
     }
 
-    public function checkOpen(FunctionalTester $I)
+    public function checkOpenContactPage(FunctionalTester $I)
     {
         $I->amOnPage(Yii::$app->homeUrl);
         $I->seeLink('Contact');
