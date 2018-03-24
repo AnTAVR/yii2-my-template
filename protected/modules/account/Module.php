@@ -41,8 +41,8 @@ class Module extends ModuleOld implements BootstrapInterface
                 '/account/admin-<controller>' => '/account/admin-<controller>',
                 '/signup' => '/account/signup',
                 '/signup/verify-email/<token:\w+>' => '/account/signup/verify-email',
-                '/password' => '/account/password',
-                '/password/new/<token:\w+>' => '/account/password/new',
+                '/recovery' => '/account/recovery',
+                '/recovery/new/<token:\w+>' => '/account/recovery/new',
             ]
         );
         // custom initialization code goes here

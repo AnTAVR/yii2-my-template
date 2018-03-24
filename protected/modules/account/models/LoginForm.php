@@ -64,7 +64,7 @@ class LoginForm extends User
     {
         $params = Yii::$app->getModule('account')->params;
         $hints = [
-            'password' => Html::a(Yii::t('app', 'Password Reset'), ['/account/password'], ['class' => 'label label-danger']),
+            'password' => Html::a(Yii::t('app', 'Password Reset'), ['/account/recovery'], ['class' => 'label label-danger']),
         ];
         if ($params['signup']) {
             $hints['username'] = Html::a(Yii::t('app', 'Signup'), ['/account/signup'], ['class' => 'label label-success']);

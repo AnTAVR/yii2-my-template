@@ -11,7 +11,7 @@ use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class PasswordController extends Controller
+class RecoveryController extends Controller
 {
     /**
      * Renders the index view for the module
