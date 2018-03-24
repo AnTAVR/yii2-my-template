@@ -6,7 +6,7 @@ use yii\web\AssetBundle;
 
 class UrlTranslitAsset extends AssetBundle
 {
-    public $sourcePath = '@app/widgets/UrlTranslitAsset/assets';
+    public $sourcePath = '@app/widgets/UrlTranslit/assets';
 
     public $js = [
         'js/jquery.url-translit.js',
