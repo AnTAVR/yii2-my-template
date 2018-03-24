@@ -40,7 +40,7 @@ class Module extends ModuleOld implements BootstrapInterface
             [
                 '/account/admin-<controller>' => '/account/admin-<controller>',
                 '/signup' => '/account/signup',
-                '/signup/verify-email/<token:\w+>' => '/account/signup/verify-email',
+                '/account/verify-email/<token:\w+>' => '/account/verify-email',
                 '/recovery' => '/account/recovery',
                 '/recovery/new/<token:\w+>' => '/account/recovery/new',
             ]
