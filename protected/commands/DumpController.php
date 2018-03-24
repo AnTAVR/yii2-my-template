@@ -2,8 +2,8 @@
 
 namespace app\commands;
 
-use app\helpers\BaseDump;
-use app\helpers\DumpInterface;
+use app\helpers\dump\BaseDump;
+use app\helpers\dump\DumpInterface;
 use PDO;
 use PDOException;
 use Symfony\Component\Process\Process;

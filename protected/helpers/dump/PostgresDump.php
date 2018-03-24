@@ -1,6 +1,6 @@
 <?php
 
-namespace app\helpers;
+namespace app\helpers\dump;
 
 use yii\helpers\StringHelper;
 

@@ -3,8 +3,8 @@
 namespace app\controllers;
 
 use app\components\AdminController;
-use app\helpers\BaseDump;
-use app\helpers\DumpInterface;
+use app\helpers\dump\BaseDump;
+use app\helpers\dump\DumpInterface;
 use Symfony\Component\Process\Process;
 use Yii;
 use yii\data\ArrayDataProvider;
