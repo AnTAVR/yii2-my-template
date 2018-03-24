@@ -18,4 +18,5 @@ return [
     'db.dbname' => 'tests',
     'db.username' => 'tests',
     'db.password' => 'teststests',
+    'phone.countries' => ['ru', 'ua'],
 ];

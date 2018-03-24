@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use borales\extensions\phoneInput\PhoneInputValidator;
 use Yii;
 use yii\base\Model;
 
@@ -22,9 +23,8 @@ class CallbackForm extends Model
         $params = Yii::$app->params;
         return [
             ['phone', 'required'],
-            ['phone', 'string',
-                'max' => 20,
-                'min' => 11],
+            ['phone', 'string'],
+            ['phone', PhoneInputValidator::class],
 
             ['name', 'required'],
             ['name', 'string',
@@ -49,7 +49,7 @@ class CallbackForm extends Model
     public function attributeHints()
     {
         return [
-            'phone' => Yii::t('app', 'For example: {example}', ['example' => '+7 (111) 111-1111']),
+//            'phone' => Yii::t('app', 'For example: {example}', ['example' => '+7 (111) 111-11-11']),
             'name' => Yii::t('app', 'Name'),
         ];
     }

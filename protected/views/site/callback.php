@@ -4,6 +4,7 @@
 /* @var $model \app\models\CallbackForm */
 
 use app\widgets\Captcha;
+use borales\extensions\phoneInput\PhoneInput;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
@@ -20,7 +21,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php $form = ActiveForm::begin(['id' => 'callback-form', 'options' => ['class' => 'col-lg-6']]); /* @var $form \yii\bootstrap\ActiveForm */ ?>
 
-<?= $form->field($model, 'phone')->textInput(['autofocus' => true]) ?>
+<?= $form->field($model, 'phone')->widget(PhoneInput::class, [
+    'jsOptions' => [
+        'preferredCountries' => Yii::$app->params['phone.countries'],
+    ]
+]) ?>
 
 <?= $form->field($model, 'name') ?>
 
