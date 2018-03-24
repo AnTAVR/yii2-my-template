@@ -26,6 +26,7 @@ class ProfileController extends Controller
                 'class' => 'yii\filters\VerbFilter',
                 'actions' => [
                     'delete' => ['POST'],
+                    'avatar-delete' => ['POST'],
                 ],
             ],
         ]);
