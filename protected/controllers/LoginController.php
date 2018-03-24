@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\account\controllers;
+namespace app\controllers;
 
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;

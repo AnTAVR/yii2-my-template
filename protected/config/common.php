@@ -89,8 +89,6 @@ $__config = [
             'enablePrettyUrl' => true,
             'showScriptName' => YII_ENV_TEST,
             'rules' => [
-                '/login' => '/account/login',
-                '/logout' => '/account/logout',
                 '/static/<meta_url>' => '/static/index',
             ],
         ],
