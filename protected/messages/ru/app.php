@@ -18,6 +18,7 @@
  */
 return [
     'API AUTH' => '',
+    'Avatar' => '',
     'CONFIRM EMAIL' => '',
     'Code' => '',
     'Dump' => '',
@@ -97,8 +98,9 @@ return [
     'Callback' => 'Обратный звонок',
     'Close' => 'Закрыть',
     'Comment' => 'Комментарий',
-    'Contact' => 'Контакты',
+    'Contact' => 'Обратная связь',
     'Contact number' => 'Контактный телефон',
+    'Contacts' => 'Контакты',
     'Content Full' => 'Полное содержание',
     'Content Short' => 'Короткое содержание',
     'Content Title' => 'Заголовок',
@@ -131,7 +133,6 @@ return [
     'Error deleting dumps.' => 'Ошибка удаления дампов.',
     'Expires On' => 'Истекает',
     'Extensions "{extensions}"' => 'Расширения "{extensions}"',
-    'Feedback' => 'Обратная связь',
     'File' => 'Файл',
     'File Path' => 'Путь к файлу',
     'File Url' => 'Урл файла',

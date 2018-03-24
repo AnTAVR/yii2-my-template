@@ -49,7 +49,7 @@ NavBar::begin([
 </p>
 <?php
 $menuItems = [
-    ['label' => Yii::t('app', 'Contact'),
+    ['label' => Yii::t('app', 'Contacts'),
         'items' => [
             ['label' => Yii::t('app', 'About'), 'url' => ['/static/index', 'meta_url' => 'about']],
             ['label' => Yii::t('app', 'Partners'), 'url' => ['/static/index', 'meta_url' => 'partners']],
@@ -57,7 +57,7 @@ $menuItems = [
             ['label' => Yii::t('app', 'Payment'), 'url' => ['/static/index', 'meta_url' => 'payment']],
             ['label' => Yii::t('app', 'Docs'), 'url' => ['/static/index', 'meta_url' => 'docs']],
             '<li class="divider"></li>',
-            ['label' => Yii::t('app', 'Feedback'), 'url' => ['/site/contact']],
+            ['label' => Yii::t('app', 'Contact'), 'url' => ['/site/contact']],
             ['label' => Yii::t('app', 'Callback'), 'url' => ['/site/callback']],
         ],
     ],

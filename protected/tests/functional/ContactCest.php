@@ -13,23 +13,23 @@ class ContactCest
         $I->amOnPage(['site/contact']);
     }
 
-    public function checkContact(FunctionalTester $I)
+    public function checkContactPage(FunctionalTester $I)
     {
-        $I->see('Feedback', 'h1');
+        $I->see('Contact', 'h1');
     }
 
     public function checkOpen(FunctionalTester $I)
     {
         $I->amOnPage(Yii::$app->homeUrl);
-        $I->seeLink('Feedback');
-        $I->click('Feedback');
-        $I->see('Feedback', 'h1');
+        $I->seeLink('Contact');
+        $I->click('Contact');
+        $I->see('Contact', 'h1');
     }
 
     public function checkContactSubmitNoData(FunctionalTester $I)
     {
         $I->submitForm('#contact-form', []);
-        $I->see('Feedback', 'h1');
+        $I->see('Contact', 'h1');
         $I->seeValidationError('Name cannot be blank');
         $I->seeValidationError('Email cannot be blank');
         $I->seeValidationError('Subject cannot be blank');

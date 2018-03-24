@@ -12,7 +12,7 @@ class HomeCest
         $I->amOnPage(Yii::$app->homeUrl);
     }
 
-    public function checkOpen(FunctionalTester $I)
+    public function checkOpenHomePage(FunctionalTester $I)
     {
         $I->see(Yii::$app->params['brandLabel']);
     }
