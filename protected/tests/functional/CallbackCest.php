@@ -1,0 +1,60 @@
+<?php
+
+namespace tests\functional;
+
+use tests\FunctionalTester;
+use Yii;
+
+/* @var $scenario \Codeception\Scenario */
+class CallbackCest
+{
+    public function _before(FunctionalTester $I)
+    {
+        $I->amOnPage(['site/callback']);
+    }
+
+    public function checkCallbackPage(FunctionalTester $I)
+    {
+        $I->see('Request for a call back', 'h1');
+    }
+
+    public function checkOpenCallbackPage(FunctionalTester $I)
+    {
+        $I->amOnPage(Yii::$app->homeUrl);
+        $I->seeLink('Callback');
+        $I->click('Callback');
+        $I->see('Request for a call back', 'h1');
+    }
+
+    public function checkCallbackSubmitNoData(FunctionalTester $I)
+    {
+        $I->submitForm('#callback-form', []);
+        $I->see('Request for a call back', 'h1');
+        $I->seeValidationError('Contact number cannot be blank');
+        $I->seeValidationError('How can I call you? cannot be blank.');
+        $I->seeValidationError('The verification code is incorrect');
+    }
+
+    public function checkCallbackSubmitNotCorrectPhone(FunctionalTester $I)
+    {
+        $I->submitForm('#callback-form', [
+            'CallbackForm[name]' => 'tester',
+            'CallbackForm[phone]' => 'tester.email',
+            'CallbackForm[verifyCode]' => 'testme',
+        ]);
+        $I->seeValidationError('Contact number is not a valid email address.');
+        $I->dontSeeValidationError('How can I call you? cannot be blank.');
+        $I->dontSeeValidationError('The verification code is incorrect');
+    }
+
+    public function checkCallbackSubmitCorrectData(FunctionalTester $I)
+    {
+        $I->submitForm('#callback-form', [
+            'CallbackForm[name]' => 'tester',
+            'CallbackForm[phone]' => '+7 (111) 111-1111',
+            'CallbackForm[verifyCode]' => 'testme',
+        ]);
+        $I->seeEmailIsSent();
+        $I->see('Thank you for contacting us.');
+    }
+}
