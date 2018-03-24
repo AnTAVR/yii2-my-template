@@ -115,7 +115,7 @@ class SignupForm extends User
      * @return boolean whether the email was sent
      * @throws \yii\base\InvalidConfigException
      */
-    public function sendEmail_VerifyEmail(UserToken $tokenModel)
+    public function sendEmail_VerifyEmail($tokenModel)
     {
         $url = Url::to(['/account/signup/verify-email', 'token' => $tokenModel->code], true);
         $body = Yii::t('app', 'To confirm E-Mail, follow the link: {url}', ['url' => $url]);

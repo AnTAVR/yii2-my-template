@@ -1,8 +1,5 @@
 <?php
-$params = require __DIR__ . '/common/params.php';
-
-/** @noinspection HtmlUnknownTag */
-$__config = [
+return [
     'components' => [
         'request' => [
             'csrfParam' => 'ckCsrfToken',
@@ -13,5 +10,3 @@ $__config = [
         ],
     ],
 ];
-
-return $__config;
