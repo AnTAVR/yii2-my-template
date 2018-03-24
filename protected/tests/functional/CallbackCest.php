@@ -42,7 +42,7 @@ class CallbackCest
             'CallbackForm[phone]' => 'tester.email',
             'CallbackForm[verifyCode]' => 'testme',
         ]);
-        $I->seeValidationError('Contact number is not a valid email address.');
+        $I->seeValidationError('The format of Contact number is invalid.');
         $I->dontSeeValidationError('How can I call you? cannot be blank.');
         $I->dontSeeValidationError('The verification code is incorrect');
     }
@@ -51,9 +51,10 @@ class CallbackCest
     {
         $I->submitForm('#callback-form', [
             'CallbackForm[name]' => 'tester',
-            'CallbackForm[phone]' => '+7 (111) 111-1111',
+            'CallbackForm[phone]' => '+7(911) 11-111-11',
             'CallbackForm[verifyCode]' => 'testme',
         ]);
+        $I->dontSeeValidationError('The format of Contact number is invalid.');
         $I->seeEmailIsSent();
         $I->see('Thank you for contacting us.');
     }
