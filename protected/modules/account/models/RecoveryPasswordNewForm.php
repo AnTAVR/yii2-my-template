@@ -5,7 +5,7 @@ namespace app\modules\account\models;
 use Yii;
 use yii\helpers\ArrayHelper;
 
-class PasswordNewForm extends User
+class RecoveryPasswordNewForm extends User
 {
     public $password;
     public $repeatPassword;

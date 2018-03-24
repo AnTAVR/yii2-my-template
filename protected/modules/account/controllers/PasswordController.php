@@ -2,8 +2,8 @@
 
 namespace app\modules\account\controllers;
 
-use app\modules\account\models\PasswordNewForm;
 use app\modules\account\models\RecoveryPasswordForm;
+use app\modules\account\models\RecoveryPasswordNewForm;
 use app\modules\account\models\User;
 use app\modules\account\models\UserToken;
 use Yii;
@@ -92,7 +92,7 @@ class PasswordController extends Controller
 
         $tokenModel = UserToken::findByCode($token, UserToken::TYPE_RECOVERY_PASSWORD);
 
-        $model = PasswordNewForm::findOne($tokenModel->user_id);
+        $model = RecoveryPasswordNewForm::findOne($tokenModel->user_id);
         if ($model->status == User::STATUS_ACTIVE) {
             if ($model->tokenPassword !== $tokenModel->code) {
                 $tokenModel->delete();
