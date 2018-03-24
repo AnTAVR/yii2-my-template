@@ -77,15 +77,6 @@ class UploaderImageForm extends Model
             return Json::encode($modelImage->errors);
         }
 
-        $path = dirname($modelImage->imagePath);
-        if (!is_dir($path)) {
-            mkdir($path, 0777, true);
-        }
-        $path = dirname($modelImage->thumbnailPath);
-        if (!is_dir($path)) {
-            mkdir($path, 0777, true);
-        }
-
         if (!$this->fileUpload->saveAs($modelImage->imagePath)) {
             return Json::encode($this->fileUpload->error);
         }

@@ -70,11 +70,6 @@ class UploaderFileForm extends Model
             return Json::encode($modelFile->errors);
         }
 
-        $path = dirname($modelFile->filePath);
-        if (!is_dir($path)) {
-            mkdir($path, 0777, true);
-        }
-
         if (!$this->fileUpload->saveAs($modelFile->filePath)) {
             return Json::encode($this->fileUpload->error);
         }
