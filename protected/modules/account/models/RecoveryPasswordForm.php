@@ -5,7 +5,7 @@ namespace app\modules\account\models;
 use Yii;
 use yii\helpers\ArrayHelper;
 
-class PasswordForm extends User
+class RecoveryPasswordForm extends User
 {
     public $verifyCode;
 
