@@ -9,7 +9,7 @@ class UrlTranslitAsset extends AssetBundle
     public $sourcePath = '@app/widgets/UrlTranslit/assets';
 
     public $js = [
-        'js/jquery.url-translit.js',
+        'jquery.url-translit.js',
     ];
 
     public $depends = [

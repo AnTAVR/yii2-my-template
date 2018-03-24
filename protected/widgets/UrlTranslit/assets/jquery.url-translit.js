@@ -1,6 +1,6 @@
 $(function () {
     $.fn.UrlTranslit = function (options) {
-        var opts = $.extend({}, $.fn.UrlTranslit.defaults, options);
+        var opts = $.extend({}, $.fn.UrlTranslit.defaults, options), $this;
         return this.each(function () {
             $this = $(this);
             var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
@@ -20,7 +20,7 @@ $(function () {
             }
 
             $this.keyup(function () {
-                var str = $(this).val();
+                var str = $(this).val().trim();
                 var result = '';
                 for (var i = 0; i < str.length; i++) {
                     result += $.fn.UrlTranslit.transliterate(str.charAt(i), o)
@@ -38,18 +38,14 @@ $(function () {
      * @param {Object} opts
      */
     $.fn.UrlTranslit.transliterate = function (char, opts) {
-        var charIsLowerCase = true, trChar;
-        if (char.toLowerCase() !== char) {
-            charIsLowerCase = false;
-        }
+        var trChar = char.toLowerCase();
+        var charIsLowerCase = trChar === char;
 
-        char = char.toLowerCase();
-
-        var index = opts.dictOriginal.indexOf(char);
-        if (index === -1) {
-            trChar = char;
-        } else {
-            trChar = opts.dictTranslate[index];
+        for (var index = 0; index < opts.dictTranslate.length; index++) {
+            if (trChar === opts.dictTranslate[index][0]) {
+                trChar = opts.dictTranslate[index][1];
+                break;
+            }
         }
 
         if (opts.type === 'url') {
@@ -68,16 +64,8 @@ $(function () {
         }
 
         // noinspection JSValidateTypes
-        if (opts.caseStyle === 'upper') {
+        if ((opts.caseStyle === 'upper') || (opts.caseStyle === 'normal' && !charIsLowerCase)) {
             return trChar.toUpperCase();
-        } else { // noinspection JSValidateTypes
-            if (opts.caseStyle === 'normal') {
-                if (charIsLowerCase) {
-                    return trChar.toLowerCase();
-                } else {
-                    return trChar.toUpperCase();
-                }
-            }
         }
         return trChar;
     };
@@ -89,23 +77,7 @@ $(function () {
         /**
          * Dictionaries
          */
-        dictOriginal: ['а', 'б', 'в', 'г', 'д', 'е',
-            'ё', 'ж', 'з', 'и', 'й', 'к',
-            'л', 'м', 'н', 'о', 'п', 'р',
-            'с', 'т', 'у', 'ф', 'х', 'ц',
-            'ч', 'ш', 'щ', 'ъ', 'ы', 'ь',
-            'э', 'ю', 'я',
-            'і', 'є', 'ї', 'ґ'
-        ],
-        dictTranslate: ['a', 'b', 'v', 'g', 'd', 'e',
-            'e', 'zh', 'z', 'i', 'j', 'k',
-            'l', 'm', 'n', 'o', 'p', 'r',
-            's', 't', 'u', 'f', 'h', 'ts',
-            'ch', 'sh', 'sch', '', 'y', '',
-            'e', 'ju', 'ja',
-            'i', 'je', 'ji', 'g'
-        ],
-
+        dictTranslate: [],
         /*
          * Case transformation: normal, lower, upper
          */

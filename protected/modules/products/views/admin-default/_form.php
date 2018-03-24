@@ -6,13 +6,17 @@
 use app\modules\products\models\Products;
 use app\widgets\CKEditor\CKEditor;
 use app\widgets\DateTimePicker\DateTimePicker;
+use app\widgets\UrlTranslit\UrlTranslit;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 ?>
 <?php $form = ActiveForm::begin(); /* @var $form \yii\widgets\ActiveForm */ ?>
 
-<?= $form->field($model, 'meta_url')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'meta_url')->widget(UrlTranslit::class, [
+    'fromField' => 'content_title',
+    'options' => ['maxlength' => true]
+]) ?>
 
 <?= $form->field($model, 'content_title')->textInput(['maxlength' => true]) ?>
 
