@@ -8,7 +8,7 @@ class m000101_000002_insert_page_static extends Migration
 {
     public $tableName;
 
-    public $content_static = ['index', 'about', 'delivery', 'payment', 'partners', 'docs', 'rules'];
+    public $content_static = ['index', 'about', 'rules', 'delivery', 'payment', 'partners', 'docs'];
 
     public function init()
     {
