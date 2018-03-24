@@ -115,16 +115,15 @@ class DateTimePicker extends InputWidget
     public function registerClientScript()
     {
         $js = [];
-        $view = $this->getView();
 
         // @codeCoverageIgnoreStart
         if ($this->language !== null) {
             $this->clientOptions['language'] = $this->language;
             DateTimePickerAsset::register(
-                $view
+                $this->view
             )->js[] = 'js/locales/bootstrap-datetimepicker.' . $this->language . '.js';
         } else {
-            DateTimePickerAsset::register($view);
+            DateTimePickerAsset::register($this->view);
         }
         // @codeCoverageIgnoreEnd
 
@@ -152,6 +151,6 @@ class DateTimePicker extends InputWidget
         }
         // @codeCoverageIgnoreEnd
 
-        $view->registerJs(implode("\n", $js));
+        $this->view->registerJs(implode("\n", $js));
     }
 }
