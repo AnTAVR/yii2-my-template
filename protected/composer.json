@@ -31,7 +31,8 @@
       "bariew/yii2-module-migration-controller": "*",
       "2amigos/yii2-file-upload-widget": "~1.0",
       "yiisoft/yii2-authclient": "^2.1",
-      "borales/yii2-phone-input": "*"
+      "borales/yii2-phone-input": "*",
+      "kartik-v/yii2-icons": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

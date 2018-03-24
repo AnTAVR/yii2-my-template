@@ -19,4 +19,5 @@ return [
     'db.username' => 'tests',
     'db.password' => 'teststests',
     'phone.countries' => ['ru', 'ua'],
+    'icon-framework' => 'fa',
 ];
