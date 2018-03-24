@@ -7,7 +7,7 @@ use app\widgets\Captcha;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
-$this->title = Yii::t('app', 'Application for a callback');
+$this->title = Yii::t('app', 'Request for a call back');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <h1><?= Html::encode($this->title) ?></h1>

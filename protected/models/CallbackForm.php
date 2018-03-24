@@ -62,7 +62,7 @@ class CallbackForm extends Model
     public function sendEmail()
     {
         $body = Yii::t('app', 'Phone {phone}, name {name}', ['phone' => $this->phone, 'name' => $this->name]);
-        $subject = Yii::t('app', 'Application for a callback from {site}', ['site' => Yii::$app->name]);
+        $subject = Yii::t('app', 'Request for a call back from {site}', ['site' => Yii::$app->name]);
 
         return Yii::$app->mailer->compose()
             ->setTo(Yii::$app->params['adminEmail'])
