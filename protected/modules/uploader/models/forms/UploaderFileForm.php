@@ -1,7 +1,8 @@
 <?php
 
-namespace app\modules\uploader\models;
+namespace app\modules\uploader\models\forms;
 
+use app\modules\uploader\models\UploaderFile;
 use Yii;
 use yii\base\Model;
 use yii\helpers\Json;

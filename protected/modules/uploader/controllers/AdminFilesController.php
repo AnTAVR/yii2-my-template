@@ -3,8 +3,8 @@
 namespace app\modules\uploader\controllers;
 
 use app\components\AdminController;
+use app\modules\uploader\models\forms\UploaderFileForm;
 use app\modules\uploader\models\UploaderFile;
-use app\modules\uploader\models\UploaderFileForm;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;

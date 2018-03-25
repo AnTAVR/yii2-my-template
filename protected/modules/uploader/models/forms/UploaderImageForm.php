@@ -1,6 +1,8 @@
 <?php
-namespace app\modules\uploader\models;
 
+namespace app\modules\uploader\models\forms;
+
+use app\modules\uploader\models\UploaderImage;
 use Imagine\Image\ManipulatorInterface;
 use Yii;
 use yii\base\Model;
