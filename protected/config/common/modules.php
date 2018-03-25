@@ -6,9 +6,6 @@ return [
     'rbac' => [
         'class' => 'app\modules\rbac\Module',
     ],
-//    'gridview' =>  [
-//        'class' => 'kartik\grid\Module'
-//    ],
     'uploader' => [
         'class' => 'app\modules\uploader\Module',
     ],
