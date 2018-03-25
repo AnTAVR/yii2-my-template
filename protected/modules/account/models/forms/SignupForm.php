@@ -1,7 +1,9 @@
 <?php
 
-namespace app\modules\account\models;
+namespace app\modules\account\models\forms;
 
+use app\modules\account\models\User;
+use app\modules\account\models\UserToken;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -113,7 +115,7 @@ class SignupForm extends User
     /**
      * Sends an email to the specified email address using the information collected by this model.
      *
-     * @param UserToken $tokenModel
+     * @param \app\modules\account\models\UserToken $tokenModel
      * @return boolean whether the email was sent
      * @throws \yii\base\InvalidConfigException
      */

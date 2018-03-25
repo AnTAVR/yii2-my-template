@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\account\models;
+namespace app\modules\account\models\forms;
 
 use ErrorException;
 use Yii;

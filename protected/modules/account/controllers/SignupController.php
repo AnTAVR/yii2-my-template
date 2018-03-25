@@ -2,7 +2,7 @@
 
 namespace app\modules\account\controllers;
 
-use app\modules\account\models\SignupForm;
+use app\modules\account\models\forms\SignupForm;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
