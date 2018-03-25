@@ -90,11 +90,10 @@ class AdminDefaultController extends AdminController
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
         }
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -110,11 +109,10 @@ class AdminDefaultController extends AdminController
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
         }
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /** @noinspection PhpUndefinedClassInspection */
