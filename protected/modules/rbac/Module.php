@@ -7,6 +7,8 @@ use Yii;
 
 class Module extends ModuleOld
 {
+    public $defaultRoute = 'admin-assignment';
+
     public function init()
     {
         parent::init();
