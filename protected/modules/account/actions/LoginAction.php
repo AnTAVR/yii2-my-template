@@ -27,6 +27,7 @@ class LoginAction extends Action
 
                 $login = Yii::$app->user->login($user, $model->rememberMe ? $params['duration'] : 0);
                 if ($login) {
+                    Yii::info("User [$model->username] is successfully logged in", __CLASS__);
                     $user->session = Yii::$app->session->id;
                     $user->last_login_at = new Expression('NOW()');
                     $user->save();
