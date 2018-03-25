@@ -7,6 +7,9 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+$this->title = Yii::t('app', 'User Assignment');
+$this->params['breadcrumbs'][] = $this->title;
+
 $authManager = Yii::$app->authManager;
 ?>
 <?php $form = ActiveForm::begin(); ?>
