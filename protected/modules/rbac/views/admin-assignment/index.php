@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Permisstions Manager'), ['/rbac/admin-permission'], ['class' => 'btn btn-default']) ?>
+        <?= Html::a(Yii::t('app', 'Permissions Manager'), ['/rbac/admin-permission'], ['class' => 'btn btn-default']) ?>
         <?= Html::a(Yii::t('app', 'Roles Manager'), ['/rbac/admin-role'], ['class' => 'btn btn-default']) ?>
         <?= Html::a(Yii::t('app', 'Rules Manager'), ['/rbac/admin-rule'], ['class' => 'btn btn-default']) ?>
     </p>

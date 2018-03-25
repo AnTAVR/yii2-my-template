@@ -186,7 +186,7 @@ return [
     'Password recovery from {site}' => 'Восстановление пароля с сайта {site}',
     'Payment' => 'Оплата',
     'Permission name' => 'Имя разрешения',
-    'Permisstions Manager' => 'Менеджер разрешений',
+    'Permissions Manager' => 'Менеджер разрешений',
     'Phone {phone}, name {name}' => 'Телефон {phone}, имя {name}',
     'Please contact us if you think this is a server error.' => 'Пожалуйста свяжитесь с нами если вы считаете что это ошибка сервера.',
     'Please fill in the following form and we will call you back.' => 'Пожалуйста заполните следующую форму и мы Вам перезвоним.',
