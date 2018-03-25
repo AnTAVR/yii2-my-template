@@ -17,6 +17,7 @@ class RecoveryPasswordForm extends User
         $rules = [
             ['verifyCode', 'captcha'],
 
+            ['email', 'trim'],
             ['email', 'required'],
             ['email', 'string', 'max' => Yii::$app->params['email.max']],
             ['email', 'email'],

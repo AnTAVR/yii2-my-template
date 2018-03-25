@@ -26,6 +26,7 @@ class LoginForm extends User
             ['verifyCode', 'captcha'],
             ['rememberMe', 'boolean'],
 
+            ['username', 'trim'],
             ['username', 'required'],
             ['username', 'string',
                 'max' => $params['username.max'],

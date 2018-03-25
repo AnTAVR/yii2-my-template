@@ -28,6 +28,7 @@ class SignupForm extends User
                 'compareValue' => 1,
                 'message' => Yii::t('app', 'You must agree with the rules')],
 
+            ['username', 'trim'],
             ['username', 'required'],
             ['username', 'string',
                 'max' => $params['username.max'],
@@ -44,6 +45,7 @@ class SignupForm extends User
             ['repeatPassword', 'compare',
                 'compareAttribute' => 'password'],
 
+            ['email', 'trim'],
             ['email', 'required'],
             ['email', 'string',
                 'max' => Yii::$app->params['email.max']],
