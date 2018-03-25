@@ -28,7 +28,7 @@ class LoginAction extends Action
                 $login = Yii::$app->user->login($user, $model->rememberMe ? $params['duration'] : 0);
                 if ($login) {
                     $user->session = Yii::$app->session->id;
-                    $user->session_at = new Expression('NOW()');
+                    $user->last_login_at = new Expression('NOW()');
                     $user->save();
 
                     return $this->controller->goBack();

@@ -25,13 +25,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'avatar:image',
                 'status_txt',
                 'created_at',
-                'last_request_at',
                 [
                     'attribute' => 'created_ip',
                     'value' => Html::a($user->created_ip, 'http://ipinfo.io/' . $user->created_ip, ['target' => '_blank']),
                     'format' => 'raw',
                 ],
-                'session_at',
+                'last_login_at',
+                'last_request_at',
             ],
         ]) ?>
     </div>

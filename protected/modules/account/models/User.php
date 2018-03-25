@@ -36,9 +36,9 @@ use yii\web\UnauthorizedHttpException;
  * @property integer $created_at
  * @property integer $created_ip
  *
+ * @property integer $last_login_at
  * @property integer $last_request_at
  *
- * @property integer $session_at
  * @property string $session
  */
 class User extends ActiveRecord implements IdentityInterface
