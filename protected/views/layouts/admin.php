@@ -78,7 +78,7 @@ $moduleId = Yii::$app->controller->module->id;
         <?= Menu::widget([
             'options' => ['class' => 'nav nav-tabs'],
             'items' => [
-                ['label' => Yii::t('app', 'Dump'),
+                ['label' => Yii::t('app', 'Dump DB'),
                     'active' => $controllerId === 'admin-dump',
                     'url' => ['/admin-dump']],
                 ['label' => Yii::t('app', 'RBAC'),

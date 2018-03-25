@@ -23,7 +23,7 @@ return [
     'Avatar' => '',
     'CONFIRM EMAIL' => '',
     'Code' => '',
-    'Dump' => '',
+    'Dump DB' => 'Дамп БД',
     'ID' => '',
     'IP: {ip}' => '',
     'Meta Description' => '',

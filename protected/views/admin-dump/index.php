@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this \yii\base\View */
 /* @var $dataProvider \yii\data\ArrayDataProvider */
 
-$this->title = Yii::t('app', 'Dump');
+$this->title = Yii::t('app', 'Dump DB');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
