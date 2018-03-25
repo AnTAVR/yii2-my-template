@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'data-confirm' => Yii::t('app', 'Are you sure?'),
         ]
     ) ?>
-    <?= Html::a('<span class="glyphicon glyphicon-plus"></span>' . Yii::t('app', 'Create dump'),
+    <?= Html::a('<span class="glyphicon glyphicon-plus"></span>' . Yii::t('app', 'Create Dump'),
         ['create'],
         [
             'class' => 'btn btn-success',
