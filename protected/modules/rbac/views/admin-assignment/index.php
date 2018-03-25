@@ -10,8 +10,8 @@ use yii\helpers\Url;
 
 $this->title = Yii::t('app', 'User Assignment');
 $this->params['breadcrumbs'][] = $this->title;
-
-echo GridView::widget([
+?>
+<?= GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
     'columns' => [
