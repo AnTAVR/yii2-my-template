@@ -2,8 +2,8 @@
 
 namespace app\controllers;
 
-use app\models\CallbackForm;
-use app\models\ContactForm;
+use app\models\forms\CallbackForm;
+use app\models\forms\ContactForm;
 use Yii;
 use yii\web\Controller;
 

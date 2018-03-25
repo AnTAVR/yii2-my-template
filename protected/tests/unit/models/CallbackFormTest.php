@@ -2,7 +2,7 @@
 
 namespace tests\unit\models;
 
-use app\models\CallbackForm;
+use app\models\forms\CallbackForm;
 use Codeception\Test\Unit;
 use Yii;
 

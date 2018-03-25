@@ -1,7 +1,7 @@
 <?php
 /* @var $this \yii\web\View */
 
-/* @var $model \app\models\CallbackForm */
+/* @var $model \app\models\forms\CallbackForm */
 
 use app\widgets\Captcha;
 use borales\extensions\phoneInput\PhoneInput;
