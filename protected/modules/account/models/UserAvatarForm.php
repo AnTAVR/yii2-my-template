@@ -2,6 +2,7 @@
 
 namespace app\modules\account\models;
 
+use ErrorException;
 use Yii;
 use yii\base\Model;
 use yii\helpers\FileHelper;
@@ -122,10 +123,16 @@ class UserAvatarForm extends Model
 
     public function delete()
     {
-        if (is_file($this->avatarPath)) {
-            return unlink($this->avatarPath);
+        $no_errors = true;
+
+        try {
+            unlink($this->avatarPath);
+        } /** @noinspection PhpRedundantCatchClauseInspection */ catch (ErrorException $e) {
+            Yii::error($e);
+            $no_errors = !file_exists($this->avatarPath);
         }
-        return true;
+
+        return $no_errors;
     }
 
     public function upload()

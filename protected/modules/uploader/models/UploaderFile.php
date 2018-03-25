@@ -2,6 +2,7 @@
 
 namespace app\modules\uploader\models;
 
+use ErrorException;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\helpers\FileHelper;
@@ -92,16 +93,24 @@ class UploaderFile extends ActiveRecord
         return static::getUploadPath() . $this->meta_url;
     }
 
+    /**
+     * @return bool
+     */
     public function beforeDelete()
     {
         if (!parent::beforeDelete()) {
             return false;
         }
 
-        if (is_file($this->filePath)) {
+        $no_errors = true;
+
+        try {
             unlink($this->filePath);
+        } /** @noinspection PhpRedundantCatchClauseInspection */ catch (ErrorException $e) {
+            Yii::error($e);
+            $no_errors = !file_exists($this->filePath);
         }
 
-        return true;
+        return $no_errors;
     }
 }

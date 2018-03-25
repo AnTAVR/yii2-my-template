@@ -2,6 +2,7 @@
 
 namespace app\modules\uploader\models;
 
+use ErrorException;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\helpers\FileHelper;
@@ -133,14 +134,22 @@ class UploaderImage extends ActiveRecord
             return false;
         }
 
-        if (is_file($this->thumbnailPath)) {
+        $no_errors = true;
+
+        try {
             unlink($this->thumbnailPath);
+        } /** @noinspection PhpRedundantCatchClauseInspection */ catch (ErrorException $e) {
+            Yii::error($e);
+            $no_errors = !file_exists($this->thumbnailPath);
         }
 
-        if (is_file($this->imagePath)) {
+        try {
             unlink($this->imagePath);
+        } /** @noinspection PhpRedundantCatchClauseInspection */ catch (ErrorException $e) {
+            Yii::error($e);
+            $no_errors = !file_exists($this->imagePath) && $no_errors;
         }
 
-        return true;
+        return $no_errors;
     }
 }
