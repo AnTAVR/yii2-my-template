@@ -3,9 +3,9 @@
 return [
     'ignoreCategories' => ['yii', 'fileupload'],
     // string, required, root directory of all source files
-    'sourcePath' => __DIR__ . '/..',
-    // string, required, root directory containing message translations.
-    'messagePath' => __DIR__,
+    'sourcePath' => dirname(__DIR__),
+    // Root directory containing message translations.
+    'messagePath' => dirname(__DIR__) . DIRECTORY_SEPARATOR . 'messages',
     // array, required, list of language codes that the extracted messages
     // should be translated to. For example, ['zh-CN', 'de'].
     'languages' => ['ru'],
@@ -51,8 +51,24 @@ return [
     'only' => ['*.php'],
     // Generated file format. Can be "php", "db", "po", "pot".
     'format' => 'php',
-    // Connection component ID for "db" format.
-    //'db' => 'db',
+
+    /*
+    // 'db' output format is for saving messages to database.
+    'format' => 'db',
+    // Connection component to use. Optional.
+    'db' => 'db',
+    // Custom source message table. Optional.
+    // 'sourceMessageTable' => '{{%source_message}}',
+    // Custom name for translation message table. Optional.
+    // 'messageTable' => '{{%message}}',
+    */
+
+    /*
+    // 'po' output format is for saving messages to gettext po files.
+    'format' => 'po',
+    // Name of the file that will be used for translations.
+    'catalog' => 'messages',
+    */
     'phpDocBlock' => <<<DOCBLOCK
 /**
  * Message translations.
