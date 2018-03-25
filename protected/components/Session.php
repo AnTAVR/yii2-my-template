@@ -12,8 +12,8 @@ class Session extends oldSession
     {
         $path = Yii::getAlias($value);
 
-        $dirMode = 0775;
         if (!is_dir($path)) {
+            $dirMode = 0775;
             FileHelper::createDirectory($path, $dirMode, true);
         }
 
