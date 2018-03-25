@@ -11,13 +11,14 @@ use yii\helpers\Url;
 $this->title = Yii::t('app', 'User Assignment');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-    <h1><?= Html::encode($this->title) ?></h1>
+<h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Permissions Manager'), ['/rbac/admin-permission'], ['class' => 'btn btn-default']) ?>
-        <?= Html::a(Yii::t('app', 'Roles Manager'), ['/rbac/admin-role'], ['class' => 'btn btn-default']) ?>
-        <?= Html::a(Yii::t('app', 'Rules Manager'), ['/rbac/admin-rule'], ['class' => 'btn btn-default']) ?>
-    </p>
+<p>
+    <?= Html::a(Yii::t('app', 'Permissions Manager'), ['/rbac/admin-permission'], ['class' => 'btn btn-default']) ?>
+    <?= Html::a(Yii::t('app', 'Roles Manager'), ['/rbac/admin-role'], ['class' => 'btn btn-default']) ?>
+    <?= Html::a(Yii::t('app', 'Rules Manager'), ['/rbac/admin-rule'], ['class' => 'btn btn-default']) ?>
+</p>
+
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
@@ -45,4 +46,5 @@ $this->params['breadcrumbs'][] = $this->title;
             },
         ],
     ],
-]);
+]) ?>
+
