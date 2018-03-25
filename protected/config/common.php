@@ -110,6 +110,9 @@ $__config = [
             'enableAutoLogin' => true,
             'loginUrl' => ['/login'],
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             // send all mails to a file by default. You have to set
