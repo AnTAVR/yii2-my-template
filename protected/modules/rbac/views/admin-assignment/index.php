@@ -1,16 +1,21 @@
 <?php
 
+use yii\grid\GridView;
+use yii\helpers\Html;
+use yii\helpers\Url;
+
 /* @var $this \yii\web\View */
 /* @var $searchModel \app\modules\rbac\models\AssignmentSearch */
-
 /* @var $dataProvider \yii\data\ActiveDataProvider */
-
-use yii\grid\GridView;
-use yii\helpers\Url;
 
 $this->title = Yii::t('app', 'User Assignment');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>
+        <?= Html::a('<span class="glyphicon glyphicon-plus"></span>' . Yii::t('app', 'Create Products'), ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
