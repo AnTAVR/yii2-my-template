@@ -105,9 +105,8 @@ class BaseDump
     {
         if (preg_match('/' . $name . '=([^;]*)/', $dsn, $match)) {
             return $match[1];
-        } else {
-            return null;
         }
+        return null;
     }
 
 }
