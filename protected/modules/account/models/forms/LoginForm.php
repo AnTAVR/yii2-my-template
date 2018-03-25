@@ -1,7 +1,8 @@
 <?php
 
-namespace app\modules\account\models;
+namespace app\modules\account\models\forms;
 
+use app\modules\account\models\User;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;

@@ -2,7 +2,7 @@
 
 namespace app\modules\account\controllers;
 
-use app\modules\account\models\RecoveryPasswordForm;
+use app\modules\account\models\forms\RecoveryPasswordForm;
 use app\modules\account\models\RecoveryPasswordNewForm;
 use app\modules\account\models\User;
 use app\modules\account\models\UserToken;

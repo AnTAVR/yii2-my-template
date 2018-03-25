@@ -2,7 +2,7 @@
 
 namespace app\modules\account\controllers;
 
-use app\modules\account\models\PasswordEditForm;
+use app\modules\account\models\forms\PasswordEditForm;
 use app\modules\account\models\User;
 use Yii;
 use yii\helpers\ArrayHelper;

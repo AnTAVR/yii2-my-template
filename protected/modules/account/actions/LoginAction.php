@@ -2,7 +2,7 @@
 
 namespace app\modules\account\actions;
 
-use app\modules\account\models\LoginForm;
+use app\modules\account\models\forms\LoginForm;
 use app\modules\account\models\User;
 use Yii;
 use yii\base\Action;
