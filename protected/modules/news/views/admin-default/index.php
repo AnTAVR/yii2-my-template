@@ -14,8 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <p>
     <?= Html::a('<span class="glyphicon glyphicon-plus"></span>' . Yii::t('app', 'Create News'), ['create'], ['class' => 'btn btn-success']) ?>
 </p>
-<?= /** @noinspection PhpUnusedParameterInspection */
-GridView::widget([
+<?= GridView::widget([
     'dataProvider' => $dataProvider,
     'columns' => [
         'id',
