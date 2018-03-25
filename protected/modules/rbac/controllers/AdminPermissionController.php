@@ -26,7 +26,6 @@ class AdminPermissionController extends AdminController
                 'class' => 'yii\filters\VerbFilter',
                 'actions' => [
                     'delete' => ['post'],
-                    'bulk-delete' => ['post'],
                 ],
             ]
         ]);
