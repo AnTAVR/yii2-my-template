@@ -3,7 +3,6 @@
 namespace app\behaviors;
 
 use Yii;
-use yii\base\InvalidCallException;
 use yii\behaviors\AttributeBehavior;
 use yii\db\BaseActiveRecord;
 
@@ -35,15 +34,4 @@ class IpBehavior extends AttributeBehavior
 
         return parent::getValue($event);
     }
-
-    public function touch($attribute)
-    {
-        /* @var $owner \yii\db\BaseActiveRecord */
-        $owner = $this->owner;
-        if ($owner->getIsNewRecord()) {
-            throw new InvalidCallException('Updating the IP is not possible on a new record.');
-        }
-        $owner->updateAttributes(array_fill_keys((array)$attribute, $this->getValue(null)));
-    }
-
 }
