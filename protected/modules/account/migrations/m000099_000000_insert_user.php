@@ -21,18 +21,14 @@ class m000099_000000_insert_user extends Migration
      */
     public function up()
     {
-        $security = Yii::$app->security;
         $params = Yii::$app->params;
-        $this->insert($this->tableName, [
-                'username' => 'admin',
-                'email' => $params['adminEmail'],
-                'password_hash' => $security->generatePasswordHash('adminadmin'),
-                'salt' => $security->generateRandomString(64),
-                'auth_key' => $security->generateRandomString(),
-                'created_ip' => '0.0.0.0',
-                'email_confirmed' => true,
-            ]
-        );
+        $model = new User([
+            'username' => 'admin',
+            'email' => $params['adminEmail'],
+            'email_confirmed' => true,
+        ]);
+        $model->generatePassword('adminadmin');
+        $model->save(false);
     }
 
     /**
