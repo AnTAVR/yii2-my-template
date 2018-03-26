@@ -2,7 +2,7 @@
 
 /* @var $this \yii\web\View */
 
-/* @var $model \app\modules\rbac\models\AssignmentForm */
+/* @var $model \app\modules\rbac\models\forms\AssignmentForm */
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;

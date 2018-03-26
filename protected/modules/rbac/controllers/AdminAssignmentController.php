@@ -4,8 +4,8 @@ namespace app\modules\rbac\controllers;
 
 use app\components\AdminController;
 use app\modules\account\models\User;
-use app\modules\rbac\models\AssignmentForm;
 use app\modules\rbac\models\AssignmentSearch;
+use app\modules\rbac\models\forms\AssignmentForm;
 use Yii;
 use yii\web\NotFoundHttpException;
 
