@@ -6,17 +6,19 @@ use Yii;
 use yii\db\ActiveRecord;
 use yii\web\NotFoundHttpException;
 
-/** @noinspection MissingPropertyAnnotationsInspection */
 
 /**
  * Database fields:
- * @property integer $user_id
- * @property string $code
- * @property integer $type
- * @property integer $created_at
- * @property integer $expires_on
+ * @property int $user_id [int(11)]
+ * @property string $code [varchar(64)]
+ * @property int $type [smallint(6)]
+ * @property int $created_at [int(11)]
+ * @property int $expires_on [int(11)]
  *
  * Fields:
+ * @property string $expiresTxt
+ * @property mixed $statusName
+ * @property string $createdTxt
  * @property bool $isExpired
  */
 class UserToken extends ActiveRecord
@@ -25,7 +27,7 @@ class UserToken extends ActiveRecord
     const TYPE_CONFIRM_EMAIL = 2;
     const TYPE_RECOVERY_PASSWORD = 4;
 
-    static $typesName = [];
+    static $typesNames = [];
 
     /**
      * @return string
@@ -109,7 +111,7 @@ class UserToken extends ActiveRecord
     function init()
     {
         parent::init();
-        self::$typesName = [
+        self::$typesNames = [
             self::TYPE_API_AUTH => Yii::t('app', 'API AUTH'),
             self::TYPE_CONFIRM_EMAIL => Yii::t('app', 'CONFIRM EMAIL'),
             self::TYPE_RECOVERY_PASSWORD => Yii::t('app', 'RECOVERY PASSWORD'),
@@ -120,7 +122,7 @@ class UserToken extends ActiveRecord
 
     public function getStatusName()
     {
-        return self::$typesName[$this->type];
+        return self::$typesNames[$this->type];
     }
 
     /**

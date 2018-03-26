@@ -6,8 +6,6 @@ use Yii;
 use yii\db\ActiveRecord;
 use yii\helpers\Url;
 
-/** @noinspection MissingPropertyAnnotationsInspection */
-
 /**
  * Database fields:
  * @property integer $id
@@ -27,6 +25,7 @@ use yii\helpers\Url;
  * @property array $arrUrl
  * @property string $url
  * @property string|int|null $published
+ * @property string $statusName
  * @property string $status_txt
  */
 class Articles extends ActiveRecord
@@ -37,7 +36,7 @@ class Articles extends ActiveRecord
 
     const CONTENT_SHORT_MAX_SIZE = 1024;
 
-    static $statusName = [];
+    static $statusNames = [];
 
     /**
      * @inheritdoc
@@ -50,7 +49,7 @@ class Articles extends ActiveRecord
     function init()
     {
         parent::init();
-        self::$statusName = [
+        self::$statusNames = [
             self::STATUS_DELETED => Yii::t('app', 'DELETED'),
             self::STATUS_DRAFT => Yii::t('app', 'DRAFT'),
             self::STATUS_ACTIVE => Yii::t('app', 'ACTIVE'),
@@ -60,7 +59,7 @@ class Articles extends ActiveRecord
 
     public function getStatusName()
     {
-        return self::$statusName[$this->status];
+        return self::$statusNames[$this->status];
     }
 
     /**
@@ -108,7 +107,7 @@ class Articles extends ActiveRecord
             ['status', 'default',
                 'value' => self::STATUS_DRAFT],
             ['status', 'in',
-                'range' => array_keys(self::$statusName)],
+                'range' => array_keys(self::$statusNames)],
         ];
     }
 
@@ -167,7 +166,7 @@ class Articles extends ActiveRecord
      */
     public function getStatus_txt()
     {
-        return isset(self::$statusName[$this->status]) ? self::$statusName[$this->status] : 'None';
+        return isset(self::$statusNames[$this->status]) ? self::$statusNames[$this->status] : 'None';
     }
 
     /**

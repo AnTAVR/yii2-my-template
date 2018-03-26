@@ -8,8 +8,6 @@ use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 use yii\web\UnauthorizedHttpException;
 
-/** @noinspection MissingPropertyAnnotationsInspection */
-
 /**
  * Database fields:
  * @property int $id [int(11)]
@@ -33,6 +31,7 @@ use yii\web\UnauthorizedHttpException;
  * @property string $tokenPassword
  * @property string $tokenEmail
  * @property string $tokenPasswordRaw
+ * @property string $statusName
  * @property string $status_txt
  */
 class User extends ActiveRecord implements IdentityInterface
@@ -41,7 +40,7 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_BLOCKED = 10;
     const STATUS_DELETED = 20;
 
-    static $statusName = [];
+    static $statusNames = [];
 
     /**
      * @return string
@@ -101,7 +100,7 @@ class User extends ActiveRecord implements IdentityInterface
     function init()
     {
         parent::init();
-        static::$statusName = [
+        static::$statusNames = [
             self::STATUS_ACTIVE => Yii::t('app', 'ACTIVE'),
             self::STATUS_BLOCKED => Yii::t('app', 'BLOCKED'),
             self::STATUS_DELETED => Yii::t('app', 'DELETED'),
@@ -141,7 +140,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getStatusName()
     {
-        return self::$statusName[$this->status];
+        return self::$statusNames[$this->status];
     }
 
     /**
@@ -165,7 +164,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => array_keys(self::$statusName)],
+            ['status', 'in', 'range' => array_keys(self::$statusNames)],
         ];
     }
 
@@ -199,7 +198,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getStatus_txt()
     {
-        return isset(self::$statusName[$this->status]) ? self::$statusName[$this->status] : 'None';
+        return isset(self::$statusNames[$this->status]) ? self::$statusNames[$this->status] : 'None';
     }
 
     public function getTokenPasswordRaw()
