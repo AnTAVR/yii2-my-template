@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./yii message/extract messages/config.php
+./yii message/extract config/messages.php
