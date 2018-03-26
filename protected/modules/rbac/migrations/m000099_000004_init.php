@@ -19,13 +19,15 @@ class m000099_000004_init extends Migration
         $auth->add($updatePost);
 
         // add "author" role and give this role the "createPost" permission
-        $author = $auth->createRole('author');
+        $author = $auth->createRole('author-role');
+        $author->description = 'Author role';
         $auth->add($author);
         $auth->addChild($author, $createPost);
 
         // add "admin" role and give this role the "updatePost" permission
         // as well as the permissions of the "author" role
-        $admin = $auth->createRole('admin');
+        $admin = $auth->createRole('admin-role');
+        $admin->description = 'Admin role';
         $auth->add($admin);
         $auth->addChild($admin, $updatePost);
         $auth->addChild($admin, $author);
@@ -33,6 +35,7 @@ class m000099_000004_init extends Migration
         // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
         // usually implemented in your User model.
         $auth->assign($author, 2);
+        $auth->assign($admin, 2);
         $auth->assign($admin, 1);
     }
 
