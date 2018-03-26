@@ -8,15 +8,15 @@ use yii\helpers\Url;
 
 /**
  * Database fields:
- * @property integer $id
- * @property string $content_title
+ * @property int $id [int(11)]
+ * @property string $content_title [varchar(255)]
  * @property string $content_full
- * @property string $meta_url
- * @property string $meta_description
- * @property string $meta_keywords
+ * @property string $meta_url [varchar(255)]
+ * @property string $meta_description [varchar(255)]
+ * @property string $meta_keywords [varchar(255)]
  *
  * Fields:
- * @property string $staticUrl
+ * @property string $url
  */
 class StaticPage extends ActiveRecord
 {
@@ -74,7 +74,7 @@ class StaticPage extends ActiveRecord
             'meta_url' => Yii::t('app', 'Meta Url'),
             'meta_description' => Yii::t('app', 'Meta Description'),
             'meta_keywords' => Yii::t('app', 'Meta Keywords'),
-            'staticUrl' => Yii::t('app', 'Static Url'),
+            'url' => Yii::t('app', 'Static Url'),
 
         ];
     }
@@ -89,7 +89,7 @@ class StaticPage extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public function getStaticUrl()
+    public function getUrl()
     {
         return Url::to(['/static/index', 'meta_url' => $this->meta_url]);
     }

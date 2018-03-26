@@ -20,7 +20,7 @@ GridView::widget([
     'dataProvider' => $dataProvider,
     'columns' => [
         'id',
-        'staticUrl',
+        'url',
         'content_title',
         [
             'class' => ActionColumn::class,
@@ -28,16 +28,22 @@ GridView::widget([
             'buttons' => [
                 'viewP' => function (/** @noinspection PhpUnusedParameterInspection */
                     $url, $model, $key) {
-                    /* @var $model \app\models\StaticPage */
-                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>',
-                        $model->staticUrl,
-                        [
-                            'title' => Yii::t('app', 'View site'),
-                            'aria-label' => Yii::t('app', 'View site'),
-                            'data-pjax' => '0',
-                            'target' => '_blank',
-                            'style' => 'color: red;',
+                    $icon = 'eye-open';
+                    $title = Yii::t('app', 'View site');
+                    if ($icon) {
+                        $icon = Html::tag('span', '', [
+                            'class' => "glyphicon glyphicon-$icon",
                         ]);
+                    }
+                    $options = [
+                        'title' => $title,
+                        'aria-label' => $title,
+                        'data-pjax' => '0',
+                        'class' => 'btn btn-sm btn-success',
+                        'target' => '_blank',
+                    ];
+                    /* @var $model \app\models\StaticPage */
+                    return Html::a($icon, $model->url, $options);
                 },
             ],
         ],
