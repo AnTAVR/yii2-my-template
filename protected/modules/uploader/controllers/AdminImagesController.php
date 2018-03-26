@@ -25,8 +25,8 @@ class AdminImagesController extends AdminController
             'verbs' => [
                 'class' => 'yii\filters\VerbFilter',
                 'actions' => [
-                    'delete' => ['POST'],
-                    'upload' => ['POST'],
+                    'delete' => ['post'],
+                    'upload' => ['post'],
                 ],
             ],
         ]);

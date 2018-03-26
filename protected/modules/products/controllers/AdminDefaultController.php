@@ -23,7 +23,7 @@ class AdminDefaultController extends AdminController
             'verbs' => [
                 'class' => 'yii\filters\VerbFilter',
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['post'],
                 ],
             ],
         ]);

@@ -27,7 +27,7 @@ class AdminStaticController extends AdminController
             'verbs' => [
                 'class' => 'yii\filters\VerbFilter',
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['post'],
                 ],
             ],
         ]);

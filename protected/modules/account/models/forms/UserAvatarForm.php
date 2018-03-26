@@ -157,7 +157,7 @@ class UserAvatarForm extends Model
                 'size' => $this->fileUpload->size,
                 'url' => $this->avatarUrl,
                 'deleteUrl' => 'avatar-delete',
-                'deleteType' => 'POST',
+                'deleteType' => 'post',
             ]]
         ]);
 

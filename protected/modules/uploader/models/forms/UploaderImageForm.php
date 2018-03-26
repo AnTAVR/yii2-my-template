@@ -92,7 +92,7 @@ class UploaderImageForm extends Model
                 'url' => $modelImage->url,
                 'thumbnailUrl' => $modelImage->thumbnailUrl,
                 'deleteUrl' => 'delete?id=' . $modelImage->id,
-                'deleteType' => 'POST'
+                'deleteType' => 'post'
             ]]
         ]);
 
