@@ -97,10 +97,10 @@ $moduleId = Yii::$app->controller->module->id;
                     'active' => $moduleId === 'products',
                     'url' => ['/products/admin-default']],
                 ['label' => Yii::t('app', 'Uploader Images'),
-                    'active' => $moduleId === 'uploader' and $controllerId === 'admin-images',
+                    'active' => $moduleId === 'uploader' && $controllerId === 'admin-images',
                     'url' => ['/uploader/admin-images']],
                 ['label' => Yii::t('app', 'Uploader Files'),
-                    'active' => $moduleId === 'uploader' and $controllerId === 'admin-files',
+                    'active' => $moduleId === 'uploader' && $controllerId === 'admin-files',
                     'url' => ['/uploader/admin-files']],
             ],
         ]) ?>

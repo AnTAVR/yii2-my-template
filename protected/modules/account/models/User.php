@@ -99,7 +99,7 @@ class User extends ActiveRecord implements IdentityInterface
             'type' => UserToken::TYPE_API_AUTH
         ]);
 
-        if (!$tokenModel or $tokenModel->isExpired) {
+        if (!$tokenModel || $tokenModel->isExpired) {
             throw new UnauthorizedHttpException(Yii::t('app', 'Auth code not found or expired!'));
         }
 
