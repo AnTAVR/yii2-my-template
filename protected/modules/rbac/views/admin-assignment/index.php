@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 /* @var $this \yii\web\View */
-/* @var $searchModel \app\modules\rbac\models\AssignmentSearch */
+/* @var $searchModel \app\modules\rbac\models\searches\AssignmentSearch */
 /* @var $dataProvider \yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app', 'User Assignment');
