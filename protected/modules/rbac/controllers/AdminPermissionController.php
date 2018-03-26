@@ -4,7 +4,7 @@ namespace app\modules\rbac\controllers;
 
 use app\components\AdminController;
 use app\modules\rbac\models\Permission;
-use app\modules\rbac\models\PermissionSearch;
+use app\modules\rbac\models\searches\PermissionSearch;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;

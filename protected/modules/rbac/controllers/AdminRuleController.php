@@ -4,7 +4,7 @@ namespace app\modules\rbac\controllers;
 
 use app\components\AdminController;
 use app\modules\rbac\models\Rule;
-use app\modules\rbac\models\RuleSearch;
+use app\modules\rbac\models\searches\RuleSearch;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;

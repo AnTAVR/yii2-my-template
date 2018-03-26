@@ -1,7 +1,8 @@
 <?php
 
-namespace app\modules\rbac\models;
+namespace app\modules\rbac\models\searches;
 
+use app\modules\rbac\models\AuthItem;
 use Yii;
 use yii\data\ArrayDataProvider;
 use yii\rbac\Item;

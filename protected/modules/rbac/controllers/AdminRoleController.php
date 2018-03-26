@@ -4,7 +4,7 @@ namespace app\modules\rbac\controllers;
 
 use app\components\AdminController;
 use app\modules\rbac\models\Role;
-use app\modules\rbac\models\RoleSearch;
+use app\modules\rbac\models\searches\RoleSearch;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;

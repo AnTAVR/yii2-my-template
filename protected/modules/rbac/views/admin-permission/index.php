@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 /* @var $this \yii\web\View */
-/* @var $searchModel \app\modules\rbac\models\PermissionSearch */
+/* @var $searchModel \app\modules\rbac\models\searches\PermissionSearch */
 
 /* @var $dataProvider \yii\data\ActiveDataProvider|\yii\data\ArrayDataProvider */
 
