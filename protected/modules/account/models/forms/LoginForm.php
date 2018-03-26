@@ -23,7 +23,7 @@ class LoginForm extends User
     public function rules()
     {
         $params = Yii::$app->getModule('account')->params;
-        $rules = [
+        return [
             ['verifyCode', 'captcha'],
             ['rememberMe', 'boolean'],
 
@@ -43,7 +43,6 @@ class LoginForm extends User
             ['username', 'exist'],
             ['password', 'validateLoginPassword'],
         ];
-        return ArrayHelper::merge(parent::rules(), $rules);
     }
 
     /**

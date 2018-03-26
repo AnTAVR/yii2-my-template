@@ -19,7 +19,7 @@ class PasswordEditForm extends User
     public function rules()
     {
         $params = Yii::$app->getModule('account')->params;
-        $rules = [
+        return [
             ['verifyCode', 'captcha'],
 
             ['password', 'required'],
@@ -35,7 +35,6 @@ class PasswordEditForm extends User
 
             ['oldPassword', 'validateOldPassword'],
         ];
-        return ArrayHelper::merge(parent::rules(), $rules);
     }
 
     /**

@@ -22,7 +22,7 @@ class SignupForm extends User
     public function rules()
     {
         $params = Yii::$app->getModule('account')->params;
-        $rules = [
+        return [
             ['verifyCode', 'captcha'],
 
             ['verifyRules', 'boolean'],
@@ -56,7 +56,6 @@ class SignupForm extends User
             ['username', 'unique'],
             ['email', 'unique'],
         ];
-        return ArrayHelper::merge(parent::rules(), $rules);
     }
 
     /**

@@ -120,6 +120,17 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            ['status', 'default', 'value' => self::STATUS_ACTIVE],
+            ['status', 'in', 'range' => array_keys(self::$statusName)],
+        ];
+    }
+
+    /**
      * @return int|string current user ID
      */
     public function getId()

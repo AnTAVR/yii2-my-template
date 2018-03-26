@@ -18,7 +18,7 @@ class RecoveryPasswordNewForm extends User
     public function rules()
     {
         $params = Yii::$app->getModule('account')->params;
-        $rules = [
+        return [
             ['verifyCode', 'captcha'],
 
             ['password', 'required'],
@@ -30,7 +30,6 @@ class RecoveryPasswordNewForm extends User
             ['repeatPassword', 'compare',
                 'compareAttribute' => 'password'],
         ];
-        return ArrayHelper::merge(parent::rules(), $rules);
     }
 
     /**

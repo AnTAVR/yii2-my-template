@@ -15,7 +15,7 @@ class RecoveryPasswordRequestForm extends User
      */
     public function rules()
     {
-        $rules = [
+        return [
             ['verifyCode', 'captcha'],
 
             ['email', 'trim'],
@@ -25,7 +25,6 @@ class RecoveryPasswordRequestForm extends User
 
             ['email', 'exist'],
         ];
-        return ArrayHelper::merge(parent::rules(), $rules);
     }
 
     /**
