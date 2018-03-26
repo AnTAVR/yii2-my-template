@@ -12,35 +12,28 @@ use yii\web\UnauthorizedHttpException;
 
 /**
  * Database fields:
- * @property integer $id
- * @property string $username
- * @property string $email
- * @property string $password_hash
- * @property string $salt
- *
- * @property string $auth_key
- *
- * @property boolean $email_confirmed
- *
- * @property string $avatar
- *
- * @property integer $status
- *
- * @property integer $created_at
- * @property integer $created_ip
- *
- * @property integer $last_login_at
- * @property integer $last_request_at
- *
- * @property string $session
+ * @property int $id [int(11)]
+ * @property string $username [varchar(255)]
+ * @property string $email [varchar(255)]
+ * @property string $password_hash [varchar(255)]
+ * @property string $salt [varchar(64)]
+ * @property string $auth_key [varchar(32)]
+ * @property bool $email_confirmed [tinyint(1)]
+ * @property string $avatar [varchar(255)]
+ * @property int $status [smallint(6)]
+ * @property int $created_at [int(11)]
+ * @property string $created_ip [varchar(45)]
+ * @property int $last_login_at [int(11)]
+ * @property int $last_request_at [int(11)]
+ * @property string $session [varchar(255)]
  *
  * Fields:
  * @property string $authKey
- * @property string $status_txt
- * @property string $tokenPasswordRaw
- * @property string $tokenPassword
  * @property string $tokenEmailRaw
+ * @property string $tokenPassword
  * @property string $tokenEmail
+ * @property string $tokenPasswordRaw
+ * @property string $status_txt
  */
 class User extends ActiveRecord implements IdentityInterface
 {
