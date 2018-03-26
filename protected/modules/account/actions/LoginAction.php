@@ -6,7 +6,6 @@ use app\modules\account\models\forms\LoginForm;
 use app\modules\account\models\User;
 use Yii;
 use yii\base\Action;
-use yii\db\Expression;
 
 class LoginAction extends Action
 {
@@ -29,7 +28,8 @@ class LoginAction extends Action
                 if ($login) {
                     Yii::info("User [$model->username] is successfully logged in", __CLASS__);
                     $user->session = Yii::$app->session->id;
-                    $user->last_login_at = new Expression('NOW()');
+                    /** @noinspection PhpUndefinedMethodInspection */
+                    $user->touch('last_login_at');
                     $user->save();
 
                     return $this->controller->goBack();
