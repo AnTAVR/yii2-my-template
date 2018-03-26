@@ -29,6 +29,15 @@ class m000099_000000_insert_user extends Migration
         ]);
         $model->generatePassword('adminadmin');
         $model->save(false);
+
+
+        $model = new User([
+            'username' => 'tests',
+            'email' => 'tests@tests.tests',
+            'email_confirmed' => true,
+        ]);
+        $model->generatePassword('teststests');
+        $model->save(false);
     }
 
     /**
