@@ -11,13 +11,6 @@ use yii\web\UnauthorizedHttpException;
 /** @noinspection MissingPropertyAnnotationsInspection */
 
 /**
- * @property string $authKey
- * @property string $status_txt
- * @property string $tokenPasswordRaw
- * @property string $tokenPassword
- * @property string $tokenEmailRaw
- * @property string $tokenEmail
- *
  * Database fields:
  * @property integer $id
  * @property string $username
@@ -40,6 +33,14 @@ use yii\web\UnauthorizedHttpException;
  * @property integer $last_request_at
  *
  * @property string $session
+ *
+ * Fields:
+ * @property string $authKey
+ * @property string $status_txt
+ * @property string $tokenPasswordRaw
+ * @property string $tokenPassword
+ * @property string $tokenEmailRaw
+ * @property string $tokenEmail
  */
 class User extends ActiveRecord implements IdentityInterface
 {

@@ -7,8 +7,7 @@ use yii\db\ActiveRecord;
 use yii\helpers\Url;
 
 /**
- * This is the model class for table "page_static".
- *
+ * Database fields:
  * @property integer $id
  * @property string $content_title
  * @property string $content_full
@@ -16,6 +15,7 @@ use yii\helpers\Url;
  * @property string $meta_description
  * @property string $meta_keywords
  *
+ * Fields:
  * @property string $staticUrl
  */
 class StaticPage extends ActiveRecord

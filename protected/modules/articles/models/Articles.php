@@ -9,11 +9,10 @@ use yii\validators\DateValidator;
 
 /** @noinspection MissingPropertyAnnotationsInspection */
 /**
- * This is the model class for table "page_articles".
- *
+ * Database fields:
  * @property integer $id
  *
- * @property string $published_at
+ * @property integer $published_at
  * @property integer $status
  *
  * @property string $content_title
@@ -24,6 +23,7 @@ use yii\validators\DateValidator;
  * @property string $meta_description
  * @property string $meta_keywords
  *
+ * Fields:
  * @property array $arrUrl
  * @property string $articlesUrl
  * @property string $status_txt

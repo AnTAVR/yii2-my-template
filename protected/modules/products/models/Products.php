@@ -9,8 +9,6 @@ use yii\validators\DateValidator;
 
 /** @noinspection MissingPropertyAnnotationsInspection */
 /**
- * This is the model class for table "page_products".
- *
  * Database fields:
  * @property integer $id
  *
@@ -25,6 +23,7 @@ use yii\validators\DateValidator;
  * @property string $meta_description
  * @property string $meta_keywords
  *
+ * Fields:
  * @property array $arrUrl
  * @property string $productsUrl
  * @property string $status_txt

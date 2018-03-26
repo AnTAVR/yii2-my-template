@@ -9,16 +9,15 @@ use yii\web\NotFoundHttpException;
 /** @noinspection MissingPropertyAnnotationsInspection */
 
 /**
- * This is the model class for table "user_token".
- *
- * @property bool $isExpired
- *
  * Database fields:
  * @property integer $user_id
  * @property string $code
  * @property integer $type
  * @property integer $created_at
  * @property integer $expires_on
+ *
+ * Fields:
+ * @property bool $isExpired
  */
 class UserToken extends ActiveRecord
 {

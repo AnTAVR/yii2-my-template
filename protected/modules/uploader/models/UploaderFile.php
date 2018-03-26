@@ -8,13 +8,13 @@ use yii\db\ActiveRecord;
 use yii\helpers\FileHelper;
 
 /**
- * This is the model class for table "uploader_file".
- *
+ * Database fields:
  * @property integer $id
  * @property string $file
  * @property string $meta_url
  * @property string $comment
  *
+ * Fields:
  * @property string $fileUrl
  * @property string $filePath
  */
