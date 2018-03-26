@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
     'model' => $model,
     'attributes' => [
         'meta_url',
-        'fileUrl',
+        'url',
         'file',
         'comment:ntext',
     ],

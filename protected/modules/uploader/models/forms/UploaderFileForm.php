@@ -79,7 +79,7 @@ class UploaderFileForm extends Model
             'files' => [[
                 'name' => $this->fileUpload->name,
                 'size' => $this->fileUpload->size,
-                'url' => $modelFile->fileUrl,
+                'url' => $modelFile->url,
                 'deleteUrl' => 'delete?id=' . $modelFile->id,
                 'deleteType' => 'POST'
             ]]

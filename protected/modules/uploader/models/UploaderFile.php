@@ -58,7 +58,7 @@ class UploaderFile extends ActiveRecord
             'file' => Yii::t('app', 'File'),
             'meta_url' => Yii::t('app', 'Meta Url'),
             'comment' => Yii::t('app', 'Comment'),
-            'fileUrl' => Yii::t('app', 'File Url'),
+            'url' => Yii::t('app', 'File Url'),
             'filePath' => Yii::t('app', 'File Path'),
         ];
     }
