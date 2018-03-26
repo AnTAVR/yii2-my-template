@@ -35,6 +35,9 @@ $__config = [
     'modules' => require __DIR__ . '/common/modules.php',
 
     'components' => [
+        'formatter' => [
+            'datetimeFormat' => 'Y-MM-dd HH:mm:ss',
+        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
