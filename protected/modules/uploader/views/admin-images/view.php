@@ -25,10 +25,10 @@ $this->params['breadcrumbs'][] = $this->title;
     'model' => $model,
     'attributes' => [
         'meta_url',
-        'imageUrl',
+        'url',
         'thumbnailUrl',
         'thumbnailUrl:image:',
-        'imageUrl:image:',
+        'url:image:',
         'file',
         'comment:ntext',
     ],

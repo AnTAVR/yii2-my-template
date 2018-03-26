@@ -15,7 +15,7 @@ use yii\helpers\FileHelper;
  * @property string $comment
  *
  * Fields:
- * @property string $imageUrl
+ * @property string $url
  * @property string $imagePath
  * @property string $thumbnailUrl
  * @property string $thumbnailPath
@@ -61,7 +61,7 @@ class UploaderImage extends ActiveRecord
             'file' => Yii::t('app', 'File'),
             'meta_url' => Yii::t('app', 'Meta Url'),
             'comment' => Yii::t('app', 'Comment'),
-            'imageUrl' => Yii::t('app', 'Image Url'),
+            'url' => Yii::t('app', 'Image Url'),
             'imagePath' => Yii::t('app', 'Image Path'),
             'thumbnailUrl' => Yii::t('app', 'Thumbnail Url'),
             'thumbnailPath' => Yii::t('app', 'Thumbnail Path'),
@@ -99,7 +99,7 @@ class UploaderImage extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public function getImageUrl()
+    public function getUrl()
     {
         return static::getUploadUrl() . $this->meta_url;
     }

@@ -89,7 +89,7 @@ class UploaderImageForm extends Model
             'files' => [[
                 'name' => $this->fileUpload->name,
                 'size' => $this->fileUpload->size,
-                'url' => $modelImage->imageUrl,
+                'url' => $modelImage->url,
                 'thumbnailUrl' => $modelImage->thumbnailUrl,
                 'deleteUrl' => 'delete?id=' . $modelImage->id,
                 'deleteType' => 'POST'

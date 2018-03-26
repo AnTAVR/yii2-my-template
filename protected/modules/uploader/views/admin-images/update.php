@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
             'file',
             'thumbnailUrl:image:',
             'thumbnailUrl:ntext',
-            'imageUrl:ntext',
+            'url:ntext',
         ],
     ]) ?>
 
