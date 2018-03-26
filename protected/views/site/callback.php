@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= Yii::t('app', 'Thank you.') ?>
 </p>
 
-<?php $form = ActiveForm::begin(['id' => 'callback-form', 'options' => ['class' => 'col-lg-6']]); /* @var $form \yii\bootstrap\ActiveForm */ ?>
+<?php $form = ActiveForm::begin(['id' => 'callback-form', 'options' => ['class' => 'col-lg-6']]); ?>
 
 <?= $form->field($model, 'phone')->widget(PhoneInput::class, [
     'jsOptions' => [

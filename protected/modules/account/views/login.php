@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <p><?= Yii::t('app', 'Please fill out the following fields to login:') ?></p>
 
-<?php $form = ActiveForm::begin(['options' => ['class' => 'col-lg-6']]); /* @var $form \yii\bootstrap\ActiveForm */ ?>
+<?php $form = ActiveForm::begin(['options' => ['class' => 'col-lg-6']]); ?>
 
 <?= $form->field($model, 'username')->textInput() ?>
 

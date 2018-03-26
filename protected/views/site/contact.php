@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <p><?= Yii::t('app', 'If you have business inquiries or other questions, please fill out the following form to contact us.') ?>
     <?= Yii::t('app', 'Thank you.') ?></p>
 
-<?php $form = ActiveForm::begin(['id' => 'contact-form', 'options' => ['class' => 'col-lg-6']]); /* @var $form \yii\bootstrap\ActiveForm */ ?>
+<?php $form = ActiveForm::begin(['id' => 'contact-form', 'options' => ['class' => 'col-lg-6']]); ?>
 
 <?= $form->field($model, 'name')->textInput() ?>
 

@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <h1><?= Html::encode($this->title) ?></h1>
 
-<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); /* @var $form \yii\bootstrap\ActiveForm */ ?>
+<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
 <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
 

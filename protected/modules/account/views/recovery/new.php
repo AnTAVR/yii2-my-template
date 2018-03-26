@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <h1><?= Html::encode($this->title) ?></h1>
 
-<?php $form = ActiveForm::begin(['options' => ['class' => 'col-lg-6']]); /* @var $form \yii\bootstrap\ActiveForm */ ?>
+<?php $form = ActiveForm::begin(['options' => ['class' => 'col-lg-6']]); ?>
 
 <?= $form->field($model, 'password')->passwordInput() ?>
 

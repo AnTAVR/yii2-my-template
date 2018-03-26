@@ -12,7 +12,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 ?>
-<?php $form = ActiveForm::begin(); /* @var $form \yii\widgets\ActiveForm */ ?>
+<?php $form = ActiveForm::begin(); ?>
 
 <?= $form->field($model, 'meta_url')->widget(UrlTranslit::class, [
     'fromField' => 'content_title',

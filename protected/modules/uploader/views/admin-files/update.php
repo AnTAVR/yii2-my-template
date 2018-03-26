@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
         ],
     ]) ?>
 
-    <?php $form = ActiveForm::begin(); /* @var $form \yii\bootstrap\ActiveForm */ ?>
+    <?php $form = ActiveForm::begin(); ?>
     <div class="form-group">
 
         <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
