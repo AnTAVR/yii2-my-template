@@ -22,7 +22,6 @@ abstract class AuthItemSearch extends AuthItem
     {
         return [
             ['name', 'safe'],
-            ['name', 'safe'],
         ];
     }
 
