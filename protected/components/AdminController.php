@@ -18,7 +18,7 @@ class AdminController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['admin-role'],
+                        'roles' => ['root-role'],
                     ],
                 ],
             ],
