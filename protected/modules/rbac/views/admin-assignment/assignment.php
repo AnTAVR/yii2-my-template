@@ -4,6 +4,7 @@
 
 /* @var $model \app\modules\rbac\models\forms\AssignmentForm */
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -11,42 +12,20 @@ $this->title = Yii::t('app', 'User Assignment');
 $this->params['breadcrumbs'][] = $this->title;
 
 $authManager = Yii::$app->authManager;
+
+$roles = ArrayHelper::map($authManager->getRoles(), 'name', 'name');
+
 ?>
 <?php $form = ActiveForm::begin(); ?>
-<?= Html::activeHiddenInput($model, 'userId') ?>
+<?= $form->field($model, 'userId')->textInput() ?>
 
-<label class="control-label"><?= $model->attributeLabels()['roles'] ?></label>
+<?= $form->field($model, 'roles')->checkboxList($roles, [
+    'separator' => '<br>',
+//    'item' => fu,
+]) ?>
 
-<input type="hidden" name="AssignmentForm[roles]" value="">
-
-<table class="table table-striped table-bordered detail-view">
-    <thead>
-    <tr>
-        <th style="width:1px"></th>
-        <th style="width:150px">Name</th>
-        <th>Description</th>
-    </tr>
-    <tbody>
-    <?php foreach ($authManager->getRoles() as $role): ?>
-        <tr>
-            <?php
-            $checked = true;
-            if ($model->roles == null || !is_array($model->roles) || count($model->roles) == 0) {
-                $checked = false;
-            } else if (!in_array($role->name, $model->roles)) {
-                $checked = false;
-            }
-            ?>
-            <td><input <?= $checked ? "checked" : "" ?> type="checkbox" name="AssignmentForm[roles][]"
-                                                        value="<?= $role->name ?>"></td>
-            <td><?= $role->name ?></td>
-            <td><?= $role->description ?></td>
-        </tr>
-    <?php endforeach; ?>
-    </tbody>
-</table>
 <div class="form-group">
-    <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+    <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-primary']) ?>
 </div>
 <?php ActiveForm::end(); ?>
 
