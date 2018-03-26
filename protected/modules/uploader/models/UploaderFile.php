@@ -15,7 +15,7 @@ use yii\helpers\FileHelper;
  * @property string $comment
  *
  * Fields:
- * @property string $fileUrl
+ * @property string $url
  * @property string $filePath
  */
 class UploaderFile extends ActiveRecord
@@ -80,7 +80,7 @@ class UploaderFile extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public function getFileUrl()
+    public function getUrl()
     {
         return static::getUploadUrl() . $this->meta_url;
     }
