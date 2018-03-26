@@ -25,7 +25,7 @@ use yii\helpers\Url;
  *
  * Fields:
  * @property array $arrUrl
- * @property string $newsUrl
+ * @property string $url
  * @property string|int|null $published
  * @property string $status_txt
  */
@@ -133,7 +133,7 @@ class News extends ActiveRecord
             'meta_keywords' => Yii::t('app', 'Meta Keywords'),
 
             'status_txt' => Yii::t('app', 'Status'),
-            'newsUrl' => Yii::t('app', 'News Url'),
+            'url' => Yii::t('app', 'News Url'),
         ];
     }
 
@@ -181,7 +181,7 @@ class News extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public function getNewsUrl()
+    public function getUrl()
     {
         return Url::to($this->arrUrl);
     }

@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
     'model' => $model,
     'attributes' => [
         'meta_url',
-        'newsUrl',
+        'url',
         'content_title',
         'content_short:raw',
         'content_full:raw',
