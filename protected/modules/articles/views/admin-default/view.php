@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'content_title',
         'content_short:raw',
         'content_full:raw',
-        'published_at',
+        'published_at:datetime',
         'status_txt',
         'meta_description',
         'meta_keywords',
