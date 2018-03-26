@@ -28,7 +28,7 @@ class m000099_000001_create_token extends Migration
             'user_id' => $this->integer()->notNull(),
             'code' => $this->string(64)->notNull(),
             'type' => $this->smallInteger()->notNull(),
-            'created_at' => $this->timestamp()->notNull()->defaultExpression('NOW()'),
+            'created_at' => $this->integer()->notNull(),
             'expires_on' => $this->integer()->notNull()->defaultValue(0),
         ], $this->tableOptions);
         $this->createIndex('token_unique', $this->tableName, ['user_id', 'code', 'type'], true);
