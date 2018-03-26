@@ -51,7 +51,9 @@ class News extends ActiveRecord
             self::STATUS_DRAFT => Yii::t('app', 'DRAFT'),
             self::STATUS_ACTIVE => Yii::t('app', 'ACTIVE'),
         ];
-        $this->status = self::STATUS_DRAFT;
+        if (empty($this->status)) {
+            $this->status = self::STATUS_DRAFT;
+        }
     }
 
     public function getStatusName()

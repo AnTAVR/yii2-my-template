@@ -116,6 +116,9 @@ class User extends ActiveRecord implements IdentityInterface
             if (empty($this->email_confirmed)) {
                 $this->email_confirmed = (int)false;
             }
+            if (empty($this->status)) {
+                $this->status = self::STATUS_ACTIVE;
+            }
         }
 
     }
