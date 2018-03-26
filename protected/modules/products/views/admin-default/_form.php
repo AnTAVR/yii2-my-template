@@ -38,7 +38,7 @@ use yii\widgets\ActiveForm;
         ]
     ]) ?>
 
-    <?= $form->field($model, 'status', ['options' => ['class' => 'col-xs-4']])->dropDownList(Products::$statusName) ?>
+    <?= $form->field($model, 'status', ['options' => ['class' => 'col-xs-4']])->dropDownList(Products::$statusNames) ?>
 </div>
 
 <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>
