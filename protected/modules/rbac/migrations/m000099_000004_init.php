@@ -8,35 +8,33 @@ class m000099_000004_init extends Migration
     {
         $auth = Yii::$app->authManager;
 
-        // add "createPost" permission
-        $createPost = $auth->createPermission('createPost');
-        $createPost->description = 'Create a post';
-        $auth->add($createPost);
+        $rootRole = $auth->createRole('root-role');
+        $rootRole->description = 'Root role';
+        $auth->add($rootRole);
+        $auth->assign($rootRole, 1);
 
-        // add "updatePost" permission
-        $updatePost = $auth->createPermission('updatePost');
-        $updatePost->description = 'Update post';
-        $auth->add($updatePost);
+        $usersRole = $auth->createRole('users-role');
+        $usersRole->description = 'Users role';
+        $auth->add($usersRole);
+        $auth->addChild($rootRole, $usersRole);
 
-        // add "author" role and give this role the "createPost" permission
-        $author = $auth->createRole('author-role');
-        $author->description = 'Author role';
-        $auth->add($author);
-        $auth->addChild($author, $createPost);
+        $authorRole = $auth->createRole('author-role');
+        $authorRole->description = 'Author role';
+        $auth->add($authorRole);
 
-        // add "admin" role and give this role the "updatePost" permission
-        // as well as the permissions of the "author" role
-        $admin = $auth->createRole('admin-role');
-        $admin->description = 'Admin role';
-        $auth->add($admin);
-        $auth->addChild($admin, $updatePost);
-        $auth->addChild($admin, $author);
+        $createPostPermission = $auth->createPermission('createPost');
+        $createPostPermission->description = 'Create a post';
+        $auth->add($createPostPermission);
 
-        // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
-        // usually implemented in your User model.
-        $auth->assign($author, 2);
-        $auth->assign($admin, 2);
-        $auth->assign($admin, 1);
+        $updatePostPermission = $auth->createPermission('updatePost');
+        $updatePostPermission->description = 'Update post';
+        $auth->add($updatePostPermission);
+
+        $auth->addChild($authorRole, $createPostPermission);
+        $auth->addChild($authorRole, $updatePostPermission);
+
+        $auth->assign($rootRole, 2);
+        $auth->assign($authorRole, 2);
     }
 
     public function down()
