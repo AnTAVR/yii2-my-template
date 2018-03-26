@@ -63,15 +63,17 @@ $menuItems = [
     ],
 ];
 
+$profileItems = [];
 if (Yii::$app->user->isGuest) {
     $profileItems = ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-in"></span> ' .
         Yii::t('app', 'Login'), 'url' => Yii::$app->user->loginUrl];
 } else {
-    $profileItems = [
-        ['label' => Yii::t('app', 'Admin panel'), 'url' => ['/admin-site'], 'linkOptions' => ['target' => '_blank']],
-        '<li class="divider"></li>',
-    ];
-
+    if (Yii::$app->user->can('root-role')) {
+        $profileItems = [
+            ['label' => Yii::t('app', 'Admin panel'), 'url' => ['/admin-site'], 'linkOptions' => ['target' => '_blank']],
+            '<li class="divider"></li>',
+        ];
+    }
     $profileItems = ArrayHelper::merge($profileItems, [
         ['label' => Yii::t('app', 'Profile'), 'url' => ['/account']],
         '<li class="divider"></li>',
