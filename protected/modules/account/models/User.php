@@ -88,8 +88,7 @@ class User extends ActiveRecord implements IdentityInterface
      *
      * @param string $token the token to be looked for
      * @param null $type
-    //     * @return IdentityInterface|null the identity object that matches the given token.
-     * @return User|null
+     * @return static|null the identity object that matches the given token.
      * @throws UnauthorizedHttpException
      */
     public static function findIdentityByAccessToken($token, $type = null)
