@@ -50,21 +50,6 @@ class User extends ActiveRecord implements IdentityInterface
 
     static $statusName = [];
 
-    function init()
-    {
-        parent::init();
-        static::$statusName = [
-            self::STATUS_ACTIVE => Yii::t('app', 'ACTIVE'),
-            self::STATUS_BLOCKED => Yii::t('app', 'BLOCKED'),
-            self::STATUS_DELETED => Yii::t('app', 'DELETED'),
-        ];
-    }
-
-    public function getStatusName()
-    {
-        return self::$statusName[$this->status];
-    }
-
     /**
      * @return string
      */
@@ -82,6 +67,11 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findIdentity($id)
     {
         return static::findUserActive($id);
+    }
+
+    public static function findUserActive($id)
+    {
+        return static::findOne(['id' => $id, 'status' => static::STATUS_ACTIVE]);
     }
 
     /**
@@ -104,6 +94,61 @@ class User extends ActiveRecord implements IdentityInterface
         }
 
         return static::findUserActive($tokenModel->user_id);
+    }
+
+    /**
+     * @param string $value
+     * @throws \yii\base\Exception
+     */
+    public function generatePassword($value)
+    {
+        $this->password_hash = Yii::$app->security->generatePasswordHash($value);
+    }
+
+    function init()
+    {
+        parent::init();
+        static::$statusName = [
+            self::STATUS_ACTIVE => Yii::t('app', 'ACTIVE'),
+            self::STATUS_BLOCKED => Yii::t('app', 'BLOCKED'),
+            self::STATUS_DELETED => Yii::t('app', 'DELETED'),
+        ];
+        if ($this->isNewRecord) {
+            $security = Yii::$app->security;
+            if (empty($this->salt)) {
+                $this->salt = $security->generateRandomString(64);
+            }
+            if (empty($this->auth_key)) {
+                $this->auth_key = $security->generateRandomString();
+            }
+            if (empty($this->email_confirmed)) {
+                $this->email_confirmed = (int)false;
+            }
+        }
+
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => 'yii\behaviors\TimestampBehavior',
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at'],
+                ],
+            ],
+            [
+                'class' => 'app\behaviors\IpBehavior',
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_ip'],
+                ],
+            ],
+        ];
+    }
+
+    public function getStatusName()
+    {
+        return self::$statusName[$this->status];
     }
 
     /**
@@ -162,11 +207,6 @@ class User extends ActiveRecord implements IdentityInterface
     public function getStatus_txt()
     {
         return isset(self::$statusName[$this->status]) ? self::$statusName[$this->status] : 'None';
-    }
-
-    public static function findUserActive($id)
-    {
-        return static::findOne(['id' => $id, 'status' => static::STATUS_ACTIVE]);
     }
 
     public function getTokenPasswordRaw()
