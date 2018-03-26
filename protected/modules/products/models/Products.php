@@ -25,7 +25,7 @@ use yii\helpers\Url;
  *
  * Fields:
  * @property array $arrUrl
- * @property string $productsUrl
+ * @property string $url
  * @property string|int|null $published
  * @property string $status_txt
  */
@@ -133,7 +133,7 @@ class Products extends ActiveRecord
             'meta_keywords' => Yii::t('app', 'Meta Keywords'),
 
             'status_txt' => Yii::t('app', 'Status'),
-            'productsUrl' => Yii::t('app', 'Products Url'),
+            'url' => Yii::t('app', 'Products Url'),
         ];
     }
 
@@ -181,7 +181,7 @@ class Products extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public function getProductsUrl()
+    public function getUrl()
     {
         return Url::to($this->arrUrl);
     }
