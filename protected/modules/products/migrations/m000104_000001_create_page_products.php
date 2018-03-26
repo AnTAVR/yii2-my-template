@@ -31,8 +31,8 @@ class m000104_000001_create_page_products extends Migration
         $this->createTable($this->tableName, [
             'id' => $this->primaryKey(),
 
-            'published_at' => $this->dateTime(),
-            'status' => $this->smallInteger()->notNull(),
+            'published_at' => $this->integer(),
+            'status' => $this->smallInteger()->notNull()->defaultValue(Products::STATUS_DRAFT),
 
             'content_title' => $this->string()->notNull(),
             'content_short' => $this->text()->notNull(),

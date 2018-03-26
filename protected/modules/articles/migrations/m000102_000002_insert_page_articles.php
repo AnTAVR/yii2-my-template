@@ -2,7 +2,6 @@
 
 use app\migrations\DefaultContent;
 use app\modules\articles\models\Articles;
-use yii\db\Expression;
 use yii\db\Migration;
 
 class m000102_000002_insert_page_articles extends Migration
@@ -32,18 +31,17 @@ class m000102_000002_insert_page_articles extends Migration
         for ($i = 0; $i++ < self::COUNT;) {
             $title = self::CONTENT_TITLE . $i;
             $style = '';
+            $model = new Articles([
+                'published_at' => time(),
+                'status' => Articles::STATUS_ACTIVE,
 
-            $this->insert($this->tableName, [
-                    'published_at' => new Expression('NOW()'),
-                    'status' => 20,
+                'content_title' => $title,
+                'content_short' => str_replace('{style}', $style, $content_short),
+                'content_full' => str_replace(['{title}', '{style}'], [$title, $style], $content_full),
 
-                    'content_title' => $title,
-                    'content_short' => str_replace('{style}', $style, $content_short),
-                    'content_full' => str_replace(['{title}', '{style}'], [$title, $style], $content_full),
-
-                    'meta_url' => $title,
-                ]
-            );
+                'meta_url' => $title,
+            ]);
+            $model->save(false);
         }
     }
 

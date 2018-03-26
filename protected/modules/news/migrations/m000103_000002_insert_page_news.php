@@ -2,7 +2,6 @@
 
 use app\migrations\DefaultContent;
 use app\modules\news\models\News;
-use yii\db\Expression;
 use yii\db\Migration;
 
 class m000103_000002_insert_page_news extends Migration
@@ -32,18 +31,17 @@ class m000103_000002_insert_page_news extends Migration
         for ($i = 0; $i++ < self::COUNT;) {
             $title = self::CONTENT_TITLE . $i;
             $style = ' style="float:right"';
+            $model = new News([
+                'published_at' => time(),
+                'status' => News::STATUS_ACTIVE,
 
-            $this->insert($this->tableName, [
-                    'published_at' => new Expression('NOW()'),
-                    'status' => 20,
+                'content_title' => $title,
+                'content_short' => str_replace('{style}', $style, $content_short),
+                'content_full' => str_replace(['{title}', '{style}'], [$title, $style], $content_full),
 
-                    'content_title' => $title,
-                    'content_short' => str_replace('{style}', $style, $content_short),
-                    'content_full' => str_replace(['{title}', '{style}'], [$title, $style], $content_full),
-
-                    'meta_url' => $title,
-                ]
-            );
+                'meta_url' => $title,
+            ]);
+            $model->save(false);
         }
     }
 

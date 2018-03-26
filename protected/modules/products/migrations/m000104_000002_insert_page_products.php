@@ -2,7 +2,6 @@
 
 use app\migrations\DefaultContent;
 use app\modules\products\models\Products;
-use yii\db\Expression;
 use yii\db\Migration;
 
 class m000104_000002_insert_page_products extends Migration
@@ -33,17 +32,17 @@ class m000104_000002_insert_page_products extends Migration
             $title = self::CONTENT_TITLE . $i;
             $style = ' style="float:left"';
 
-            $this->insert($this->tableName, [
-                    'published_at' => new Expression('NOW()'),
-                    'status' => 20,
+            $model = new Products([
+                'published_at' => time(),
+                'status' => Products::STATUS_ACTIVE,
 
-                    'content_title' => $title,
-                    'content_short' => str_replace('{style}', $style, $content_short),
-                    'content_full' => str_replace(['{title}', '{style}'], [$title, $style], $content_full),
+                'content_title' => $title,
+                'content_short' => str_replace('{style}', $style, $content_short),
+                'content_full' => str_replace(['{title}', '{style}'], [$title, $style], $content_full),
 
-                    'meta_url' => $title,
-                ]
-            );
+                'meta_url' => $title,
+            ]);
+            $model->save(false);
         }
     }
 
