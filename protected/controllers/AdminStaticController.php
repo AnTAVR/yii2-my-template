@@ -35,7 +35,7 @@ class AdminStaticController extends AdminController
 
     /**
      * Lists all StaticPage models.
-     * @return mixed
+     * @return string
      */
     public function actionIndex()
     {
@@ -57,7 +57,7 @@ class AdminStaticController extends AdminController
     /**
      * Displays a single StaticPage model.
      * @param integer $id
-     * @return mixed
+     * @return string
      * @throws NotFoundHttpException
      */
     public function actionView($id)
@@ -86,7 +86,7 @@ class AdminStaticController extends AdminController
     /**
      * Creates a new StaticPage model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
@@ -104,7 +104,7 @@ class AdminStaticController extends AdminController
      * Updates an existing StaticPage model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
-     * @return mixed
+     * @return string|\yii\web\Response
      * @throws NotFoundHttpException
      */
     public function actionUpdate($id)
@@ -124,7 +124,7 @@ class AdminStaticController extends AdminController
      * Deletes an existing StaticPage model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
-     * @return mixed
+     * @return \yii\web\Response
      * @throws NotFoundHttpException
      * @throws \Exception
      * @throws \Throwable

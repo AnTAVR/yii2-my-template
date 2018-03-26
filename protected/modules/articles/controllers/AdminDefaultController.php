@@ -31,7 +31,7 @@ class AdminDefaultController extends AdminController
 
     /**
      * Lists all Articles models.
-     * @return mixed
+     * @return string
      */
     public function actionIndex()
     {
@@ -53,7 +53,7 @@ class AdminDefaultController extends AdminController
     /**
      * Displays a single Articles model.
      * @param integer $id
-     * @return mixed
+     * @return string
      * @throws NotFoundHttpException
      */
     public function actionView($id)
@@ -82,7 +82,7 @@ class AdminDefaultController extends AdminController
     /**
      * Creates a new Articles model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
@@ -100,7 +100,7 @@ class AdminDefaultController extends AdminController
      * Updates an existing Articles model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
-     * @return mixed
+     * @return string|\yii\web\Response
      * @throws NotFoundHttpException
      */
     public function actionUpdate($id)
@@ -120,7 +120,7 @@ class AdminDefaultController extends AdminController
      * Deletes an existing Articles model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
-     * @return mixed
+     * @return \yii\web\Response
      * @throws NotFoundHttpException
      * @throws \Exception
      * @throws \Throwable

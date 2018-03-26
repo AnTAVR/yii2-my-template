@@ -16,7 +16,7 @@ class AdminAssignmentController extends AdminController
 {
     /**
      * Show list of user for assignment
-     * @return mixed
+     * @return string
      */
     public function actionIndex()
     {
@@ -30,8 +30,8 @@ class AdminAssignmentController extends AdminController
 
     /**
      * Assignment roles to user
-     * @param mixed $id The user id
-     * @return mixed
+     * @param integer $id The user id
+     * @return string
      * @throws NotFoundHttpException
      * @throws \Exception
      */

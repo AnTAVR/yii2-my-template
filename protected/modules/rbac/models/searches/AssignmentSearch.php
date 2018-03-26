@@ -11,7 +11,7 @@ class AssignmentSearch extends Model
 {
     /**
      *
-     * @var mixed $id
+     * @var integer $id
      */
     public $id;
 

@@ -33,7 +33,7 @@ class AdminRuleController extends AdminController
 
     /**
      * Lists all Role models.
-     * @return mixed
+     * @return string
      */
     public function actionIndex()
     {
@@ -48,7 +48,7 @@ class AdminRuleController extends AdminController
     /**
      * Displays a single Role model.
      * @param string $name
-     * @return mixed
+     * @return array|string
      * @throws NotFoundHttpException
      */
     public function actionView($name)
@@ -90,7 +90,7 @@ class AdminRuleController extends AdminController
      * Creates a new Role model.
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * @return array|string|Response
      * @throws \Exception
      */
     public function actionCreate()
@@ -149,7 +149,7 @@ class AdminRuleController extends AdminController
      * For ajax request will return json object
      * and for non-ajax request if update is successful, the browser will be redirected to the 'view' page.
      * @param string $name
-     * @return mixed
+     * @return array|string|Response
      * @throws NotFoundHttpException
      * @throws \Exception
      */
@@ -211,7 +211,7 @@ class AdminRuleController extends AdminController
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $name
-     * @return mixed
+     * @return array|Response
      * @throws NotFoundHttpException
      * @throws \yii\base\Exception
      */

@@ -25,7 +25,7 @@ class SiteController extends Controller
 
     /**
      * Displays a single StaticPage model.
-     * @return mixed
+     * @return string
      * @throws \yii\web\NotFoundHttpException
      */
     public function actionIndex()
@@ -39,7 +39,7 @@ class SiteController extends Controller
     /**
      * Displays contact page.
      *
-     * @return mixed
+     * @return string|\yii\web\Response
      */
     public function actionContact()
     {

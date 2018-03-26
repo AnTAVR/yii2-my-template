@@ -14,7 +14,7 @@ class AssignmentForm extends Model
 
     /**
      *
-     * @param mixed $userId The id of user use for assign
+     * @param integer $userId The id of user use for assign
      * @param array $config
      */
     public function __construct($userId, $config = [])

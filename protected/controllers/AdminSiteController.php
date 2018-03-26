@@ -11,7 +11,7 @@ class AdminSiteController extends AdminController
 {
     /**
      * Lists all StaticPage models.
-     * @return mixed
+     * @return string
      */
     public function actionIndex()
     {

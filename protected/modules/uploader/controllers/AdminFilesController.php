@@ -34,7 +34,7 @@ class AdminFilesController extends AdminController
 
     /**
      * Lists all UploaderFile models.
-     * @return mixed
+     * @return string
      */
     public function actionIndex()
     {
@@ -53,7 +53,7 @@ class AdminFilesController extends AdminController
     /**
      * Displays a single UploaderFile model.
      * @param integer $id
-     * @return mixed
+     * @return string
      * @throws NotFoundHttpException
      */
     public function actionView($id)
@@ -82,7 +82,7 @@ class AdminFilesController extends AdminController
     /**
      * Updates an existing UploaderFile model.
      * @param integer $id
-     * @return mixed
+     * @return string|\yii\web\Response
      * @throws NotFoundHttpException
      */
     public function actionUpdate($id)
@@ -100,7 +100,7 @@ class AdminFilesController extends AdminController
     /**
      * Creates a new UploaderFile model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * @return string
      */
     public function actionCreate()
     {
@@ -127,7 +127,7 @@ class AdminFilesController extends AdminController
      * Deletes an existing UploaderFile model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
-     * @return mixed
+     * @return \yii\web\Response
      * @throws NotFoundHttpException
      * @throws \Exception
      * @throws \Throwable

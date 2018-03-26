@@ -34,7 +34,7 @@ class DefaultController extends Controller
     /**
      * Displays a single Articles model.
      * @param string $meta_url
-     * @return mixed
+     * @return string
      * @throws NotFoundHttpException
      */
     public function actionView($meta_url)

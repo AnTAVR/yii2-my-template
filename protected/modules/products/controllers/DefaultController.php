@@ -15,7 +15,7 @@ class DefaultController extends Controller
 {
     /**
      * Lists all Products models.
-     * @return mixed
+     * @return string
      */
     public function actionIndex()
     {
@@ -34,7 +34,7 @@ class DefaultController extends Controller
     /**
      * Displays a single Products model.
      * @param string $meta_url
-     * @return mixed
+     * @return string
      * @throws NotFoundHttpException
      */
     public function actionView($meta_url)

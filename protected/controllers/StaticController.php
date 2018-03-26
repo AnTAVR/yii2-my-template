@@ -13,7 +13,7 @@ class StaticController extends Controller
     /**
      * Displays a single StaticPage model.
      * @param string $meta_url
-     * @return mixed
+     * @return string
      * @throws NotFoundHttpException
      */
     public function actionIndex($meta_url = 'index')
