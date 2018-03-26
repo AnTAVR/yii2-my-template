@@ -24,14 +24,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'email_confirmed:boolean',
                 'avatar:image',
                 'status_txt',
-                'created_at',
+                'created_at:datetime',
                 [
                     'attribute' => 'created_ip',
                     'value' => Html::a($user->created_ip, 'http://ipinfo.io/' . $user->created_ip, ['target' => '_blank']),
                     'format' => 'raw',
                 ],
-                'last_login_at',
-                'last_request_at',
+                'last_login_at:datetime',
+                'last_request_at:datetime',
             ],
         ]) ?>
     </div>
