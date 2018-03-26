@@ -8,25 +8,22 @@ use yii\helpers\Url;
 
 /**
  * Database fields:
- * @property integer $id
- *
- * @property integer $published_at
- * @property integer $status
- *
- * @property string $content_title
+ * @property int $id [int(11)]
+ * @property int $published_at [int(11)]
+ * @property int $status [smallint(6)]
+ * @property string $content_title [varchar(255)]
  * @property string $content_short
  * @property string $content_full
- *
- * @property string $meta_url
- * @property string $meta_description
- * @property string $meta_keywords
+ * @property string $meta_url [varchar(255)]
+ * @property string $meta_description [varchar(255)]
+ * @property string $meta_keywords [varchar(255)]
  *
  * Fields:
- * @property array $arrUrl
- * @property string $url
- * @property string|int|null $published
  * @property string $statusName
+ * @property null|string|int $published
+ * @property string $url
  * @property string $status_txt
+ * @property array $arrUrl
  */
 class Products extends ActiveRecord
 {

@@ -9,14 +9,14 @@ use yii\helpers\FileHelper;
 
 /**
  * Database fields:
- * @property integer $id
- * @property string $file
- * @property string $meta_url
- * @property string $comment
+ * @property int $id [int(11)]
+ * @property string $file [varchar(255)]
+ * @property string $meta_url [varchar(255)]
+ * @property string $comment [varchar(255)]
  *
  * Fields:
- * @property string $url
  * @property string $filePath
+ * @property string $url
  */
 class UploaderFile extends ActiveRecord
 {
