@@ -172,11 +172,12 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @return int|string current user ID
+     * @return int current user ID
      */
     public function getId()
     {
-        return $this->id;
+        return $this->getPrimaryKey();
+//        return $this->id;
     }
 
     /**
