@@ -30,7 +30,7 @@ use yii\widgets\ActiveForm;
 ]) ?>
 
 <div class="row">
-    <?= $form->field($model, 'published_at', ['options' => ['class' => 'col-xs-8']])->widget(DateTimePicker::class, [
+    <?= $form->field($model, 'published', ['options' => ['class' => 'col-xs-8']])->widget(DateTimePicker::class, [
         'clientOptions' => [
             'format' => 'yyyy-mm-dd hh:ii:ss',
             'todayBtn' => true,

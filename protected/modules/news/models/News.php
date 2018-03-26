@@ -5,9 +5,9 @@ namespace app\modules\news\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\helpers\Url;
-use yii\validators\DateValidator;
 
 /** @noinspection MissingPropertyAnnotationsInspection */
+
 /**
  * Database fields:
  * @property integer $id
@@ -26,6 +26,7 @@ use yii\validators\DateValidator;
  * Fields:
  * @property array $arrUrl
  * @property string $newsUrl
+ * @property string|int|null $published
  * @property string $status_txt
  */
 class News extends ActiveRecord
@@ -69,10 +70,8 @@ class News extends ActiveRecord
     {
         $params = Yii::$app->params;
         return [
-            ['published_at', 'trim'],
-            ['published_at', 'date',
-                'type' => DateValidator::TYPE_DATETIME,
-                'format' => 'Y-MM-dd HH:mm:ss'],
+            ['published', 'trim'],
+            ['published', 'datetime'],
 
             ['content_title', 'trim'],
             ['content_title', 'required'],
@@ -122,6 +121,7 @@ class News extends ActiveRecord
             'id' => Yii::t('app', 'ID'),
 
             'published_at' => Yii::t('app', 'Published At'),
+            'published' => Yii::t('app', 'Published At'),
             'status' => Yii::t('app', 'Status'),
 
             'content_title' => Yii::t('app', 'Title'),
@@ -143,6 +143,23 @@ class News extends ActiveRecord
             'meta_url' => Yii::t('app', 'Possible characters ({chars})', ['chars' => Yii::$app->params['meta_url_hint']]),
             'content_short' => Yii::t('app', 'Max length {length}', ['length' => self::CONTENT_SHORT_MAX_SIZE]),
         ];
+    }
+
+    /**
+     * @return int|string|null
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function getPublished()
+    {
+        return $this->published_at ? Yii::$app->formatter->asDatetime($this->published_at) : $this->published_at;
+    }
+
+    /**
+     * @param string|null $value
+     */
+    public function setPublished($value)
+    {
+        $this->published_at = $value ? Yii::$app->formatter->asTimestamp($value) : $value;
     }
 
     /**
