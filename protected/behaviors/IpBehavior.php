@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\account\behaviors;
+namespace app\behaviors;
 
 use Yii;
 use yii\base\InvalidCallException;
