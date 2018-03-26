@@ -2,8 +2,8 @@
 
 namespace app\modules\account\controllers;
 
-use app\modules\account\models\forms\RecoveryPasswordForm;
 use app\modules\account\models\forms\RecoveryPasswordNewForm;
+use app\modules\account\models\forms\RecoveryPasswordRequestForm;
 use app\modules\account\models\User;
 use app\modules\account\models\UserToken;
 use Yii;
@@ -24,10 +24,10 @@ class RecoveryController extends Controller
             return $this->goHome();
         }
 
-        $model = new RecoveryPasswordForm();
+        $model = new RecoveryPasswordRequestForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $user = RecoveryPasswordForm::findOne(['email' => $model->email]);
+            $user = RecoveryPasswordRequestForm::findOne(['email' => $model->email]);
             if ($user->status == User::STATUS_ACTIVE) {
                 $tokenModel = new UserToken([
                     'user_id' => $user->id,
