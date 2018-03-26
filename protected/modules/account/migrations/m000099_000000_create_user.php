@@ -43,11 +43,11 @@ class m000099_000000_create_user extends Migration
 
             'status' => $this->smallInteger()->notNull()->defaultValue(User::STATUS_ACTIVE),
 
-            'created_at' => $this->timestamp()->notNull()->defaultExpression('NOW()'),
+            'created_at' => $this->integer()->notNull(),
             'created_ip' => $this->string(45),
 
-            'last_login_at' => $this->timestamp(),
-            'last_request_at' => $this->timestamp(),
+            'last_login_at' => $this->integer(),
+            'last_request_at' => $this->integer(),
 
             'session' => $this->string(),
         ], $this->tableOptions);
