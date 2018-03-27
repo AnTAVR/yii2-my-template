@@ -28,9 +28,9 @@ $__config = [
 //                 @todo: Из за установки не работают тесты!!!
 //                'savePath' => '@runtime/session',
             ],
-            'yii\grid\ActionColumn' => [
-                'class' => 'app\components\ActionColumn',
-            ],
+//            'yii\grid\ActionColumn' => [
+//                'class' => 'app\components\ActionColumn',
+//            ],
         ],
         'singletons' => [
         ],
