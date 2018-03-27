@@ -19,15 +19,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'class' => 'btn btn-danger',
             'data-method' => 'post',
             'data-confirm' => Yii::t('app', 'Are you sure?'),
-        ]
-    ) ?>
+        ]) ?>
     <?= Html::a('<span class="glyphicon glyphicon-plus"></span>' . Yii::t('app', 'Create Dump'),
         ['create'],
         [
             'class' => 'btn btn-success',
             'data-method' => 'post',
         ]) ?>
-
 </p>
 
 <?= GridView::widget([
@@ -56,8 +54,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         'title' => $title,
                         'aria-label' => $title,
                         'data-pjax' => '0',
-                            'data-method' => 'post',
-                            'class' => 'btn btn-sm btn-success',
+                        'data-method' => 'post',
+                        'class' => 'btn btn-sm btn-success',
                     ];
                     return Html::a($icon, ['download', 'fileName' => $model['file']], $options);
                 },
