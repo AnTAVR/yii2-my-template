@@ -51,7 +51,7 @@ class BaseDump
         $fileList = [];
         foreach ($files as $file) {
             $fileList[] = [
-                'file' => StringHelper::basename($file),
+                'id' => StringHelper::basename($file),
                 'created_at' => filectime($file),
             ];
         }
