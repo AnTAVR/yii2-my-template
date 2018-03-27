@@ -5,6 +5,7 @@ namespace app\modules\account\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\web\IdentityInterface;
 use yii\web\UnauthorizedHttpException;
 
@@ -232,7 +233,7 @@ class User extends ActiveRecord implements IdentityInterface
         $authManager = Yii::$app->authManager;
         $roles = [];
         foreach ($authManager->getRolesByUser($this->id) as $role) {
-            $roles[] = $role->name;
+            $roles[] = Html::tag('span', $role->name, ['title' => $role->description]);
         }
         return $roles ? implode(', ', $roles) : null;
     }

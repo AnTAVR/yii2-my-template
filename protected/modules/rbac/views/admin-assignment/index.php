@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
     'columns' => [
         'id',
         'username',
-        'rolesTxt',
+        'rolesTxt:raw',
         [
             'class' => 'yii\grid\ActionColumn',
             'template' => '{update}',
