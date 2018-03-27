@@ -28,7 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'status_txt',
         [
             'class' => 'app\components\grid\ActionColumnViewOnSite',
-            'template' => '{viewOnSite} {view} {update} {delete}',
             'buttonOptions' => [
                 'class' => 'btn btn-sm btn-default'
             ],

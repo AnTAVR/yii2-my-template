@@ -8,6 +8,8 @@ use yii\helpers\Url;
 
 class ActionColumnViewOnSite extends OldActionColumn
 {
+    public $template = '{viewOnSite} {view} {update} {delete}';
+
     public function init()
     {
         parent::init();
