@@ -12,12 +12,9 @@ class LogoutAction extends Action
      */
     public function run()
     {
-        if (Yii::$app->user->isGuest) {
-            return $this->controller->goHome();
+        if (!Yii::$app->user->isGuest) {
+            Yii::$app->user->logout();
         }
-
-        Yii::$app->user->logout(false);
-
         return $this->controller->goHome();
     }
 
