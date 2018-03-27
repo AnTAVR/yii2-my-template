@@ -35,7 +35,7 @@ class AdminAssignmentController extends AdminController
      * @throws NotFoundHttpException
      * @throws \Exception
      */
-    public function actionAssignment($id)
+    public function actionUpdate($id)
     {
         $user = User::findOne($id);
         if (!$user) {
@@ -47,7 +47,7 @@ class AdminAssignmentController extends AdminController
             $this->refresh();
         }
 
-        return $this->render('assignment', [
+        return $this->render('update', [
             'model' => $model,
         ]);
     }

@@ -2,7 +2,6 @@
 
 use yii\grid\GridView;
 use yii\helpers\Html;
-use yii\helpers\Url;
 
 /* @var $this \yii\web\View */
 /* @var $searchModel \app\modules\rbac\models\searches\AssignmentSearch */
@@ -42,10 +41,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'buttonOptions' => [
                 'class' => 'btn btn-sm btn-default'
             ],
-            'urlCreator' => function (/** @noinspection PhpUnusedParameterInspection */
-                $action, $model, $key, $index) {
-                return Url::to(['assignment', 'id' => $key]);
-            },
         ],
     ],
 ]) ?>
