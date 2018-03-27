@@ -32,5 +32,14 @@ class ActionColumnViewOnSite extends OldActionColumn
             'title' => Yii::t('app', 'View on site'),
             'target' => '_blank',
         ]);
+        $this->initDefaultButton('restore', 'import', [
+            'title' => Yii::t('app', 'Restore'),
+            'data-confirm' => Yii::t('app', 'Are you sure?'),
+            'data-method' => 'post',
+        ]);
+        $this->initDefaultButton('download', 'download-alt', [
+            'title' => Yii::t('app', 'Download'),
+            'data-method' => 'post',
+        ]);
     }
 }

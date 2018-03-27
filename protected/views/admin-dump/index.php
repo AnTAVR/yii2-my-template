@@ -35,65 +35,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'file',
         'created_at:datetime',
         [
-            'class' => 'yii\grid\ActionColumn',
+            'class' => 'app\components\grid\ActionColumnViewOnSite',
             'template' => '{download} {restore} {delete}',
             'buttonOptions' => [
                 'class' => 'btn btn-sm btn-default'
-            ],
-            'buttons' => [
-                'download' => function (/** @noinspection PhpUnusedParameterInspection */
-                    $url, $model) {
-                    $icon = 'download-alt';
-                    $title = Yii::t('app', 'Download');
-                    if ($icon) {
-                        $icon = Html::tag('span', '', [
-                            'class' => "glyphicon glyphicon-$icon",
-                        ]);
-                    }
-                    $options = [
-                        'title' => $title,
-                        'aria-label' => $title,
-                        'data-pjax' => '0',
-                        'data-method' => 'post',
-                    ];
-                    return Html::a($icon, $url, $options);
-                },
-                'restore' => function (/** @noinspection PhpUnusedParameterInspection */
-                    $url, $model) {
-                    $icon = 'import';
-                    $title = Yii::t('app', 'Restore');
-                    if ($icon) {
-                        $icon = Html::tag('span', '', [
-                            'class' => "glyphicon glyphicon-$icon",
-                        ]);
-                    }
-                    $options = [
-                        'title' => $title,
-                        'aria-label' => $title,
-                        'data-pjax' => '0',
-                        'data-method' => 'post',
-                        'data-confirm' => Yii::t('app', 'Are you sure?'),
-                    ];
-                    return Html::a($icon, $url, $options);
-                },
-                'delete' => function (/** @noinspection PhpUnusedParameterInspection */
-                    $url, $model) {
-                    $icon = 'trash';
-                    $title = Yii::t('app', 'Delete');
-                    if ($icon) {
-                        $icon = Html::tag('span', '', [
-                            'class' => "glyphicon glyphicon-$icon",
-                        ]);
-                    }
-                    $options = [
-                        'title' => $title,
-                        'aria-label' => $title,
-                        'data-pjax' => '0',
-                        'data-method' => 'post',
-                        'data-confirm' => Yii::t('app', 'Are you sure?'),
-                    ];
-                    return Html::a($icon, $url, $options);
-                },
             ],
         ],
     ],

@@ -26,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'content_title',
         [
             'class' => 'app\components\grid\ActionColumnViewOnSite',
+            'template' => '{viewOnSite} {view} {update} {delete}',
             'buttonOptions' => [
                 'class' => 'btn btn-sm btn-default'
             ],
