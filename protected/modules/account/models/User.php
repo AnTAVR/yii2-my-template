@@ -32,7 +32,7 @@ use yii\web\UnauthorizedHttpException;
  * @property string $tokenEmail
  * @property string $tokenPasswordRaw
  * @property string $statusName
- * @property array $roles
+ * @property string $rolesTxt
  * @property string $status_txt
  */
 class User extends ActiveRecord implements IdentityInterface
@@ -227,20 +227,13 @@ class User extends ActiveRecord implements IdentityInterface
         return hash('sha256', $this->tokenEmailRaw);
     }
 
-    public function getRoles()
+    public function getRolesTxt()
     {
         $authManager = Yii::$app->authManager;
         $roles = [];
         foreach ($authManager->getRolesByUser($this->id) as $role) {
-            Yii::error(var_export($role));
             $roles[] = $role->name;
         }
-        return $roles ? $roles : null;
-    }
-
-    public function getRolesTxt()
-    {
-        $roles = $this->roles;
-        return $roles ? implode(',', $roles) : null;
+        return $roles ? implode(', ', $roles) : null;
     }
 }
