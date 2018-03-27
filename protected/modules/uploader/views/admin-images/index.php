@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'comment:ntext',
         [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{viewP} {view} {update} {delete}',
+            'template' => '{viewOnSite} {view} {update} {delete}',
         ],
     ],
 ]); ?>

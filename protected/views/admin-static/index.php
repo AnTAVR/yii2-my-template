@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'content_title',
         [
             'class' => 'app\components\grid\ActionColumn',
-            'template' => '{viewP} {view} {update} {delete}',
+            'template' => '{viewOnSite} {view} {update} {delete}',
         ],
     ],
 ]); ?>

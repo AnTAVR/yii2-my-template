@@ -13,7 +13,7 @@ class ActionColumn extends OldActionColumn
         parent::init();
         $this->urlCreator = function (/** @noinspection PhpUnusedParameterInspection */
             $action, $model, $key, $index, $this_is) {
-            if ($action === 'viewP') {
+            if ($action === 'viewOnSite') {
                 return $model->url;
             }
             $params = is_array($key) ? $key : ['id' => (string)$key];
@@ -25,7 +25,7 @@ class ActionColumn extends OldActionColumn
 
     protected function initDefaultButtons()
     {
-        $this->initDefaultButton('viewP', 'eye-open', [
+        $this->initDefaultButton('viewOnSite', 'eye-open', [
             'class' => 'btn btn-sm btn-success',
             'title' => Yii::t('app', 'View on site'),
             'target' => '_blank',

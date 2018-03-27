@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'status_txt',
         [
             'class' => 'app\components\grid\ActionColumn',
-            'template' => '{viewP} {view} {update} {delete}',
+            'template' => '{viewOnSite} {view} {update} {delete}',
         ],
     ],
 ]); ?>
