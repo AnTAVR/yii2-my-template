@@ -50,12 +50,12 @@ class BaseDump
         $files = FileHelper::findFiles(static::getPath(), ['only' => ['*.sql', '*.gz']]);
         $fileList = [];
         foreach ($files as $file) {
-            $fileList[] = [
-                'id' => StringHelper::basename($file),
+            $fileList[StringHelper::basename($file)] = [
+                'file' => StringHelper::basename($file),
                 'created_at' => filectime($file),
             ];
         }
-        ArrayHelper::multisort($fileList, ['created_at'], [SORT_DESC]);
+        ArrayHelper::multisort($fileList, ['file'], [SORT_DESC]);
         return $fileList;
     }
 
