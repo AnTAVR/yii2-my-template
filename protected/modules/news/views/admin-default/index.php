@@ -23,29 +23,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'published_at:datetime',
         'status_txt',
         [
-            'class' => 'yii\grid\ActionColumn',
+            'class' => 'app\components\grid\ActionColumn',
             'template' => '{viewP} {view} {update} {delete}',
-            'buttons' => [
-                'viewP' => function (/** @noinspection PhpUnusedParameterInspection */
-                    $url, $model, $key) {
-                    $icon = 'eye-open';
-                    $title = Yii::t('app', 'View site');
-                    if ($icon) {
-                        $icon = Html::tag('span', '', [
-                            'class' => "glyphicon glyphicon-$icon",
-                        ]);
-                    }
-                    $options = [
-                        'title' => $title,
-                        'aria-label' => $title,
-                        'data-pjax' => '0',
-                        'class' => 'btn btn-sm btn-success',
-                        'target' => '_blank',
-                    ];
-                    /* @var $model \app\modules\news\models\News */
-                    return Html::a($icon, $model->url, $options);
-                },
-            ],
         ],
     ],
 ]); ?>

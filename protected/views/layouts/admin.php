@@ -33,7 +33,7 @@ $asset = AppSiteAsset::register($this);
 <?php
 $fixed_top = false;
 NavBar::begin([
-    'brandLabel' => Yii::t('app', 'View site'),
+    'brandLabel' => Yii::t('app', 'View on site'),
     'brandUrl' => Yii::$app->homeUrl,
     'brandOptions' => [
         'target' => '_blank',
