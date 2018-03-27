@@ -33,6 +33,9 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         [
             'class' => 'yii\grid\ActionColumn',
+            'buttonOptions' => [
+                'class' => 'btn btn-sm btn-default'
+            ],
             'urlCreator' => function (/** @noinspection PhpUnusedParameterInspection */
                 $action, $model, $key, $index) {
                 return Url::to([$action, 'name' => $key]);

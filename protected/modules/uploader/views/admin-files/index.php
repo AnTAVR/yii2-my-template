@@ -22,8 +22,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'file',
         'comment:ntext',
         [
-            'class' => 'app\components\grid\ActionColumn',
+            'class' => 'app\components\grid\ActionColumnVOS',
             'template' => '{viewOnSite} {view} {update} {delete}',
+            'buttonOptions' => [
+                'class' => 'btn btn-sm btn-default'
+            ],
         ],
     ],
 ]); ?>

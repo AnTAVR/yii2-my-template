@@ -39,6 +39,9 @@ $this->params['breadcrumbs'][] = $this->title;
         [
             'class' => 'yii\grid\ActionColumn',
             'template' => '{download} {restore} {delete}',
+            'buttonOptions' => [
+                'class' => 'btn btn-sm btn-default'
+            ],
             'buttons' => [
                 'download' => function (/** @noinspection PhpUnusedParameterInspection */
                     $url, $model) {

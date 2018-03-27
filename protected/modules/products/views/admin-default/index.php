@@ -23,8 +23,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'published_at:datetime',
         'status_txt',
         [
-            'class' => 'app\components\grid\ActionColumn',
+            'class' => 'app\components\grid\ActionColumnVOS',
             'template' => '{viewOnSite} {view} {update} {delete}',
+            'buttonOptions' => [
+                'class' => 'btn btn-sm btn-default'
+            ],
         ],
     ],
 ]); ?>

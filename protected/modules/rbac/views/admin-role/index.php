@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 /* @var $this \yii\web\View */
-/* @var $searchModel \app\modules\rbac\models\AuthItemSearch */
+/* @var $searchModel \app\modules\rbac\models\searches\AuthItemSearch */
 /* @var $dataProvider \yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app', 'Roles Manager');
@@ -33,6 +33,9 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         [
             'class' => 'yii\grid\ActionColumn',
+            'buttonOptions' => [
+                'class' => 'btn btn-sm btn-default'
+            ],
             'urlCreator' => function (/** @noinspection PhpUnusedParameterInspection */
                 $action, $model, $key, $index) {
                 return Url::to([$action, 'name' => $key]);

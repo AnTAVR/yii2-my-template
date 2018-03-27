@@ -39,7 +39,9 @@ $this->params['breadcrumbs'][] = $this->title;
         [
             'class' => 'yii\grid\ActionColumn',
             'template' => '{update}',
-            'header' => Yii::t('app', 'Assignment'),
+            'buttonOptions' => [
+                'class' => 'btn btn-sm btn-default'
+            ],
             'urlCreator' => function (/** @noinspection PhpUnusedParameterInspection */
                 $action, $model, $key, $index) {
                 return Url::to(['assignment', 'id' => $key]);
