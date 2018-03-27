@@ -6,7 +6,7 @@ use Yii;
 use yii\grid\ActionColumn as OldActionColumn;
 use yii\helpers\Url;
 
-class ActionColumnVOS extends OldActionColumn
+class ActionColumnViewOnSite extends OldActionColumn
 {
     public function init()
     {

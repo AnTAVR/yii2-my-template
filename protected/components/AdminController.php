@@ -2,7 +2,6 @@
 
 namespace app\components;
 
-
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 

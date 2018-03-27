@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'thumbnailUrl:image:',
         'comment:ntext',
         [
-            'class' => 'app\components\grid\ActionColumnVOS',
+            'class' => 'app\components\grid\ActionColumnViewOnSite',
             'template' => '{viewOnSite} {view} {update} {delete}',
             'buttonOptions' => [
                 'class' => 'btn btn-sm btn-default'
