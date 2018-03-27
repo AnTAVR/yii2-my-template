@@ -4,37 +4,65 @@ use yii\db\Migration;
 
 class m000099_000004_init extends Migration
 {
+    /**
+     * @param string $name
+     * @param integer|array $userId
+     * @param string|null $description
+     * @return \yii\rbac\Role
+     * @throws Exception
+     */
+    public function createRole($name, $userId, $description = null)
+    {
+        $auth = Yii::$app->authManager;
+
+        $role = $auth->createRole($name);
+        $role->description = $description;
+        $auth->add($role);
+
+        if (!is_array($userId)) {
+            $userId = [$userId];
+        }
+
+        foreach ($userId as $id) {
+            $auth->assign($role, $id);
+        }
+
+        return $role;
+    }
+
     public function up()
     {
         $auth = Yii::$app->authManager;
 
-        $rootRole = $auth->createRole('root-role');
-        $rootRole->description = 'Root role';
-        $auth->add($rootRole);
-        $auth->assign($rootRole, 1);
+        $this->createRole('root-role', 1, 'Root role');
 
-        $usersRole = $auth->createRole('users-role');
-        $usersRole->description = 'Users role';
-        $auth->add($usersRole);
-        $auth->addChild($rootRole, $usersRole);
 
-        $authorRole = $auth->createRole('author-role');
-        $authorRole->description = 'Author role';
-        $auth->add($authorRole);
+        $usersRole = $this->createRole('users-role', [1, 2], 'Users role');
+
+        $createCommentPermission = $auth->createPermission('createComment');
+        $createCommentPermission->description = 'Create comment';
+        $auth->add($createCommentPermission);
+        $auth->addChild($usersRole, $createCommentPermission);
+
+        $updateCommentPermission = $auth->createPermission('updateComment');
+        $updateCommentPermission->description = 'Update comment';
+        $auth->add($updateCommentPermission);
+        $auth->addChild($usersRole, $updateCommentPermission);
+
+
+        $authorRole = $this->createRole('author-role', 1, 'Author role');
 
         $createPostPermission = $auth->createPermission('createPost');
-        $createPostPermission->description = 'Create a post';
+        $createPostPermission->description = 'Create post';
         $auth->add($createPostPermission);
+        $auth->addChild($authorRole, $createPostPermission);
 
         $updatePostPermission = $auth->createPermission('updatePost');
         $updatePostPermission->description = 'Update post';
         $auth->add($updatePostPermission);
-
-        $auth->addChild($authorRole, $createPostPermission);
         $auth->addChild($authorRole, $updatePostPermission);
 
-        $auth->assign($rootRole, 2);
-        $auth->assign($authorRole, 2);
+        $this->createRole('moderator-role', 1, 'Moderator role');
     }
 
     public function down()
