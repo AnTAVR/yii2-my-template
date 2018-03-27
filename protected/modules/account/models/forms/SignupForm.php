@@ -97,6 +97,10 @@ class SignupForm extends User
         if (!$this->save(false)) {
             return false;
         }
+        //the following three lines were added:
+        $auth = Yii::$app->authManager;
+        $role = $auth->getRole('users-role');
+        $auth->assign($role, $this->id);
 
         return true;
     }
