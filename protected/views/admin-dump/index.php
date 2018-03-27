@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'file',
         'created_at:datetime',
         [
-            'class' => 'app\components\grid\ActionColumnViewOnSite',
+            'class' => 'app\components\grid\ActionColumn',
             'template' => '{download} {restore} {delete}',
             'buttonOptions' => [
                 'class' => 'btn btn-sm btn-default'

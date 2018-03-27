@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'thumbnailUrl:image:',
         'comment:ntext',
         [
-            'class' => 'app\components\grid\ActionColumnViewOnSite',
+            'class' => 'app\components\grid\ActionColumn',
             'template' => '{viewOnSite} {view} {update} {delete}',
             'buttonOptions' => [
                 'class' => 'btn btn-sm btn-default'
