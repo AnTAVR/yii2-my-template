@@ -93,20 +93,20 @@ class AdminDumpController extends AdminController
     }
 
     /**
-     * @param string $fileName Name File Dump
+     * @param string $id Name File Dump
      * @return \yii\web\Response
      * @throws HttpException
      * @throws NotFoundHttpException
      * @throws \yii\base\Exception
      * @throws \yii\base\InvalidConfigException
      */
-    public function actionRestore($fileName)
+    public function actionRestore($id)
     {
         $dbInfo = BaseDump::getDbInfo();
 
-        static::testFileName($fileName);
+        static::testFileName($id);
 
-        $dumpFile = BaseDump::getPath() . DIRECTORY_SEPARATOR . $fileName;
+        $dumpFile = BaseDump::getPath() . DIRECTORY_SEPARATOR . $id;
 
         /** @var DumpInterface $manager */
         $manager = $dbInfo['manager'];
@@ -141,31 +141,31 @@ class AdminDumpController extends AdminController
     }
 
     /**
-     * @param string $fileName Name File Dump
+     * @param string $id Name File Dump
      * @return \yii\web\Response
      * @throws NotFoundHttpException
      * @throws \yii\base\Exception
      */
-    public function actionDownload($fileName)
+    public function actionDownload($id)
     {
-        static::testFileName($fileName);
+        static::testFileName($id);
 
-        $dumpFile = BaseDump::getPath() . DIRECTORY_SEPARATOR . $fileName;
+        $dumpFile = BaseDump::getPath() . DIRECTORY_SEPARATOR . $id;
 
         return Yii::$app->response->sendFile($dumpFile);
     }
 
     /**
-     * @param string $fileName Name File Dump
+     * @param string $id Name File Dump
      * @return \yii\web\Response
      * @throws NotFoundHttpException
      * @throws \yii\base\Exception
      */
-    public function actionDelete($fileName)
+    public function actionDelete($id)
     {
-        static::testFileName($fileName);
+        static::testFileName($id);
 
-        $dumpFile = BaseDump::getPath() . DIRECTORY_SEPARATOR . $fileName;
+        $dumpFile = BaseDump::getPath() . DIRECTORY_SEPARATOR . $id;
 
         if (unlink($dumpFile)) {
             Yii::$app->session->setFlash('success', Yii::t('app', 'Dump deleted successfully.'));

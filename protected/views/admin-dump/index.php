@@ -55,9 +55,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         'aria-label' => $title,
                         'data-pjax' => '0',
                         'data-method' => 'post',
-                        'class' => 'btn btn-sm btn-success',
                     ];
-                    return Html::a($icon, ['download', 'fileName' => $model['file']], $options);
+                    return Html::a($icon, $url, $options);
                 },
                 'restore' => function (/** @noinspection PhpUnusedParameterInspection */
                     $url, $model) {
@@ -73,10 +72,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         'aria-label' => $title,
                         'data-pjax' => '0',
                         'data-method' => 'post',
-                        'class' => 'btn btn-sm btn-default',
                         'data-confirm' => Yii::t('app', 'Are you sure?'),
                     ];
-                    return Html::a($icon, ['restore', 'fileName' => $model['file']], $options);
+                    return Html::a($icon, $url, $options);
                 },
                 'delete' => function (/** @noinspection PhpUnusedParameterInspection */
                     $url, $model) {
@@ -92,10 +90,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         'aria-label' => $title,
                         'data-pjax' => '0',
                         'data-method' => 'post',
-                        'class' => 'btn btn-sm btn-danger',
                         'data-confirm' => Yii::t('app', 'Are you sure?'),
                     ];
-                    return Html::a($icon, ['delete', 'fileName' => $model['file']], $options);
+                    return Html::a($icon, $url, $options);
                 },
             ],
         ],
