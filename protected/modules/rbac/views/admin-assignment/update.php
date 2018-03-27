@@ -25,7 +25,10 @@ $roles = ArrayHelper::map($authManager->getRoles(), 'name', 'name');
 ]) ?>
 
 <div class="form-group">
-    <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-primary']) ?>
+    <?= Html::submitButton(Yii::t('app', 'Save'),
+        [
+            'class' => 'btn btn-primary',
+        ]) ?>
 </div>
 <?php ActiveForm::end(); ?>
 

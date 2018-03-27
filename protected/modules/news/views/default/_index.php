@@ -16,7 +16,11 @@ use yii\helpers\Html;
             <?= $model->content_short ?>
         </div>
         <div class="panel-footer">
-            <?= Html::a(Yii::t('app', 'More') . ' &raquo', ['view', 'meta_url' => $model->meta_url], ['class' => 'btn btn-default']) ?>
+            <?= Html::a(Yii::t('app', 'More') . ' &raquo',
+                ['view', 'meta_url' => $model->meta_url],
+                [
+                    'class' => 'btn btn-default',
+                ]) ?>
         </div>
     </div>
 </div>
