@@ -6,9 +6,6 @@ use borales\extensions\phoneInput\PhoneInputValidator;
 use Yii;
 use yii\base\Model;
 
-/**
- * CallbackForm
- */
 class CallbackForm extends Model
 {
     public $phone;

@@ -10,9 +10,6 @@ use yii\helpers\Json;
 use yii\imagine\Image;
 use yii\web\UploadedFile;
 
-/**
- *  UploaderImage form
- */
 class UploaderImageForm extends Model
 {
     const MAX_SIZE = 1 * 1024 * 1024;

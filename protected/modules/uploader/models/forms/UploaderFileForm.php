@@ -8,9 +8,6 @@ use yii\base\Model;
 use yii\helpers\Json;
 use yii\web\UploadedFile;
 
-/**
- *  UploaderFile form
- */
 class UploaderFileForm extends Model
 {
     const MAX_SIZE = 1 * 1024 * 1024;
