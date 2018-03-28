@@ -2,7 +2,6 @@
 
 /* @var $this \yii\web\View */
 /* @var $model \app\models\StaticPage */
-/* @var $breadcrumbs boolean */
 
 if (!empty($model->meta_description))
 {
@@ -17,8 +16,6 @@ if (!empty($model->meta_keywords)) {
 }
 
 $this->title = $model->content_title;
-if (!isset($breadcrumbs)) {
-    $this->params['breadcrumbs'][] = $this->title;
-}
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <?= $model->content_full ?>
