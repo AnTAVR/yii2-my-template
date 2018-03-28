@@ -8,7 +8,6 @@ if (!empty($model->meta_description)) {
         'name' => 'description',
         'content' => $model->meta_description]);
 }
-
 if (!empty($model->meta_keywords)) {
     $this->registerMetaTag([
         'name' => 'keywords',
