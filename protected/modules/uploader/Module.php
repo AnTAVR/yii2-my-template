@@ -5,11 +5,10 @@ namespace app\modules\uploader;
 use app\components\Module as ModuleOld;
 use Yii;
 
-/**
- * module definition class
- */
 class Module extends ModuleOld
 {
+    public $defaultRoute = 'admin-default';
+
     /**
      * @inheritdoc
      */
