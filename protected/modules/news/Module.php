@@ -14,7 +14,6 @@ class Module extends ModuleOld
     {
         parent::init();
 
-        $this->modulesName = Yii::t('app', 'News');
         $this->params = require __DIR__ . '/config/params.php';
 
         /** @noinspection HtmlUnknownTag */

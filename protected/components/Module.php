@@ -8,10 +8,6 @@ use yii\console\Application;
 
 class Module extends ModuleOld
 {
-    const ADMIN_START_CONTROLLER = 'admin';
-
-    public $modulesName;
-
     /**
      * @inheritdoc
      */

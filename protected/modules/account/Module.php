@@ -22,7 +22,6 @@ class Module extends ModuleOld implements BootstrapInterface
     {
         parent::init();
 
-        $this->modulesName = Yii::t('app', 'Account');
         $this->params = require __DIR__ . '/config/params.php';
 
         /** @noinspection HtmlUnknownTag */
