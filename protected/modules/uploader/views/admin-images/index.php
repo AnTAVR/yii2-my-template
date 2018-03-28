@@ -11,6 +11,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <h1><?= Html::encode($this->title) ?></h1>
 
+<?= $this->render('../menu.php') ?>
+
 <p>
     <?= Html::a('<span class="glyphicon glyphicon-plus"></span>' . Yii::t('app', 'Create Image'),
         ['create'],

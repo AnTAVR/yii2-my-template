@@ -10,4 +10,4 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <h1><?= Html::encode($this->title) ?></h1>
 
-<?= $this->render('@app/modules/uploader/views/menu.php') ?>
+<?= $this->render('../menu.php') ?>

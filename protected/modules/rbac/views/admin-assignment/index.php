@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <h1><?= Html::encode($this->title) ?></h1>
 
-<?= $this->render('@app/modules/rbac/views/menu.php') ?>
+<?= $this->render('../menu.php') ?>
 
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
