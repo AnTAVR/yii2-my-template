@@ -2,20 +2,21 @@
 
 /* @var $this \yii\web\View */
 
-use yii\helpers\Html;
+use yii\bootstrap\Nav;
 
 $controllerId = Yii::$app->controller->id;
 
 ?>
 <p>
-    <?= $controllerId !== 'admin-files' ? Html::a(Yii::t('app', 'Uploader Files'),
-        ['/uploader/admin-files'],
-        [
-            'class' => 'btn btn-default',
-        ]) : '' ?>
-    <?= $controllerId !== 'admin-images' ? Html::a(Yii::t('app', 'Uploader Images'),
-        ['/uploader/admin-images'],
-        [
-            'class' => 'btn btn-default',
-        ]) : '' ?>
+    <?= Nav::widget([
+        'options' => ['class' => 'nav nav-pills'],
+        'items' => [
+            ['label' => Yii::t('app', 'Uploader Files'),
+                'active' => $controllerId === 'admin-files',
+                'url' => ['/uploader/admin-files']],
+            ['label' => Yii::t('app', 'Uploader Images'),
+                'active' => $controllerId === 'admin-images',
+                'url' => ['/uploader/admin-images']],
+        ],
+    ]) ?>
 </p>

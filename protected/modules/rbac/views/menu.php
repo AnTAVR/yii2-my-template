@@ -2,30 +2,27 @@
 
 /* @var $this \yii\web\View */
 
-use yii\helpers\Html;
+use yii\bootstrap\Nav;
 
 $controllerId = Yii::$app->controller->id;
 
 ?>
 <p>
-    <?= $controllerId !== 'admin-assignment' ? Html::a(Yii::t('app', 'User Assignment'),
-        ['/rbac/admin-assignment'],
-        [
-            'class' => 'btn btn-default',
-        ]) : '' ?>
-    <?= $controllerId !== 'admin-permission' ? Html::a(Yii::t('app', 'Permissions Manager'),
-        ['/rbac/admin-permission'],
-        [
-            'class' => 'btn btn-default',
-        ]) : '' ?>
-    <?= $controllerId !== 'admin-role' ? Html::a(Yii::t('app', 'Roles Manager'),
-        ['/rbac/admin-role'],
-        [
-            'class' => 'btn btn-default',
-        ]) : '' ?>
-    <?= $controllerId !== 'admin-rule' ? Html::a(Yii::t('app', 'Rules Manager'),
-        ['/rbac/admin-rule'],
-        [
-            'class' => 'btn btn-default',
-        ]) : '' ?>
+    <?= Nav::widget([
+        'options' => ['class' => 'nav nav-pills'],
+        'items' => [
+            ['label' => Yii::t('app', 'User Assignment'),
+                'active' => $controllerId === 'admin-assignment',
+                'url' => ['/rbac/admin-assignment']],
+            ['label' => Yii::t('app', 'Permissions Manager'),
+                'active' => $controllerId === 'admin-permission',
+                'url' => ['/rbac/admin-permission']],
+            ['label' => Yii::t('app', 'Roles Manager'),
+                'active' => $controllerId === 'admin-role',
+                'url' => ['/rbac/admin-role']],
+            ['label' => Yii::t('app', 'Rules Manager'),
+                'active' => $controllerId === 'admin-rule',
+                'url' => ['/rbac/admin-rule']],
+        ],
+    ]) ?>
 </p>
