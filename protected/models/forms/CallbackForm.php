@@ -38,7 +38,7 @@ class CallbackForm extends Model
     {
         return [
             'phone' => Yii::t('app', 'Contact number'),
-            'name' => Yii::t('app', 'How can I call you?'),
+            'name' => Yii::t('app', 'Name'),
             'verifyCode' => Yii::t('app', 'Verification Code'),
         ];
     }
@@ -47,7 +47,7 @@ class CallbackForm extends Model
     {
         return [
 //            'phone' => Yii::t('app', 'For example: {example}', ['example' => '+7 (111) 111-11-11']),
-            'name' => Yii::t('app', 'Name'),
+            'name' => Yii::t('app', 'How can I call you?'),
         ];
     }
 

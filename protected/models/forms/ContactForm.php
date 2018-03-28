@@ -60,6 +60,13 @@ class ContactForm extends Model
         ];
     }
 
+    public function attributeHints()
+    {
+        return [
+            'name' => Yii::t('app', 'How can I call you?'),
+        ];
+    }
+
     /**
      * Sends an email to the specified email address using the information collected by this model.
      * @return bool whether the model passes validation
