@@ -21,9 +21,8 @@ class Module extends ModuleOld
         /** @noinspection HtmlUnknownTag */
         Yii::$app->urlManager->addRules(
             [
-                '/products/admin-<controller>' => '/products/admin-<controller>',
-                '/products/page-<page\d+>' => '/products/default/index',
-                '/products/<meta_url>' => '/products/default/view',
+                '/products/page/<page\d+>' => '/products/default/index',
+                '/products/view/<meta_url>' => '/products/default/view',
             ]
         );
         // custom initialization code goes here

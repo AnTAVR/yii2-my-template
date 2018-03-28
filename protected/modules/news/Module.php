@@ -21,9 +21,8 @@ class Module extends ModuleOld
         /** @noinspection HtmlUnknownTag */
         Yii::$app->urlManager->addRules(
             [
-                '/news/admin-<controller>' => '/news/admin-<controller>',
-                '/news/page-<page\d+>' => '/news/default/index',
-                '/news/<meta_url>' => '/news/default/view',
+                '/news/page/<page\d+>' => '/news/default/index',
+                '/news/view/<meta_url>' => '/news/default/view',
             ]
         );
         // custom initialization code goes here

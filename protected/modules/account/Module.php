@@ -38,7 +38,6 @@ class Module extends ModuleOld implements BootstrapInterface
         /** @noinspection HtmlUnknownTag */
         Yii::$app->urlManager->addRules(
             [
-                '/account/admin-<controller>' => '/account/admin-<controller>',
                 '/signup' => '/account/signup',
                 '/account/verify-email/<token:\w+>' => '/account/verify-email',
                 '/recovery' => '/account/recovery',
