@@ -5,9 +5,6 @@ namespace app\modules\news;
 use app\components\Module as ModuleOld;
 use Yii;
 
-/**
- * module definition class
- */
 class Module extends ModuleOld
 {
     /**
@@ -16,6 +13,8 @@ class Module extends ModuleOld
     public function init()
     {
         parent::init();
+
+        $this->modulesName = Yii::t('app', 'News');
         $this->params = require __DIR__ . '/config/params.php';
 
         /** @noinspection HtmlUnknownTag */
@@ -25,6 +24,7 @@ class Module extends ModuleOld
                 '/news/view/<meta_url>' => '/news/default/view',
             ]
         );
+
         // custom initialization code goes here
     }
 }

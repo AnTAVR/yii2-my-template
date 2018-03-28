@@ -3,6 +3,7 @@
 namespace app\modules\uploader;
 
 use app\components\Module as ModuleOld;
+use Yii;
 
 /**
  * module definition class
@@ -15,6 +16,8 @@ class Module extends ModuleOld
     public function init()
     {
         parent::init();
+
+        $this->modulesName = Yii::t('app', 'Uploader');
         $this->params = require __DIR__ . '/config/params.php';
 
         // custom initialization code goes here

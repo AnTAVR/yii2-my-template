@@ -5,9 +5,6 @@ namespace app\modules\articles;
 use app\components\Module as ModuleOld;
 use Yii;
 
-/**
- * module definition class
- */
 class Module extends ModuleOld
 {
     /**
@@ -16,6 +13,8 @@ class Module extends ModuleOld
     public function init()
     {
         parent::init();
+
+        $this->modulesName = Yii::t('app', 'Articles');
         $this->params = require __DIR__ . '/config/params.php';
 
         /** @noinspection HtmlUnknownTag */
@@ -25,6 +24,7 @@ class Module extends ModuleOld
                 '/articles/view/<meta_url>' => '/articles/default/view',
             ]
         );
+
         // custom initialization code goes here
     }
 }
