@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //                'data-comfirm-ok'=>Yii::t('app','Ok'),
 //                'data-comfirm-cancel'=>Yii::t('app','Cancel'),
 //                'data-confirm-title' => Yii::t('app','Are you sure?'),
-//                'data-confirm-message' => Yii::t('app','Are you sure want to delete this item')],
+//                'data-confirm-message' => Yii::t('app','Are you sure you want to delete this item?')],
         ],
     ],
 ]) ?>
