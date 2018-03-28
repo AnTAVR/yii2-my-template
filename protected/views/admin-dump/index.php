@@ -13,14 +13,14 @@ $this->params['breadcrumbs'][] = $this->title;
 <h1><?= Html::encode($this->title) ?></h1>
 
 <p>
-    <?= Html::a('<span class="glyphicon glyphicon-trash"></span>' . Yii::t('app', 'Delete all'),
+    <?= Html::a('<span class="glyphicon glyphicon-trash"></span>' . Yii::t('yii', 'Delete'),
         ['delete-all'],
         [
             'class' => 'btn btn-danger',
             'data-method' => 'post',
             'data-confirm' => Yii::t('app', 'Are you sure?'),
         ]) ?>
-    <?= Html::a('<span class="glyphicon glyphicon-plus"></span>' . Yii::t('app', 'Create Dump'),
+    <?= Html::a('<span class="glyphicon glyphicon-plus"></span>' . Yii::t('app', 'Create'),
         ['create'],
         [
             'class' => 'btn btn-success',

@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 /* @var $this \yii\web\View */
 /* @var $model \app\modules\uploader\models\forms\UploaderFileForm */
 
-$this->title = Yii::t('app', 'Create File');
+$this->title = Yii::t('app', 'Create');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Uploader Files'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

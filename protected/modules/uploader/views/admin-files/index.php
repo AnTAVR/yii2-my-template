@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?= $this->render('../menu.php') ?>
 
 <p>
-    <?= Html::a('<span class="glyphicon glyphicon-plus"></span>' . Yii::t('app', 'Create File'),
+    <?= Html::a('<span class="glyphicon glyphicon-plus"></span>' . Yii::t('app', 'Create'),
         ['create'],
         [
             'class' => 'btn btn-success',
