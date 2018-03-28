@@ -6,19 +6,10 @@ use yii\widgets\DetailView;
 /* @var $this \yii\web\View */
 /* @var $model \app\modules\news\models\News */
 
-$this->title = $model->content_title;
-if (!empty($model->meta_description)) {
-    $this->registerMetaTag([
-        'name' => 'description',
-        'content' => $model->meta_description]);
-}
-
-if (!empty($model->meta_keywords)) {
-    $this->registerMetaTag([
-        'name' => 'keywords',
-        'content' => $model->meta_keywords]);
-}
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'News'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+
+$this->title = Yii::t('yii', 'View');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <p>
