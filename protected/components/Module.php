@@ -33,30 +33,4 @@ class Module extends ModuleOld
 
         // custom initialization code goes here
     }
-
-    public function beforeAction($action)
-    {
-        if ($this->modulesName) {
-            $is_ok = true;
-            $controller = $action->controller;
-            if (in_array($controller->id, [$this->defaultRoute, static::ADMIN_START_CONTROLLER . '-default'])) {
-                if ($action->id === $controller->defaultAction) {
-                    $is_ok = false;
-                }
-            }
-            if ($is_ok) {
-                $is_admin_controller = substr($controller->id, 0, strlen(static::ADMIN_START_CONTROLLER)) === static::ADMIN_START_CONTROLLER;
-                $url = [$is_admin_controller ? "/$this->uniqueId/$controller->id" : "/$this->uniqueId"];
-
-                $breadcrumb = [
-                    'label' => $this->modulesName,
-                    'url' => $url,
-                ];
-
-                $controller->view->params['breadcrumbs'][] = $breadcrumb;
-            }
-        }
-
-        return parent::beforeAction($action);
-    }
 }
