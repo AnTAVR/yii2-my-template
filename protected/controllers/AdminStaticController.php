@@ -9,9 +9,6 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 
-/**
- * AdminStaticController implements the CRUD actions for StaticPage model.
- */
 class AdminStaticController extends AdminController
 {
     public $params = [

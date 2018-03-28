@@ -11,9 +11,6 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
 
-/**
- * AdminFilesController implements the CRUD actions for UploaderFile model.
- */
 class AdminFilesController extends AdminController
 {
     /**

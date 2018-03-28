@@ -9,9 +9,6 @@ use app\modules\rbac\models\searches\AssignmentSearch;
 use Yii;
 use yii\web\NotFoundHttpException;
 
-/**
- * AdminAssignmentController is controller for manager user assignment
- */
 class AdminAssignmentController extends AdminController
 {
     /**

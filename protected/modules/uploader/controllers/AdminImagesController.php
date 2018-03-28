@@ -11,9 +11,6 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
 
-/**
- * AdminImagesController implements the CRUD actions for UploaderImage model.
- */
 class AdminImagesController extends AdminController
 {
     /**

@@ -11,9 +11,6 @@ use yii\helpers\Html;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
-/**
- * AdminPermissionController is controller for manager permissions
- */
 class AdminPermissionController extends AdminController
 {
     /**

@@ -11,9 +11,6 @@ use yii\helpers\Html;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
-/**
- * AdminRoleController is controller for manager role
- */
 class AdminRoleController extends AdminController
 {
     /**

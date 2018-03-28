@@ -9,9 +9,6 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 
-/**
- * AdminDefaultController implements the CRUD actions for Articles model.
- */
 class AdminDefaultController extends AdminController
 {
     /**

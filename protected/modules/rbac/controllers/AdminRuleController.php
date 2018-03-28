@@ -11,9 +11,6 @@ use yii\helpers\Html;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
-/**
- * AdminRuleController is controller for manager rule
- */
 class AdminRuleController extends AdminController
 {
     /**

@@ -12,9 +12,6 @@ use yii\helpers\ArrayHelper;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
-/**
- * AdminDumpController.
- */
 class AdminDumpController extends AdminController
 {
 
