@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = Yii::t('app', 'Update Static Page: {name}', ['name' => $model->content_title]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Static Pages'), 'url' => ['/admin-static']];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('yii', 'Update');
 ?>
 <h1><?= Html::encode($this->title) ?></h1>
 

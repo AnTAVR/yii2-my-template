@@ -46,9 +46,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 $action, $model, $key, $index) {
                 return Url::to([$action, 'name' => $key]);
             },
-//            'viewOptions' => ['role' => 'modal-remote', 'title' => Yii::t('app', 'View'), 'data-toggle' => 'tooltip'],
-//            'updateOptions' => ['role' => 'modal-remote', 'title' => Yii::t('app', 'Update'), 'data-toggle' => 'tooltip'],
-//            'deleteOptions' => ['role' => 'modal-remote', 'title' => Yii::t('app', 'Delete'),
+//            'viewOptions' => ['role' => 'modal-remote', 'title' => Yii::t('yii', 'View'), 'data-toggle' => 'tooltip'],
+//            'updateOptions' => ['role' => 'modal-remote', 'title' => Yii::t('yii', 'Update'), 'data-toggle' => 'tooltip'],
+//            'deleteOptions' => ['role' => 'modal-remote', 'title' => Yii::t('yii', 'Delete'),
 //                'data-confirm' => false, 'data-method' => false, // for overide yii data api
 //                'data-request-method' => 'post',
 //                'data-toggle' => 'tooltip',

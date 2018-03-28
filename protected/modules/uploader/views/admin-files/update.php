@@ -9,7 +9,7 @@ use yii\widgets\DetailView;
 
 $this->title = Yii::t('app', 'Update File: {name}', ['name' => $model->file]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Uploader Files'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('yii', 'Update');
 ?>
 <h1><?= Html::encode($this->title) ?></h1>
 
@@ -34,12 +34,12 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
                 [
                     'class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary',
                 ]) ?>
-            <?= Html::a(Yii::t('app', 'Delete'),
+            <?= Html::a(Yii::t('yii', 'Delete'),
                 ['delete', 'id' => $model->id],
                 [
                     'class' => 'btn btn-danger',
                     'data' => [
-                        'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                        'confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
                         'method' => 'post',
                     ],
                 ]) ?>

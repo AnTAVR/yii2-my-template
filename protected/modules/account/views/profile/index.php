@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </div>
     <div class="panel-footer">
-        <?= Html::a(Yii::t('app', 'Delete'),
+        <?= Html::a(Yii::t('yii', 'Delete'),
             ['delete'],
             [
                 'class' => 'btn btn-danger',
