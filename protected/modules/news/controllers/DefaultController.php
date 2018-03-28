@@ -8,9 +8,6 @@ use yii\data\Pagination;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-/**
- * Default controller for the `news` module
- */
 class DefaultController extends Controller
 {
     /**

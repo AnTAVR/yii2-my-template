@@ -14,9 +14,6 @@ use yii\helpers\Console;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
-/**
- * Backup Dump DB.
- */
 class DumpController extends Controller
 {
     public $defaultAction = 'create';
