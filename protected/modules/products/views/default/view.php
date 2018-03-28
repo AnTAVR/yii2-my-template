@@ -3,7 +3,6 @@
 /* @var $this \yii\web\View */
 /* @var $model \app\modules\products\models\Products */
 
-$this->title = $model->content_title;
 if (!empty($model->meta_description)) {
     $this->registerMetaTag([
         'name' => 'description',
@@ -17,6 +16,8 @@ if (!empty($model->meta_keywords)) {
 }
 
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Products'), 'url' => ['/products']];
+
+$this->title = $model->content_title;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?= $model->content_full ?>
