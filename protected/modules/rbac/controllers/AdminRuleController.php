@@ -4,8 +4,8 @@ namespace app\modules\rbac\controllers;
 
 use app\components\AdminController;
 use app\modules\rbac\models\Rule;
-use app\modules\rbac\models\searches\RuleSearch;
 use Yii;
+use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\web\NotFoundHttpException;
@@ -34,10 +34,16 @@ class AdminRuleController extends AdminController
      */
     public function actionIndex()
     {
-        $searchModel = new RuleSearch(null);
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $authManager = Yii::$app->authManager;
+
+        $rules = $authManager->getRules();
+        $rules = ArrayHelper::map($rules, 'name', 'name');
+
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $rules,
+        ]);
+
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
