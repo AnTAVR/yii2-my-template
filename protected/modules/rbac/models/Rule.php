@@ -29,23 +29,6 @@ class Rule extends Item
         parent::__construct($config);
     }
 
-    /**
-     * Find model by id
-     * @param $name
-     * @return null|static
-     */
-    public static function find($name)
-    {
-        $item = Yii::$app->authManager->getRule($name);
-        if ($item !== null) {
-            return new self($item);
-        }
-        return null;
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
@@ -94,5 +77,19 @@ class Rule extends Item
         $class = $this->className;
         $item = new $class();
         return $item;
+    }
+
+    /**
+     * Find model by id
+     * @param $name
+     * @return null|static
+     */
+    public static function find($name)
+    {
+        $item = Yii::$app->authManager->getRule($name);
+        if ($item !== null) {
+            return new self($item);
+        }
+        return null;
     }
 }

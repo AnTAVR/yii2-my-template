@@ -35,9 +35,6 @@ abstract class AuthItem extends Item
         parent::__construct($config);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
@@ -67,9 +64,6 @@ abstract class AuthItem extends Item
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return ArrayHelper::merge(parent::attributeLabels(), [
