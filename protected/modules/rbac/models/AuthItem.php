@@ -76,7 +76,7 @@ abstract class AuthItem extends Item
     {
         $authManager = Yii::$app->authManager;
 
-        if ($this->type == yii\rbac\Item::TYPE_ROLE) {
+        if (static::TYPE == yii\rbac\Item::TYPE_ROLE) {
             $item = $authManager->createRole($this->name);
         } else {
             $item = $authManager->createPermission($this->name);
@@ -100,7 +100,7 @@ abstract class AuthItem extends Item
     public function search($params)
     {
         $authManager = Yii::$app->authManager;
-        if ($this->type == yii\rbac\Item::TYPE_ROLE) {
+        if (static::TYPE == yii\rbac\Item::TYPE_ROLE) {
             $items = $authManager->getRoles();
         } else {
             $items = $authManager->getPermissions();
