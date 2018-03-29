@@ -36,13 +36,6 @@ class Role extends AuthItem
         return $authManager->getPermissionsByRole($name);
     }
 
-    public function scenarios()
-    {
-        $scenarios = parent::scenarios();
-        $scenarios['default'][] = 'permissions';
-        return $scenarios;
-    }
-
     public function afterSave(/** @noinspection PhpUnusedParameterInspection */
         $insert, $changedAttributes)
     {
