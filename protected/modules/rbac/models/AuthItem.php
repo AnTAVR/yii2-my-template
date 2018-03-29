@@ -5,21 +5,28 @@ namespace app\modules\rbac\models;
 use Yii;
 use yii\base\Exception;
 use yii\base\Model;
+use yii\base\ModelEvent;
 use yii\data\ArrayDataProvider;
+use yii\db\AfterSaveEvent;
 use yii\helpers\Json;
 use yii\rbac\Item;
 
-/**
- * @property int $type
- */
 abstract class AuthItem extends Model
 {
+    const EVENT_BEFORE_DELETE = 'beforeDelete';
+    const EVENT_AFTER_DELETE = 'afterDelete';
+    const EVENT_BEFORE_INSERT = 'beforeInsert';
+    const EVENT_AFTER_INSERT = 'afterInsert';
+    const EVENT_BEFORE_UPDATE = 'beforeUpdate';
+    const EVENT_AFTER_UPDATE = 'afterUpdate';
+
     public $name;
     public $description;
     public $ruleName;
     public $data;
     public $isNewRecord = true;
     public $permissions;
+    public $type;
     protected $item;
 
     /**
@@ -37,17 +44,6 @@ abstract class AuthItem extends Model
             $this->data = $item->data === null ? null : Json::encode($item->data);
         }
         parent::__construct($config);
-    }
-
-    public function unique()
-    {
-        $authManager = Yii::$app->authManager;
-        if ($authManager->getRole($this->name) !== null || $authManager->getPermission($this->name) !== null) {
-            $this->addError('name', Yii::t('yii', '{attribute} "{value}" has already been taken.', [
-                'attribute' => $this->getAttributeLabel('name'),
-                'value' => $this->name,
-            ]));
-        }
     }
 
     /**
@@ -86,24 +82,37 @@ abstract class AuthItem extends Model
         ];
     }
 
+    public function unique()
+    {
+        $authManager = Yii::$app->authManager;
+        if ($authManager->getRole($this->name) !== null || $authManager->getPermission($this->name) !== null) {
+            $this->addError('name', Yii::t('yii', '{attribute} "{value}" has already been taken.', [
+                'attribute' => $this->getAttributeLabel('name'),
+                'value' => $this->name,
+            ]));
+        }
+    }
+
     /**
      * Save item
+     * @param bool $runValidation
+     * @param null $attributeNames
      * @return boolean
-     * @throws \Exception
      * @throws Exception
+     * @throws \Exception
      */
-    public function save()
+    public function save(/** @noinspection PhpUnusedParameterInspection */
+        $runValidation = true, $attributeNames = null)
     {
-
         if (!$this->validate()) {
             return false;
         }
 
-        //$this->beforeSave();
+        $this->beforeSave(false);
         $authManager = Yii::$app->authManager;
 
         // Create new item    
-        if ($this->getType() == Item::TYPE_ROLE) {
+        if ($this->type == Item::TYPE_ROLE) {
             $item = $authManager->createRole($this->name);
         } else {
             $item = $authManager->createPermission($this->name);
@@ -124,10 +133,10 @@ abstract class AuthItem extends Model
         $isNewRecord = $this->item == null ? true : false;
         $this->isNewRecord = !$isNewRecord;
         $this->item = $item;
-        //$this->afterSave($isNewRecord,$this->attributes);
+        $this->afterSave(false, $this->attributes);
 
 
-        if ($this->getType() == Item::TYPE_ROLE) {
+        if ($this->type == Item::TYPE_ROLE) {
             $role = $authManager->getRole($this->item->name);
             if (!$isNewRecord) {
                 $authManager->removeChildren($role);
@@ -140,15 +149,23 @@ abstract class AuthItem extends Model
             }
         }
 
-
         return true;
     }
 
-    /**
-     * Get the type of item
-     * @return integer
-     */
-    protected abstract function getType();
+    public function beforeSave($insert)
+    {
+        $event = new ModelEvent();
+        $this->trigger($insert ? self::EVENT_BEFORE_INSERT : self::EVENT_BEFORE_UPDATE, $event);
+
+        return $event->isValid;
+    }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        $this->trigger($insert ? self::EVENT_AFTER_INSERT : self::EVENT_AFTER_UPDATE, new AfterSaveEvent([
+            'changedAttributes' => $changedAttributes,
+        ]));
+    }
 
     /**
      * Delete AuthItem
@@ -161,17 +178,35 @@ abstract class AuthItem extends Model
             throw new Exception('Call delete() function in new record');
         }
 
+        $this->beforeDelete();
 
         $authManager = Yii::$app->authManager;
 
         // Create new item
-        if ($this->getType() == Item::TYPE_ROLE) {
+        if ($this->type == Item::TYPE_ROLE) {
             $item = $authManager->getRole($this->name);
         } else {
             $item = $authManager->getPermission($this->name);
         }
 
-        return $authManager->remove($item);
+        $ret = $authManager->remove($item);
+
+        $this->afterDelete();
+
+        return $ret;
+    }
+
+    public function beforeDelete()
+    {
+        $event = new ModelEvent();
+        $this->trigger(self::EVENT_BEFORE_DELETE, $event);
+
+        return $event->isValid;
+    }
+
+    public function afterDelete()
+    {
+        $this->trigger(self::EVENT_AFTER_DELETE);
     }
 
     /**
@@ -182,7 +217,7 @@ abstract class AuthItem extends Model
     public function search($params)
     {
         $authManager = Yii::$app->authManager;
-        if ($this->getType() == Item::TYPE_ROLE) {
+        if ($this->type == Item::TYPE_ROLE) {
             $items = $authManager->getRoles();
         } else {
             $items = $authManager->getPermissions();
