@@ -7,10 +7,7 @@ use yii\base\Model;
 
 class AssignmentForm extends Model
 {
-
-    public $userId;
     public $roles = [];
-    public $authManager;
 
     /**
      *
@@ -20,9 +17,7 @@ class AssignmentForm extends Model
     public function __construct($userId, $config = [])
     {
         parent::__construct($config);
-        $this->userId = $userId;
-        $this->authManager = Yii::$app->authManager;
-        foreach ($this->authManager->getRolesByUser($userId) as $role) {
+        foreach (Yii::$app->authManager->getRolesByUser($userId) as $role) {
             $this->roles[] = $role->name;
         }
     }
@@ -33,7 +28,6 @@ class AssignmentForm extends Model
     public function rules()
     {
         return [
-            ['userId', 'required'],
             ['roles', 'default'],
         ];
     }
@@ -51,15 +45,17 @@ class AssignmentForm extends Model
 
     /**
      * Save assignment data
+     * @param integer $userId
      * @return boolean whether assignment save success
      * @throws \Exception
      */
-    public function save()
+    public function save($userId)
     {
-        $this->authManager->revokeAll(intval($this->userId));
+        $authManager = Yii::$app->authManager;
+        $authManager->revokeAll(intval($userId));
         if ($this->roles != null) {
             foreach ($this->roles as $role) {
-                $this->authManager->assign($this->authManager->getRole($role), $this->userId);
+                $authManager->assign($authManager->getRole($role), $userId);
             }
         }
         return true;
