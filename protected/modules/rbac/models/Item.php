@@ -156,4 +156,24 @@ abstract class Item extends Model
             'changedAttributes' => $changedAttributes,
         ]));
     }
+
+    /**
+     * Find model by id
+     * @param string $name
+     * @return null|static
+     */
+    public function find($name)
+    {
+        $authManager = Yii::$app->authManager;
+
+        if ($this->type === yii\rbac\Item::TYPE_PERMISSION) {
+            $item = $authManager->getPermission($name);
+        } elseif ($this->type === yii\rbac\Item::TYPE_ROLE) {
+            $item = $authManager->getRole($name);
+        } else {
+            $item = $authManager->getRule($name);
+        }
+
+        return $item ? new static($item) : null;
+    }
 }
