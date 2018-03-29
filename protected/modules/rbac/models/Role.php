@@ -3,6 +3,7 @@
 namespace app\modules\rbac\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii\rbac\Item;
 
 class Role extends AuthItem
@@ -16,11 +17,7 @@ class Role extends AuthItem
         parent::init();
 
         if (!$this->isNewRecord) {
-            $permissions = [];
-            foreach (static::getPermissions($this->item->name) as $permission) {
-                $permissions[] = $permission->name;
-            }
-            $this->permissions = $permissions;
+            $this->permissions = ArrayHelper::getColumn(static::getPermissions($this->item->name), 'name');
         }
     }
 
