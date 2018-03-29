@@ -36,11 +36,11 @@ class AdminRuleController extends AdminController
     {
         $authManager = Yii::$app->authManager;
 
-        $rules = $authManager->getRules();
-        $rules = ArrayHelper::map($rules, 'name', 'name');
+        $items = $authManager->getRules();
+        $items = ArrayHelper::map($items, 'name', 'name');
 
         $dataProvider = new ArrayDataProvider([
-            'allModels' => $rules,
+            'allModels' => $items,
         ]);
 
         return $this->render('index', [
