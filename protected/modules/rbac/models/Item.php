@@ -17,6 +17,8 @@ abstract class Item extends Model
     const EVENT_BEFORE_UPDATE = 'beforeUpdate';
     const EVENT_AFTER_UPDATE = 'afterUpdate';
 
+    public $type;
+
     public $name;
 
     public $createdAt;
@@ -83,5 +85,27 @@ abstract class Item extends Model
     public function afterDelete()
     {
         $this->trigger(self::EVENT_AFTER_DELETE);
+    }
+
+    public function uniqueValidator()
+    {
+        $authManager = Yii::$app->authManager;
+        $error = false;
+
+        if (in_array($this->type, [yii\rbac\Item::TYPE_PERMISSION, yii\rbac\Item::TYPE_ROLE])) {
+            if ($authManager->getRole($this->name) || $authManager->getPermission($this->name)) {
+                $error = true;
+            }
+        } else {
+            if ($authManager->getRule($this->name)) {
+                $error = true;
+            }
+        }
+        if ($error) {
+            $this->addError('name', Yii::t('yii', '{attribute} "{value}" has already been taken.', [
+                'attribute' => $this->getAttributeLabel('name'),
+                'value' => $this->name,
+            ]));
+        }
     }
 }
