@@ -6,6 +6,7 @@ use app\components\AdminController;
 use app\modules\rbac\models\Permission;
 use app\modules\rbac\models\searches\PermissionSearch;
 use Yii;
+use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\web\NotFoundHttpException;
@@ -34,10 +35,16 @@ class AdminPermissionController extends AdminController
      */
     public function actionIndex()
     {
-        $searchModel = new PermissionSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $authManager = Yii::$app->authManager;
+
+        $items = $authManager->getRoles();
+        $items = ArrayHelper::index($items, 'name');
+
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $items,
+        ]);
+
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -68,15 +75,13 @@ class AdminPermissionController extends AdminController
     }
 
     /**
-     * Finds the Permission model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $name
+     * @param string $id
      * @return Permission the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($name)
+    protected function findModel($id)
     {
-        if (($model = Permission::find($name)) !== null) {
+        if (($model = Permission::find($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
