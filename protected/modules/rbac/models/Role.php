@@ -17,11 +17,11 @@ class Role extends AuthItem
         parent::init();
 
         if (!$this->isNewRecord) {
-            $this->permissions = ArrayHelper::getColumn(static::getPermissions($this->item->name), 'name');
+            $this->permissions = ArrayHelper::getColumn(static::Permissions($this->item->name), 'name');
         }
     }
 
-    public static function getPermissions($roleName)
+    public static function Permissions($roleName)
     {
         $authManager = Yii::$app->authManager;
         $items = $authManager->getPermissionsByRole($roleName);
@@ -39,7 +39,7 @@ class Role extends AuthItem
         if (!$insert) {
             $authManager->removeChildren($role);
         }
-        if ($this->permissions != null && is_array($this->permissions)) {
+        if ($this->permissions) {
             foreach ($this->permissions as $permissionName) {
                 $permission = $authManager->getPermission($permissionName);
                 $authManager->addChild($role, $permission);

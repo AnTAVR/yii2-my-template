@@ -8,16 +8,8 @@ use yii\data\ArrayDataProvider;
 
 class RuleSearch extends Rule
 {
-
-    /**
-     *
-     * @var string
-     */
     public $name;
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [

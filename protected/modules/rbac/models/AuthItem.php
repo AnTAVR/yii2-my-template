@@ -13,8 +13,6 @@ abstract class AuthItem extends Item
     public $ruleName;
     public $data;
 
-    public $permissions;
-
     /**
      * @param yii\rbac\Role|yii\rbac\Permission $item
      * @param array $config name-value pairs that will be used to initialize the object properties
