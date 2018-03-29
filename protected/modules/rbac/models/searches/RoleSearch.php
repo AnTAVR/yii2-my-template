@@ -2,22 +2,19 @@
 
 namespace app\modules\rbac\models\searches;
 
-use yii\rbac\Item;
+use app\modules\rbac\models\Role;
 
-class RoleSearch extends AuthItemSearch
+class RoleSearch extends Role
 {
-
     public function __construct($config = [])
     {
         parent::__construct($item = null, $config);
     }
 
-    /**
-     * @inheritdoc
-     */
-    protected function getType()
+    public function rules()
     {
-        return Item::TYPE_ROLE;
+        return [
+            ['name', 'safe'],
+        ];
     }
-
 }

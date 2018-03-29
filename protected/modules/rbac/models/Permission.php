@@ -10,6 +10,10 @@ use yii\rbac\Item;
  */
 class Permission extends AuthItem
 {
+    protected function getType()
+    {
+        return Item::TYPE_PERMISSION;
+    }
 
     public static function find($name)
     {
@@ -17,10 +21,4 @@ class Permission extends AuthItem
         $item = $authManager->getPermission($name);
         return new self($item);
     }
-
-    protected function getType()
-    {
-        return Item::TYPE_PERMISSION;
-    }
-
 }

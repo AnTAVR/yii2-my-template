@@ -2,18 +2,19 @@
 
 namespace app\modules\rbac\models\searches;
 
-use yii\rbac\Item;
+use app\modules\rbac\models\Permission;
 
-class PermissionSearch extends AuthItemSearch
+class PermissionSearch extends Permission
 {
     public function __construct($config = [])
     {
         parent::__construct($item = null, $config);
     }
 
-    protected function getType()
+    public function rules()
     {
-        return Item::TYPE_PERMISSION;
+        return [
+            ['name', 'safe'],
+        ];
     }
-
 }

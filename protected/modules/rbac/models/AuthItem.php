@@ -5,6 +5,7 @@ namespace app\modules\rbac\models;
 use Yii;
 use yii\base\Exception;
 use yii\base\Model;
+use yii\data\ArrayDataProvider;
 use yii\helpers\Json;
 use yii\rbac\Item;
 
@@ -84,13 +85,6 @@ abstract class AuthItem extends Model
             'permissions' => Yii::t('app', 'Permissions'),
         ];
     }
-
-//    /**
-//     * Find auth item
-//     * @param type $name
-//     * @return AuthItem
-//     */
-//    public abstract static function find($name);
 
     /**
      * Save item
@@ -178,5 +172,31 @@ abstract class AuthItem extends Model
         }
 
         return $authManager->remove($item);
+    }
+
+    /**
+     * Search auth item
+     * @param array $params
+     * @return \yii\data\ActiveDataProvider|\yii\data\ArrayDataProvider
+     */
+    public function search($params)
+    {
+        $authManager = Yii::$app->authManager;
+        if ($this->getType() == Item::TYPE_ROLE) {
+            $items = $authManager->getRoles();
+        } else {
+            $items = $authManager->getPermissions();
+        }
+
+        if ($this->load($params) && $this->validate() && (trim($this->name) !== '' || trim($this->description) !== '')) {
+            $search = strtolower(trim($this->name));
+            $desc = strtolower(trim($this->description));
+            $items = array_filter($items, function ($item) use ($search, $desc) {
+                return (empty($search) || strpos(strtolower($item->name), $search) !== false) && (empty($desc) || strpos(strtolower($item->description), $desc) !== false);
+            });
+        }
+        return new ArrayDataProvider([
+            'allModels' => $items,
+        ]);
     }
 }
