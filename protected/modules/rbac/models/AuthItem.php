@@ -104,11 +104,12 @@ abstract class AuthItem extends Model
     public function save(/** @noinspection PhpUnusedParameterInspection */
         $runValidation = true, $attributeNames = null)
     {
-        if (!$this->validate()) {
+        if ($runValidation && !$this->validate()) {
             return false;
         }
 
         $this->beforeSave(false);
+
         $authManager = Yii::$app->authManager;
 
         // Create new item    
@@ -121,33 +122,25 @@ abstract class AuthItem extends Model
         // Set item data
         $item->description = $this->description;
         $item->ruleName = $this->ruleName;
-        $item->data = $this->data === null || $this->data === '' ? null : Json::decode($this->data);
+
+        if ($this->data) {
+            $item->data = Json::decode($this->data);
+        }
 
         // save
-        if ($this->item == null && !$authManager->add($item)) {
-            return false;
-        } else if ($this->item !== null && !$authManager->update($this->item->name, $item)) {
-            return false;
+        if ($this->isNewRecord) {
+            if (!$authManager->add($item)) {
+                return false;
+            }
+        } else {
+            if (!$authManager->update($this->item->name, $item)) {
+                return false;
+            }
         }
 
-        $isNewRecord = $this->item == null ? true : false;
-        $this->isNewRecord = !$isNewRecord;
+        $this->isNewRecord = false;
         $this->item = $item;
         $this->afterSave(false, $this->attributes);
-
-
-        if ($this->type == Item::TYPE_ROLE) {
-            $role = $authManager->getRole($this->item->name);
-            if (!$isNewRecord) {
-                $authManager->removeChildren($role);
-            }
-            if ($this->permissions != null && is_array($this->permissions)) {
-                foreach ($this->permissions as $permissionName) {
-                    $permission = $authManager->getPermission($permissionName);
-                    $authManager->addChild($role, $permission);
-                }
-            }
-        }
 
         return true;
     }
