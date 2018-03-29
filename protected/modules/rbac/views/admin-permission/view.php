@@ -1,27 +1,40 @@
 <?php
 
+use yii\helpers\Html;
+use yii\widgets\DetailView;
+
 /* @var $this \yii\web\View */
 /* @var $model \app\modules\rbac\models\Permission */
-?>
-<table class="table table-striped table-bordered detail-view">
-    <tbody>
-    <tr>
-        <th><?= $model->attributeLabels()['name'] ?></th>
-        <td><?= $model->name ?></td>
-    </tr>
-    <tr>
-        <th><?= $model->attributeLabels()['description'] ?></th>
-        <td><?= $model->description ?></td>
-    </tr>
-    <tr>
-        <th><?= $model->attributeLabels()['ruleName'] ?></th>
-        <td><?= $model->ruleName == null ? '<span class="text-danger">' . Yii::t('app', '(not use)') . '</span>' : $model->ruleName ?></td>
-    </tr>
-    <?php
-    /*
-    <tr><th><?= $model->attributeLabels()['data'] ?></th><td><?= $model->data ?></td></tr>
-     */
 
-    ?>
-    </tbody>
-</table>
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Permissions Manager'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->name]];
+
+$this->title = Yii::t('yii', 'View');
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<p>
+    <?= Html::a(Yii::t('yii', 'Update'),
+        ['update', 'id' => $model->name],
+        [
+            'class' => 'btn btn-primary',
+        ]) ?>
+    <?= Html::a(Yii::t('yii', 'Delete'),
+        ['delete', 'id' => $model->name],
+        [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
+                'method' => 'post',
+            ],
+        ]) ?>
+</p>
+<?= DetailView::widget([
+    'model' => $model,
+    'attributes' => [
+        'name',
+        'description',
+        'ruleName',
+        'createdAt:datetime',
+        'updatedAt:datetime',
+    ],
+]) ?>
