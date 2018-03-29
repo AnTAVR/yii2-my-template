@@ -7,12 +7,9 @@ use yii\rbac\Item;
 
 class Role extends AuthItem
 {
-    public $permissions = [];
+    public $type = Item::TYPE_ROLE;
 
-    protected function getType()
-    {
-        return Item::TYPE_ROLE;
-    }
+    public $permissions = [];
 
     public static function find($name)
     {
