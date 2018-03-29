@@ -48,6 +48,26 @@ abstract class Item extends Model
         return $item ? new static($item) : null;
     }
 
+    /**
+     * @return null|array
+     */
+    static public function findAll()
+    {
+        $authManager = Yii::$app->authManager;
+
+        if (static::TYPE === yii\rbac\Item::TYPE_PERMISSION) {
+            $items = $authManager->getPermissions();
+        } elseif (static::TYPE === yii\rbac\Item::TYPE_ROLE) {
+            $items = $authManager->getRoles();
+        } else {
+            $items = $authManager->getRules();
+        }
+        $items = array_map(function ($item) {
+            return new static($item);
+        }, $items);
+        return $items;
+    }
+
     public function attributeLabels()
     {
         return [
