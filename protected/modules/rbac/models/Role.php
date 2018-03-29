@@ -14,6 +14,7 @@ class Role extends AuthItem
     public function init()
     {
         parent::init();
+
         if (!$this->isNewRecord) {
             $permissions = [];
             foreach (static::getPermissions($this->item->name) as $permission) {
@@ -23,17 +24,10 @@ class Role extends AuthItem
         }
     }
 
-    public static function find($name)
+    public static function getPermissions($roleName)
     {
         $authManager = Yii::$app->authManager;
-        $item = $authManager->getRole($name);
-        return new self($item);
-    }
-
-    public static function getPermissions($name)
-    {
-        $authManager = Yii::$app->authManager;
-        return $authManager->getPermissionsByRole($name);
+        return $authManager->getPermissionsByRole($roleName);
     }
 
     public function afterSave(/** @noinspection PhpUnusedParameterInspection */
