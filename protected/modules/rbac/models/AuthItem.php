@@ -21,12 +21,16 @@ abstract class AuthItem extends Model
     const EVENT_AFTER_UPDATE = 'afterUpdate';
 
     public $name;
+    public $type;
     public $description;
     public $ruleName;
     public $data;
+    public $createdAt;
+    public $updatedAt;
+
     public $isNewRecord = true;
     public $permissions;
-    public $type;
+
     protected $item;
 
     /**
@@ -38,10 +42,13 @@ abstract class AuthItem extends Model
         $this->item = $item;
         if ($item !== null) {
             $this->isNewRecord = false;
+
             $this->name = $item->name;
             $this->description = $item->description;
             $this->ruleName = $item->ruleName;
             $this->data = $item->data === null ? null : Json::encode($item->data);
+            $this->createdAt = $item->createdAt;
+            $this->updatedAt = $item->updatedAt;
         }
         parent::__construct($config);
     }
@@ -52,18 +59,28 @@ abstract class AuthItem extends Model
     public function rules()
     {
         return [
+            ['name', 'trim'],
             ['name', 'required'],
-            ['name', 'string', 'max' => 64],
-            ['name', 'unique', 'when' => function () {
-                return $this->isNewRecord || ($this->item->name != $this->name);
-            }],
+            ['name', 'string',
+                'max' => 64],
+            ['name', 'unique',
+                'when' => function () {
+                    return $this->isNewRecord || ($this->item->name != $this->name);
+                }],
 
+            ['ruleName', 'trim'],
+            ['ruleName', 'string',
+                'max' => 64],
             ['ruleName', 'in',
                 'range' => array_keys(Yii::$app->authManager->getRules()),
                 'message' => Yii::t('app', 'Rule not exists')],
             ['ruleName', 'default'],
 
+            ['description', 'trim'],
+            ['description', 'string', 'max' => 64],
             ['description', 'default'],
+
+            ['data', 'trim'],
             ['data', 'default'],
         ];
     }
@@ -98,7 +115,6 @@ abstract class AuthItem extends Model
      * @param bool $runValidation
      * @param null $attributeNames
      * @return boolean
-     * @throws Exception
      * @throws \Exception
      */
     public function save(/** @noinspection PhpUnusedParameterInspection */
@@ -139,7 +155,12 @@ abstract class AuthItem extends Model
         }
 
         $this->isNewRecord = false;
+
         $this->item = $item;
+
+        $this->createdAt = $item->createdAt;
+        $this->updatedAt = $item->updatedAt;
+
         $this->afterSave(false, $this->attributes);
 
         return true;
@@ -175,7 +196,6 @@ abstract class AuthItem extends Model
 
         $authManager = Yii::$app->authManager;
 
-        // Create new item
         if ($this->type == Item::TYPE_ROLE) {
             $item = $authManager->getRole($this->name);
         } else {
@@ -216,9 +236,9 @@ abstract class AuthItem extends Model
             $items = $authManager->getPermissions();
         }
 
-        if ($this->load($params) && $this->validate() && (trim($this->name) !== '' || trim($this->description) !== '')) {
-            $search = strtolower(trim($this->name));
-            $desc = strtolower(trim($this->description));
+        if ($this->load($params) && $this->validate() && ($this->name || $this->description !== '')) {
+            $search = strtolower($this->name);
+            $desc = strtolower($this->description);
             $items = array_filter($items, function ($item) use ($search, $desc) {
                 return (empty($search) || strpos(strtolower($item->name), $search) !== false) && (empty($desc) || strpos(strtolower($item->description), $desc) !== false);
             });
