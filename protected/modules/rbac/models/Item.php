@@ -108,4 +108,12 @@ abstract class Item extends Model
             ]));
         }
     }
+
+    /**
+     * Save item
+     * @param bool $runValidation
+     * @param null|array $attributeNames
+     * @return boolean
+     */
+    abstract public function save($runValidation = true, $attributeNames = null);
 }
