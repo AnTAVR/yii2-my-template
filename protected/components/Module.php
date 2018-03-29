@@ -8,9 +8,6 @@ use yii\console\Application;
 
 class Module extends ModuleOld
 {
-    /**
-     * @inheritdoc
-     */
     public function init()
     {
         parent::init();

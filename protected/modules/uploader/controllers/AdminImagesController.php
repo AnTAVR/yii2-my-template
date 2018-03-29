@@ -13,9 +13,6 @@ use yii\web\NotFoundHttpException;
 
 class AdminImagesController extends AdminController
 {
-    /**
-     * @inheritdoc
-     */
     public function behaviors()
     {
         return ArrayHelper::merge(parent::behaviors(), [

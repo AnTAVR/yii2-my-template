@@ -12,9 +12,6 @@ class RecoveryPasswordNewForm extends User
     public $repeatPassword;
     public $verifyCode;
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         $params = Yii::$app->getModule('account')->params;
@@ -32,9 +29,6 @@ class RecoveryPasswordNewForm extends User
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         $labels = [
@@ -45,9 +39,6 @@ class RecoveryPasswordNewForm extends User
         return ArrayHelper::merge(parent::attributeLabels(), $labels);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeHints()
     {
         $hints = [

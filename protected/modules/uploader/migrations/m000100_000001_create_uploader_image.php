@@ -19,9 +19,6 @@ class m000100_000001_create_uploader_image extends Migration
         $this->tableName = UploaderImage::tableName();
     }
 
-    /**
-     * @inheritdoc
-     */
     public function up()
     {
         if ($this->db->driverName !== 'mysql') {
@@ -39,9 +36,6 @@ class m000100_000001_create_uploader_image extends Migration
         $this->createIndex($name, $this->tableName, $name);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function down()
     {
         $name = 'file';

@@ -19,9 +19,6 @@ class m000104_000001_create_page_products extends Migration
         $this->tableName = Products::tableName();
     }
 
-    /**
-     * @inheritdoc
-     */
     public function up()
     {
         if ($this->db->driverName !== 'mysql') {
@@ -47,9 +44,6 @@ class m000104_000001_create_page_products extends Migration
         $this->createIndex($name, $this->tableName, $name);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function down()
     {
         $name = 'published_at';

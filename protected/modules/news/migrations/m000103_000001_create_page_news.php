@@ -19,9 +19,6 @@ class m000103_000001_create_page_news extends Migration
         $this->tableName = News::tableName();
     }
 
-    /**
-     * @inheritdoc
-     */
     public function up()
     {
         if ($this->db->driverName !== 'mysql') {
@@ -47,9 +44,6 @@ class m000103_000001_create_page_news extends Migration
         $this->createIndex($name, $this->tableName, $name);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function down()
     {
         $name = 'published_at';

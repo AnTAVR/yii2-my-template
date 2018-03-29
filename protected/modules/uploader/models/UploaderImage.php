@@ -25,17 +25,11 @@ class UploaderImage extends ActiveRecord
     const PATH_IMAGES = 'images';
     const PATH_THUMBNAIL = 'thumbnail';
 
-    /**
-     * @inheritdoc
-     */
     public static function tableName()
     {
         return '{{%uploader_image}}';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         $params = Yii::$app->params;
@@ -51,9 +45,6 @@ class UploaderImage extends ActiveRecord
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [
@@ -96,33 +87,21 @@ class UploaderImage extends ActiveRecord
         return $path . DIRECTORY_SEPARATOR;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getUrl()
     {
         return static::getUploadUrl() . $this->meta_url;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getImagePath()
     {
         return static::getUploadPath() . $this->meta_url;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getThumbnailUrl()
     {
         return static::getUploadThumbnailUrl() . $this->meta_url;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getThumbnailPath()
     {
         return static::getUploadThumbnailPath() . $this->meta_url;

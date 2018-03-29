@@ -13,9 +13,6 @@ class m000100_000002_insert_uploader_image extends Migration
         $this->tableName = UploaderImage::tableName();
     }
 
-    /**
-     * @inheritdoc
-     */
     public function up()
     {
         $this->insert($this->tableName, [
@@ -27,9 +24,6 @@ class m000100_000002_insert_uploader_image extends Migration
         );
     }
 
-    /**
-     * @inheritdoc
-     */
     public function down()
     {
         $this->delete($this->tableName, ['meta_url' => '15191356815a8c2bc17ad332.97335651.png']);

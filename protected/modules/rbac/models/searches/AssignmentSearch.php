@@ -21,9 +21,6 @@ class AssignmentSearch extends Model
      */
     public $login;
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
@@ -32,9 +29,6 @@ class AssignmentSearch extends Model
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [

@@ -17,9 +17,6 @@ class m000103_000002_insert_page_news extends Migration
         $this->tableName = News::tableName();
     }
 
-    /**
-     * @inheritdoc
-     */
     public function up()
     {
         $content_short = str_replace('{image}', DefaultContent::CONTENT_IMAGE, DefaultContent::CONTENT_SHORT);
@@ -45,9 +42,6 @@ class m000103_000002_insert_page_news extends Migration
         }
     }
 
-    /**
-     * @inheritdoc
-     */
     public function down()
     {
         for ($i = 0; $i++ < self::COUNT;) {

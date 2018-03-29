@@ -10,14 +10,8 @@ use yii\web\User;
 
 class Module extends ModuleOld implements BootstrapInterface
 {
-    /**
-     * @inheritdoc
-     */
     public $defaultRoute = 'profile';
 
-    /**
-     * @inheritdoc
-     */
     public function init()
     {
         parent::init();

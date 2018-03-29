@@ -13,9 +13,6 @@ class PasswordEditForm extends User
     public $oldPassword;
     public $verifyCode;
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         $params = Yii::$app->getModule('account')->params;
@@ -37,9 +34,6 @@ class PasswordEditForm extends User
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         $labels = [
@@ -51,9 +45,6 @@ class PasswordEditForm extends User
         return ArrayHelper::merge(parent::attributeLabels(), $labels);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeHints()
     {
         $hints = [

@@ -17,9 +17,6 @@ class UploaderFileForm extends Model
     public $fileUpload;
     public $comment;
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         $params = Yii::$app->params;
@@ -33,9 +30,6 @@ class UploaderFileForm extends Model
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [

@@ -19,9 +19,6 @@ class m000102_000001_create_page_articles extends Migration
         $this->tableName = Articles::tableName();
     }
 
-    /**
-     * @inheritdoc
-     */
     public function up()
     {
         if ($this->db->driverName !== 'mysql') {
@@ -47,9 +44,6 @@ class m000102_000001_create_page_articles extends Migration
         $this->createIndex($name, $this->tableName, $name);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function down()
     {
         $name = 'published_at';

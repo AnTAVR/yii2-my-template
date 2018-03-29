@@ -80,9 +80,6 @@ class UserAvatarForm extends Model
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getAvatarUrl()
     {
         return static::getUploadUrl() . $this->avatar;
@@ -93,9 +90,6 @@ class UserAvatarForm extends Model
         return Yii::getAlias('@web_upload') . '/' . static::PATH_AVATARS . '/';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getAvatarPath()
     {
         return static::getUploadPath() . $this->avatar;

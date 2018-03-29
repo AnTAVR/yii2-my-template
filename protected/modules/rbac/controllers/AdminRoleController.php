@@ -13,9 +13,6 @@ use yii\web\Response;
 
 class AdminRoleController extends AdminController
 {
-    /**
-     * @inheritdoc
-     */
     public function behaviors()
     {
         return ArrayHelper::merge(parent::behaviors(), [

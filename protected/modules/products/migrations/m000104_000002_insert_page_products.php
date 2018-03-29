@@ -17,9 +17,6 @@ class m000104_000002_insert_page_products extends Migration
         $this->tableName = Products::tableName();
     }
 
-    /**
-     * @inheritdoc
-     */
     public function up()
     {
         $content_short = str_replace('{image}', DefaultContent::CONTENT_IMAGE, DefaultContent::CONTENT_SHORT);
@@ -46,9 +43,6 @@ class m000104_000002_insert_page_products extends Migration
         }
     }
 
-    /**
-     * @inheritdoc
-     */
     public function down()
     {
         $this->delete($this->tableName, ['meta_url' => 'p3']);

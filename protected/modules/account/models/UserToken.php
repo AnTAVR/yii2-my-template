@@ -125,9 +125,6 @@ class UserToken extends ActiveRecord
         return self::$typesNames[$this->type];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
@@ -150,9 +147,6 @@ class UserToken extends ActiveRecord
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [

@@ -10,9 +10,6 @@ class RecoveryPasswordRequestForm extends User
 {
     public $verifyCode;
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
@@ -27,9 +24,6 @@ class RecoveryPasswordRequestForm extends User
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         $labels = [
@@ -38,9 +32,6 @@ class RecoveryPasswordRequestForm extends User
         return ArrayHelper::merge(parent::attributeLabels(), $labels);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeHints()
     {
         $hints = [

@@ -16,9 +16,6 @@ class m000099_000000_insert_user extends Migration
         $this->tableName = User::tableName();
     }
 
-    /**
-     * @inheritdoc
-     */
     public function up()
     {
         $params = Yii::$app->params;
@@ -40,9 +37,6 @@ class m000099_000000_insert_user extends Migration
         $model->save(false);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function down()
     {
         $this->delete($this->tableName, ['id' => 1]);

@@ -148,9 +148,6 @@ class User extends ActiveRecord implements IdentityInterface
         return self::$statusNames[$this->status];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         $labels = [
@@ -163,9 +160,6 @@ class User extends ActiveRecord implements IdentityInterface
         return ArrayHelper::merge(parent::attributeLabels(), $labels);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [

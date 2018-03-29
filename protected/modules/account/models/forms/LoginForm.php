@@ -17,9 +17,6 @@ class LoginForm extends User
     public $rememberMe = true;
     public $verifyCode;
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         $params = Yii::$app->getModule('account')->params;
@@ -45,9 +42,6 @@ class LoginForm extends User
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         $labels = [
@@ -58,9 +52,6 @@ class LoginForm extends User
         return ArrayHelper::merge(parent::attributeLabels(), $labels);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeHints()
     {
         $params = Yii::$app->getModule('account')->params;

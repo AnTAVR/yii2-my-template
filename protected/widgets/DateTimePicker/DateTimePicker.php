@@ -53,9 +53,6 @@ class DateTimePicker extends InputWidget
      */
     public $inline = false;
 
-    /**
-     * @inheritdoc
-     */
     public function init()
     {
         parent::init();
@@ -79,9 +76,6 @@ class DateTimePicker extends InputWidget
         }
     }
 
-    /**
-     * @inheritdoc
-     */
     public function run()
     {
 

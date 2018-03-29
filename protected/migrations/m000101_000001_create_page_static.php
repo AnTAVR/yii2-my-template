@@ -19,9 +19,6 @@ class m000101_000001_create_page_static extends Migration
         $this->tableName = StaticPage::tableName();
     }
 
-    /**
-     * @inheritdoc
-     */
     public function up()
     {
         if ($this->db->driverName !== 'mysql') {
@@ -40,9 +37,6 @@ class m000101_000001_create_page_static extends Migration
         ], $this->tableOptions);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function down()
     {
         $this->dropTable($this->tableName);

@@ -22,17 +22,11 @@ class UploaderFile extends ActiveRecord
 {
     const PATH_FILES = 'files';
 
-    /**
-     * @inheritdoc
-     */
     public static function tableName()
     {
         return '{{%uploader_file}}';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         $params = Yii::$app->params;
@@ -48,9 +42,6 @@ class UploaderFile extends ActiveRecord
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [
@@ -77,17 +68,11 @@ class UploaderFile extends ActiveRecord
         return $path . DIRECTORY_SEPARATOR;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getUrl()
     {
         return static::getUploadUrl() . $this->meta_url;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getFilePath()
     {
         return static::getUploadPath() . $this->meta_url;

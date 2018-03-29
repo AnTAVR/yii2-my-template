@@ -20,17 +20,11 @@ use yii\helpers\Url;
  */
 class StaticPage extends ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
     public static function tableName()
     {
         return '{{%page_static}}';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         $params = Yii::$app->params;
@@ -62,9 +56,6 @@ class StaticPage extends ActiveRecord
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [
@@ -86,9 +77,6 @@ class StaticPage extends ActiveRecord
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getUrl()
     {
         return Url::to(['/static/index', 'meta_url' => $this->meta_url]);

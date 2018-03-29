@@ -34,9 +34,6 @@ class Articles extends ActiveRecord
 
     static $statusNames = [];
 
-    /**
-     * @inheritdoc
-     */
     public static function tableName()
     {
         return '{{%page_articles}}';
@@ -60,9 +57,6 @@ class Articles extends ActiveRecord
         return self::$statusNames[$this->status];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         $params = Yii::$app->params;
@@ -109,9 +103,6 @@ class Articles extends ActiveRecord
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [
@@ -167,17 +158,11 @@ class Articles extends ActiveRecord
         return isset(self::$statusNames[$this->status]) ? self::$statusNames[$this->status] : 'None';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getArrUrl()
     {
         return ['/articles/default/view', 'meta_url' => $this->meta_url];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getUrl()
     {
         return Url::to($this->arrUrl);

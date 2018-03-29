@@ -19,9 +19,6 @@ class m000099_000000_create_user extends Migration
         $this->tableName = User::tableName();
     }
 
-    /**
-     * @inheritdoc
-     */
     public function up()
     {
         if ($this->db->driverName !== 'mysql') {
@@ -56,9 +53,6 @@ class m000099_000000_create_user extends Migration
         $this->createIndex($name, $this->tableName, $name);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function down()
     {
         $this->dropTable($this->tableName);

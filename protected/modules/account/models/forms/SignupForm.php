@@ -16,9 +16,6 @@ class SignupForm extends User
     public $verifyRules;
     public $verifyCode;
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         $params = Yii::$app->getModule('account')->params;
@@ -58,9 +55,6 @@ class SignupForm extends User
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         $labels = [
@@ -72,9 +66,6 @@ class SignupForm extends User
         return ArrayHelper::merge(parent::attributeLabels(), $labels);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeHints()
     {
         $params = Yii::$app->getModule('account')->params;

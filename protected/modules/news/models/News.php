@@ -35,9 +35,6 @@ class News extends ActiveRecord
 
     static $statusNames = [];
 
-    /**
-     * @inheritdoc
-     */
     public static function tableName()
     {
         return '{{%page_news}}';
@@ -61,9 +58,6 @@ class News extends ActiveRecord
         return self::$statusNames[$this->status];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         $params = Yii::$app->params;
@@ -110,9 +104,6 @@ class News extends ActiveRecord
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [
@@ -168,17 +159,11 @@ class News extends ActiveRecord
         return isset(self::$statusNames[$this->status]) ? self::$statusNames[$this->status] : 'None';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getArrUrl()
     {
         return ['/news/default/view', 'meta_url' => $this->meta_url];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getUrl()
     {
         return Url::to($this->arrUrl);

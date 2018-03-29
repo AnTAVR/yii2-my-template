@@ -7,9 +7,6 @@ use Yii;
 
 class Module extends ModuleOld
 {
-    /**
-     * @inheritdoc
-     */
     public function init()
     {
         parent::init();

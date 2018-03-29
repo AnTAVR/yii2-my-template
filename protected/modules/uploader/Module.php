@@ -8,9 +8,6 @@ class Module extends ModuleOld
 {
     public $defaultRoute = 'admin-default';
 
-    /**
-     * @inheritdoc
-     */
     public function init()
     {
         parent::init();

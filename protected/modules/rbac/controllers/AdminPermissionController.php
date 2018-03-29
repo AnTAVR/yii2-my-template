@@ -4,7 +4,6 @@ namespace app\modules\rbac\controllers;
 
 use app\components\AdminController;
 use app\modules\rbac\models\Permission;
-use app\modules\rbac\models\searches\PermissionSearch;
 use Yii;
 use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
@@ -14,9 +13,6 @@ use yii\web\Response;
 
 class AdminPermissionController extends AdminController
 {
-    /**
-     * @inheritdoc
-     */
     public function behaviors()
     {
         return ArrayHelper::merge(parent::behaviors(), [
