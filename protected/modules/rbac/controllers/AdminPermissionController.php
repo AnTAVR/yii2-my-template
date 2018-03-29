@@ -91,10 +91,9 @@ class AdminPermissionController extends AdminController
      */
     public function actionCreate()
     {
-        $request = Yii::$app->request;
         $model = new Permission(null);
-        if ($model->load($request->post()) && $model->save()) {
-            return $this->redirect(['view', 'name' => $model->name]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->name]);
         }
         return $this->render('create', [
             'model' => $model,
@@ -138,5 +137,4 @@ class AdminPermissionController extends AdminController
         $this->findModel($id)->delete();
         return $this->redirect(['index']);
     }
-
 }
