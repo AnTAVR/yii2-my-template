@@ -24,7 +24,8 @@ class Role extends AuthItem
     public static function getPermissions($roleName)
     {
         $authManager = Yii::$app->authManager;
-        return $authManager->getPermissionsByRole($roleName);
+        $items = $authManager->getPermissionsByRole($roleName);
+        return $items;
     }
 
     public function afterSave(/** @noinspection PhpUnusedParameterInspection */
