@@ -37,21 +37,6 @@ abstract class Item extends Model
         ];
     }
 
-    public function beforeSave($insert)
-    {
-        $event = new ModelEvent();
-        $this->trigger($insert ? self::EVENT_BEFORE_INSERT : self::EVENT_BEFORE_UPDATE, $event);
-
-        return $event->isValid;
-    }
-
-    public function afterSave($insert, $changedAttributes)
-    {
-        $this->trigger($insert ? self::EVENT_AFTER_INSERT : self::EVENT_AFTER_UPDATE, new AfterSaveEvent([
-            'changedAttributes' => $changedAttributes,
-        ]));
-    }
-
     /**
      * Delete Item
      * @return  boolean
@@ -114,6 +99,61 @@ abstract class Item extends Model
      * @param bool $runValidation
      * @param null|array $attributeNames
      * @return boolean
+     * @throws \Exception
      */
-    abstract public function save($runValidation = true, $attributeNames = null);
+    public function save(/** @noinspection PhpUnusedParameterInspection */
+        $runValidation = true, $attributeNames = null)
+    {
+        if ($runValidation && !$this->validate()) {
+            return false;
+        }
+
+        $this->beforeSave(false);
+
+        $authManager = Yii::$app->authManager;
+
+        $item = $this->newItem();
+
+        // save
+        if ($this->isNewRecord) {
+            if (!$authManager->add($item)) {
+                return false;
+            }
+        } else {
+            if (!$authManager->update($this->item->name, $item)) {
+                return false;
+            }
+        }
+
+        $this->item = $item;
+
+        $this->createdAt = $item->createdAt;
+        $this->updatedAt = $item->updatedAt;
+
+        $this->isNewRecord = false;
+
+        $this->afterSave(false, $this->attributes);
+
+        return true;
+    }
+
+    public function beforeSave($insert)
+    {
+        $event = new ModelEvent();
+        $this->trigger($insert ? self::EVENT_BEFORE_INSERT : self::EVENT_BEFORE_UPDATE, $event);
+
+        return $event->isValid;
+    }
+
+    /**
+     * @return \yii\rbac\Role|\yii\rbac\Permission|\yii\rbac\Rule
+     */
+    abstract protected function newItem();
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        $this->trigger($insert ? self::EVENT_AFTER_INSERT : self::EVENT_AFTER_UPDATE, new AfterSaveEvent([
+            'changedAttributes' => $changedAttributes,
+        ]));
+    }
 }
