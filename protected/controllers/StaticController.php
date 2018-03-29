@@ -33,8 +33,7 @@ class StaticController extends Controller
     {
         if (($model = StaticPage::findOne(['meta_url' => $meta_url])) !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
         }
+        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 }

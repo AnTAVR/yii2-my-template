@@ -50,8 +50,7 @@ class DefaultController extends Controller
     {
         if (($model = Articles::findOne(['meta_url' => $meta_url, 'status' => Articles::STATUS_ACTIVE])) !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
         }
+        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 }
