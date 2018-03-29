@@ -2,7 +2,7 @@
 
 
 /* @var $this \yii\web\View */
-/* @var $model \app\modules\rbac\models\AuthItem */
+/* @var $model \app\modules\rbac\models\Rule */
 
 ?>
 <?= $this->render('_form', [

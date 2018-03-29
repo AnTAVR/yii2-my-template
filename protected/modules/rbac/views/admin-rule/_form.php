@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this \yii\web\View */
-/* @var $model \app\modules\rbac\models\AuthItem */
+/* @var $model \app\modules\rbac\models\Rule */
 ?>
 <?php $form = ActiveForm::begin(); ?>
 
