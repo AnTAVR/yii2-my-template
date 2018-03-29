@@ -17,7 +17,7 @@ abstract class Item extends Model
     const EVENT_BEFORE_UPDATE = 'beforeUpdate';
     const EVENT_AFTER_UPDATE = 'afterUpdate';
 
-    public $type;
+    const TYPE = null;
 
     public $name;
 
@@ -75,18 +75,16 @@ abstract class Item extends Model
     public function uniqueValidator()
     {
         $authManager = Yii::$app->authManager;
-        $error = false;
 
-        if (in_array($this->type, [yii\rbac\Item::TYPE_PERMISSION, yii\rbac\Item::TYPE_ROLE])) {
-            if ($authManager->getRole($this->name) || $authManager->getPermission($this->name)) {
-                $error = true;
-            }
+        if (static::TYPE === yii\rbac\Item::TYPE_ROLE) {
+            $item = $authManager->getRole($this->name);
+        } elseif (static::TYPE === yii\rbac\Item::TYPE_PERMISSION) {
+            $item = $authManager->getPermission($this->name);
         } else {
-            if ($authManager->getRule($this->name)) {
-                $error = true;
-            }
+            $item = $authManager->getRule($this->name);
         }
-        if ($error) {
+
+        if (!$item) {
             $this->addError('name', Yii::t('yii', '{attribute} "{value}" has already been taken.', [
                 'attribute' => $this->getAttributeLabel('name'),
                 'value' => $this->name,
@@ -166,9 +164,9 @@ abstract class Item extends Model
     {
         $authManager = Yii::$app->authManager;
 
-        if ($this->type === yii\rbac\Item::TYPE_PERMISSION) {
+        if (static::TYPE === yii\rbac\Item::TYPE_PERMISSION) {
             $item = $authManager->getPermission($name);
-        } elseif ($this->type === yii\rbac\Item::TYPE_ROLE) {
+        } elseif (static::TYPE === yii\rbac\Item::TYPE_ROLE) {
             $item = $authManager->getRole($name);
         } else {
             $item = $authManager->getRule($name);
