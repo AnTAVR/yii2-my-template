@@ -9,14 +9,12 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 $authManager = Yii::$app->authManager;
-
-$roles = ArrayHelper::map($authManager->getRoles(), 'name', 'name');
 ?>
 <?php $form = ActiveForm::begin(); ?>
 
 <?= $form->field($model, 'userId')->textInput() ?>
 
-<?= $form->field($model, 'roles')->checkboxList($roles, [
+<?= $form->field($model, 'roles')->checkboxList(ArrayHelper::map($authManager->getRoles(), 'name', 'name'), [
     'separator' => '<br>',
 //    'item' => fu,
 ]) ?>
