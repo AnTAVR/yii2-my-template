@@ -11,13 +11,6 @@ class Role extends AuthItem
 
     public $permissions = [];
 
-    public static function find($name)
-    {
-        $authManager = Yii::$app->authManager;
-        $item = $authManager->getRole($name);
-        return new self($item);
-    }
-
     public function init()
     {
         parent::init();
@@ -28,6 +21,13 @@ class Role extends AuthItem
             }
             $this->permissions = $permissions;
         }
+    }
+
+    public static function find($name)
+    {
+        $authManager = Yii::$app->authManager;
+        $item = $authManager->getRole($name);
+        return new self($item);
     }
 
     public static function getPermissions($name)
@@ -46,7 +46,10 @@ class Role extends AuthItem
     public function afterSave(/** @noinspection PhpUnusedParameterInspection */
         $insert, $changedAttributes)
     {
+        parent::afterSave($insert, $changedAttributes);
+
         $authManager = Yii::$app->authManager;
+
         $role = $authManager->getRole($this->item->name);
         if (!$insert) {
             $authManager->removeChildren($role);
