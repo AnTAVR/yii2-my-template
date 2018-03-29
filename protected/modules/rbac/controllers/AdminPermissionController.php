@@ -7,7 +7,6 @@ use app\modules\rbac\models\Permission;
 use Yii;
 use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Html;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
@@ -51,19 +50,6 @@ class AdminPermissionController extends AdminController
      */
     public function actionView($id)
     {
-        $request = Yii::$app->request;
-        if ($request->isAjax) {
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            return [
-                'title' => $id,
-                'content' => $this->renderPartial('view', [
-                    'model' => $this->findModel($id),
-                ]),
-                'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
-                    Html::a(Yii::t('app', 'Edit'), ['update', 'name' => $id], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
-            ];
-        }
-
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
