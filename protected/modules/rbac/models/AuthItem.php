@@ -41,14 +41,11 @@ abstract class AuthItem extends Model
     public function unique()
     {
         $authManager = Yii::$app->authManager;
-        $value = $this->name;
-        if ($authManager->getRole($value) !== null || $authManager->getPermission($value) !== null) {
-            $message = Yii::t('yii', '{attribute} "{value}" has already been taken.');
-            $params = [
+        if ($authManager->getRole($this->name) !== null || $authManager->getPermission($this->name) !== null) {
+            $this->addError('name', Yii::t('yii', '{attribute} "{value}" has already been taken.', [
                 'attribute' => $this->getAttributeLabel('name'),
-                'value' => $value,
-            ];
-            $this->addError('name', Yii::$app->getI18n()->format($message, $params, Yii::$app->language));
+                'value' => $this->name,
+            ]));
         }
     }
 
@@ -58,15 +55,19 @@ abstract class AuthItem extends Model
     public function rules()
     {
         return [
-            [['ruleName'], 'in',
-                'range' => array_keys(Yii::$app->authManager->getRules()),
-                'message' => Yii::t('app', 'Rule not exists')],
-            [['name'], 'required'],
-            [['name'], 'unique', 'when' => function () {
+            ['name', 'required'],
+            ['name', 'string', 'max' => 64],
+            ['name', 'unique', 'when' => function () {
                 return $this->isNewRecord || ($this->item->name != $this->name);
             }],
-            [['description', 'data', 'ruleName'], 'default'],
-            [['name'], 'string', 'max' => 64]
+
+            ['ruleName', 'in',
+                'range' => array_keys(Yii::$app->authManager->getRules()),
+                'message' => Yii::t('app', 'Rule not exists')],
+            ['ruleName', 'default'],
+
+            ['description', 'default'],
+            ['data', 'default'],
         ];
     }
 
@@ -80,6 +81,7 @@ abstract class AuthItem extends Model
             'description' => Yii::t('app', 'Description'),
             'ruleName' => Yii::t('app', 'Rule Name'),
             'data' => Yii::t('app', 'Data'),
+            'permissions' => Yii::t('app', 'Permissions'),
         ];
     }
 

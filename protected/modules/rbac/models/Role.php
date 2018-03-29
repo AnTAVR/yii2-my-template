@@ -58,14 +58,6 @@ class Role extends AuthItem
         }
     }
 
-    public function attributeLabels()
-    {
-        $labels = parent::attributeLabels();
-        $labels['name'] = Yii::t('app', 'Role name');
-        $labels['permissions'] = Yii::t('app', 'Permissions');
-        return $labels;
-    }
-
     protected function getType()
     {
         return Item::TYPE_ROLE;

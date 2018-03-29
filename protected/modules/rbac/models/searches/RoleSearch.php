@@ -2,7 +2,6 @@
 
 namespace app\modules\rbac\models\searches;
 
-use Yii;
 use yii\rbac\Item;
 
 class RoleSearch extends AuthItemSearch
@@ -11,17 +10,6 @@ class RoleSearch extends AuthItemSearch
     public function __construct($config = [])
     {
         parent::__construct($item = null, $config);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        $labels = parent::attributeLabels();
-        $labels['name'] = Yii::t('app', 'Role name');
-        $labels['permissions'] = Yii::t('app', 'Permissions');
-        return $labels;
     }
 
     /**
