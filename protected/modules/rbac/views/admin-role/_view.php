@@ -6,6 +6,12 @@
 use yii\widgets\DetailView;
 
 ?>
-<?= $this->render('_view', [
+<?= DetailView::widget([
     'model' => $model,
+    'attributes' => [
+        'name',
+        'description',
+        'ruleName',
+        'permissions',
+    ],
 ]) ?>

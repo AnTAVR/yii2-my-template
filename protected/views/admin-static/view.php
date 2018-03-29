@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
 
 /* @var $this \yii\web\View */
 /* @var $model \app\models\StaticPage */
@@ -28,15 +27,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
 </p>
-
-<?= DetailView::widget([
+<?= $this->render('_view', [
     'model' => $model,
-    'attributes' => [
-        'meta_url',
-        'url',
-        'content_title',
-        'content_full:raw',
-        'meta_description',
-        'meta_keywords',
-    ],
 ]) ?>

@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
 
 /* @var $this \yii\web\View */
 /* @var $model \app\modules\uploader\models\UploaderFile */
@@ -26,13 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
 </p>
-
-<?= DetailView::widget([
+<?= $this->render('_view', [
     'model' => $model,
-    'attributes' => [
-        'meta_url',
-        'url',
-        'file',
-        'comment:ntext',
-    ],
 ]) ?>
