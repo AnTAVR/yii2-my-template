@@ -34,7 +34,12 @@ class m000099_000004_init extends Migration
     {
         $auth = Yii::$app->authManager;
 
-        $this->createRole('root-role', 1, 'Root role');
+        $rootRole = $this->createRole('root-role', 1, 'Root role');
+
+        $openAdminPanelPermission = $auth->createPermission('openAdminPanel');
+        $openAdminPanelPermission->description = 'Open Admin Panel';
+        $auth->add($openAdminPanelPermission);
+        $auth->addChild($rootRole, $openAdminPanelPermission);
 
 
         $usersRole = $this->createRole('users-role', [1, 2], 'Users role');
@@ -61,6 +66,7 @@ class m000099_000004_init extends Migration
         $updatePostPermission->description = 'Update post';
         $auth->add($updatePostPermission);
         $auth->addChild($authorRole, $updatePostPermission);
+
 
         $this->createRole('moderator-role', 1, 'Moderator role');
     }
