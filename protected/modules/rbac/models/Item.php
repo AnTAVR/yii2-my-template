@@ -28,6 +28,26 @@ abstract class Item extends Model
 
     protected $item;
 
+    /**
+     * Find model by id
+     * @param string $name
+     * @return null|static
+     */
+    static public function find($name)
+    {
+        $authManager = Yii::$app->authManager;
+
+        if (static::TYPE === yii\rbac\Item::TYPE_PERMISSION) {
+            $item = $authManager->getPermission($name);
+        } elseif (static::TYPE === yii\rbac\Item::TYPE_ROLE) {
+            $item = $authManager->getRole($name);
+        } else {
+            $item = $authManager->getRule($name);
+        }
+
+        return $item ? new static($item) : null;
+    }
+
     public function attributeLabels()
     {
         return [
@@ -153,25 +173,5 @@ abstract class Item extends Model
         $this->trigger($insert ? self::EVENT_AFTER_INSERT : self::EVENT_AFTER_UPDATE, new AfterSaveEvent([
             'changedAttributes' => $changedAttributes,
         ]));
-    }
-
-    /**
-     * Find model by id
-     * @param string $name
-     * @return null|static
-     */
-    public function find($name)
-    {
-        $authManager = Yii::$app->authManager;
-
-        if (static::TYPE === yii\rbac\Item::TYPE_PERMISSION) {
-            $item = $authManager->getPermission($name);
-        } elseif (static::TYPE === yii\rbac\Item::TYPE_ROLE) {
-            $item = $authManager->getRole($name);
-        } else {
-            $item = $authManager->getRule($name);
-        }
-
-        return $item ? new static($item) : null;
     }
 }
