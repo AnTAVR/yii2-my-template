@@ -33,7 +33,7 @@ class Rule extends Item
     {
         return [
             ['name', 'required'],
-            [['name'], 'uniqueValidator',
+            ['name', 'uniqueValidator',
                 'when' => function () {
                     return $this->isNewRecord || ($this->item->name != $this->name);
                 }],
@@ -56,19 +56,14 @@ class Rule extends Item
      */
     public function classExistsValidator()
     {
-        $message = null;
         if (!class_exists($this->className)) {
-            $message = 'Class "{className}" not exist';
+            $this->addError('className', Yii::t('app', 'Class "{className}" not exist', ['className' => $this->className]));
         } else if (!is_subclass_of($this->className, yii\rbac\Rule::class)) {
-            $message = 'Class "{className}" must extends yii\rbac\Rule';
+            $this->addError('className', Yii::t('app', 'Class "{className}" must extends yii\rbac\Rule', ['className' => $this->className]));
         } else if ((new $this->className())->name === null) {
-            $message = 'The "{className}::\$name" is not set';
+            $this->addError('className', Yii::t('app', 'The "{className}::\$name" is not set', ['className' => $this->className]));
         } else if ((new $this->className())->name !== $this->name) {
-            $message = 'The "{className}::\$name" is incorrect with the name of rule you have set';
-        }
-
-        if ($message !== null) {
-            $this->addError('className', Yii::t('app', $message, ['className' => $this->className]));
+            $this->addError('className', Yii::t('app', 'The "{className}::\$name" is incorrect with the name of rule you have set', ['className' => $this->className]));
         }
     }
 
@@ -77,19 +72,5 @@ class Rule extends Item
         $class = $this->className;
         $item = new $class();
         return $item;
-    }
-
-    /**
-     * Find model by id
-     * @param $name
-     * @return null|static
-     */
-    public static function find($name)
-    {
-        $item = Yii::$app->authManager->getRule($name);
-        if ($item !== null) {
-            return new self($item);
-        }
-        return null;
     }
 }
