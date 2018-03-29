@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
 
 /* @var $this \yii\web\View */
 /* @var $model \app\modules\rbac\models\Permission */
@@ -28,13 +27,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
 </p>
-<?= DetailView::widget([
+<?= $this->render('_view', [
     'model' => $model,
-    'attributes' => [
-        'name',
-        'description',
-        'ruleName',
-        'createdAt:datetime',
-        'updatedAt:datetime',
-    ],
 ]) ?>
