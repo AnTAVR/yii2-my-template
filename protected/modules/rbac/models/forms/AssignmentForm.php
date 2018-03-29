@@ -38,7 +38,6 @@ class AssignmentForm extends Model
     public function attributeLabels()
     {
         return [
-            'userId' => Yii::t('app', 'User ID'),
             'roles' => Yii::t('app', 'Roles'),
         ];
     }
