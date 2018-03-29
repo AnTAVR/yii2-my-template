@@ -6,5 +6,5 @@ use yii\rbac\Item;
 
 class Permission extends AuthItem
 {
-    public $type = Item::TYPE_PERMISSION;
+    const TYPE = Item::TYPE_PERMISSION;
 }
