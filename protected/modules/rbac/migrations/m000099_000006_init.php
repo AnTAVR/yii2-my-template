@@ -37,4 +37,19 @@ class m000099_000006_init extends Migration
 
         RBAC::createRole('moderator-role', 1, 'Moderator role');
     }
+
+    public function down()
+    {
+        $authManager = Yii::$app->authManager;
+
+        $authManager->remove($authManager->getRole('users-role'));
+        $authManager->remove($authManager->getPermission('createComment'));
+        $authManager->remove($authManager->getPermission('updateComment'));
+
+        $authManager->remove($authManager->getRole('author-role'));
+        $authManager->remove($authManager->getPermission('createPost'));
+        $authManager->remove($authManager->getPermission('updatePost'));
+
+        $authManager->remove($authManager->getRole('moderator-role'));
+    }
 }

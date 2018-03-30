@@ -14,6 +14,7 @@ class m000099_000004_init extends Migration
         $openAdminPanelPermission = $authManager->createPermission('root.openAdminPanel');
         $openAdminPanelPermission->description = 'Open Admin Panel';
         $authManager->add($openAdminPanelPermission);
+
         $authManager->addChild($rootRole, $openAdminPanelPermission);
     }
 
@@ -21,6 +22,7 @@ class m000099_000004_init extends Migration
     {
         $authManager = Yii::$app->authManager;
 
-        $authManager->removeAll();
+        $authManager->remove($authManager->getPermission('root.openAdminPanel'));
+        $authManager->remove($authManager->getRole('root-role'));
     }
 }
