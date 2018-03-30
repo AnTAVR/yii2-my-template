@@ -13,6 +13,8 @@ use yii\web\NotFoundHttpException;
 
 class AdminDumpController extends AdminController
 {
+    public $layout = '@app/views/layouts/admin';
+
     public function behaviors()
     {
         return [

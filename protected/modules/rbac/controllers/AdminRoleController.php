@@ -12,6 +12,8 @@ use yii\web\Response;
 
 class AdminRoleController extends AdminController
 {
+    public $layout = '@app/views/layouts/admin';
+
     public function behaviors()
     {
         return [

@@ -10,6 +10,8 @@ use yii\web\NotFoundHttpException;
 
 class AdminStaticController extends AdminController
 {
+    public $layout = '@app/views/layouts/admin';
+
     public $params = [
         'adminPageSize' => 10,
     ];

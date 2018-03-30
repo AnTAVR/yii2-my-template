@@ -6,6 +6,8 @@ use app\components\AdminController;
 
 class AdminDefaultController extends AdminController
 {
+    public $layout = '@app/views/layouts/admin';
+
     public function behaviors()
     {
         return [

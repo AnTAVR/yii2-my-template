@@ -12,6 +12,8 @@ use yii\web\NotFoundHttpException;
 
 class AdminFilesController extends AdminController
 {
+    public $layout = '@app/views/layouts/admin';
+
     public function behaviors()
     {
         return [
