@@ -2,13 +2,13 @@
 
 namespace app\modules\news\controllers;
 
-use app\components\AdminController;
 use app\modules\news\models\News;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class AdminDefaultController extends AdminController
+class AdminDefaultController extends Controller
 {
     public $layout = '@app/views/layouts/admin';
 

@@ -2,16 +2,16 @@
 
 namespace app\modules\rbac\controllers;
 
-use app\components\AdminController;
 use app\modules\rbac\models\Rule;
 use Yii;
 use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
-class AdminRuleController extends AdminController
+class AdminRuleController extends Controller
 {
     public $layout = '@app/views/layouts/admin';
 

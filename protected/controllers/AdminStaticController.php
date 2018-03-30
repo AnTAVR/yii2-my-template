@@ -2,13 +2,13 @@
 
 namespace app\controllers;
 
-use app\components\AdminController;
 use app\models\StaticPage;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class AdminStaticController extends AdminController
+class AdminStaticController extends Controller
 {
     public $layout = '@app/views/layouts/admin';
 

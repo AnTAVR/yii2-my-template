@@ -2,15 +2,15 @@
 
 namespace app\modules\rbac\controllers;
 
-use app\components\AdminController;
 use app\modules\rbac\models\Role;
 use app\modules\rbac\models\searches\RoleSearch;
 use Yii;
 use yii\helpers\Html;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
-class AdminRoleController extends AdminController
+class AdminRoleController extends Controller
 {
     public $layout = '@app/views/layouts/admin';
 

@@ -2,9 +2,9 @@
 
 namespace app\controllers;
 
-use app\components\AdminController;
+use yii\web\Controller;
 
-class AdminSiteController extends AdminController
+class AdminSiteController extends Controller
 {
     public $layout = '@app/views/layouts/admin';
 

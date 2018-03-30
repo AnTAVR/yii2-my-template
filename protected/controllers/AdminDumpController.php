@@ -2,16 +2,16 @@
 
 namespace app\controllers;
 
-use app\components\AdminController;
 use app\helpers\dump\BaseDump;
 use app\helpers\dump\DumpInterface;
 use Symfony\Component\Process\Process;
 use Yii;
 use yii\data\ArrayDataProvider;
+use yii\web\Controller;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
-class AdminDumpController extends AdminController
+class AdminDumpController extends Controller
 {
     public $layout = '@app/views/layouts/admin';
 

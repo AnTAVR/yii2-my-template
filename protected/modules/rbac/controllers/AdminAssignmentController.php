@@ -2,14 +2,14 @@
 
 namespace app\modules\rbac\controllers;
 
-use app\components\AdminController;
 use app\modules\account\models\User;
 use app\modules\rbac\models\forms\AssignmentForm;
 use app\modules\rbac\models\searches\AssignmentSearch;
 use Yii;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class AdminAssignmentController extends AdminController
+class AdminAssignmentController extends Controller
 {
     public $layout = '@app/views/layouts/admin';
 

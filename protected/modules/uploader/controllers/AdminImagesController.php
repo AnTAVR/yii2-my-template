@@ -2,15 +2,15 @@
 
 namespace app\modules\uploader\controllers;
 
-use app\components\AdminController;
 use app\modules\uploader\models\forms\UploaderImageForm;
 use app\modules\uploader\models\UploaderImage;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Json;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class AdminImagesController extends AdminController
+class AdminImagesController extends Controller
 {
     public $layout = '@app/views/layouts/admin';
 

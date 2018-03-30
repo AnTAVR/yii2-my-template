@@ -2,9 +2,9 @@
 
 namespace app\modules\rbac\controllers;
 
-use app\components\AdminController;
+use yii\web\Controller;
 
-class AdminDefaultController extends AdminController
+class AdminDefaultController extends Controller
 {
     public $layout = '@app/views/layouts/admin';
 
