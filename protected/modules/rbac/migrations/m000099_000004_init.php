@@ -11,7 +11,7 @@ class m000099_000004_init extends Migration
 
         RBAC::createRole('root-role', 1, 'Root role');
 
-        $permission = $authManager->createPermission('root.openAdminPanel');
+        $permission = $authManager->createPermission('site.openAdminPanel');
         $permission->description = 'Open Admin Panel';
         $authManager->add($permission);
     }
@@ -20,7 +20,7 @@ class m000099_000004_init extends Migration
     {
         $authManager = Yii::$app->authManager;
 
-        $authManager->remove($authManager->getPermission('root.openAdminPanel'));
+        $authManager->remove($authManager->getPermission('site.openAdminPanel'));
         $authManager->remove($authManager->getRole('root-role'));
     }
 }

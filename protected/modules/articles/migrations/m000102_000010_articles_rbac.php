@@ -12,7 +12,7 @@ class m000102_000010_articles_rbac extends Migration
         $permission->description = 'Open Articles Admin Panel';
         $authManager->add($permission);
 
-        $authManager->addChild($permission, $authManager->getPermission('root.openAdminPanel'));
+        $authManager->addChild($permission, $authManager->getPermission('site.openAdminPanel'));
 
         $authManager->addChild($authManager->getRole('root-role'), $permission);
     }

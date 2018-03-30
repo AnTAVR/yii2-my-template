@@ -12,7 +12,7 @@ class m000099_000005_rbac_rbac extends Migration
         $permission->description = 'Open RBAC Admin Panel';
         $authManager->add($permission);
 
-        $authManager->addChild($permission, $authManager->getPermission('root.openAdminPanel'));
+        $authManager->addChild($permission, $authManager->getPermission('site.openAdminPanel'));
 
         $authManager->addChild($authManager->getRole('root-role'), $permission);
     }

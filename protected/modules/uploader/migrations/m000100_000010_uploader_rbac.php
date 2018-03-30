@@ -12,7 +12,7 @@ class m000100_000010_uploader_rbac extends Migration
         $permission->description = 'Open Uploader Admin Panel';
         $authManager->add($permission);
 
-        $authManager->addChild($permission, $authManager->getPermission('root.openAdminPanel'));
+        $authManager->addChild($permission, $authManager->getPermission('site.openAdminPanel'));
 
         $authManager->addChild($authManager->getRole('root-role'), $permission);
     }

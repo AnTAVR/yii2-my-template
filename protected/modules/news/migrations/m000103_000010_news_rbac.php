@@ -12,7 +12,7 @@ class m000103_000010_news_rbac extends Migration
         $permission->description = 'Open News Admin Panel';
         $authManager->add($permission);
 
-        $authManager->addChild($permission, $authManager->getPermission('root.openAdminPanel'));
+        $authManager->addChild($permission, $authManager->getPermission('site.openAdminPanel'));
 
         $authManager->addChild($authManager->getRole('root-role'), $permission);
     }

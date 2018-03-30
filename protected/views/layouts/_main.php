@@ -68,7 +68,7 @@ if (Yii::$app->user->isGuest) {
     $profileItems = ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-in"></span> ' .
         Yii::t('app', 'Login'), 'url' => Yii::$app->user->loginUrl];
 } else {
-    if (Yii::$app->user->can('root.openAdminPanel')) {
+    if (Yii::$app->user->can('site.openAdminPanel')) {
         $profileItems = [
             ['label' => Yii::t('app', 'Admin panel'), 'url' => ['/admin-site'], 'linkOptions' => ['target' => '_blank']],
             '<li class="divider"></li>',

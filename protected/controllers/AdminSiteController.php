@@ -14,7 +14,7 @@ class AdminSiteController extends AdminController
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['root.openAdminPanel'],
+                        'roles' => ['site.openAdminPanel'],
                     ],
                 ],
             ],
