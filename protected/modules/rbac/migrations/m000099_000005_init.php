@@ -8,13 +8,13 @@ class m000099_000005_init extends Migration
     {
         $authManager = Yii::$app->authManager;
 
-        $rootRole = $authManager->getRole('root-role');
-
         $permission = $authManager->createPermission('rbac.openAdminPanel');
         $permission->description = 'Open RBAC Admin Panel';
         $authManager->add($permission);
 
-        $authManager->addChild($rootRole, $permission);
+        $authManager->addChild($permission, $authManager->getPermission('root.openAdminPanel'));
+
+        $authManager->addChild($authManager->getRole('root-role'), $permission);
     }
 
     public function down()
