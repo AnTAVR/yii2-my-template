@@ -15,14 +15,23 @@ class AdminRuleController extends AdminController
 {
     public function behaviors()
     {
-        return ArrayHelper::merge(parent::behaviors(), [
+        return [
+            'access' => [
+                'class' => '\yii\filters\AccessControl',
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['rbac.openAdminPanel'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => 'yii\filters\VerbFilter',
                 'actions' => [
                     'delete' => ['post'],
                 ],
             ],
-        ]);
+        ];
     }
 
     /**

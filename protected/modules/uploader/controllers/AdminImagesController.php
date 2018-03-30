@@ -7,7 +7,6 @@ use app\modules\uploader\models\forms\UploaderImageForm;
 use app\modules\uploader\models\UploaderImage;
 use Yii;
 use yii\data\ActiveDataProvider;
-use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
 
@@ -15,7 +14,16 @@ class AdminImagesController extends AdminController
 {
     public function behaviors()
     {
-        return ArrayHelper::merge(parent::behaviors(), [
+        return [
+            'access' => [
+                'class' => '\yii\filters\AccessControl',
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['uploader.openAdminPanel'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => 'yii\filters\VerbFilter',
                 'actions' => [
@@ -23,7 +31,7 @@ class AdminImagesController extends AdminController
                     'upload' => ['post'],
                 ],
             ],
-        ]);
+        ];
     }
 
     /**

@@ -6,7 +6,6 @@ use app\components\AdminController;
 use app\models\StaticPage;
 use Yii;
 use yii\data\ActiveDataProvider;
-use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 
 class AdminStaticController extends AdminController
@@ -17,14 +16,23 @@ class AdminStaticController extends AdminController
 
     public function behaviors()
     {
-        return ArrayHelper::merge(parent::behaviors(), [
+        return [
+            'access' => [
+                'class' => '\yii\filters\AccessControl',
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['static.openAdminPanel'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => 'yii\filters\VerbFilter',
                 'actions' => [
                     'delete' => ['post'],
                 ],
             ],
-        ]);
+        ];
     }
 
     /**

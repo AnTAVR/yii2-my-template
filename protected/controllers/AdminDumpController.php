@@ -8,16 +8,23 @@ use app\helpers\dump\DumpInterface;
 use Symfony\Component\Process\Process;
 use Yii;
 use yii\data\ArrayDataProvider;
-use yii\helpers\ArrayHelper;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
 class AdminDumpController extends AdminController
 {
-
     public function behaviors()
     {
-        return ArrayHelper::merge(parent::behaviors(), [
+        return [
+            'access' => [
+                'class' => '\yii\filters\AccessControl',
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['dump.openAdminPanel'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => '\yii\filters\VerbFilter',
                 'actions' => [
@@ -28,7 +35,7 @@ class AdminDumpController extends AdminController
                     'restore' => ['post'],
                 ],
             ],
-        ]);
+        ];
     }
 
     /**

@@ -6,7 +6,6 @@ use app\components\AdminController;
 use app\modules\rbac\models\Role;
 use app\modules\rbac\models\searches\RoleSearch;
 use Yii;
-use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
@@ -15,14 +14,23 @@ class AdminRoleController extends AdminController
 {
     public function behaviors()
     {
-        return ArrayHelper::merge(parent::behaviors(), [
+        return [
+            'access' => [
+                'class' => '\yii\filters\AccessControl',
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['rbac.openAdminPanel'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => 'yii\filters\VerbFilter',
                 'actions' => [
                     'delete' => ['post'],
                 ],
             ],
-        ]);
+        ];
     }
 
     /**
@@ -83,7 +91,6 @@ class AdminRoleController extends AdminController
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return array|string|Response
      * @throws \Exception
-     * @throws \yii\base\Exception
      */
     public function actionCreate()
     {

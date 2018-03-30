@@ -6,7 +6,6 @@ use app\components\AdminController;
 use app\modules\rbac\models\Permission;
 use Yii;
 use yii\data\ArrayDataProvider;
-use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
@@ -14,14 +13,23 @@ class AdminPermissionController extends AdminController
 {
     public function behaviors()
     {
-        return ArrayHelper::merge(parent::behaviors(), [
+        return [
+            'access' => [
+                'class' => '\yii\filters\AccessControl',
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['rbac.openAdminPanel'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => 'yii\filters\VerbFilter',
                 'actions' => [
                     'delete' => ['post'],
                 ],
-            ]
-        ]);
+            ],
+        ];
     }
 
     /**

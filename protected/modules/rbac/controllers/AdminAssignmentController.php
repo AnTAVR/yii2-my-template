@@ -11,6 +11,21 @@ use yii\web\NotFoundHttpException;
 
 class AdminAssignmentController extends AdminController
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => '\yii\filters\AccessControl',
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['rbac.openAdminPanel'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     /**
      * Show list of user for assignment
      * @return string
