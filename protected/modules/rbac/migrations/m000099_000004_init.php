@@ -11,11 +11,11 @@ class m000099_000004_init extends Migration
 
         $rootRole = RBAC::createRole('root-role', 1, 'Root role');
 
-        $openAdminPanelPermission = $authManager->createPermission('root.openAdminPanel');
-        $openAdminPanelPermission->description = 'Open Admin Panel';
-        $authManager->add($openAdminPanelPermission);
+        $permission = $authManager->createPermission('root.openAdminPanel');
+        $permission->description = 'Open Admin Panel';
+        $authManager->add($permission);
 
-        $authManager->addChild($rootRole, $openAdminPanelPermission);
+        $authManager->addChild($rootRole, $permission);
     }
 
     public function down()
