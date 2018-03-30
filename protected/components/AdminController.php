@@ -17,7 +17,7 @@ class AdminController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['openAdminPanel'],
+                        'roles' => ['root.openAdminPanel'],
                     ],
                 ],
             ],
