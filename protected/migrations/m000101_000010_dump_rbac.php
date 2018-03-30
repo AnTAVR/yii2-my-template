@@ -2,14 +2,14 @@
 
 use yii\db\Migration;
 
-class m000099_000005_rbac extends Migration
+class m000101_000010_dump_rbac extends Migration
 {
     public function up()
     {
         $authManager = Yii::$app->authManager;
 
-        $permission = $authManager->createPermission('rbac.openAdminPanel');
-        $permission->description = 'Open RBAC Admin Panel';
+        $permission = $authManager->createPermission('dump.openAdminPanel');
+        $permission->description = 'Open Dump Admin Panel';
         $authManager->add($permission);
 
         $authManager->addChild($permission, $authManager->getPermission('root.openAdminPanel'));
@@ -21,6 +21,6 @@ class m000099_000005_rbac extends Migration
     {
         $authManager = Yii::$app->authManager;
 
-        $authManager->remove($authManager->getPermission('rbac.openAdminPanel'));
+        $authManager->remove($authManager->getPermission('dump.openAdminPanel'));
     }
 }
