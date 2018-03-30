@@ -18,13 +18,13 @@ class LogoutController extends Controller
 
     public function behaviors()
     {
-        return ArrayHelper::merge(parent::behaviors(), [
+        return [
             'verbs' => [
                 'class' => 'yii\filters\VerbFilter',
                 'actions' => [
                     'index' => ['post'],
                 ],
             ],
-        ]);
+        ];
     }
 }

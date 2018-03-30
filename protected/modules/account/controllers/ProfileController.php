@@ -5,14 +5,13 @@ namespace app\modules\account\controllers;
 use app\modules\account\models\forms\PasswordEditForm;
 use app\modules\account\models\User;
 use Yii;
-use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 
 class ProfileController extends Controller
 {
     public function behaviors()
     {
-        return ArrayHelper::merge(parent::behaviors(), [
+        return [
             'access' => [
                 'class' => '\yii\filters\AccessControl',
                 'rules' => [
@@ -29,7 +28,7 @@ class ProfileController extends Controller
                     'avatar-delete' => ['post'],
                 ],
             ],
-        ]);
+        ];
     }
 
     /**
