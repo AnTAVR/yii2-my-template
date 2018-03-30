@@ -4,7 +4,6 @@ namespace app\modules\account\models;
 
 use Yii;
 use yii\db\ActiveRecord;
-use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\web\IdentityInterface;
 use yii\web\UnauthorizedHttpException;
@@ -150,14 +149,13 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function attributeLabels()
     {
-        $labels = [
+        return [
             'id' => Yii::t('app', 'ID'),
             'username' => Yii::t('app', 'Username'),
             'email' => Yii::t('app', 'E-Mail'),
             'status_txt' => Yii::t('app', 'Status'),
             'roles' => Yii::t('app', 'Roles'),
         ];
-        return ArrayHelper::merge(parent::attributeLabels(), $labels);
     }
 
     public function rules()

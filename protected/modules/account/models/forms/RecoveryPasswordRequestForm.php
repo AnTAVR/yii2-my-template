@@ -26,17 +26,15 @@ class RecoveryPasswordRequestForm extends User
 
     public function attributeLabels()
     {
-        $labels = [
+        return ArrayHelper::merge(parent::attributeLabels(), [
             'verifyCode' => Yii::t('app', 'Verification Code'),
-        ];
-        return ArrayHelper::merge(parent::attributeLabels(), $labels);
+        ]);
     }
 
     public function attributeHints()
     {
-        $hints = [
+        return ArrayHelper::merge(parent::attributeHints(), [
             'email' => Yii::t('app', 'Enter E-Mail corresponding to the account, it will be sent an email with instructions.'),
-        ];
-        return ArrayHelper::merge(parent::attributeHints(), $hints);
+        ]);
     }
 }

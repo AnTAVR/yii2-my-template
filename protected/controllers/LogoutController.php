@@ -2,18 +2,15 @@
 
 namespace app\controllers;
 
-use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 
 class LogoutController extends Controller
 {
     public function actions()
     {
-        $actions = [
+        return [
             'index' => 'app\modules\account\actions\LogoutAction',
         ];
-
-        return ArrayHelper::merge(parent::actions(), $actions);
     }
 
     public function behaviors()

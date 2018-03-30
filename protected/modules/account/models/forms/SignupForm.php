@@ -57,25 +57,23 @@ class SignupForm extends User
 
     public function attributeLabels()
     {
-        $labels = [
+        return ArrayHelper::merge(parent::attributeLabels(), [
             'password' => Yii::t('app', 'Password'),
             'repeatPassword' => Yii::t('app', 'Repeat password'),
             'verifyRules' => Yii::t('app', 'Verify Rules'),
             'verifyCode' => Yii::t('app', 'Verification Code'),
-        ];
-        return ArrayHelper::merge(parent::attributeLabels(), $labels);
+        ]);
     }
 
     public function attributeHints()
     {
         $params = Yii::$app->getModule('account')->params;
-        $hints = [
+        return ArrayHelper::merge(parent::attributeHints(), [
             'username' => Yii::t('app', 'Possible characters ({chars})', ['chars' => $params['username.hint']]),
             'email' => Yii::t('app', 'E-Mail must be valid, a letter with instructions will be sent to it.'),
             'password' => Yii::t('app', 'Set a complex password using uppercase and lowercase letters, numbers and special characters.'),
             'verifyRules' => Html::a(Yii::t('app', 'Rules'), ['/static/index', 'meta_url' => 'rules'], ['class' => 'label label-success', 'target' => '_blank']),
-        ];
-        return ArrayHelper::merge(parent::attributeHints(), $hints);
+        ]);
     }
 
     public function signup($runValidation = true)

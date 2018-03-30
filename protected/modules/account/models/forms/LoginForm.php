@@ -44,12 +44,11 @@ class LoginForm extends User
 
     public function attributeLabels()
     {
-        $labels = [
+        return ArrayHelper::merge(parent::attributeLabels(), [
             'password' => Yii::t('app', 'Password'),
             'rememberMe' => Yii::t('app', 'Remember Me'),
             'verifyCode' => Yii::t('app', 'Verification Code'),
-        ];
-        return ArrayHelper::merge(parent::attributeLabels(), $labels);
+        ]);
     }
 
     public function attributeHints()
