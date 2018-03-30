@@ -119,6 +119,7 @@ $__config = [
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
 //            'defaultRoles' => ['users-role'],
+            'cache' => YII_ENV_DEV ? null : 'cache',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
