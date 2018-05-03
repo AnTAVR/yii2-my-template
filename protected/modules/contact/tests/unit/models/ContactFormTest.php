@@ -1,8 +1,8 @@
 <?php
 
-namespace tests\unit\models;
+namespace contact\tests\unit\models;
 
-use app\models\forms\ContactForm;
+use app\modules\contact\models\forms\ContactForm;
 use Codeception\Test\Unit;
 use Yii;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace tests\functional;
+namespace contact\tests\functional;
 
-use tests\FunctionalTester;
+use contact\tests\FunctionalTester;
 use Yii;
 
 /* @var $scenario \Codeception\Scenario */
@@ -10,7 +10,7 @@ class ContactCest
 {
     public function _before(FunctionalTester $I)
     {
-        $I->amOnPage(['site/contact']);
+        $I->amOnPage(['contact']);
     }
 
     public function checkContactPage(FunctionalTester $I)
@@ -34,7 +34,7 @@ class ContactCest
         $I->seeValidationError('Email cannot be blank');
         $I->seeValidationError('Subject cannot be blank');
         $I->seeValidationError('Body cannot be blank');
-        $I->seeValidationError('The verification code is incorrect');
+//        $I->seeValidationError('The verification code is incorrect');
     }
 
     public function checkContactSubmitNotCorrectEmail(FunctionalTester $I)
