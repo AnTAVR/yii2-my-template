@@ -44,9 +44,17 @@ $__config = [
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
-                [
+                'file' => [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
+                ],
+                'email' => [
+                    'class' => 'yii\log\EmailTarget',
+                    'levels' => ['error', 'warning'],
+                    'message' => [
+                        'to' => $params['adminEmail'],
+                        'from' => $params['supportEmail'],
+                    ],
                 ],
             ],
         ],
