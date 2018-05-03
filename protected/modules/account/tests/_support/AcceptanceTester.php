@@ -1,6 +1,6 @@
 <?php
 
-namespace account\tests;
+namespace account;
 
 use Codeception\Actor;
 use Codeception\Lib\Friend;

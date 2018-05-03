@@ -1,8 +1,7 @@
 <?php
 
-namespace account\tests\functional;
+namespace account;
 
-use tests\FunctionalTester;
 use Yii;
 
 class LoginCest
