@@ -1,4 +1,4 @@
-namespace: news\tests
+namespace: news
 paths:
     tests: tests
     output: tests/_output
