@@ -1,8 +1,7 @@
 <?php
 
-namespace tests\functional;
+namespace tests;
 
-use tests\FunctionalTester;
 use Yii;
 
 class HomeCest
