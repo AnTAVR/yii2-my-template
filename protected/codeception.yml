@@ -3,11 +3,11 @@ include:
     - modules/account
     - modules/contact
     - modules/callback
-#    - modules/rbac
-#    - modules/uploader
-#    - modules/articles
-#    - modules/news
-#    - modules/products
+    - modules/rbac
+    - modules/uploader
+    - modules/articles
+    - modules/news
+    - modules/products
 paths:
     tests: tests
     log: runtime/logs
