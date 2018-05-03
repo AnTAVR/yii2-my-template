@@ -1,6 +1,6 @@
 <?php
 
-namespace uploader\tests;
+namespace uploader;
 
 use Codeception\Actor;
 
