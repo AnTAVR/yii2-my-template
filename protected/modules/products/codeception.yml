@@ -1,4 +1,4 @@
-namespace: products\tests
+namespace: products
 paths:
     tests: tests
     output: tests/_output
