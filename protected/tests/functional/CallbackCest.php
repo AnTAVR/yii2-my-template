@@ -31,8 +31,8 @@ class CallbackCest
         $I->submitForm('#callback-form', []);
         $I->see('Request for a call back', 'h1');
         $I->seeValidationError('Contact number cannot be blank');
-        $I->seeValidationError('How can I call you? cannot be blank.');
-        $I->seeValidationError('The verification code is incorrect');
+        $I->seeValidationError('Name cannot be blank.');
+//        $I->seeValidationError('The verification code is incorrect');
     }
 
     public function checkCallbackSubmitNotCorrectPhone(FunctionalTester $I)
