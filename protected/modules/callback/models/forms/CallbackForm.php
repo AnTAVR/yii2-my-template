@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models\forms;
+namespace app\modules\callback\models\forms;
 
 use borales\extensions\phoneInput\PhoneInputValidator;
 use Yii;

@@ -2,6 +2,7 @@ namespace: tests
 include:
     - modules/account
     - modules/contact
+    - modules/callback
 #    - modules/rbac
 #    - modules/uploader
 #    - modules/articles

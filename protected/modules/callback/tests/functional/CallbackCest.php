@@ -1,8 +1,8 @@
 <?php
 
-namespace tests\functional;
+namespace callback\tests\functional;
 
-use tests\FunctionalTester;
+use callback\tests\FunctionalTester;
 use Yii;
 
 /* @var $scenario \Codeception\Scenario */
@@ -10,7 +10,7 @@ class CallbackCest
 {
     public function _before(FunctionalTester $I)
     {
-        $I->amOnPage(['site/callback']);
+        $I->amOnPage(['callback']);
     }
 
     public function checkCallbackPage(FunctionalTester $I)

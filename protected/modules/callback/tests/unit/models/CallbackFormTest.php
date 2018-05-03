@@ -1,15 +1,15 @@
 <?php
 
-namespace tests\unit\models;
+namespace callback\tests\unit\models;
 
-use app\models\forms\CallbackForm;
+use app\modules\callback\models\forms\CallbackForm;
 use Codeception\Test\Unit;
 use Yii;
 
 class CallbackFormTest extends Unit
 {
     /**
-     * @var \tests\UnitTester
+     * @var \callback\tests\UnitTester
      */
     public $tester;
 

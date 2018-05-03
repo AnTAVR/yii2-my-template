@@ -58,7 +58,7 @@ $menuItems = [
             ['label' => Yii::t('app', 'Docs'), 'url' => ['/static/index', 'meta_url' => 'docs']],
             '<li class="divider"></li>',
             ['label' => Yii::t('app', 'Contact'), 'url' => ['/contact']],
-            ['label' => Yii::t('app', 'Callback'), 'url' => ['/site/callback']],
+            ['label' => Yii::t('app', 'Callback'), 'url' => ['/callback']],
         ],
     ],
 ];

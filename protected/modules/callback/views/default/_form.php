@@ -1,24 +1,14 @@
 <?php
 /* @var $this \yii\web\View */
 
-/* @var $model \app\models\forms\CallbackForm */
+/* @var $model \app\modules\callback\models\forms\CallbackForm */
 
 use app\widgets\Captcha;
 use borales\extensions\phoneInput\PhoneInput;
-use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
-$this->title = Yii::t('app', 'Request for a call back');
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<h1><?= Html::encode($this->title) ?></h1>
-
-<p>
-    <?= Yii::t('app', 'Please fill in the following form and we will call you back.') ?>
-    <br>
-    <?= Yii::t('app', 'Thank you.') ?>
-</p>
-
 <?php $form = ActiveForm::begin(['id' => 'callback-form', 'options' => ['class' => 'col-lg-6']]); ?>
 
 <?= $form->field($model, 'phone')->widget(PhoneInput::class, [
