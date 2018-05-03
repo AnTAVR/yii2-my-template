@@ -1,6 +1,6 @@
 <?php
 
-namespace contact\tests;
+namespace contact;
 
 use Codeception\Actor;
 

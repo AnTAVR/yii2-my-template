@@ -1,8 +1,7 @@
 <?php
 
-namespace contact\tests\functional;
+namespace contact;
 
-use contact\tests\FunctionalTester;
 use Yii;
 
 /* @var $scenario \Codeception\Scenario */

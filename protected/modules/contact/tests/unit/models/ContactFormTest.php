@@ -1,6 +1,6 @@
 <?php
 
-namespace contact\tests\unit\models;
+namespace contact;
 
 use app\modules\contact\models\forms\ContactForm;
 use Codeception\Test\Unit;
@@ -9,7 +9,7 @@ use Yii;
 class ContactFormTest extends Unit
 {
     /**
-     * @var \tests\UnitTester
+     * @var \contact\UnitTester
      */
     public $tester;
 

@@ -1,8 +1,7 @@
 <?php
 
-namespace callback\tests\functional;
+namespace callback;
 
-use callback\tests\FunctionalTester;
 use Yii;
 
 /* @var $scenario \Codeception\Scenario */
