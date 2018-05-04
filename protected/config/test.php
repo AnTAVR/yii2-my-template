@@ -16,6 +16,7 @@ return ArrayHelper::merge(require __DIR__ . '/common.php', require __DIR__ . '/c
 //    ],
     'components' => [
         'request' => [
+            'scriptFile' => dirname(dirname(__DIR__)) . '/index-test.php',
             'cookieValidationKey' => 'test',
             // but if you absolutely need it set cookie domain to localhost
             /*
