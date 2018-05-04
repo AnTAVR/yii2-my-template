@@ -61,12 +61,12 @@ class UploaderImage extends ActiveRecord
 
     public static function getUploadUrl()
     {
-        return Yii::getAlias('@web_upload') . '/' . static::PATH_IMAGES . '/';
+        return Yii::getAlias('@upload_web') . '/' . static::PATH_IMAGES . '/';
     }
 
     public static function getUploadPath()
     {
-        $path = Yii::getAlias('@upload') . DIRECTORY_SEPARATOR . static::PATH_IMAGES;
+        $path = Yii::getAlias('@upload_path') . DIRECTORY_SEPARATOR . static::PATH_IMAGES;
         if (!is_dir($path)) {
             FileHelper::createDirectory($path, 0775, true);
         }

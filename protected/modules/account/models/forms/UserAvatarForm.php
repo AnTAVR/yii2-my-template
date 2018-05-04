@@ -87,7 +87,7 @@ class UserAvatarForm extends Model
 
     public static function getUploadUrl()
     {
-        return Yii::getAlias('@web_upload') . '/' . static::PATH_AVATARS . '/';
+        return Yii::getAlias('@upload_web') . '/' . static::PATH_AVATARS . '/';
     }
 
     public function getAvatarPath()
@@ -97,7 +97,7 @@ class UserAvatarForm extends Model
 
     public static function getUploadPath()
     {
-        $path = Yii::getAlias('@upload') . DIRECTORY_SEPARATOR . static::PATH_AVATARS;
+        $path = Yii::getAlias('@upload_path') . DIRECTORY_SEPARATOR . static::PATH_AVATARS;
         if (!is_dir($path)) {
             FileHelper::createDirectory($path, 0775, true);
         }

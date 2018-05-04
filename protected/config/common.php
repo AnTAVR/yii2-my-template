@@ -18,8 +18,8 @@ $__config = [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
         '@backups' => '@app/backups',
-        '@upload' => '@webroot/upload',
-        '@web_upload' => '@web/upload',
+        '@upload_path' => '@webroot/upload',
+        '@upload_web' => '@web/upload',
     ],
     'container' => [
         'definitions' => [
