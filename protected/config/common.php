@@ -122,7 +122,7 @@ $__config = [
             'class' => 'yii\web\User',
             'identityClass' => 'app\modules\account\models\User',
             'enableAutoLogin' => true,
-            'loginUrl' => ['/login'],
+            'loginUrl' => ['/site/login'],
         ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',

@@ -17,6 +17,24 @@ class SiteController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => (YII_ENV_TEST || YII_ENV_DEV) ? 'testme' : null,
             ],
+            'login' => [
+                'class' => 'app\modules\account\actions\LoginAction',
+            ],
+            'logout' => [
+                'class' => 'app\modules\account\actions\LogoutAction',
+            ],
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => 'yii\filters\VerbFilter',
+                'actions' => [
+                    'logout' => ['post'],
+                ],
+            ],
         ];
     }
 
