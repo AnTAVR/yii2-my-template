@@ -1,9 +1,9 @@
 namespace: app\tests
 include:
+    - modules/rbac
     - modules/account
     - modules/contact
     - modules/callback
-    - modules/rbac
     - modules/uploader
     - modules/articles
     - modules/news
