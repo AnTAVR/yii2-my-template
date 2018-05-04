@@ -7,5 +7,5 @@ modules:
             url: http://127.0.0.1:8080
             browser: firefox
         - Yii2:
-            part: [orm,fixtures,init]
+            part: [orm, fixtures, init]
             entryScript: index-test.php
