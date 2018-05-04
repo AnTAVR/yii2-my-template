@@ -6,6 +6,7 @@ $params = require __DIR__ . '/common/params.php';
 
 Yii::setAlias('@webroot', dirname(dirname(__DIR__)));
 Yii::setAlias('@web', '/');
+Yii::setAlias('@tests', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'tests');
 
 /** @noinspection HtmlUnknownTag */
 $__config = [
