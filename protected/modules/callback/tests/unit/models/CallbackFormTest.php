@@ -1,6 +1,6 @@
 <?php
 
-namespace callback;
+namespace callback\tests;
 
 use app\modules\callback\models\forms\CallbackForm;
 use Codeception\Test\Unit;

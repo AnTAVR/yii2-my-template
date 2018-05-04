@@ -1,4 +1,4 @@
-namespace: account
+namespace: account\tests
 paths:
     tests: tests
     output: tests/_output

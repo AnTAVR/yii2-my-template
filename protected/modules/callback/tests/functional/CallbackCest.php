@@ -1,6 +1,6 @@
 <?php
 
-namespace callback;
+namespace callback\tests;
 
 /* @var $scenario \Codeception\Scenario */
 class CallbackCest

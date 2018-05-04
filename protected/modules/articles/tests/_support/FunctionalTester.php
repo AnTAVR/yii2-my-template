@@ -1,6 +1,6 @@
 <?php
 
-namespace articles;
+namespace articles\tests;
 
 use Codeception\Actor;
 

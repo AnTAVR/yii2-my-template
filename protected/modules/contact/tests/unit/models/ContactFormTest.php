@@ -1,6 +1,6 @@
 <?php
 
-namespace contact;
+namespace contact\tests;
 
 use app\modules\contact\models\forms\ContactForm;
 use Codeception\Test\Unit;

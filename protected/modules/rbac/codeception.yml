@@ -1,4 +1,4 @@
-namespace: rbac
+namespace: rbac\tests
 paths:
     tests: tests
     output: tests/_output

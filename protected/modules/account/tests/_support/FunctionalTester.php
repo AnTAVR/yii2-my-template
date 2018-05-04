@@ -1,6 +1,6 @@
 <?php
 
-namespace account;
+namespace account\tests;
 
 use Codeception\Actor;
 

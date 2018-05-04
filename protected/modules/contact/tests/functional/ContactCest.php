@@ -1,6 +1,6 @@
 <?php
 
-namespace contact;
+namespace contact\tests;
 
 /* @var $scenario \Codeception\Scenario */
 class ContactCest

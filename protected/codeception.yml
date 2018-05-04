@@ -1,4 +1,4 @@
-namespace: tests
+namespace: app\tests
 include:
     - modules/account
     - modules/contact

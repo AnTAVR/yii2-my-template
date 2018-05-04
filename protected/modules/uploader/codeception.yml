@@ -1,4 +1,4 @@
-namespace: uploader
+namespace: uploader\tests
 paths:
     tests: tests
     output: tests/_output

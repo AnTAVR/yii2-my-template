@@ -1,6 +1,6 @@
 <?php
 
-namespace callback;
+namespace callback\tests;
 
 use Codeception\Actor;
 use Codeception\Lib\Friend;

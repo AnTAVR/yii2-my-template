@@ -1,6 +1,6 @@
 <?php
 
-namespace rbac;
+namespace rbac\tests;
 
 use Codeception\Actor;
 use Codeception\Lib\Friend;
