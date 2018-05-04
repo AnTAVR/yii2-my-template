@@ -15,12 +15,4 @@ class LoginCest
     {
         $I->see('Login', 'h1');
     }
-
-    public function checkOpenLoginPage(FunctionalTester $I)
-    {
-        $I->amOnPage(Yii::$app->homeUrl);
-        $I->seeLink('Login');
-        $I->click('Login');
-        $I->see('Login', 'h1');
-    }
 }

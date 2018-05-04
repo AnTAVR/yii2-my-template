@@ -2,26 +2,16 @@
 
 namespace contact;
 
-use Yii;
-
 /* @var $scenario \Codeception\Scenario */
 class ContactCest
 {
     public function _before(FunctionalTester $I)
     {
-        $I->amOnPage(['contact']);
+        $I->amOnPage(['/contact']);
     }
 
     public function checkContactPage(FunctionalTester $I)
     {
-        $I->see('Contact', 'h1');
-    }
-
-    public function checkOpenContactPage(FunctionalTester $I)
-    {
-        $I->amOnPage(Yii::$app->homeUrl);
-        $I->seeLink('Contact');
-        $I->click('Contact');
         $I->see('Contact', 'h1');
     }
 

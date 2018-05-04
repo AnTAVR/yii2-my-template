@@ -2,26 +2,16 @@
 
 namespace callback;
 
-use Yii;
-
 /* @var $scenario \Codeception\Scenario */
 class CallbackCest
 {
     public function _before(FunctionalTester $I)
     {
-        $I->amOnPage(['callback']);
+        $I->amOnPage(['/callback']);
     }
 
     public function checkCallbackPage(FunctionalTester $I)
     {
-        $I->see('Request for a call back', 'h1');
-    }
-
-    public function checkOpenCallbackPage(FunctionalTester $I)
-    {
-        $I->amOnPage(Yii::$app->homeUrl);
-        $I->seeLink('Callback');
-        $I->click('Callback');
         $I->see('Request for a call back', 'h1');
     }
 

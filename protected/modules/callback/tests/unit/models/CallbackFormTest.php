@@ -9,7 +9,7 @@ use Yii;
 class CallbackFormTest extends Unit
 {
     /**
-     * @var \callback\UnitTester
+     * @var UnitTester
      */
     public $tester;
 

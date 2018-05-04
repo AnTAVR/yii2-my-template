@@ -4,15 +4,13 @@ namespace tests;
 
 class StaticCest
 {
-    public $content_static = ['', 'rules'];
-
-    public function checkOpenAboutPage(FunctionalTester $I)
+    public function checkAboutPage(FunctionalTester $I)
     {
         $I->amOnPage(['/static/index', 'meta_url' => 'about']);
         $I->see('about');
     }
 
-    public function checkOpenRulesPage(FunctionalTester $I)
+    public function checkRulesPage(FunctionalTester $I)
     {
         $I->amOnPage(['/static/index', 'meta_url' => 'rules']);
         $I->see('rules');

@@ -9,7 +9,7 @@ use Yii;
 class ContactFormTest extends Unit
 {
     /**
-     * @var \contact\UnitTester
+     * @var UnitTester
      */
     public $tester;
 
