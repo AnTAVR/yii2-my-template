@@ -1,4 +1,5 @@
-class_name: FunctionalTester
+suite_namespace: contact\tests\functional
+actor: FunctionalTester
 modules:
     enabled:
       - Filesystem
