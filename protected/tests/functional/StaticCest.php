@@ -6,13 +6,13 @@ use app\tests\FunctionalTester;
 
 class StaticCest
 {
-    public function checkAboutPage(FunctionalTester $I)
+    public function checkOpenAboutPage(FunctionalTester $I)
     {
         $I->amOnPage(['/static/index', 'meta_url' => 'about']);
         $I->see('about');
     }
 
-    public function checkRulesPage(FunctionalTester $I)
+    public function checkOpenRulesPage(FunctionalTester $I)
     {
         $I->amOnPage(['/static/index', 'meta_url' => 'rules']);
         $I->see('rules');

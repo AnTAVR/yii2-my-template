@@ -12,7 +12,7 @@ class IndexCest
         $I->amOnPage(['/callback']);
     }
 
-    public function checkCallbackPage(FunctionalTester $I)
+    public function checkOpenIndexPage(FunctionalTester $I)
     {
         $I->see('Request for a call back', 'h1');
     }

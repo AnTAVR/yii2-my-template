@@ -12,7 +12,7 @@ class IndexCest
         $I->amOnPage(['/contact']);
     }
 
-    public function checkContactPage(FunctionalTester $I)
+    public function checkOpenIndexPage(FunctionalTester $I)
     {
         $I->see('Contact', 'h1');
     }

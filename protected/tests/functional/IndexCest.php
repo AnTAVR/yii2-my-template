@@ -12,7 +12,7 @@ class IndexCest
         $I->amOnPage(Yii::$app->homeUrl);
     }
 
-    public function checkOpenHomePage(FunctionalTester $I)
+    public function checkOpenIndexPage(FunctionalTester $I)
     {
         $I->see(Yii::$app->params['brandLabel']);
     }

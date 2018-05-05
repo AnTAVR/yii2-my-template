@@ -5,7 +5,7 @@ namespace app\tests\acceptance;
 use app\tests\AcceptanceTester;
 use Yii;
 
-class HomeCest
+class IndexCest
 {
     public function _before(AcceptanceTester $I)
     {
@@ -16,7 +16,7 @@ class HomeCest
     {
     }
 
-    public function checkOpenHomePage(AcceptanceTester $I)
+    public function checkOpenIndexPage(AcceptanceTester $I)
     {
         $I->see(Yii::$app->params['brandLabel']);
     }
