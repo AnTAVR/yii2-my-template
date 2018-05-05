@@ -1,6 +1,8 @@
 <?php
 
-namespace callback\tests;
+namespace callback\tests\functional;
+
+use callback\tests\FunctionalTester;
 
 /* @var $scenario \Codeception\Scenario */
 class CallbackCest

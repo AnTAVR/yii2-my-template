@@ -1,6 +1,8 @@
 <?php
 
-namespace contact\tests;
+namespace contact\tests\functional;
+
+use contact\tests\FunctionalTester;
 
 /* @var $scenario \Codeception\Scenario */
 class ContactCest

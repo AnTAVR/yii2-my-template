@@ -1,6 +1,8 @@
 <?php
 
-namespace app\tests;
+namespace app\tests\functional;
+
+use app\tests\FunctionalTester;
 
 class StaticCest
 {
