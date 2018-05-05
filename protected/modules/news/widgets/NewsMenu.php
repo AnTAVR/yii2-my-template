@@ -22,7 +22,7 @@ class NewsMenu extends Widget
         if (!$itemsMenu) return '';
 
         $text = '<div class="sidebar-module sidebar-news">';
-        $text .= '<h4>' . Html::a(Yii::t('app', 'News'), '/news') . '</h4>';
+        $text .= '<h4>' . Html::a(Yii::t('app', 'News'), ['/news']) . '</h4>';
         $text .= Menu::widget([
             'options' => ['class' => 'list-unstyled'],
             'items' => $itemsMenu,

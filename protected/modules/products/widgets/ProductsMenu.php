@@ -22,7 +22,7 @@ class ProductsMenu extends Widget
         if (!$itemsMenu) return '';
 
         $text = '<div class="sidebar-module sidebar-products">';
-        $text .= '<h4>' . Html::a(Yii::t('app', 'Products'), '/products') . '</h4>';
+        $text .= '<h4>' . Html::a(Yii::t('app', 'Products'), ['/products']) . '</h4>';
         $text .= Menu::widget([
             'options' => ['class' => 'list-unstyled'],
             'items' => $itemsMenu,
