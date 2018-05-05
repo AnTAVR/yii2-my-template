@@ -1,4 +1,5 @@
-class_name: UnitTester
+suite_namespace: account\tests\unit
+actor: UnitTester
 modules:
     enabled:
       - Asserts
