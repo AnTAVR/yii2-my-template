@@ -27,6 +27,7 @@ class ContactFormTest extends Unit
             'email' => $emailFrom,
             'subject' => $emailSubject,
             'body' => $emailBody,
+            'verifyCode' => 'testme',
         ];
 
         expect($model->validate())->true();

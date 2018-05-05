@@ -23,8 +23,10 @@ class CallbackFormTest extends Unit
         $model->attributes = [
             'name' => $emailName,
             'phone' => $emailFhone,
+            'verifyCode' => 'testme',
         ];
 
+        expect($model->validate())->true();
         expect_that($model->sendEmail());
 
         // using Yii2 module actions to check email was sent
