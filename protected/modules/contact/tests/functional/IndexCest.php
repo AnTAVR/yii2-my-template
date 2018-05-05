@@ -5,7 +5,7 @@ namespace contact\tests\functional;
 use contact\tests\FunctionalTester;
 
 /* @var $scenario \Codeception\Scenario */
-class ContactCest
+class IndexCest
 {
     public function _before(FunctionalTester $I)
     {

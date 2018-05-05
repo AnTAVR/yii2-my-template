@@ -5,7 +5,7 @@ namespace app\tests\functional;
 use app\tests\FunctionalTester;
 use Yii;
 
-class HomeCest
+class IndexCest
 {
     public function _before(FunctionalTester $I)
     {
