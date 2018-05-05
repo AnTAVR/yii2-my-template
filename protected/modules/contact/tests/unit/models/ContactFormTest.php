@@ -1,6 +1,6 @@
 <?php
 
-namespace contact\tests;
+namespace contact\tests\unit\models;
 
 use app\modules\contact\models\forms\ContactForm;
 use Codeception\Test\Unit;
@@ -9,20 +9,24 @@ use Yii;
 class ContactFormTest extends Unit
 {
     /**
-     * @var UnitTester
+     * @var \contact\tests\UnitTester
      */
     public $tester;
 
     public function testSendEmail()
     {
+        $emailName = 'Tester';
+        $emailFrom = 'tester@example.com';
+        $emailSubject = 'very important letter subject';
+        $emailBody = 'body of current message';
+
         $model = new ContactForm();
 
         $model->attributes = [
-            'name' => 'Tester',
-            'email' => 'tester@example.com',
-            'subject' => 'very important letter subject',
-            'body' => 'body of current message',
-            'verifyCode' => 'testme',
+            'name' => $emailName,
+            'email' => $emailFrom,
+            'subject' => $emailSubject,
+            'body' => $emailBody,
         ];
 
         expect($model->validate())->true();
@@ -34,8 +38,8 @@ class ContactFormTest extends Unit
         $emailMessage = $this->tester->grabLastSentEmail();
         expect('valid email is sent', $emailMessage)->isInstanceOf('yii\mail\MessageInterface');
         expect($emailMessage->getTo())->hasKey(Yii::$app->params['adminEmail']);
-        expect($emailMessage->getFrom())->hasKey('tester@example.com');
-        expect($emailMessage->getSubject())->equals('very important letter subject');
-        expect($emailMessage->toString())->contains('body of current message');
+        expect($emailMessage->getFrom())->hasKey($emailFrom);
+        expect($emailMessage->getSubject())->equals($emailSubject);
+        expect($emailMessage->toString())->contains($emailBody);
     }
 }

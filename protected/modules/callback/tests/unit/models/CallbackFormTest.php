@@ -1,6 +1,6 @@
 <?php
 
-namespace callback\tests;
+namespace callback\tests\unit\models;
 
 use app\modules\callback\models\forms\CallbackForm;
 use Codeception\Test\Unit;
@@ -9,17 +9,20 @@ use Yii;
 class CallbackFormTest extends Unit
 {
     /**
-     * @var UnitTester
+     * @var \callback\tests\UnitTester
      */
     public $tester;
 
     public function testSendEmail()
     {
+        $emailName = 'Tester';
+        $emailFhone = '+7(911) 11-111-11';
+
         $model = new CallbackForm();
 
         $model->attributes = [
-            'name' => 'Tester',
-            'phone' => '+7(911) 11-111-11',
+            'name' => $emailName,
+            'phone' => $emailFhone,
         ];
 
         expect_that($model->sendEmail());
@@ -33,6 +36,6 @@ class CallbackFormTest extends Unit
         expect($emailMessage->getFrom())->hasKey(Yii::$app->params['supportEmail']);
         $i18n = Yii::$app->i18n;
         expect($emailMessage->getSubject())->equals($i18n->format('Request for a call back from {site}', ['site' => Yii::$app->name], 'us'));
-        expect($emailMessage->toString())->contains($i18n->format('Phone {phone}, name {name}', ['phone' => $model->phone, 'name' => $model->name], 'us'));
+        expect($emailMessage->toString())->contains($i18n->format('Phone {phone}, name {name}', ['phone' => $emailFhone, 'name' => $emailName], 'us'));
     }
 }
