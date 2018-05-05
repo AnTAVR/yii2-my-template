@@ -1,4 +1,5 @@
-class_name: AcceptanceTester
+suite_namespace: app\tests\acceptance
+actor: AcceptanceTester
 modules:
     enabled:
         - PhpBrowser:
