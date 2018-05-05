@@ -1,4 +1,5 @@
 namespace: uploader\tests
+actor_suffix: Tester
 paths:
     tests: tests
     output: tests/_output

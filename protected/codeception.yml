@@ -1,4 +1,5 @@
 namespace: app\tests
+actor_suffix: Tester
 include:
     - modules/rbac
     - modules/account
@@ -10,12 +11,13 @@ include:
     - modules/products
 paths:
     tests: tests
-    log: runtime/logs
     output: tests/_output
     data: tests/_data
     support: tests/_support
+    log: runtime/logs
 settings:
     bootstrap: _bootstrap.php
+    colors: true
 #    memory_limit: 1024M
 modules:
     config:
