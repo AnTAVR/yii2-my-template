@@ -5,7 +5,7 @@ namespace app\tests\acceptance;
 use app\tests\AcceptanceTester;
 use Yii;
 
-class AcceptanceHomeCest
+class HomeCest
 {
     public function _before(AcceptanceTester $I)
     {
