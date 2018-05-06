@@ -2,12 +2,16 @@
 
 namespace app\widgets;
 
+use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\LinkPager as oldLinkPager;
 
 class LinkPager extends oldLinkPager
 {
+    public $jumpPageLabel = false;
+    public $jumpPageCssClass = 'jump';
+
     protected function renderPageButtons()
     {
         $pageCount = $this->pagination->getPageCount();
@@ -52,15 +56,33 @@ class LinkPager extends oldLinkPager
             $buttons[] = $this->renderPageButton($lastPageLabel, $pageCount - 1, $this->lastPageCssClass, $currentPage >= $pageCount - 1, false);
         }
 
-        $buttons[] = $this->renderJumpPage();
+        $jumpPageLabel = $this->jumpPageLabel === true ? Yii::t('app', 'Jump to:') : $this->jumpPageLabel;
+        if ($jumpPageLabel !== false) {
+            $buttons[] = $this->renderJumpPage($jumpPageLabel, $currentPage + 1, $this->jumpPageCssClass);
+        }
 
         $options = $this->options;
         $tag = ArrayHelper::remove($options, 'tag', 'ul');
         return Html::tag($tag, implode("\n", $buttons), $options);
     }
 
-    protected function renderJumpPage()
+    /**
+     * @param string $label the text label
+     * @param int $page the page number
+     * @param string $class the CSS class for the page button.
+     * @return string the rendering result
+     */
+    protected function renderJumpPage($label, $page, $class)
     {
-        return null;
+        $options = $this->linkContainerOptions;
+        $linkWrapTag = ArrayHelper::remove($options, 'tag', 'li');
+        Html::addCssClass($options, empty($class) ? $this->pageCssClass : $class);
+
+        $url = $this->pagination->createUrl('2', null, true);
+        $input = Html::textInput('d', $page, ['class' => 'form-control']);
+        $label = Html::tag('span', $label, ['class' => 'input-group-addon']);
+        $label = Html::tag('span', $label . $input, ['class' => 'input-group input-group-sm', 'style' => 'width: 10em; padding: 1px;']);
+
+        return Html::tag($linkWrapTag, $label, $options);
     }
 }
