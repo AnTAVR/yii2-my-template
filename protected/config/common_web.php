@@ -14,4 +14,14 @@ return [
 //                'savePath' => '@runtime/session',
 //        ],
     ],
+    'container' => [
+        'definitions' => [
+        ],
+        'singletons' => [
+            'yii\widgets\LinkPager' => [
+                'lastPageLabel' => true,
+                'firstPageLabel' => true,
+            ],
+        ],
+    ],
 ];
