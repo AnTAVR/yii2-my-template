@@ -24,11 +24,6 @@ $__config = [
     ],
     'container' => [
         'definitions' => [
-            'yii\web\Session' => [
-                'class' => 'app\components\Session',
-//                 @todo: Из за установки не работают тесты!!!
-//                'savePath' => '@runtime/session',
-            ],
 //            'yii\grid\ActionColumn' => [
 //                'class' => 'app\components\ActionColumn',
 //            ],
