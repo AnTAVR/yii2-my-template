@@ -1,8 +1,5 @@
 <?php
 return [
-    'statics' => [
-        'class' => 'app\modules\statics\Module',
-    ],
     'dump' => [
         'class' => 'app\modules\dump\Module',
     ],
@@ -29,5 +26,8 @@ return [
     ],
     'products' => [
         'class' => 'app\modules\products\Module',
+    ],
+    'statics' => [
+        'class' => 'app\modules\statics\Module',
     ],
 ];
