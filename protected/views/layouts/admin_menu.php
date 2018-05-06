@@ -53,7 +53,7 @@ $user = Yii::$app->user;
         ['label' => Yii::t('app', 'Uploader'),
             'active' => $moduleId === 'uploader',
             'visible' => $user->can('uploader.openAdminPanel'),
-            'url' => ['/uploader'],
+            'url' => ['/uploader/admin-default'],
             'items' => [
                 ['label' => Yii::t('app', 'Uploader Images'),
                     'active' => $moduleId === 'uploader' && $controllerId === 'admin-images',
