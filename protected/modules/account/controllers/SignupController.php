@@ -24,7 +24,7 @@ class SignupController extends Controller
         $module = $this->module;
 
         if (!$module->params['signup']) {
-            throw new NotFoundHttpException();
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
         }
 
         $model = new SignupForm();
