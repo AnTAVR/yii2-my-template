@@ -22,6 +22,7 @@ return [
                 'class' => 'app\widgets\LinkPager',
                 'lastPageLabel' => true,
                 'firstPageLabel' => true,
+                'jumpPageLabel' => true,
             ],
         ],
     ],
