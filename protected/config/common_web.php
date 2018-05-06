@@ -8,5 +8,10 @@ return [
         'errorHandler' => [
             'errorAction' => '/site/error',
         ],
+//        'session' => [
+//            'class' => 'app\components\Session',
+//                 @todo: Из за установки не работают тесты!!!
+//                'savePath' => '@runtime/session',
+//        ],
     ],
 ];
