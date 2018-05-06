@@ -6,8 +6,6 @@ use app\components\Module as ModuleOld;
 
 class Module extends ModuleOld
 {
-    public $defaultRoute = 'admin-default';
-
     public function init()
     {
         parent::init();
