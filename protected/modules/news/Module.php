@@ -17,7 +17,7 @@ class Module extends ModuleOld
         Yii::$app->urlManager->addRules(
             [
                 '/news/page/<page\d+>' => '/news/default/index',
-                '/news/view/<meta_url>' => '/news/default/view',
+                '/news/view/<meta_url:\w+>' => '/news/default/view',
             ]
         );
 

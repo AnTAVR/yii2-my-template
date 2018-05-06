@@ -17,7 +17,7 @@ class Module extends ModuleOld
         Yii::$app->urlManager->addRules(
             [
                 '/articles/page/<page\d+>' => '/articles/default/index',
-                '/articles/view/<meta_url>' => '/articles/default/view',
+                '/articles/view/<meta_url:\w+>' => '/articles/default/view',
             ]
         );
 
