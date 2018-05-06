@@ -18,7 +18,7 @@ $user = Yii::$app->user;
         ['label' => Yii::t('app', 'RBAC'),
             'active' => $moduleId === 'rbac',
             'visible' => $user->can('rbac.openAdminPanel'),
-            'url' => ['/rbac'],
+            'url' => ['/rbac/admin-default'],
             'items' => [
                 ['label' => Yii::t('app', 'User Assignment'),
                     'active' => $moduleId === 'rbac' && $controllerId === 'admin-assignment',
