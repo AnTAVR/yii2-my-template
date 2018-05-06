@@ -7,13 +7,15 @@ use Yii;
 
 class IndexCest
 {
-    public function _before(FunctionalTester $I)
-    {
-        $I->amOnPage(Yii::$app->homeUrl);
-    }
-
     public function checkOpenIndexPage(FunctionalTester $I)
     {
+        $I->amOnPage(Yii::$app->homeUrl);
         $I->see(Yii::$app->params['brandLabel']);
+    }
+
+    public function checkOpenNotSetPage(FunctionalTester $I)
+    {
+        $I->amOnPage(['/tsdfgsd']);
+        $I->seeResponseCodeIs(404);
     }
 }
