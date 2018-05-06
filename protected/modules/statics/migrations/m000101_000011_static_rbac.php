@@ -8,7 +8,7 @@ class m000101_000011_static_rbac extends Migration
     {
         $authManager = Yii::$app->authManager;
 
-        $permission = $authManager->createPermission('static.openAdminPanel');
+        $permission = $authManager->createPermission('statics.openAdminPanel');
         $permission->description = 'Open Static Admin Panel';
         $authManager->add($permission);
 
@@ -21,6 +21,6 @@ class m000101_000011_static_rbac extends Migration
     {
         $authManager = Yii::$app->authManager;
 
-        $authManager->remove($authManager->getPermission('static.openAdminPanel'));
+        $authManager->remove($authManager->getPermission('statics.openAdminPanel'));
     }
 }

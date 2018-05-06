@@ -1,14 +1,14 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\statics\controllers;
 
-use app\models\StaticPage;
+use app\modules\statics\models\StaticPage;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class AdminStaticController extends Controller
+class AdminDefaultController extends Controller
 {
     public $layout = '@app/views/layouts/admin';
 
@@ -24,7 +24,7 @@ class AdminStaticController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['static.openAdminPanel'],
+                        'roles' => ['statics.openAdminPanel'],
                     ],
                 ],
             ],
@@ -135,6 +135,6 @@ class AdminStaticController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['/admin-static']);
+        return $this->redirect(['/statics/admin-default']);
     }
 }

@@ -3,7 +3,7 @@
 use yii\widgets\DetailView;
 
 /* @var $this \yii\web\View */
-/* @var $model \app\models\StaticPage */
+/* @var $model \app\modules\statics\models\StaticPage */
 ?>
 <?= DetailView::widget([
     'model' => $model,

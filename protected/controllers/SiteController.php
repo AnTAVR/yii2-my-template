@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\modules\statics\controllers\DefaultController;
 use yii\web\Controller;
 
 class SiteController extends Controller
@@ -47,7 +48,7 @@ class SiteController extends Controller
     {
         /** @noinspection RequireParameterInspection */
         return $this->render('index', [
-            'model' => StaticController::findModel('index'),
+            'model' => DefaultController::findModel('index'),
         ]);
     }
 }

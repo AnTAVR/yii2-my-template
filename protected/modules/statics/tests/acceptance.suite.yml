@@ -1,0 +1,9 @@
+suite_namespace: statics\tests\acceptance
+actor: AcceptanceTester
+modules:
+    enabled:
+        - PhpBrowser:
+            url: http://localhost:8080/
+        - Yii2:
+            part: [orm, fixtures, init]
+            entryScript: index-test.php

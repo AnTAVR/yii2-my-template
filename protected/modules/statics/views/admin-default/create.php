@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this \yii\web\View */
-/* @var $model \app\models\StaticPage */
+/* @var $model \app\modules\statics\models\StaticPage */
 
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Static Pages'), 'url' => ['index']];
 

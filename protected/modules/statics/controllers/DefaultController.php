@@ -1,13 +1,13 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\statics\controllers;
 
-use app\models\StaticPage;
+use app\modules\statics\models\StaticPage;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class StaticController extends Controller
+class DefaultController extends Controller
 {
 
     /**
@@ -16,7 +16,7 @@ class StaticController extends Controller
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionIndex($meta_url = 'index')
+    public function actionIndex($meta_url = null)
     {
         /** @noinspection RequireParameterInspection */
         return $this->render('index', [

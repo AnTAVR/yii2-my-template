@@ -1,6 +1,6 @@
 <?php
 
-use app\models\StaticPage;
+use app\modules\statics\models\StaticPage;
 use yii\db\Migration;
 
 /**

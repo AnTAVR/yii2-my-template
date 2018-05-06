@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace app\modules\statics\models;
 
 use Yii;
 use yii\db\ActiveRecord;
@@ -79,6 +79,6 @@ class StaticPage extends ActiveRecord
 
     public function getUrl()
     {
-        return Url::to(['/static/index', 'meta_url' => $this->meta_url]);
+        return Url::to(['/statics/default/index', 'meta_url' => $this->meta_url]);
     }
 }

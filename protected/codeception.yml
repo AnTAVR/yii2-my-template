@@ -2,6 +2,8 @@ namespace: app\tests
 actor_suffix: Tester
 include:
     - modules/rbac
+    - modules/dump
+    - modules/statics
     - modules/account
     - modules/contact
     - modules/callback

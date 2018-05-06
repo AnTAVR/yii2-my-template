@@ -1,0 +1,7 @@
+suite_namespace: statics\tests\unit
+actor: UnitTester
+modules:
+    enabled:
+      - Asserts
+      - Yii2:
+            part: [orm, fixtures, email]

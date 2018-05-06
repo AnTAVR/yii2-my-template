@@ -1,7 +1,7 @@
 <?php
 
 use app\migrations\DefaultContent;
-use app\models\StaticPage;
+use app\modules\statics\models\StaticPage;
 use yii\db\Migration;
 
 class m000101_000002_insert_page_static extends Migration

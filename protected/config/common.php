@@ -104,9 +104,6 @@ $__config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => YII_ENV_TEST,
-            'rules' => [
-                '/static/<meta_url>' => '/static/index',
-            ],
         ],
         'db' => [
             'class' => 'yii\db\Connection',

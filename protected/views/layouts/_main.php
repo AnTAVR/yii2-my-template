@@ -51,11 +51,11 @@ NavBar::begin([
 $menuItems = [
     ['label' => Yii::t('app', 'Contacts'),
         'items' => [
-            ['label' => Yii::t('app', 'About'), 'url' => ['/static/index', 'meta_url' => 'about']],
-            ['label' => Yii::t('app', 'Partners'), 'url' => ['/static/index', 'meta_url' => 'partners']],
-            ['label' => Yii::t('app', 'Delivery'), 'url' => ['/static/index', 'meta_url' => 'delivery']],
-            ['label' => Yii::t('app', 'Payment'), 'url' => ['/static/index', 'meta_url' => 'payment']],
-            ['label' => Yii::t('app', 'Docs'), 'url' => ['/static/index', 'meta_url' => 'docs']],
+            ['label' => Yii::t('app', 'About'), 'url' => ['/statics/default/index', 'meta_url' => 'about']],
+            ['label' => Yii::t('app', 'Partners'), 'url' => ['/statics/default/index', 'meta_url' => 'partners']],
+            ['label' => Yii::t('app', 'Delivery'), 'url' => ['/statics/default/index', 'meta_url' => 'delivery']],
+            ['label' => Yii::t('app', 'Payment'), 'url' => ['/statics/default/index', 'meta_url' => 'payment']],
+            ['label' => Yii::t('app', 'Docs'), 'url' => ['/statics/default/index', 'meta_url' => 'docs']],
             '<li class="divider"></li>',
             ['label' => Yii::t('app', 'Contact'), 'url' => ['/contact']],
             ['label' => Yii::t('app', 'Callback'), 'url' => ['/callback']],
