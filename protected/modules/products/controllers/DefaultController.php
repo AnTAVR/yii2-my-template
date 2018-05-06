@@ -23,12 +23,14 @@ class DefaultController extends Controller
             'totalCount' => $query->count(),
             'defaultPageSize' => $this->module->params['pageSize'],
             'validatePage' => false,
+            'pageSizeLimit' => false,
         ]);
 
-        $data = $query->offset($pagination->offset)->limit($pagination->limit)->all();
-        if (!$data) {
+        if ($pagination->page >= $pagination->pageCount) {
             throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
         }
+
+        $data = $query->offset($pagination->offset)->limit($pagination->limit)->all();
 
         return $this->render('index', ['data' => $data, 'pagination' => $pagination,]);
     }
