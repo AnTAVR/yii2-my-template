@@ -1,6 +1,6 @@
 <?php
 
-namespace app\commands;
+namespace app\modules\dump\commands;
 
 use app\modules\dump\helpers\BaseDump;
 use app\modules\dump\helpers\DumpInterface;
@@ -14,7 +14,7 @@ use yii\helpers\Console;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
-class DumpController extends Controller
+class DefaultController extends Controller
 {
     public $defaultAction = 'create';
 

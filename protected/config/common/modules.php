@@ -1,5 +1,8 @@
 <?php
 return [
+    'dump' => [
+        'class' => 'app\modules\dump\Module',
+    ],
     'contact' => [
         'class' => 'app\modules\contact\Module',
     ],

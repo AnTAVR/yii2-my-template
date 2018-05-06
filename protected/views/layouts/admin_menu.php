@@ -14,7 +14,7 @@ $user = Yii::$app->user;
         ['label' => Yii::t('app', 'Dump DB'),
             'active' => $controllerId === 'admin-dump',
             'visible' => $user->can('dump.openAdminPanel'),
-            'url' => ['/admin-dump']],
+            'url' => ['/dump/admin-default']],
         ['label' => Yii::t('app', 'RBAC'),
             'active' => $moduleId === 'rbac',
             'visible' => $user->can('rbac.openAdminPanel'),

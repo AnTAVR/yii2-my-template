@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\dump\controllers;
 
 use app\modules\dump\helpers\BaseDump;
 use app\modules\dump\helpers\DumpInterface;
@@ -11,7 +11,7 @@ use yii\web\Controller;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
-class AdminDumpController extends Controller
+class AdminDefaultController extends Controller
 {
     public $layout = '@app/views/layouts/admin';
 
