@@ -13,6 +13,7 @@ class DefaultController extends Controller
     /**
      * Lists all Products models.
      * @return string
+     * @throws NotFoundHttpException
      */
     public function actionIndex()
     {
@@ -21,9 +22,13 @@ class DefaultController extends Controller
         $pagination = new Pagination([
             'totalCount' => $query->count(),
             'defaultPageSize' => $this->module->params['pageSize'],
+            'validatePage' => false,
         ]);
 
         $data = $query->offset($pagination->offset)->limit($pagination->limit)->all();
+        if (!$data) {
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        }
 
         return $this->render('index', ['data' => $data, 'pagination' => $pagination,]);
     }
