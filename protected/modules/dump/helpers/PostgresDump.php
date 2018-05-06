@@ -1,20 +1,27 @@
 <?php
 
-namespace app\helpers\dump;
+namespace app\modules\dump\helpers;
 
 use yii\helpers\StringHelper;
 
-class MysqlDump extends DumpInterface
+class PostgresDump extends DumpInterface
 {
     public static function makeDumpCommand($dumpFile, $dbInfo)
     {
         $arguments = [];
 
-        $arguments[] = 'mysqldump';
+        if (static::isWindows()) {
+            $arguments[] = "set PGPASSWORD='{$dbInfo['password']}'";
+            $arguments[] = '&';
+        } else {
+            $arguments[] = "PGPASSWORD='{$dbInfo['password']}'";
+        }
+
+        $arguments[] = 'pg_dump';
         $arguments[] = '--host=' . $dbInfo['host'];
         $arguments[] = '--port=' . $dbInfo['port'];
-        $arguments[] = '--user=' . $dbInfo['username'];
-        $arguments[] = "--password='{$dbInfo['password']}'";
+        $arguments[] = '--username=' . $dbInfo['username'];
+        $arguments[] = '--no-password';
         $arguments[] = $dbInfo['dbName'];
         $arguments[] = '|';
         $arguments[] = 'gzip';
@@ -29,6 +36,12 @@ class MysqlDump extends DumpInterface
         $arguments = [];
 
         $endsWithGZ = StringHelper::endsWith($dumpFile, '.gz', false);
+        $isWindows = static::isWindows();
+
+        if ($isWindows) {
+            $arguments[] = "set PGPASSWORD='{$dbInfo['password']}'";
+            $arguments[] = '&';
+        }
 
         if ($endsWithGZ) {
             $arguments[] = 'gunzip -c';
@@ -36,11 +49,15 @@ class MysqlDump extends DumpInterface
             $arguments[] = '|';
         }
 
-        $arguments[] = 'mysql';
+        if (!$isWindows) {
+            $arguments[] = "PGPASSWORD='{$dbInfo['password']}'";
+        }
+
+        $arguments[] = 'psql';
         $arguments[] = '--host=' . $dbInfo['host'];
         $arguments[] = '--port=' . $dbInfo['port'];
-        $arguments[] = '--user=' . $dbInfo['username'];
-        $arguments[] = "--password='{$dbInfo['password']}'";
+        $arguments[] = '--username=' . $dbInfo['username'];
+        $arguments[] = '--no-password';
         $arguments[] = $dbInfo['dbName'];
 
         if (!$endsWithGZ) {

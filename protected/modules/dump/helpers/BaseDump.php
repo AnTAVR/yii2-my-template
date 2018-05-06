@@ -1,6 +1,6 @@
 <?php
 
-namespace app\helpers\dump;
+namespace app\modules\dump\helpers;
 
 use Yii;
 use yii\db\Connection;

@@ -2,8 +2,8 @@
 
 namespace app\controllers;
 
-use app\helpers\dump\BaseDump;
-use app\helpers\dump\DumpInterface;
+use app\modules\dump\helpers\BaseDump;
+use app\modules\dump\helpers\DumpInterface;
 use Symfony\Component\Process\Process;
 use Yii;
 use yii\data\ArrayDataProvider;
