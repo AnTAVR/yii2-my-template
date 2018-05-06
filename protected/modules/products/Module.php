@@ -16,8 +16,8 @@ class Module extends ModuleOld
         /** @noinspection HtmlUnknownTag */
         Yii::$app->urlManager->addRules(
             [
-                '/products/page/<page\d+>' => '/products/default/index',
-                '/products/view/<meta_url:\w+>' => '/products/default/view',
+                '/products/page<page:\d+>' => '/products/default/index',
+                '/products/view/<meta_url:[\w\-]+>' => '/products/default/view',
             ]
         );
 
