@@ -46,7 +46,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         /** @noinspection RequireParameterInspection */
-        return $this->render('../static/index', [
+        return $this->render('index', [
             'model' => StaticController::findModel('index'),
         ]);
     }
