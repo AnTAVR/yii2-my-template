@@ -12,10 +12,6 @@ class IndexCest
         $I->amOnPage(Yii::$app->homeUrl);
     }
 
-    public function _after(AcceptanceTester $I)
-    {
-    }
-
     public function checkOpenIndexPage(AcceptanceTester $I)
     {
         $I->see(Yii::$app->params['brandLabel']);
