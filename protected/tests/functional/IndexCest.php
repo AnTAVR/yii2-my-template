@@ -32,6 +32,6 @@ class IndexCest
     public function checkOpenNotSetPage(Tester $I)
     {
         $I->amOnPage(['/tsdfgsd']);
-        $I->seeResponseCodeIs(404);
+        $I->seePageNotFound();
     }
 }
