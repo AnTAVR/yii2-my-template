@@ -42,6 +42,7 @@ return [
         '.hgignore',
         '.hgkeep',
         '/messages',
+        '/runtime',
         '/vendor',
     ],
     // array, list of patterns that specify which files (not directories) should be processed.
