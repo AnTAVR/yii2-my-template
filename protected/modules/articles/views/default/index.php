@@ -11,6 +11,9 @@ $this->title = Yii::t('app', 'Articles');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <h1><?= Html::encode($this->title) ?></h1>
+
+<?= LinkPager::widget(['pagination' => $pagination,]) ?>
+
 <?php $i = 0;
 $col = 1;
 foreach ($data as $model) {
@@ -32,4 +35,4 @@ if ($i) {
 }
 ?>
 
-<div class="row"><?= LinkPager::widget(['pagination' => $pagination,]) ?></div>
+<?= LinkPager::widget(['pagination' => $pagination,]) ?>
