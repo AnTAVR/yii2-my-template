@@ -4,12 +4,13 @@ namespace contact\tests\unit\models;
 
 use app\modules\contact\models\forms\ContactForm;
 use Codeception\Test\Unit;
+use contact\tests\UnitTester as Tester;
 use Yii;
 
 class ContactFormTest extends Unit
 {
     /**
-     * @var \contact\tests\UnitTester
+     * @var Tester
      */
     public $tester;
 

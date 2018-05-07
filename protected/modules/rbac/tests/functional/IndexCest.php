@@ -2,11 +2,12 @@
 
 namespace rbac\tests\functional;
 
-use rbac\tests\FunctionalTester;
+use rbac\tests\FunctionalTester as Tester;
 
+/* @var $scenario \Codeception\Scenario */
 class IndexCest
 {
-    public function checkOpenIndexPage(FunctionalTester $I)
+    public function checkOpenIndexPage(Tester $I)
     {
         $I->amOnPage(['/rbac']);
         $I->seeResponseCodeIs(404);

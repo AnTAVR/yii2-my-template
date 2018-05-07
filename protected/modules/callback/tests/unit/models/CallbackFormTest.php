@@ -4,12 +4,13 @@ namespace callback\tests\unit\models;
 
 use app\modules\callback\models\forms\CallbackForm;
 use Codeception\Test\Unit;
+use contact\tests\UnitTester as Tester;
 use Yii;
 
 class CallbackFormTest extends Unit
 {
     /**
-     * @var \callback\tests\UnitTester
+     * @var Tester
      */
     public $tester;
 

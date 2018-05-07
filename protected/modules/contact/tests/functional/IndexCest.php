@@ -2,22 +2,22 @@
 
 namespace contact\tests\functional;
 
-use contact\tests\FunctionalTester;
+use contact\tests\FunctionalTester as Tester;
 
 /* @var $scenario \Codeception\Scenario */
 class IndexCest
 {
-    public function _before(FunctionalTester $I)
+    public function _before(Tester $I)
     {
         $I->amOnPage(['/contact']);
     }
 
-    public function checkOpenIndexPage(FunctionalTester $I)
+    public function checkOpenIndexPage(Tester $I)
     {
         $I->see('Contact', 'h1');
     }
 
-    public function checkContactSubmitNoData(FunctionalTester $I)
+    public function checkContactSubmitNoData(Tester $I)
     {
         $I->submitForm('#contact-form', []);
         $I->see('Contact', 'h1');
@@ -28,7 +28,7 @@ class IndexCest
 //        $I->seeValidationError('The verification code is incorrect');
     }
 
-    public function checkContactSubmitNotCorrectEmail(FunctionalTester $I)
+    public function checkContactSubmitNotCorrectEmail(Tester $I)
     {
         $I->submitForm('#contact-form', [
             'ContactForm[name]' => 'tester',
@@ -44,7 +44,7 @@ class IndexCest
         $I->dontSeeValidationError('The verification code is incorrect');
     }
 
-    public function checkContactSubmitCorrectData(FunctionalTester $I)
+    public function checkContactSubmitCorrectData(Tester $I)
     {
         $I->submitForm('#contact-form', [
             'ContactForm[name]' => 'tester',
