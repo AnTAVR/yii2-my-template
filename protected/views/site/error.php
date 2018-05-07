@@ -20,5 +20,6 @@ $this->title = $name;
 </p>
 <p>
     <?= Yii::t('app', 'Please contact us if you think this is a server error.') ?>
-    <?= Yii::t('app', 'Thank you.') ?>
+    <?= Yii::t('app', 'Thank you.') ?><br>
+    <?= Html::a(Yii::t('app', 'Back to Home'), Yii::$app->homeUrl) ?><br>
 </p>

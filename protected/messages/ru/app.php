@@ -119,6 +119,7 @@ return [
     'Articles Url' => 'Урл статьи',
     'Auth code not found or expired!' => 'Код аутентификации не найден или истек!',
     'BLOCKED' => 'Заблокирован',
+    'Back to Home' => 'На главную',
     'Body' => 'Сообщение',
     'Callback' => 'Обратный звонок',
     'Class "{className}" must extends yii\\rbac\\Rule' => 'Класс "{className}" должен быть расширением yii\\rbac\\Rule',
