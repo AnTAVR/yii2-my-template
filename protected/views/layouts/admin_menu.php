@@ -12,9 +12,10 @@ $user = Yii::$app->user;
     'options' => ['class' => 'nav nav-tabs'],
     'items' => [
         ['label' => Yii::t('app', 'Dump DB'),
-            'active' => $controllerId === 'admin-dump',
+            'active' => $moduleId === 'dump' && $controllerId === 'admin-default',
             'visible' => $user->can('dump.openAdminPanel'),
             'url' => ['/dump/admin-default']],
+
         ['label' => Yii::t('app', 'RBAC'),
             'active' => $moduleId === 'rbac',
             'visible' => $user->can('rbac.openAdminPanel'),
@@ -23,33 +24,41 @@ $user = Yii::$app->user;
                 ['label' => Yii::t('app', 'User Assignment'),
                     'active' => $moduleId === 'rbac' && $controllerId === 'admin-assignment',
                     'url' => ['/rbac/admin-assignment']],
+
                 ['label' => Yii::t('app', 'Permissions Manager'),
                     'active' => $moduleId === 'rbac' && $controllerId === 'admin-permission',
                     'url' => ['/rbac/admin-permission']],
+
                 ['label' => Yii::t('app', 'Roles Manager'),
                     'active' => $moduleId === 'rbac' && $controllerId === 'admin-role',
                     'url' => ['/rbac/admin-role']],
+
                 ['label' => Yii::t('app', 'Rules Manager'),
                     'active' => $moduleId === 'rbac' && $controllerId === 'admin-rule',
                     'url' => ['/rbac/admin-rule']],
             ],
         ],
+
         ['label' => Yii::t('app', 'Static Pages'),
             'active' => $moduleId === 'statics',
             'visible' => $user->can('statics.openAdminPanel'),
             'url' => ['/statics/admin-default']],
+
         ['label' => Yii::t('app', 'News'),
             'active' => $moduleId === 'news',
             'visible' => $user->can('news.openAdminPanel'),
             'url' => ['/news/admin-default']],
+
         ['label' => Yii::t('app', 'Articles'),
             'active' => $moduleId === 'articles',
             'visible' => $user->can('articles.openAdminPanel'),
             'url' => ['/articles/admin-default']],
+
         ['label' => Yii::t('app', 'Products'),
             'active' => $moduleId === 'products',
             'visible' => $user->can('products.openAdminPanel'),
             'url' => ['/products/admin-default']],
+
         ['label' => Yii::t('app', 'Uploader'),
             'active' => $moduleId === 'uploader',
             'visible' => $user->can('uploader.openAdminPanel'),
@@ -58,10 +67,10 @@ $user = Yii::$app->user;
                 ['label' => Yii::t('app', 'Uploader Images'),
                     'active' => $moduleId === 'uploader' && $controllerId === 'admin-images',
                     'url' => ['/uploader/admin-images']],
+
                 ['label' => Yii::t('app', 'Uploader Files'),
                     'active' => $moduleId === 'uploader' && $controllerId === 'admin-files',
                     'url' => ['/uploader/admin-files']],
-
             ]
         ],
     ],
