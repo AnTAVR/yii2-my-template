@@ -59,11 +59,11 @@ class Rule extends Item
         if (!class_exists($this->className)) {
             $this->addError('className', Yii::t('app', 'Class "{className}" not exist', ['className' => $this->className]));
         } else if (!is_subclass_of($this->className, yii\rbac\Rule::class)) {
-            $this->addError('className', Yii::t('app', 'Class "{className}" must extends yii\rbac\Rule', ['className' => $this->className]));
+            $this->addError('className', Yii::t('app', 'Class "{className}" must extends yii\\rbac\\Rule', ['className' => $this->className]));
         } else if ((new $this->className())->name === null) {
-            $this->addError('className', Yii::t('app', 'The "{className}::\$name" is not set', ['className' => $this->className]));
+            $this->addError('className', Yii::t('app', 'The "{className}::\\$name" is not set', ['className' => $this->className]));
         } else if ((new $this->className())->name !== $this->name) {
-            $this->addError('className', Yii::t('app', 'The "{className}::\$name" is incorrect with the name of rule you have set', ['className' => $this->className]));
+            $this->addError('className', Yii::t('app', 'The "{className}::\\$name" is incorrect with the name of rule you have set', ['className' => $this->className]));
         }
     }
 
