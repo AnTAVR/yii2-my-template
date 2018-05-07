@@ -12,6 +12,16 @@ class LinkPager extends oldLinkPager
     public $jumpPageLabel = false;
     public $jumpPageCssClass = 'jump';
 
+    /**
+     * Initializes the pager.
+     */
+    public function init()
+    {
+        parent::init();
+
+        $this->registerClientScript();
+    }
+
     protected function renderPageButtons()
     {
         $pageCount = $this->pagination->getPageCount();
@@ -96,5 +106,13 @@ class LinkPager extends oldLinkPager
         $item = Html::tag('span', $button . $input, ['class' => 'input-group input-group-sm']);
         $item = Html::tag('span', $item, ['class' => 'col-lg-2', 'style' => 'padding: 1px;']);
         return Html::tag($linkWrapTag, $item, $options);
+    }
+
+    /**
+     * Registers the needed JavaScript.
+     */
+    public function registerClientScript()
+    {
+        LinkPagerAsset::register($this->view);
     }
 }
