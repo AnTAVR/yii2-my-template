@@ -1,6 +1,6 @@
 <?php
 
-namespace app\widgets;
+namespace app\widgets\LinkPager;
 
 use Yii;
 use yii\helpers\ArrayHelper;

@@ -19,7 +19,7 @@ return [
         ],
         'singletons' => [
             'yii\widgets\LinkPager' => [
-                'class' => 'app\widgets\LinkPager',
+                'class' => 'app\widgets\LinkPager\LinkPager',
                 'lastPageLabel' => true,
                 'firstPageLabel' => true,
                 'jumpPageLabel' => true,
