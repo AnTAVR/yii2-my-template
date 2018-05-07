@@ -7,13 +7,9 @@ use Yii;
 
 class IndexCest
 {
-    public function _before(AcceptanceTester $I)
-    {
-        $I->amOnPage(Yii::$app->homeUrl);
-    }
-
     public function checkOpenIndexPage(AcceptanceTester $I)
     {
+        $I->amOnPage(Yii::$app->homeUrl);
         $I->see(Yii::$app->params['brandLabel']);
     }
 }
