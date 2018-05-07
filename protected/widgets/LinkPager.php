@@ -58,7 +58,9 @@ class LinkPager extends oldLinkPager
 
         $jumpPageLabel = $this->jumpPageLabel === true ? Yii::t('app', 'Jump to:') : $this->jumpPageLabel;
         if ($jumpPageLabel !== false) {
-            $buttons[] = $this->renderJumpPage($jumpPageLabel, $currentPage + 1, $this->jumpPageCssClass);
+            if ($pageCount > $this->maxButtonCount * 2) {
+                $buttons[] = $this->renderJumpPage($jumpPageLabel, $currentPage + 1, $this->jumpPageCssClass);
+            }
         }
 
         $options = $this->options;
@@ -74,20 +76,19 @@ class LinkPager extends oldLinkPager
      */
     protected function renderJumpPage($label, $page, $class)
     {
-        $tmpStr = 99999999999;
         $options = $this->linkContainerOptions;
         $linkWrapTag = ArrayHelper::remove($options, 'tag', 'li');
         Html::addCssClass($options, empty($class) ? $this->pageCssClass : $class);
 
-        $url = $this->pagination->createUrl($tmpStr - 1, null, true);
-        $url = str_replace($tmpStr, '{page_num}', $url);
+        $input = Html::textInput(null, $page, ['class' => 'form-control']);
 
-        $input = Html::textInput(null, $url, ['class' => 'form-control']);
+        $tmpPage = 99989929799;
+        $tmpReplace = '{page_num}';
+        $url = $this->pagination->createUrl($tmpPage - 1, null, true);
+        $url = strrev(implode(strrev($tmpReplace), explode(strrev($tmpPage), strrev($url), 2)));
+        $javaScript = '$(location).attr("href", "' . $url . '".replace("' . $tmpReplace . '", $(this).parent().parent().children("input.form-control").val()));';
 
-        $javaScript = '';
-
-        $button = Html::button($label, ['class' => 'btn btn-default']);
-        $s = '<button type="button" class="btn btn-default" onclick="' . $javaScript . '">Jump to:</button>';
+        $button = Html::button($label, ['class' => 'btn btn-default', 'onclick' => $javaScript]);
         $button = Html::tag('span', $button, ['class' => 'input-group-btn']);
 
 //        $label = Html::tag('span', $label, ['class' => 'input-group-addon']);
