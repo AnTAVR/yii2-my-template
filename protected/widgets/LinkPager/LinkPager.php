@@ -11,6 +11,7 @@ class LinkPager extends oldLinkPager
 {
     public $jumpPageLabel = false;
     public $jumpPageCssClass = 'jump';
+    public $jumpPageReplace = '{page_num}';
 
     /**
      * Initializes the pager.
@@ -20,6 +21,22 @@ class LinkPager extends oldLinkPager
         parent::init();
 
         $this->registerClientScript();
+    }
+
+    /**
+     * Registers the needed JavaScript.
+     */
+    public function registerClientScript()
+    {
+        LinkPagerAsset::register($this->view);
+
+        $tmpPage = 99989929799;
+        $url = $this->pagination->createUrl($tmpPage - 1, null, true);
+        $url = strrev(implode(strrev($this->jumpPageReplace), explode(strrev($tmpPage), strrev($url), 2)));
+
+        $this->view->registerJs('$().LinkPager.url = "' . $url . '";');
+        $this->view->registerJs('$().LinkPager.jumpPageReplace = "' . $this->jumpPageReplace . '";');
+
     }
 
     protected function renderPageButtons()
@@ -90,29 +107,17 @@ class LinkPager extends oldLinkPager
         $linkWrapTag = ArrayHelper::remove($options, 'tag', 'li');
         Html::addCssClass($options, empty($class) ? $this->pageCssClass : $class);
 
-        $input = Html::textInput(null, $page, ['class' => 'form-control']);
+        $input = Html::textInput(null, $page, ['class' => 'form-control',
+            'onkeydown' => '$().LinkPager.onkeydown(this, event);']);
 
-        $tmpPage = 99989929799;
-        $tmpReplace = '{page_num}';
-        $url = $this->pagination->createUrl($tmpPage - 1, null, true);
-        $url = strrev(implode(strrev($tmpReplace), explode(strrev($tmpPage), strrev($url), 2)));
-        $javaScript = '$(location).attr("href", "' . $url . '".replace("' . $tmpReplace . '", $(this).parent().parent().children("input.form-control").val()));';
-
-        $button = Html::button($label, ['class' => 'btn btn-default', 'onclick' => $javaScript]);
+        $button = Html::button($label, ['class' => 'btn btn-default',
+            'onclick' => '$().LinkPager.onclick(this);']);
         $button = Html::tag('span', $button, ['class' => 'input-group-btn']);
 
-//        $label = Html::tag('span', $label, ['class' => 'input-group-addon']);
+//        $button = Html::tag('span', $label, ['class' => 'input-group-addon']);
 
         $item = Html::tag('span', $button . $input, ['class' => 'input-group input-group-sm']);
         $item = Html::tag('span', $item, ['class' => 'col-lg-2', 'style' => 'padding: 1px;']);
         return Html::tag($linkWrapTag, $item, $options);
-    }
-
-    /**
-     * Registers the needed JavaScript.
-     */
-    public function registerClientScript()
-    {
-        LinkPagerAsset::register($this->view);
     }
 }
