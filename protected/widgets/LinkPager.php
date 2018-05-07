@@ -74,15 +74,26 @@ class LinkPager extends oldLinkPager
      */
     protected function renderJumpPage($label, $page, $class)
     {
+        $tmpStr = 99999999999;
         $options = $this->linkContainerOptions;
         $linkWrapTag = ArrayHelper::remove($options, 'tag', 'li');
         Html::addCssClass($options, empty($class) ? $this->pageCssClass : $class);
 
-        $url = $this->pagination->createUrl('2', null, true);
-        $input = Html::textInput('d', $page, ['class' => 'form-control']);
-        $label = Html::tag('span', $label, ['class' => 'input-group-addon']);
-        $label = Html::tag('span', $label . $input, ['class' => 'input-group input-group-sm', 'style' => 'width: 10em; padding: 1px;']);
+        $url = $this->pagination->createUrl($tmpStr - 1, null, true);
+        $url = str_replace($tmpStr, '{page_num}', $url);
 
-        return Html::tag($linkWrapTag, $label, $options);
+        $input = Html::textInput(null, $url, ['class' => 'form-control']);
+
+        $javaScript = '';
+
+        $button = Html::button($label, ['class' => 'btn btn-default']);
+        $s = '<button type="button" class="btn btn-default" onclick="' . $javaScript . '">Jump to:</button>';
+        $button = Html::tag('span', $button, ['class' => 'input-group-btn']);
+
+//        $label = Html::tag('span', $label, ['class' => 'input-group-addon']);
+
+        $item = Html::tag('span', $button . $input, ['class' => 'input-group input-group-sm']);
+        $item = Html::tag('span', $item, ['class' => 'col-lg-2', 'style' => 'padding: 1px;']);
+        return Html::tag($linkWrapTag, $item, $options);
     }
 }
