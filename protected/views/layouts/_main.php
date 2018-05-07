@@ -66,7 +66,7 @@ $menuItems = [
 $profileItems = [];
 if (Yii::$app->user->isGuest) {
     $profileItems = ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-in"></span> ' .
-        Yii::t('app', 'Login'), 'url' => Yii::$app->user->loginUrl];
+        Yii::t('app', 'Login'), 'url' => ['/site/login']];
 } else {
     if (Yii::$app->user->can('site.openAdminPanel')) {
         $profileItems = [

@@ -41,6 +41,6 @@ class VerifyMailController extends Controller
             $model->addError('user', $txt);
         }
 
-        return $this->redirect(Yii::$app->user->loginUrl);
+        return $this->redirect(['/site/login']);
     }
 }

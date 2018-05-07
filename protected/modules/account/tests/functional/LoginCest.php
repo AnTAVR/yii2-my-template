@@ -3,13 +3,12 @@
 namespace account\tests\functional;
 
 use account\tests\FunctionalTester;
-use Yii;
 
 class LoginCest
 {
     public function _before(FunctionalTester $I)
     {
-        $I->amOnPage(Yii::$app->user->loginUrl);
+        $I->amOnPage(['/site/login']);
     }
 
     public function checkLoginPage(FunctionalTester $I)

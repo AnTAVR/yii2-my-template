@@ -106,7 +106,7 @@ class RecoveryController extends Controller
                 Yii::$app->session->addFlash('success', Yii::t('app', 'New password was saved.'));
 
                 $tokenModel->delete();
-                return $this->redirect(Yii::$app->user->loginUrl);
+                return $this->redirect(['/site/login']);
             }
         } else {
             $tokenModel->delete();
