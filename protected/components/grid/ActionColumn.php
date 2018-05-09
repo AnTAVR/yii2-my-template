@@ -34,7 +34,7 @@ class ActionColumn extends OldActionColumn
         ]);
         $this->initDefaultButton('restore', 'import', [
             'title' => Yii::t('app', 'Restore'),
-            'data-confirm' => Yii::t('app', 'Are you sure?'),
+            'data-confirm' => Yii::t('app', 'Restore?'),
             'data-method' => 'post',
         ]);
         $this->initDefaultButton('download', 'download-alt', [
