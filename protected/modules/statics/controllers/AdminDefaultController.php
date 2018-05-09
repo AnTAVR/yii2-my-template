@@ -12,10 +12,6 @@ class AdminDefaultController extends Controller
 {
     public $layout = '@app/views/layouts/admin';
 
-    public $params = [
-        'adminPageSize' => 10,
-    ];
-
     public function behaviors()
     {
         return [
@@ -46,7 +42,7 @@ class AdminDefaultController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => StaticPage::find(),
             'pagination' => [
-                'defaultPageSize' => $this->params['adminPageSize'],
+                'defaultPageSize' => $this->module->params['adminPageSize'],
             ],
             'sort' => [
                 'defaultOrder' => ['id' => SORT_DESC,],
