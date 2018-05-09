@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         [
             'class' => 'btn btn-danger',
             'data-method' => 'post',
-            'data-confirm' => Yii::t('app', 'Are you sure?'),
+            'data-confirm' => Yii::t('app', 'Delete all?'),
         ]) ?>
     <?= Html::a('<span class="glyphicon glyphicon-plus"></span>' . Yii::t('app', 'Create'),
         ['create'],
