@@ -1,4 +1,7 @@
 $(function () {
+    /**
+     * @param {Array} options
+     */
     $.fn.UrlTranslit = function (options) {
         var opts = $.extend({}, $.fn.UrlTranslit.defaults, options), $this;
         return this.each(function () {
