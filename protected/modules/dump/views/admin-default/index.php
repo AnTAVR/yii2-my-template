@@ -3,7 +3,7 @@
 use yii\grid\GridView;
 use yii\helpers\Html;
 
-/* @var $this \yii\base\View */
+/* @var $this \yii\web\View */
 /* @var $dataProvider \yii\data\ArrayDataProvider */
 
 $this->title = Yii::t('app', 'Dump DB');

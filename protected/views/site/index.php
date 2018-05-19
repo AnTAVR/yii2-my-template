@@ -1,7 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
-/* @var $model \app\models\StaticPage */
+/* @var $model \app\modules\statics\models\StaticPage */
 
 if (!empty($model->meta_description)) {
     $this->registerMetaTag([
