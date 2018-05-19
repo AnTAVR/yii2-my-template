@@ -2,14 +2,14 @@ $(function () {
     $.fn.LinkPager = function () {
     };
 
-    $.fn.LinkPager.onclick = function (this_) {
-        var pageNum = $(this_).parent().parent().children("input.form-control").val();
+    $.fn.LinkPager.onclick = function (element) {
+        var pageNum = $(element).parent().parent().children("input.form-control").val();
         $.fn.LinkPager.location(pageNum);
     };
 
-    $.fn.LinkPager.onkeydown = function (this_, event_) {
-        if (event_.keyCode == 13) {
-            var pageNum = $(this_).val();
+    $.fn.LinkPager.onkeydown = function (element, e) {
+        if (e.keyCode === 13) {
+            var pageNum = $(element).val();
             $.fn.LinkPager.location(pageNum);
         }
     };

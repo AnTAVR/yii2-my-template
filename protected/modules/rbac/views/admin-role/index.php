@@ -49,11 +49,11 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'viewOptions' => ['role' => 'modal-remote', 'title' => Yii::t('yii', 'View'), 'data-toggle' => 'tooltip'],
 //            'updateOptions' => ['role' => 'modal-remote', 'title' => Yii::t('yii', 'Update'), 'data-toggle' => 'tooltip'],
 //            'deleteOptions' => ['role' => 'modal-remote', 'title' => Yii::t('yii', 'Delete'),
-//                'data-confirm' => false, 'data-method' => false, // for overide yii data api
+//                'data-confirm' => false, 'data-method' => false, // for override yii data api
 //                'data-request-method' => 'post',
 //                'data-toggle' => 'tooltip',
-//                'data-comfirm-ok' => Yii::t('app', 'Ok'),
-//                'data-comfirm-cancel' => Yii::t('app', 'Cancel'),
+//                'data-confirm-ok' => Yii::t('app', 'Ok'),
+//                'data-confirm-cancel' => Yii::t('app', 'Cancel'),
 //                'data-confirm-title' => Yii::t('app', 'Are you sure?'),
 //                'data-confirm-message' => Yii::t('app', 'Are you sure you want to delete this item?')],
         ],
