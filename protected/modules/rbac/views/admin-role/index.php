@@ -39,6 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         [
             'class' => 'yii\grid\ActionColumn',
+            'header' => Yii::t('app', 'Actions'),
             'buttonOptions' => [
                 'class' => 'btn btn-sm btn-default'
             ],

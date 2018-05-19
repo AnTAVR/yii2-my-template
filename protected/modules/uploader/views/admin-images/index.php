@@ -29,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'comment:ntext',
         [
             'class' => 'app\components\grid\ActionColumn',
+            'header' => Yii::t('app', 'Actions'),
             'template' => '{viewOnSite} {view} {update} {delete}',
             'buttonOptions' => [
                 'class' => 'btn btn-sm btn-default'

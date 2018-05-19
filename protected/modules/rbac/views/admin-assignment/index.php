@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'rolesTxt:raw',
         [
             'class' => 'yii\grid\ActionColumn',
+            'header' => Yii::t('app', 'Actions'),
             'template' => '{update}',
             'buttonOptions' => [
                 'class' => 'btn btn-sm btn-default'

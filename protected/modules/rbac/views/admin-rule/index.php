@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'updatedAt:timestamp',
         [
             'class' => 'yii\grid\ActionColumn',
+            'header' => Yii::t('app', 'Actions'),
             'buttonOptions' => [
                 'class' => 'btn btn-sm btn-default'
             ],

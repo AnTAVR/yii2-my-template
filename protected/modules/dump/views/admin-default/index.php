@@ -32,10 +32,20 @@ $this->params['breadcrumbs'][] = $this->title;
     'dataProvider' => $dataProvider,
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
-        'file',
-        'created_at:datetime',
+        [
+            'class' => 'yii\grid\DataColumn',
+            'attribute' => 'file',
+            'label' => Yii::t('app', 'File'),
+        ],
+        [
+            'class' => 'yii\grid\DataColumn',
+            'attribute' => 'created_at',
+            'format' => 'datetime',
+            'label' => Yii::t('app', 'Created At'),
+        ],
         [
             'class' => 'app\components\grid\ActionColumn',
+            'header' => Yii::t('app', 'Actions'),
             'template' => '{download} {restore} {delete}',
             'buttonOptions' => [
                 'class' => 'btn btn-sm btn-default'
