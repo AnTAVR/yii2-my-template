@@ -111,6 +111,7 @@ return [
     'ACTIVE' => 'Активный',
     'About' => 'О нас',
     'Account successfully registered.' => 'Аккаунт успешно зарегистрирован.',
+    'Actions' => 'Действия',
     'Admin panel' => 'Админ панель',
     'All dumps successfully removed.' => 'Все дампы успешно удалены.',
     'All rights, including related copyrights are<br>reserved by the respective owners.' => 'Все авторские права, включая смежные авторские,<br>сохраняются за правообладателями.',

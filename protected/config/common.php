@@ -24,9 +24,6 @@ $__config = [
     ],
     'container' => [
         'definitions' => [
-//            'yii\grid\ActionColumn' => [
-//                'class' => 'app\components\ActionColumn',
-//            ],
         ],
         'singletons' => [
         ],
