@@ -17,13 +17,13 @@ class CallbackFormTest extends Unit
     public function testSendEmail()
     {
         $emailName = 'Tester';
-        $emailFhone = '+7(911) 11-111-11';
+        $emailPhone = '+7(911) 11-111-11';
 
         $model = new CallbackForm();
 
         $model->attributes = [
             'name' => $emailName,
-            'phone' => $emailFhone,
+            'phone' => $emailPhone,
             'verifyCode' => 'testme',
         ];
 
@@ -31,6 +31,7 @@ class CallbackFormTest extends Unit
         expect_that($model->sendEmail());
 
         // using Yii2 module actions to check email was sent
+        /** @noinspection PhpUndefinedMethodInspection */
         $this->tester->seeEmailIsSent();
 
         $emailMessage = $this->tester->grabLastSentEmail();
@@ -39,6 +40,6 @@ class CallbackFormTest extends Unit
         expect($emailMessage->getFrom())->hasKey(Yii::$app->params['supportEmail']);
         $i18n = Yii::$app->i18n;
         expect($emailMessage->getSubject())->equals($i18n->format('Request for a call back from {site}', ['site' => Yii::$app->name], 'us'));
-        expect($emailMessage->toString())->contains($i18n->format('Phone {phone}, name {name}', ['phone' => $emailFhone, 'name' => $emailName], 'us'));
+        expect($emailMessage->toString())->contains($i18n->format('Phone {phone}, name {name}', ['phone' => $emailPhone, 'name' => $emailName], 'us'));
     }
 }
