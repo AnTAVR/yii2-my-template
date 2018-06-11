@@ -34,10 +34,10 @@ class m000099_000001_create_token extends Migration
         ], $this->tableOptions);
 
         $name = 'token_unique';
-        $this->createIndex(DbHelper::indexKeyName($this->tableName, $name), $this->tableName, ['user_id', 'code', 'type'], true);
+        $this->createIndex(DbHelper::indexName($this->tableName, $name), $this->tableName, ['user_id', 'code', 'type'], true);
 
         $name = 'user_id';
-        $this->addForeignKey(DbHelper::foreignKeyName($this->tableName, $name), $this->tableName, $name, User::tableName(), 'id', 'CASCADE', 'RESTRICT');
+        $this->addForeignKey(DbHelper::foreignName($this->tableName, $name), $this->tableName, $name, User::tableName(), 'id', 'CASCADE', 'RESTRICT');
     }
 
     public function down()

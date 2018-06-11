@@ -52,7 +52,7 @@ class m000099_000000_create_user extends Migration
         ], $this->tableOptions);
 
         $name = 'session';
-        $this->createIndex(DbHelper::indexKeyName($this->tableName, $name), $this->tableName, $name);
+        $this->createIndex(DbHelper::indexName($this->tableName, $name), $this->tableName, $name);
     }
 
     public function down()

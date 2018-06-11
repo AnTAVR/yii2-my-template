@@ -34,7 +34,7 @@ class m000100_000003_create_uploader_file extends Migration
         ], $this->tableOptions);
 
         $name = 'file';
-        $this->createIndex(DbHelper::indexKeyName($this->tableName, $name), $this->tableName, $name);
+        $this->createIndex(DbHelper::indexName($this->tableName, $name), $this->tableName, $name);
     }
 
     public function down()

@@ -44,7 +44,7 @@ class m000103_000001_create_page_news extends Migration
         ], $this->tableOptions);
 
         $name = 'published_at';
-        $this->createIndex(DbHelper::indexKeyName($this->tableName, $name), $this->tableName, $name);
+        $this->createIndex(DbHelper::indexName($this->tableName, $name), $this->tableName, $name);
     }
 
     public function down()
