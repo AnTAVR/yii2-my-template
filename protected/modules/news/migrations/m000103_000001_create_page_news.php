@@ -1,5 +1,6 @@
 <?php
 
+use app\components\DbHelper;
 use app\modules\news\models\News;
 use yii\db\Migration;
 
@@ -38,17 +39,16 @@ class m000103_000001_create_page_news extends Migration
             'meta_url' => $this->string()->notNull()->unique(),
             'meta_description' => $this->string(),
             'meta_keywords' => $this->string(),
+
+            'count_view' => $this->integer()->defaultValue(0),
         ], $this->tableOptions);
 
         $name = 'published_at';
-        $this->createIndex($name, $this->tableName, $name);
+        $this->createIndex(DbHelper::indexKeyName($this->tableName, $name), $this->tableName, $name);
     }
 
     public function down()
     {
-        $name = 'published_at';
-        $this->dropIndex($name, $this->tableName);
-
         $this->dropTable($this->tableName);
     }
 

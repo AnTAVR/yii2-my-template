@@ -34,6 +34,8 @@ class m000101_000001_create_page_static extends Migration
             'meta_url' => $this->string()->notNull()->unique(),
             'meta_description' => $this->string(),
             'meta_keywords' => $this->string(),
+
+            'count_view' => $this->integer()->defaultValue(0),
         ], $this->tableOptions);
     }
 

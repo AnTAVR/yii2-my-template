@@ -1,5 +1,6 @@
 <?php
 
+use app\components\DbHelper;
 use app\modules\account\models\User;
 use yii\db\Migration;
 
@@ -24,6 +25,7 @@ class m000099_000000_create_user extends Migration
         if ($this->db->driverName !== 'mysql') {
             $this->tableOptions = null;
         }
+        Yii::error($this->tableName);
 
         $this->createTable($this->tableName, [
             'id' => $this->primaryKey(),
@@ -50,7 +52,7 @@ class m000099_000000_create_user extends Migration
         ], $this->tableOptions);
 
         $name = 'session';
-        $this->createIndex($name, $this->tableName, $name);
+        $this->createIndex(DbHelper::indexKeyName($this->tableName, $name), $this->tableName, $name);
     }
 
     public function down()

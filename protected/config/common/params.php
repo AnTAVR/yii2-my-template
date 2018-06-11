@@ -14,7 +14,7 @@ return [
     'meta_url_pattern' => '/^[a-z0-9\-]*$/s',
     'meta_url_hint' => 'a-z 0-9 -',
     'theme' => 'app\themes\BasicTheme',
-    'db.host' => 'localhost',
+    'db.host' => '127.0.0.1',
     'db.dbname' => 'tests',
     'db.username' => 'tests',
     'db.password' => 'teststests',

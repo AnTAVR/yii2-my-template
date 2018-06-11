@@ -1,5 +1,6 @@
 <?php
 
+use app\components\DbHelper;
 use app\modules\uploader\models\UploaderFile;
 use yii\db\Migration;
 
@@ -33,14 +34,11 @@ class m000100_000003_create_uploader_file extends Migration
         ], $this->tableOptions);
 
         $name = 'file';
-        $this->createIndex($name, $this->tableName, $name);
+        $this->createIndex(DbHelper::indexKeyName($this->tableName, $name), $this->tableName, $name);
     }
 
     public function down()
     {
-        $name = 'file';
-        $this->dropIndex($name, $this->tableName);
-
         $this->dropTable($this->tableName);
     }
 }
