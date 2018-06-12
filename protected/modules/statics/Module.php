@@ -16,7 +16,7 @@ class Module extends ModuleOld
         /** @noinspection HtmlUnknownTag */
         Yii::$app->urlManager->addRules(
             [
-                '/site/<meta_url:[\w\-]+>' => '/statics/default/index',
+                '/s/<meta_url:[\w\-]+>' => '/statics/default/index',
             ]
         );
 
