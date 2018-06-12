@@ -3,9 +3,13 @@
 namespace app\modules\rbac\helpers;
 
 use Yii;
+use yii\helpers\Inflector;
 
 class RBAC
 {
+    const ADMIN_PERMISSION = 'site.openAdminPanel';
+    const ADMIN_ROLE = 'root-role';
+
     /**
      * @param string $name
      * @param integer|array $userId
@@ -30,5 +34,10 @@ class RBAC
         }
 
         return $role;
+    }
+
+    public static function name2description($name)
+    {
+        return ucfirst(Inflector::camel2words($name));
     }
 }
