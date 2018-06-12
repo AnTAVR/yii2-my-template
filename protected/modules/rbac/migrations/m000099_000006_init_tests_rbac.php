@@ -3,7 +3,7 @@
 use app\modules\rbac\helpers\RBAC;
 use yii\db\Migration;
 
-class m000099_000006_init_test_rbac extends Migration
+class m000099_000006_init_tests_rbac extends Migration
 {
     public function up()
     {
