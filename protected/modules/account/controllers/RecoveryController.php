@@ -100,7 +100,7 @@ class RecoveryController extends Controller
             }
 
             if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-                $model->generatePassword($model->password);
+                $model->password_hash = Yii::$app->security->generatePasswordHash($model->password);
                 $model->save(false);
 
                 Yii::$app->session->addFlash('success', Yii::t('app', 'New password was saved.'));

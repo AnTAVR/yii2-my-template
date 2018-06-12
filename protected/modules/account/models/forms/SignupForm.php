@@ -81,7 +81,7 @@ class SignupForm extends User
         if ($runValidation && !$this->validate()) {
             return false;
         }
-        $this->generatePassword($this->password);
+        $this->password_hash = Yii::$app->security->generatePasswordHash($this->password);
 
         if (!$this->save(false)) {
             return false;
