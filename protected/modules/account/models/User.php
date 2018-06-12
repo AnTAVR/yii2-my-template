@@ -89,15 +89,6 @@ class User extends ActiveRecord implements IdentityInterface
         return static::findUserActive($tokenModel->user_id);
     }
 
-    /**
-     * @param string $value
-     * @throws \yii\base\Exception
-     */
-    public function generatePassword($value)
-    {
-        $this->password_hash = Yii::$app->security->generatePasswordHash($value);
-    }
-
     function init()
     {
         parent::init();
