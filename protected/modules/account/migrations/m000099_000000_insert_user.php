@@ -19,27 +19,37 @@ class m000099_000000_insert_user extends Migration
     public function up()
     {
         $params = Yii::$app->params;
-        $model = new User([
+
+        $security = Yii::$app->security;
+
+        $this->insert($this->tableName, [
             'username' => 'admin',
+            'created_at' => time(),
             'email' => $params['adminEmail'],
             'email_confirmed' => true,
+            'status' => User::STATUS_ACTIVE,
+            'auth_key' => $security->generateRandomString(),
+            'salt' => $security->generateRandomString(64),
+            'password_hash' => $security->generatePasswordHash('adminadmin')
         ]);
-        $model->generatePassword('adminadmin');
-        $model->save(false);
 
 
-        $model = new User([
+        $this->insert($this->tableName, [
             'username' => 'tests',
+            'created_at' => time(),
             'email' => 'tests@tests.tests',
             'email_confirmed' => true,
+            'status' => User::STATUS_ACTIVE,
+            'auth_key' => $security->generateRandomString(),
+            'salt' => $security->generateRandomString(64),
+            'password_hash' => Yii::$app->security->generatePasswordHash('adminadmin')
         ]);
-        $model->generatePassword('teststests');
-        $model->save(false);
     }
 
     public function down()
     {
-        $this->delete($this->tableName, ['id' => 1]);
+        $this->delete($this->tableName, ['username' => 'tests']);
+        $this->delete($this->tableName, ['username' => 'admin']);
     }
 
     /*

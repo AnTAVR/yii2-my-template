@@ -29,7 +29,7 @@ class m000104_000002_insert_page_products extends Migration
             $title = self::CONTENT_TITLE . $i;
             $style = ' style="float:left"';
 
-            $model = new Products([
+            $this->insert($this->tableName, [
                 'published_at' => time(),
                 'status' => Products::STATUS_ACTIVE,
 
@@ -39,15 +39,15 @@ class m000104_000002_insert_page_products extends Migration
 
                 'meta_url' => $title,
             ]);
-            $model->save(false);
         }
     }
 
     public function down()
     {
-        $this->delete($this->tableName, ['meta_url' => 'p3']);
-        $this->delete($this->tableName, ['meta_url' => 'p2']);
-        $this->delete($this->tableName, ['meta_url' => 'p1']);
+        for ($i = 0; $i++ < self::COUNT;) {
+            $title = self::CONTENT_TITLE . $i;
+            $this->delete($this->tableName, ['meta_url' => $title]);
+        }
     }
 
     /*

@@ -28,7 +28,7 @@ class m000102_000002_insert_page_articles extends Migration
         for ($i = 0; $i++ < self::COUNT;) {
             $title = self::CONTENT_TITLE . $i;
             $style = '';
-            $model = new Articles([
+            $this->insert($this->tableName, [
                 'published_at' => time(),
                 'status' => Articles::STATUS_ACTIVE,
 
@@ -38,7 +38,6 @@ class m000102_000002_insert_page_articles extends Migration
 
                 'meta_url' => $title,
             ]);
-            $model->save(false);
         }
     }
 

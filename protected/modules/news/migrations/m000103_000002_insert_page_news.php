@@ -28,7 +28,7 @@ class m000103_000002_insert_page_news extends Migration
         for ($i = 0; $i++ < self::COUNT;) {
             $title = self::CONTENT_TITLE . $i;
             $style = ' style="float:right"';
-            $model = new News([
+            $this->insert($this->tableName, [
                 'published_at' => time(),
                 'status' => News::STATUS_ACTIVE,
 
@@ -38,7 +38,6 @@ class m000103_000002_insert_page_news extends Migration
 
                 'meta_url' => $title,
             ]);
-            $model->save(false);
         }
     }
 
