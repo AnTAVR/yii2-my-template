@@ -9,7 +9,7 @@ class m000104_000002_insert_page_products extends Migration
     public $tableName;
 
     const CONTENT_TITLE = 'product';
-    const COUNT = 3;
+    const COUNT = 300;
 
     public function init()
     {
