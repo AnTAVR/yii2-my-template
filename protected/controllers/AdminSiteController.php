@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\modules\rbac\helpers\RBAC;
 use yii\web\Controller;
 
 class AdminSiteController extends Controller
@@ -16,7 +17,7 @@ class AdminSiteController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['site.openAdminPanel'],
+                        'roles' => [RBAC::ADMIN_PERMISSION],
                     ],
                 ],
             ],
