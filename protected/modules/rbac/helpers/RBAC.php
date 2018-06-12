@@ -3,12 +3,11 @@
 namespace app\modules\rbac\helpers;
 
 use Yii;
-use yii\helpers\Inflector;
 
 class RBAC
 {
-    const ADMIN_PERMISSION = 'site.openAdminPanel';
-    const ADMIN_ROLE = 'root-role';
+    const ADMIN_PERMISSION = 'admin.openAdminPanel';
+    const ADMIN_ROLE = 'admin-role';
 
     /**
      * @param string $name
@@ -38,6 +37,12 @@ class RBAC
 
     public static function name2description($name)
     {
-        return ucfirst(Inflector::camel2words($name));
+        $label = strtolower(trim(str_replace([
+            '-',
+            '_',
+            '.',
+        ], ' ', preg_replace('/(?<![A-Z])[A-Z]/', ' \0', $name))));
+
+        return ucfirst(strtolower($label));
     }
 }
