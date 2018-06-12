@@ -14,9 +14,10 @@ class AdminPanelMigration extends Migration
     {
         $authManager = Yii::$app->authManager;
 
-        $time = $this->beginCommand("RBAC::createPermission '{$this::PERMISSION_ADMIN}'");
-        $permission = $authManager->createPermission($this::PERMISSION_ADMIN);
-        $permission->description = RBAC::name2description($this::PERMISSION_ADMIN);
+        $name = $this::PERMISSION_ADMIN;
+        $time = $this->beginCommand("RBAC::createPermission '{$name}'");
+        $permission = $authManager->createPermission($name);
+        $permission->description = RBAC::name2description($name);
         $authManager->add($permission);
 
         $authManager->addChild($permission, $authManager->getPermission(RBAC::ADMIN_PERMISSION));
