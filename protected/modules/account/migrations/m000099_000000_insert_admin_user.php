@@ -3,7 +3,7 @@
 use app\modules\account\models\User;
 use yii\db\Migration;
 
-class m000099_000000_insert_user extends Migration
+class m000099_000000_insert_admin_user extends Migration
 {
     public $tableName;
 
