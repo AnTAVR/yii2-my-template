@@ -5,6 +5,7 @@
 /* @var $content string */
 
 use app\assets\AppSiteAsset;
+use app\modules\rbac\helpers\RBAC;
 use app\widgets\Thumbnail\Thumbnail;
 use app\widgets\TopLink\TopLink;
 use yii\bootstrap\Carousel;
@@ -68,7 +69,7 @@ if (Yii::$app->user->isGuest) {
     $profileItems = ['encode' => false, 'label' => '<span class="glyphicon glyphicon-log-in"></span> ' .
         Yii::t('app', 'Login'), 'url' => ['/site/login']];
 } else {
-    if (Yii::$app->user->can('site.openAdminPanel')) {
+    if (Yii::$app->user->can(RBAC::ADMIN_PERMISSION)) {
         $profileItems = [
             ['label' => Yii::t('app', 'Admin panel'), 'url' => ['/admin-site'], 'linkOptions' => ['target' => '_blank']],
             '<li class="divider"></li>',
