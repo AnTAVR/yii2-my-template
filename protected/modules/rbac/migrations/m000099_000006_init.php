@@ -9,33 +9,52 @@ class m000099_000006_init extends Migration
     {
         $authManager = Yii::$app->authManager;
 
-        $usersRole = RBAC::createRole('users-role', [1, 2], 'Users role');
+        $name = 'users-role';
+        $time = $this->beginCommand("RBAC::createRole '{$name}'");
+        $usersRole = RBAC::createRole($name, [1, 2], RBAC::name2description($name));
+        $this->endCommand($time);
 
-        $createCommentPermission = $authManager->createPermission('createComment');
-        $createCommentPermission->description = 'Create comment';
+        $name = 'createComment';
+        $time = $this->beginCommand("RBAC::createPermission '{$name}'");
+        $createCommentPermission = $authManager->createPermission($name);
+        $createCommentPermission->description = RBAC::name2description($name);
         $authManager->add($createCommentPermission);
         $authManager->addChild($usersRole, $createCommentPermission);
+        $this->endCommand($time);
 
-        $updateCommentPermission = $authManager->createPermission('updateComment');
-        $updateCommentPermission->description = 'Update comment';
+        $name = 'updateComment';
+        $time = $this->beginCommand("RBAC::createPermission '{$name}'");
+        $updateCommentPermission = $authManager->createPermission($name);
+        $updateCommentPermission->description = RBAC::name2description($name);
         $authManager->add($updateCommentPermission);
         $authManager->addChild($usersRole, $updateCommentPermission);
+        $this->endCommand($time);
 
+        $name = 'author-role';
+        $time = $this->beginCommand("RBAC::createRole '{$name}'");
+        $authorRole = RBAC::createRole($name, 1, RBAC::name2description($name));
+        $this->endCommand($time);
 
-        $authorRole = RBAC::createRole('author-role', 1, 'Author role');
-
-        $createPostPermission = $authManager->createPermission('createPost');
-        $createPostPermission->description = 'Create post';
+        $name = 'createPost';
+        $time = $this->beginCommand("RBAC::createPermission '{$name}'");
+        $createPostPermission = $authManager->createPermission($name);
+        $createPostPermission->description = RBAC::name2description($name);
         $authManager->add($createPostPermission);
         $authManager->addChild($authorRole, $createPostPermission);
+        $this->endCommand($time);
 
-        $updatePostPermission = $authManager->createPermission('updatePost');
-        $updatePostPermission->description = 'Update post';
+        $name = 'updatePost';
+        $time = $this->beginCommand("RBAC::createPermission '{$name}'");
+        $updatePostPermission = $authManager->createPermission($name);
+        $updatePostPermission->description = RBAC::name2description($name);
         $authManager->add($updatePostPermission);
         $authManager->addChild($authorRole, $updatePostPermission);
+        $this->endCommand($time);
 
-
-        RBAC::createRole('moderator-role', 1, 'Moderator role');
+        $name = 'moderator-role';
+        $time = $this->beginCommand("RBAC::createRole '{$name}'");
+        RBAC::createRole($name, 1, RBAC::name2description($name));
+        $this->endCommand($time);
     }
 
     public function down()
