@@ -10,7 +10,8 @@ class DbHelper
     {
         $tableName = Yii::$app->db->quoteSql($tableName);
         $tableName = Yii::$app->db->schema->unquoteSimpleTableName($tableName);
-        return $tableName . '_' . $key . '_idx';
+        return 'ix_' . $tableName . '_' . $key;
+//        return $tableName . '_' . $key . '_idx';
     }
 
     public static function foreignName($tableName, $key)
