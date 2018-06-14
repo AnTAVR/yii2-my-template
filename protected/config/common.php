@@ -99,6 +99,7 @@ $__config = [
         ],
         'db' => [
             'class' => 'yii\db\Connection',
+//            'dsn' => "pgsql:host={$params['db.host']};dbname={$params['db.dbname']}" . (YII_ENV_TEST ? '_tests' : ''),
             'dsn' => "mysql:host={$params['db.host']};dbname={$params['db.dbname']}" . (YII_ENV_TEST ? '_tests' : ''),
             'username' => $params['db.username'],
             'password' => $params['db.password'],
