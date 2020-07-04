@@ -12,7 +12,7 @@ class AdminDefaultController extends Controller
     {
         return [
             'access' => [
-                'class' => '\yii\filters\AccessControl',
+                'class' => 'yii\filters\AccessControl',
                 'rules' => [
                     [
                         'allow' => true,
