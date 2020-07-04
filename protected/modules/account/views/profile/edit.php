@@ -1,7 +1,7 @@
 <?php
-/* @var $this \yii\web\View */
+/* @var $this yii\web\View */
 
-/** @var $identity \app\modules\account\models\User */
+/** @var $identity app\modules\account\models\User */
 $identity = Yii::$app->user->identity;
 $this->params['breadcrumbs'][] = ['label' => $identity->username, 'url' => ['/account']];
 
