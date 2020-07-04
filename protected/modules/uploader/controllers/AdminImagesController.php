@@ -129,11 +129,11 @@ class AdminImagesController extends Controller
      * Deletes an existing UploaderImage model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
-     * @return yii\web\Response
+     * @return \yii\web\Response
      * @throws NotFoundHttpException
      * @throws Exception
      * @throws \Throwable
-     * @throws yii\db\StaleObjectException
+     * @throws \yii\db\StaleObjectException
      * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     public function actionDelete($id)
