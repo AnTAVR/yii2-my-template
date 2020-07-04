@@ -4,6 +4,7 @@ namespace app\modules\rbac\controllers;
 
 use app\modules\rbac\models\Role;
 use app\modules\rbac\models\searches\RoleSearch;
+use Exception;
 use Yii;
 use yii\helpers\Html;
 use yii\web\Controller;
@@ -18,7 +19,7 @@ class AdminRoleController extends Controller
     {
         return [
             'access' => [
-                'class' => '\yii\filters\AccessControl',
+                'class' => 'yii\filters\AccessControl',
                 'rules' => [
                     [
                         'allow' => true,
@@ -92,7 +93,7 @@ class AdminRoleController extends Controller
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return array|string|Response
-     * @throws \Exception
+     * @throws Exception
      */
     public function actionCreate()
     {
@@ -152,8 +153,8 @@ class AdminRoleController extends Controller
      * @param string $name
      * @return array|string|Response
      * @throws NotFoundHttpException
-     * @throws \Exception
-     * @throws \yii\base\Exception
+     * @throws Exception
+     * @throws yii\base\Exception
      */
     public function actionUpdate($name)
     {
@@ -215,7 +216,7 @@ class AdminRoleController extends Controller
      * @param string $name
      * @return array|Response
      * @throws NotFoundHttpException
-     * @throws \yii\base\Exception
+     * @throws yii\base\Exception
      */
     public function actionDelete($name)
     {

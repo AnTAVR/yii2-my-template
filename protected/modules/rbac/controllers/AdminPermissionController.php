@@ -3,6 +3,7 @@
 namespace app\modules\rbac\controllers;
 
 use app\modules\rbac\models\Permission;
+use Exception;
 use Yii;
 use yii\data\ArrayDataProvider;
 use yii\web\Controller;
@@ -17,7 +18,7 @@ class AdminPermissionController extends Controller
     {
         return [
             'access' => [
-                'class' => '\yii\filters\AccessControl',
+                'class' => 'yii\filters\AccessControl',
                 'rules' => [
                     [
                         'allow' => true,
@@ -83,7 +84,7 @@ class AdminPermissionController extends Controller
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return array|string|Response
-     * @throws \Exception
+     * @throws Exception
      */
     public function actionCreate()
     {
@@ -103,8 +104,8 @@ class AdminPermissionController extends Controller
      * @param string $id
      * @return array|string|Response
      * @throws NotFoundHttpException
-     * @throws \Exception
-     * @throws \yii\base\Exception
+     * @throws Exception
+     * @throws yii\base\Exception
      */
     public function actionUpdate($id)
     {
@@ -126,7 +127,7 @@ class AdminPermissionController extends Controller
      * @param string $id
      * @return Response
      * @throws NotFoundHttpException
-     * @throws \yii\base\Exception
+     * @throws yii\base\Exception
      */
     public function actionDelete($id)
     {

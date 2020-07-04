@@ -3,6 +3,7 @@
 namespace app\modules\rbac\controllers;
 
 use app\modules\rbac\models\Rule;
+use Exception;
 use Yii;
 use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
@@ -19,7 +20,7 @@ class AdminRuleController extends Controller
     {
         return [
             'access' => [
-                'class' => '\yii\filters\AccessControl',
+                'class' => 'yii\filters\AccessControl',
                 'rules' => [
                     [
                         'allow' => true,
@@ -99,7 +100,7 @@ class AdminRuleController extends Controller
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return array|string|Response
-     * @throws \Exception
+     * @throws Exception
      */
     public function actionCreate()
     {
@@ -159,7 +160,7 @@ class AdminRuleController extends Controller
      * @param string $name
      * @return array|string|Response
      * @throws NotFoundHttpException
-     * @throws \Exception
+     * @throws Exception
      */
     public function actionUpdate($name)
     {
@@ -221,7 +222,7 @@ class AdminRuleController extends Controller
      * @param string $name
      * @return array|Response
      * @throws NotFoundHttpException
-     * @throws \yii\base\Exception
+     * @throws yii\base\Exception
      */
     public function actionDelete($name)
     {
