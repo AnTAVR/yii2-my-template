@@ -69,7 +69,7 @@ class UserToken extends ActiveRecord
      * @param integer $userId
      * @param string $code
      * @param integer $expiresOn
-     * @return object|null
+     * @return UserToken|object|null
      * @throws yii\base\InvalidConfigException
      */
     public static function createApiAuthToken($userId, $code, $expiresOn)
@@ -84,6 +84,12 @@ class UserToken extends ActiveRecord
         return $token->save(false) ? $token : null;
     }
 
+    /**
+     * @param integer $userId
+     * @param string $code
+     * @return UserToken|object|null
+     * @throws yii\base\InvalidConfigException
+     */
     public static function createConfirmEmailToken($userId, $code)
     {
         $params = Yii::$app->getModule('account')->params;
