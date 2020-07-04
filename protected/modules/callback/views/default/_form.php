@@ -1,12 +1,14 @@
 <?php
-/* @var $this yii\web\View */
 
-/* @var $model app\modules\callback\models\forms\CallbackForm */
-
+use app\modules\callback\models\forms\CallbackForm;
 use app\widgets\Captcha;
 use borales\extensions\phoneInput\PhoneInput;
 use yii\helpers\Html;
+use yii\web\View;
 use yii\widgets\ActiveForm;
+
+/* @var $this View */
+/* @var $model CallbackForm */
 
 ?>
 <?php $form = ActiveForm::begin(['id' => 'callback-form', 'options' => ['class' => 'col-lg-6']]); ?>

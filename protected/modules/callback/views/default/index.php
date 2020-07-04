@@ -1,9 +1,11 @@
 <?php
-/* @var $this yii\web\View */
 
-/* @var $model app\modules\callback\models\forms\CallbackForm */
-
+use app\modules\callback\models\forms\CallbackForm;
 use yii\helpers\Html;
+use yii\web\View;
+
+/* @var $this View */
+/* @var $model CallbackForm */
 
 $this->title = Yii::t('app', 'Request for a call back');
 $this->params['breadcrumbs'][] = $this->title;
