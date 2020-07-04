@@ -3,6 +3,7 @@
 namespace app\modules\account\models;
 
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
 use yii\web\NotFoundHttpException;
 
@@ -46,7 +47,7 @@ class UserToken extends ActiveRecord
      * @throws NotFoundHttpException
      * @throws Exception
      * @throws \Throwable
-     * @throws yii\db\StaleObjectException
+     * @throws \yii\db\StaleObjectException
      * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     public static function findByCode($code, $type = self::TYPE_API_AUTH)
@@ -70,7 +71,7 @@ class UserToken extends ActiveRecord
      * @param string $code
      * @param integer $expiresOn
      * @return UserToken|object|null
-     * @throws yii\base\InvalidConfigException
+     * @throws InvalidConfigException
      */
     public static function createApiAuthToken($userId, $code, $expiresOn)
     {
@@ -88,7 +89,7 @@ class UserToken extends ActiveRecord
      * @param integer $userId
      * @param string $code
      * @return UserToken|object|null
-     * @throws yii\base\InvalidConfigException
+     * @throws InvalidConfigException
      */
     public static function createConfirmEmailToken($userId, $code)
     {
@@ -183,7 +184,7 @@ class UserToken extends ActiveRecord
 
     /**
      * @return string
-     * @throws yii\base\InvalidConfigException
+     * @throws InvalidConfigException
      */
     public function getExpiresTxt()
     {
@@ -195,7 +196,7 @@ class UserToken extends ActiveRecord
 
     /**
      * @return string
-     * @throws yii\base\InvalidConfigException
+     * @throws InvalidConfigException
      */
     public function getCreatedTxt()
     {
