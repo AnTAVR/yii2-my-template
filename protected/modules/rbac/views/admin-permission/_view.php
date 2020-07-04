@@ -2,8 +2,8 @@
 
 use yii\widgets\DetailView;
 
-/* @var $this \yii\web\View */
-/* @var $model \app\modules\rbac\models\Permission */
+/* @var $this yii\web\View */
+/* @var $model app\modules\rbac\models\Permission */
 ?>
 <?= DetailView::widget([
     'model' => $model,

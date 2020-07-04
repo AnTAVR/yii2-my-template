@@ -2,8 +2,8 @@
 
 use yii\widgets\DetailView;
 
-/* @var $this \yii\web\View */
-/* @var $model \app\modules\products\models\Products */
+/* @var $this yii\web\View */
+/* @var $model app\modules\products\models\Products */
 ?>
 <?= DetailView::widget([
     'model' => $model,
