@@ -1,11 +1,13 @@
 <?php
-/* @var $this yii\web\View */
 
-/* @var $model app\modules\contact\models\forms\ContactForm */
-
+use app\modules\contact\models\forms\ContactForm;
 use app\widgets\Captcha;
 use yii\helpers\Html;
+use yii\web\View;
 use yii\widgets\ActiveForm;
+
+/* @var $this View */
+/* @var $model ContactForm */
 
 ?>
 <?php $form = ActiveForm::begin(['id' => 'contact-form', 'options' => ['class' => 'col-lg-6']]); ?>

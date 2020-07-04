@@ -1,9 +1,12 @@
 <?php
-/* @var $this yii\web\View */
 
-/* @var $model app\modules\contact\models\forms\ContactForm */
-
+use app\modules\contact\models\forms\ContactForm;
 use yii\helpers\Html;
+use yii\web\View;
+
+/* @var $this View */
+/* @var $model ContactForm */
+
 
 $this->title = Yii::t('app', 'Contact');
 $this->params['breadcrumbs'][] = $this->title;
