@@ -1,10 +1,12 @@
 <?php
 
+use yii\data\ArrayDataProvider;
 use yii\grid\GridView;
 use yii\helpers\Html;
+use yii\web\View;
 
-/* @var $this yii\web\View */
-/* @var $dataProvider yii\data\ArrayDataProvider */
+/* @var $this View */
+/* @var $dataProvider ArrayDataProvider */
 
 $this->title = Yii::t('app', 'Dump DB');
 $this->params['breadcrumbs'][] = $this->title;
