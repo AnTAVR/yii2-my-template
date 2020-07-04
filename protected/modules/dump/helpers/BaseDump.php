@@ -17,7 +17,7 @@ class BaseDump
     /**
      * @param string $dbName
      * @return string
-     * @throws \yii\base\Exception
+     * @throws yii\base\Exception
      */
     public static function makePath($dbName)
     {
@@ -30,7 +30,7 @@ class BaseDump
 
     /**
      * @return string
-     * @throws \yii\base\Exception
+     * @throws yii\base\Exception
      */
     public static function getPath()
     {
@@ -43,7 +43,7 @@ class BaseDump
 
     /**
      * @return array
-     * @throws \yii\base\Exception
+     * @throws yii\base\Exception
      */
     public static function getFilesList()
     {
@@ -63,7 +63,7 @@ class BaseDump
      * @param string $db
      * @return array
      * @throws HttpException
-     * @throws \yii\base\InvalidConfigException
+     * @throws yii\base\InvalidConfigException
      */
     public static function getDbInfo($db = 'db')
     {

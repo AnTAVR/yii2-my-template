@@ -95,7 +95,7 @@ abstract class AuthItem extends Item
     /**
      * Search auth item
      * @param array $params
-     * @return \yii\data\ActiveDataProvider|\yii\data\ArrayDataProvider
+     * @return yii\data\ActiveDataProvider|yii\data\ArrayDataProvider
      */
     public function search($params)
     {
