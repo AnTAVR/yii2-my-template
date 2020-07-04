@@ -18,7 +18,6 @@ class Module extends ModuleOld implements BootstrapInterface
 
         $this->params = require __DIR__ . '/config/params.php';
 
-        /** @noinspection HtmlUnknownTag */
         Yii::$app->urlManager->addRules(
             [
                 '/account/verify-email/<token:\w+>' => '/account/verify-email',
