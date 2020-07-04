@@ -6,6 +6,7 @@ use app\modules\account\models\forms\RecoveryPasswordNewForm;
 use app\modules\account\models\forms\RecoveryPasswordRequestForm;
 use app\modules\account\models\User;
 use app\modules\account\models\UserToken;
+use Exception;
 use Yii;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -16,7 +17,7 @@ class RecoveryController extends Controller
     /**
      * Renders the index view for the module
      * @return string
-     * @throws \yii\base\Exception
+     * @throws yii\base\Exception
      */
     public function actionIndex()
     {
@@ -79,10 +80,11 @@ class RecoveryController extends Controller
      * @param $token string
      * @return string
      * @throws NotFoundHttpException
-     * @throws \Exception
-     * @throws \yii\base\Exception
-     * @throws \yii\db\StaleObjectException
+     * @throws Exception
+     * @throws yii\base\Exception
+     * @throws yii\db\StaleObjectException
      * @throws \Throwable
+     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     public function actionNew($token)
     {
