@@ -136,7 +136,7 @@ class Products extends ActiveRecord
 
     /**
      * @return int|string|null
-     * @throws \yii\base\InvalidConfigException
+     * @throws yii\base\InvalidConfigException
      */
     public function getPublished()
     {
