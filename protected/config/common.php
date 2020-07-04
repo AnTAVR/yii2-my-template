@@ -8,7 +8,6 @@ Yii::setAlias('@webroot', dirname(dirname(__DIR__)));
 Yii::setAlias('@web', '/');
 Yii::setAlias('@tests', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'tests');
 
-/** @noinspection HtmlUnknownTag */
 $__config = [
     'language' => YII_ENV_TEST ? 'en-US' : $params['language'],
     'name' => $params['appName'],
