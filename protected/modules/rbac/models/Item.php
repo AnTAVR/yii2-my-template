@@ -184,7 +184,7 @@ abstract class Item extends Model
     }
 
     /**
-     * @return \yii\rbac\Role|\yii\rbac\Permission|\yii\rbac\Rule
+     * @return yii\rbac\Role|yii\rbac\Permission|yii\rbac\Rule
      */
     abstract protected function newItem();
 
