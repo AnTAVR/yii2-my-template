@@ -4,6 +4,7 @@ namespace app\modules\rbac\models\searches;
 
 use app\modules\rbac\models\Rule;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
 
 class RuleSearch extends Rule
@@ -20,7 +21,7 @@ class RuleSearch extends Rule
     /**
      * Search auth item
      * @param array $params
-     * @return yii\data\ActiveDataProvider|yii\data\ArrayDataProvider
+     * @return ActiveDataProvider|yii\data\ArrayDataProvider
      */
     public function search($params)
     {
