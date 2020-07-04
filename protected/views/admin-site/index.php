@@ -1,7 +1,11 @@
 <?php
-/* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use yii\web\View;
+
+/* @var $this View
+ * @noinspection PhpRedundantVariableDocTypeInspection
+ */
 
 
 $this->title = Yii::t('app', 'Admin panel');
