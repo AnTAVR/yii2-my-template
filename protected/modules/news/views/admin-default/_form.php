@@ -1,14 +1,15 @@
 <?php
-/* @var $this yii\web\View */
-
-/* @var $model app\modules\news\models\News */
 
 use app\modules\news\models\News;
 use app\widgets\CKEditor\CKEditor;
 use app\widgets\DateTimePicker\DateTimePicker;
 use app\widgets\UrlTranslit\UrlTranslit;
 use yii\helpers\Html;
+use yii\web\View;
 use yii\widgets\ActiveForm;
+
+/* @var $this View */
+/* @var $model News */
 
 ?>
 <?php $form = ActiveForm::begin(); ?>

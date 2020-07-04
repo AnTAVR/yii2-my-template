@@ -1,9 +1,11 @@
 <?php
 
+use app\modules\news\models\News;
+use yii\web\View;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\news\models\News */
+/* @var $this View */
+/* @var $model News */
 ?>
 <?= DetailView::widget([
     'model' => $model,

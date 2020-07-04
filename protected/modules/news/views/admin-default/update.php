@@ -1,9 +1,11 @@
 <?php
 
+use app\modules\news\models\News;
 use yii\helpers\Html;
+use yii\web\View;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\news\models\News */
+/* @var $this View */
+/* @var $model News */
 
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'News'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
