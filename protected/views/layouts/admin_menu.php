@@ -1,8 +1,9 @@
 <?php
 
-/* @var $this yii\web\View */
-
 use yii\bootstrap\Nav;
+use yii\web\View;
+
+/* @var $this View */
 
 $controllerId = Yii::$app->controller->id;
 $moduleId = Yii::$app->controller->module->id;

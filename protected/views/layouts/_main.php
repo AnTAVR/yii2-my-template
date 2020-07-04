@@ -1,10 +1,11 @@
 <?php
 
-/* @var $this yii\web\View */
+/* @var $this View */
 
 /* @var $content string */
 
 use app\assets\AppSiteAsset;
+use app\modules\account\models\User;
 use app\modules\rbac\helpers\RBAC;
 use app\widgets\Thumbnail\Thumbnail;
 use app\widgets\TopLink\TopLink;
@@ -13,10 +14,12 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\web\AssetBundle;
+use yii\web\View;
 use yii\widgets\Breadcrumbs;
 
 $asset = AppSiteAsset::register($this);
-/** @var yii\web\AssetBundle $asset */
+/** @var AssetBundle $asset */
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -82,7 +85,7 @@ if (Yii::$app->user->isGuest) {
             'url' => ['/site/logout'], 'linkOptions' => ['data' => ['method' => 'post']]],
     ]);
 
-    /** @var $identity app\modules\account\models\User */
+    /** @var $identity User */
     $identity = Yii::$app->user->identity;
     $profileItems = ['label' => $identity->username, 'items' => $profileItems,];
 }

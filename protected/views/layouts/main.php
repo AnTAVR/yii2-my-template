@@ -1,13 +1,13 @@
 <?php
 
-/* @var $this yii\web\View */
-
-/* @var $content string */
-
 use app\modules\articles\widgets\ArticlesMenu;
 use app\modules\news\widgets\NewsMenu;
 use app\modules\products\widgets\ProductsMenu;
 use app\widgets\Alert;
+use yii\web\View;
+
+/* @var $this View */
+/* @var $content string */
 
 ?>
 <?php $this->beginContent('@app/views/layouts/_main.php'); ?>
