@@ -3,6 +3,7 @@
 namespace app\modules\account\controllers;
 
 use app\modules\account\models\forms\SignupForm;
+use app\modules\account\Module;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -12,7 +13,7 @@ class SignupController extends Controller
     /**
      * Renders the index view for the module
      * @return string
-     * @throws \yii\base\Exception
+     * @throws yii\base\Exception
      */
     public function actionIndex()
     {
@@ -20,7 +21,7 @@ class SignupController extends Controller
             return $this->goHome();
         }
 
-        /** @var \app\modules\account\Module $module */
+        /** @var Module $module */
         $module = $this->module;
 
         if (!$module->params['signup']) {
