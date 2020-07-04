@@ -18,7 +18,6 @@ class DefaultController extends Controller
      */
     public function actionIndex($meta_url = null)
     {
-        /** @noinspection RequireParameterInspection */
         return $this->render('index', [
             'model' => self::findModel($meta_url),
         ]);
