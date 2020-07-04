@@ -5,6 +5,7 @@ namespace app\modules\account\models\forms;
 use app\modules\account\models\User;
 use app\modules\account\models\UserToken;
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -99,7 +100,7 @@ class SignupForm extends User
      *
      * @param UserToken $tokenModel
      * @return boolean whether the email was sent
-     * @throws Yii\base\InvalidConfigException
+     * @throws InvalidConfigException
      */
     public function sendEmail_VerifyEmail($tokenModel)
     {
