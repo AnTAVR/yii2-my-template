@@ -2,6 +2,7 @@
 
 namespace app\modules\account\events;
 
+use app\modules\account\models\User;
 use Yii;
 
 class BeforeLogoutEvent
@@ -10,8 +11,8 @@ class BeforeLogoutEvent
         $event)
     {
         $username = '';
-        /** @var $identity \app\modules\account\models\User */
         $identity = Yii::$app->user->identity;
+        /** @var $identity User */
         if ($identity->hasProperty('username')) {
             $username = $identity->username;
         }
