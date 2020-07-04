@@ -1,8 +1,8 @@
 <?php
+/* @var $this yii\web\View */
 
 use yii\helpers\Html;
 
-/* @var $this \yii\web\View */
 
 $this->title = Yii::t('app', 'Admin panel');
 ?>
