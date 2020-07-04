@@ -64,6 +64,7 @@ if (extension_loaded('imagick')) {
 }
 
 if (extension_loaded('gd')) {
+    /** @noinspection PhpComposerExtensionStubsInspection */
     $gdInfo = gd_info();
     if (!empty($gdInfo['FreeType Support'])) {
         $gdOK = true;
