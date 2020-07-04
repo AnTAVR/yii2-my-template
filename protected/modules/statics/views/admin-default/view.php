@@ -1,9 +1,11 @@
 <?php
 
+use app\modules\statics\models\StaticPage;
 use yii\helpers\Html;
+use yii\web\View;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\statics\models\StaticPage */
+/* @var $this View */
+/* @var $model StaticPage */
 
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Static Pages'), 'url' => ['/statics/admin-default']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];

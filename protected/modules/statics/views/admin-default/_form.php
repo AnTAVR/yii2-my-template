@@ -1,12 +1,14 @@
 <?php
-/* @var $this yii\web\View */
 
-/* @var $model app\modules\statics\models\StaticPage */
-
+use app\modules\statics\models\StaticPage;
 use app\widgets\CKEditor\CKEditor;
 use app\widgets\UrlTranslit\UrlTranslit;
 use yii\helpers\Html;
+use yii\web\View;
 use yii\widgets\ActiveForm;
+
+/* @var $this View */
+/* @var $model StaticPage */
 
 ?>
 <?php $form = ActiveForm::begin(); ?>
