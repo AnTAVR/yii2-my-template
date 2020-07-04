@@ -47,7 +47,6 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        /** @noinspection RequireParameterInspection */
         return $this->render('index', [
             'model' => DefaultController::findModel('index'),
         ]);
