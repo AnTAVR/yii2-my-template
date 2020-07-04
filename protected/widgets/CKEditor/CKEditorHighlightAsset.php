@@ -3,6 +3,7 @@
 namespace app\widgets\CKEditor;
 
 use yii\web\AssetBundle;
+use yii\web\View;
 
 class CKEditorHighlightAsset extends AssetBundle
 {
@@ -19,7 +20,7 @@ class CKEditorHighlightAsset extends AssetBundle
     ];
 
     /**
-     * @param \yii\web\View $view :
+     * @param View $view :
      */
     public function registerAssetFiles($view)
     {
