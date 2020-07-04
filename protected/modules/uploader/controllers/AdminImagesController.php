@@ -1,15 +1,18 @@
-<?php
+<?php /** @noinspection PhpUndefinedClassInspection */
 
 namespace app\modules\uploader\controllers;
 
 use app\modules\uploader\models\forms\UploaderImageForm;
 use app\modules\uploader\models\UploaderImage;
 use Exception;
+use Throwable;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\db\StaleObjectException;
 use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 class AdminImagesController extends Controller
 {
@@ -84,7 +87,7 @@ class AdminImagesController extends Controller
     /**
      * Updates an existing UploaderImage model.
      * @param integer $id
-     * @return string|yii\web\Response
+     * @return string|Response
      * @throws NotFoundHttpException
      */
     public function actionUpdate($id)
@@ -124,17 +127,15 @@ class AdminImagesController extends Controller
         return $model->upload();
     }
 
-    /** @noinspection PhpUndefinedClassInspection */
     /**
      * Deletes an existing UploaderImage model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
-     * @return \yii\web\Response
+     * @return Response
      * @throws NotFoundHttpException
      * @throws Exception
-     * @throws \Throwable
-     * @throws \yii\db\StaleObjectException
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @throws Throwable
+     * @throws StaleObjectException
      */
     public function actionDelete($id)
     {
