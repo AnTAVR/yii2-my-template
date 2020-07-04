@@ -1,7 +1,7 @@
 <?php
-/* @var $this \yii\web\View */
+/* @var $this yii\web\View */
 
-/** @var $user \app\modules\account\models\User */
+/** @var $user app\modules\account\models\User */
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;

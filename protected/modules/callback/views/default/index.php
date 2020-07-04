@@ -1,7 +1,7 @@
 <?php
-/* @var $this \yii\web\View */
+/* @var $this yii\web\View */
 
-/* @var $model \app\modules\callback\models\forms\CallbackForm */
+/* @var $model app\modules\callback\models\forms\CallbackForm */
 
 use yii\helpers\Html;
 
