@@ -3,6 +3,7 @@
 namespace app\modules\products\controllers;
 
 use app\modules\products\models\Products;
+use Exception;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -16,7 +17,7 @@ class AdminDefaultController extends Controller
     {
         return [
             'access' => [
-                'class' => '\yii\filters\AccessControl',
+                'class' => 'yii\filters\AccessControl',
                 'rules' => [
                     [
                         'allow' => true,
@@ -83,7 +84,7 @@ class AdminDefaultController extends Controller
     /**
      * Creates a new Products model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return string|\yii\web\Response
+     * @return string|yii\web\Response
      */
     public function actionCreate()
     {
@@ -101,7 +102,7 @@ class AdminDefaultController extends Controller
      * Updates an existing Products model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
-     * @return string|\yii\web\Response
+     * @return string|yii\web\Response
      * @throws NotFoundHttpException
      */
     public function actionUpdate($id)
@@ -121,11 +122,12 @@ class AdminDefaultController extends Controller
      * Deletes an existing Products model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
-     * @return \yii\web\Response
+     * @return yii\web\Response
      * @throws NotFoundHttpException
-     * @throws \Exception
+     * @throws Exception
+     * @throws yii\db\StaleObjectException
      * @throws \Throwable
-     * @throws \yii\db\StaleObjectException
+     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     public function actionDelete($id)
     {
