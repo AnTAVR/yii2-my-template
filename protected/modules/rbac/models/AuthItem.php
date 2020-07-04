@@ -7,6 +7,8 @@ use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
+use yii\rbac\Permission;
+use yii\rbac\Role;
 
 abstract class AuthItem extends Item
 {
@@ -15,7 +17,7 @@ abstract class AuthItem extends Item
     public $data;
 
     /**
-     * @param \yii\rbac\Role|yii\rbac\Permission $item
+     * @param Role|Permission $item
      * @param array $config name-value pairs that will be used to initialize the object properties
      */
     public function __construct($item, $config = [])

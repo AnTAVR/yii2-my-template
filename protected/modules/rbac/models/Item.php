@@ -8,6 +8,9 @@ use yii\base\Exception as YiiException;
 use yii\base\Model;
 use yii\base\ModelEvent;
 use yii\db\AfterSaveEvent;
+use yii\rbac\Permission as Permission;
+use yii\rbac\Role as Role;
+use yii\rbac\Rule as Rule;
 
 abstract class Item extends Model
 {
@@ -185,7 +188,7 @@ abstract class Item extends Model
     }
 
     /**
-     * @return \yii\rbac\Role|yii\rbac\Permission|yii\rbac\Rule
+     * @return Role|Permission|Rule
      */
     abstract protected function newItem();
 
