@@ -15,7 +15,6 @@ class ActionColumn extends OldActionColumn
         }
 
         if ($action === 'viewOnSite') {
-            /** @noinspection PhpPossiblePolymorphicInvocationInspection */
             return $model->url;
         }
 
