@@ -1,6 +1,6 @@
 <?php
 
-/* @var $this \yii\web\View */
+/* @var $this yii\web\View */
 
 /* @var $content string */
 
@@ -82,7 +82,7 @@ if (Yii::$app->user->isGuest) {
             'url' => ['/site/logout'], 'linkOptions' => ['data' => ['method' => 'post']]],
     ]);
 
-    /** @var $identity \app\modules\account\models\User */
+    /** @var $identity app\modules\account\models\User */
     $identity = Yii::$app->user->identity;
     $profileItems = ['label' => $identity->username, 'items' => $profileItems,];
 }
