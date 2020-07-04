@@ -3,8 +3,8 @@
 use yii\helpers\Html;
 
 /**
- * @var $this \yii\web\View
- * @var $model \app\modules\rbac\models\Permission
+ * @var $this yii\web\View
+ * @var $model app\modules\rbac\models\Permission
  */
 
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Permissions Manager'), 'url' => ['index']];

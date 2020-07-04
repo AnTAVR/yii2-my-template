@@ -2,8 +2,8 @@
 
 use yii\helpers\Html;
 
-/* @var $this \yii\web\View */
-/* @var $model \app\modules\products\models\Products */
+/* @var $this yii\web\View */
+/* @var $model app\modules\products\models\Products */
 
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Products'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
