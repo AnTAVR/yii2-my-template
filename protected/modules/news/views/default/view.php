@@ -1,7 +1,7 @@
 <?php
 
-/* @var $this \yii\web\View */
-/* @var $model \app\modules\news\models\News */
+/* @var $this yii\web\View */
+/* @var $model app\modules\news\models\News */
 
 if (!empty($model->meta_description)) {
     $this->registerMetaTag([
