@@ -1,11 +1,13 @@
 <?php
 
+use app\modules\uploader\models\UploaderFile;
 use yii\helpers\Html;
+use yii\web\View;
 use yii\widgets\ActiveForm;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\uploader\models\UploaderFile */
+/* @var $this View */
+/* @var $model UploaderFile */
 
 $this->title = Yii::t('app', 'Update File: {name}', ['name' => $model->file]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Uploader Files'), 'url' => ['index']];

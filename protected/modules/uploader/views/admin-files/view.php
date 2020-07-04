@@ -1,9 +1,11 @@
 <?php
 
+use app\modules\uploader\models\UploaderFile;
 use yii\helpers\Html;
+use yii\web\View;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\uploader\models\UploaderFile */
+/* @var $this View */
+/* @var $model UploaderFile */
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Uploader Files'), 'url' => ['index']];

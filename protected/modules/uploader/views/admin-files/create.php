@@ -1,11 +1,13 @@
 <?php
 
+use app\modules\uploader\models\forms\UploaderFileForm;
 use dosamigos\fileupload\FileUploadUI;
 use yii\helpers\Html;
+use yii\web\View;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\uploader\models\forms\UploaderFileForm */
+/* @var $this View */
+/* @var $model UploaderFileForm */
 
 $this->title = Yii::t('app', 'Create');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Uploader Files'), 'url' => ['index']];

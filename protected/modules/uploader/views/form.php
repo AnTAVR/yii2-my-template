@@ -1,8 +1,10 @@
 <?php
-/** @var dosamigos\fileupload\FileUploadUI $this */
 
+use dosamigos\fileupload\FileUploadUI;
+use yii\base\Model;
 use yii\helpers\Html;
 
+/** @var FileUploadUI $this */
 /** @noinspection PhpUndefinedFieldInspection */
 $context = $this->context;
 ?>
@@ -16,7 +18,7 @@ $context = $this->context;
                 <i class="glyphicon glyphicon-plus"></i>
                 <span><?= Yii::t('fileupload', 'Add files') ?>...</span>
 
-                <?= $context->model instanceof yii\base\Model && $context->attribute !== null
+                <?= $context->model instanceof Model && $context->attribute !== null
                     ? Html::activeFileInput($context->model, $context->attribute, $context->fieldOptions)
                     : Html::fileInput($context->name, $context->value, $context->fieldOptions); ?>
 
