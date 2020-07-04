@@ -8,6 +8,8 @@ use app\modules\account\models\User;
 use app\modules\account\models\UserToken;
 use Exception;
 use Yii;
+use Yii\base\Exception as YiiException;
+use yii\db\StaleObjectException;
 use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -17,7 +19,7 @@ class RecoveryController extends Controller
     /**
      * Renders the index view for the module
      * @return string
-     * @throws yii\base\Exception
+     * @throws YiiException
      */
     public function actionIndex()
     {
@@ -75,16 +77,16 @@ class RecoveryController extends Controller
         ]);
     }
 
-    /** @noinspection PhpUndefinedClassInspection */
     /**
      * @param $token string
      * @return string
      * @throws NotFoundHttpException
      * @throws Exception
-     * @throws yii\base\Exception
-     * @throws yii\db\StaleObjectException
+     * @throws YiiException
+     * @throws StaleObjectException
      * @throws \Throwable
      * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @noinspection PhpUndefinedClassInspection
      */
     public function actionNew($token)
     {

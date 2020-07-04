@@ -6,10 +6,13 @@ use app\modules\dump\helpers\BaseDump;
 use app\modules\dump\helpers\DumpInterface;
 use Symfony\Component\Process\Process;
 use Yii;
+use Yii\base\Exception as YiiException;
+use yii\base\InvalidConfigException;
 use yii\data\ArrayDataProvider;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 class AdminDefaultController extends Controller
 {
@@ -42,7 +45,7 @@ class AdminDefaultController extends Controller
 
     /**
      * @return string
-     * @throws yii\base\Exception
+     * @throws YiiException
      */
     public function actionIndex()
     {
@@ -58,10 +61,10 @@ class AdminDefaultController extends Controller
     }
 
     /**
-     * @return yii\web\Response
+     * @return Response
      * @throws HttpException
-     * @throws yii\base\Exception
-     * @throws yii\base\InvalidConfigException
+     * @throws YiiException
+     * @throws InvalidConfigException
      */
     public function actionCreate()
     {
@@ -100,11 +103,11 @@ class AdminDefaultController extends Controller
 
     /**
      * @param string $id Name File Dump
-     * @return yii\web\Response
+     * @return Response
      * @throws HttpException
      * @throws NotFoundHttpException
-     * @throws yii\base\Exception
-     * @throws yii\base\InvalidConfigException
+     * @throws YiiException
+     * @throws InvalidConfigException
      */
     public function actionRestore($id)
     {
@@ -128,7 +131,7 @@ class AdminDefaultController extends Controller
     /**
      * @param string $fileName Name File Dump
      * @throws NotFoundHttpException
-     * @throws yii\base\Exception
+     * @throws YiiException
      */
     public static function testFileName($fileName)
     {
@@ -148,9 +151,9 @@ class AdminDefaultController extends Controller
 
     /**
      * @param string $id Name File Dump
-     * @return yii\web\Response
+     * @return Response
      * @throws NotFoundHttpException
-     * @throws yii\base\Exception
+     * @throws YiiException
      */
     public function actionDownload($id)
     {
@@ -163,9 +166,9 @@ class AdminDefaultController extends Controller
 
     /**
      * @param string $id Name File Dump
-     * @return yii\web\Response
+     * @return Response
      * @throws NotFoundHttpException
-     * @throws yii\base\Exception
+     * @throws YiiException
      */
     public function actionDelete($id)
     {
@@ -183,8 +186,8 @@ class AdminDefaultController extends Controller
     }
 
     /**
-     * @return yii\web\Response
-     * @throws yii\base\Exception
+     * @return Response
+     * @throws YiiException
      */
     public function actionDeleteAll()
     {

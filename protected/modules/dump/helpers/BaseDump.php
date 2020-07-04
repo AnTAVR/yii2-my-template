@@ -3,6 +3,8 @@
 namespace app\modules\dump\helpers;
 
 use Yii;
+use yii\base\Exception as YiiException;
+use yii\base\InvalidConfigException;
 use yii\db\Connection;
 use yii\di\Instance;
 use yii\helpers\ArrayHelper;
@@ -17,7 +19,7 @@ class BaseDump
     /**
      * @param string $dbName
      * @return string
-     * @throws yii\base\Exception
+     * @throws YiiException
      */
     public static function makePath($dbName)
     {
@@ -30,7 +32,7 @@ class BaseDump
 
     /**
      * @return string
-     * @throws yii\base\Exception
+     * @throws YiiException
      */
     public static function getPath()
     {
@@ -43,7 +45,7 @@ class BaseDump
 
     /**
      * @return array
-     * @throws yii\base\Exception
+     * @throws YiiException
      */
     public static function getFilesList()
     {
@@ -63,7 +65,7 @@ class BaseDump
      * @param string $db
      * @return array
      * @throws HttpException
-     * @throws yii\base\InvalidConfigException
+     * @throws InvalidConfigException
      */
     public static function getDbInfo($db = 'db')
     {

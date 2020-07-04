@@ -6,6 +6,7 @@ use app\modules\account\models\forms\SignupForm;
 use app\modules\account\models\User;
 use app\modules\account\models\UserToken;
 use Yii;
+use yii\db\StaleObjectException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -18,7 +19,7 @@ class VerifyMailController extends Controller
      * @throws NotFoundHttpException
      * @throws Exception
      * @throws \Throwable
-     * @throws yii\db\StaleObjectException
+     * @throws StaleObjectException
      * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     public function actionIndex($token)

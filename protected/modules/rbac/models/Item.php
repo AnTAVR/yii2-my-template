@@ -2,8 +2,9 @@
 
 namespace app\modules\rbac\models;
 
+use Exception;
 use Yii;
-use yii\base\Exception;
+use Yii\base\Exception as YiiException;
 use yii\base\Model;
 use yii\base\ModelEvent;
 use yii\db\AfterSaveEvent;
@@ -80,12 +81,12 @@ abstract class Item extends Model
     /**
      * Delete Item
      * @return  boolean
-     * @throws Exception When call delete() function in new record
+     * @throws YiiException When call delete() function in new record
      */
     public function delete()
     {
         if ($this->isNewRecord) {
-            throw new Exception('Call delete() function in new record');
+            throw new YiiException('Call delete() function in new record');
         }
 
         $this->beforeDelete();
@@ -137,7 +138,7 @@ abstract class Item extends Model
      * @param bool $runValidation
      * @param null|array $attributeNames
      * @return boolean
-     * @throws \Exception
+     * @throws Exception
      */
     public function save(/** @noinspection PhpUnusedParameterInspection */
         $runValidation = true, $attributeNames = null)

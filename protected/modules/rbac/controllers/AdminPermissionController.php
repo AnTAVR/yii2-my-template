@@ -5,6 +5,7 @@ namespace app\modules\rbac\controllers;
 use app\modules\rbac\models\Permission;
 use Exception;
 use Yii;
+use Yii\base\Exception as YiiException;
 use yii\data\ArrayDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -105,7 +106,7 @@ class AdminPermissionController extends Controller
      * @return array|string|Response
      * @throws NotFoundHttpException
      * @throws Exception
-     * @throws yii\base\Exception
+     * @throws YiiException
      */
     public function actionUpdate($id)
     {
@@ -127,7 +128,7 @@ class AdminPermissionController extends Controller
      * @param string $id
      * @return Response
      * @throws NotFoundHttpException
-     * @throws yii\base\Exception
+     * @throws YiiException
      */
     public function actionDelete($id)
     {

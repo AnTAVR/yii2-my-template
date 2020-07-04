@@ -6,6 +6,7 @@ use app\modules\rbac\models\Role;
 use app\modules\rbac\models\searches\RoleSearch;
 use Exception;
 use Yii;
+use Yii\base\Exception as YiiException;
 use yii\helpers\Html;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -154,7 +155,7 @@ class AdminRoleController extends Controller
      * @return array|string|Response
      * @throws NotFoundHttpException
      * @throws Exception
-     * @throws yii\base\Exception
+     * @throws YiiException
      */
     public function actionUpdate($name)
     {
@@ -216,7 +217,7 @@ class AdminRoleController extends Controller
      * @param string $name
      * @return array|Response
      * @throws NotFoundHttpException
-     * @throws yii\base\Exception
+     * @throws YiiException
      */
     public function actionDelete($name)
     {

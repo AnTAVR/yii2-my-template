@@ -8,6 +8,8 @@ use PDO;
 use PDOException;
 use Symfony\Component\Process\Process;
 use Yii;
+use Yii\base\Exception as YiiException;
+use yii\base\InvalidConfigException;
 use yii\console\Controller;
 use yii\console\ExitCode;
 use yii\helpers\Console;
@@ -22,8 +24,8 @@ class DefaultController extends Controller
      * Create Dump DB
      *
      * @return int
-     * @throws yii\base\Exception
-     * @throws yii\base\InvalidConfigException
+     * @throws YiiException
+     * @throws InvalidConfigException
      */
     public function actionCreate()
     {
@@ -62,8 +64,8 @@ class DefaultController extends Controller
      *
      * @param string $fileName Name File Dump
      * @return int
-     * @throws yii\base\Exception
-     * @throws yii\base\InvalidConfigException
+     * @throws YiiException
+     * @throws InvalidConfigException
      */
     public function actionRestore($fileName)
     {
@@ -107,7 +109,7 @@ class DefaultController extends Controller
     /**
      * @param string $fileName Name File Dump
      * @throws NotFoundHttpException
-     * @throws yii\base\Exception
+     * @throws YiiException
      */
     public static function testFileName($fileName)
     {
@@ -129,7 +131,7 @@ class DefaultController extends Controller
      * Test DB Connection
      *
      * @return int
-     * @throws yii\base\InvalidConfigException
+     * @throws InvalidConfigException
      */
     public function actionTest()
     {
@@ -154,7 +156,7 @@ class DefaultController extends Controller
      * List Dumps DB
      *
      * @return int
-     * @throws yii\base\Exception
+     * @throws YiiException
      */
     public function actionList()
     {

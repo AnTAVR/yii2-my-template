@@ -5,6 +5,7 @@ namespace app\modules\rbac\controllers;
 use app\modules\rbac\models\Rule;
 use Exception;
 use Yii;
+use Yii\base\Exception as YiiException;
 use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -222,7 +223,7 @@ class AdminRuleController extends Controller
      * @param string $name
      * @return array|Response
      * @throws NotFoundHttpException
-     * @throws yii\base\Exception
+     * @throws YiiException
      */
     public function actionDelete($name)
     {
