@@ -4,6 +4,7 @@ namespace app\modules\rbac\helpers;
 
 use Exception;
 use Yii;
+use yii\rbac\Role;
 
 class RBAC
 {
@@ -14,7 +15,7 @@ class RBAC
      * @param string $name
      * @param integer|array $userId
      * @param string|null $description
-     * @return yii\rbac\Role
+     * @return Role
      * @throws Exception
      */
     static public function createRole($name, $userId, $description = null)
