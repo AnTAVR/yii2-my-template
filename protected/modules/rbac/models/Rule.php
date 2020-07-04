@@ -11,7 +11,7 @@ class Rule extends Item
 
     /**
      * Rule constructor.
-     * @param \yii\rbac\Rule $item
+     * @param yii\rbac\Rule $item
      * @param array $config
      */
     public function __construct($item, $config = [])
@@ -70,7 +70,6 @@ class Rule extends Item
     protected function newItem()
     {
         $class = $this->className;
-        $item = new $class();
-        return $item;
+        return new $class();
     }
 }
