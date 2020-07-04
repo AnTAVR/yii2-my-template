@@ -1,7 +1,7 @@
 <?php
-/* @var $this \yii\web\View */
+/* @var $this yii\web\View */
 
-/* @var $model \app\modules\news\models\News */
+/* @var $model app\modules\news\models\News */
 
 use app\modules\news\models\News;
 use app\widgets\CKEditor\CKEditor;

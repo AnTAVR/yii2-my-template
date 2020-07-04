@@ -1,7 +1,7 @@
 <?php
-/* @var $this \yii\web\View */
+/* @var $this yii\web\View */
 
-/* @var $model \app\modules\articles\models\Articles */
+/* @var $model app\modules\articles\models\Articles */
 
 
 use app\modules\articles\models\Articles;
