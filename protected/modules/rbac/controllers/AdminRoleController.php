@@ -6,7 +6,7 @@ use app\modules\rbac\models\Role;
 use app\modules\rbac\models\searches\RoleSearch;
 use Exception;
 use Yii;
-use Yii\base\Exception as YiiException;
+use yii\base\Exception as YiiException;
 use yii\helpers\Html;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

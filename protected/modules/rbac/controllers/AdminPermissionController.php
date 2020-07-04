@@ -5,7 +5,7 @@ namespace app\modules\rbac\controllers;
 use app\modules\rbac\models\Permission;
 use Exception;
 use Yii;
-use Yii\base\Exception as YiiException;
+use yii\base\Exception as YiiException;
 use yii\data\ArrayDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

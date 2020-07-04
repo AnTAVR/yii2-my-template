@@ -5,7 +5,7 @@ namespace app\modules\rbac\controllers;
 use app\modules\rbac\models\Rule;
 use Exception;
 use Yii;
-use Yii\base\Exception as YiiException;
+use yii\base\Exception as YiiException;
 use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
