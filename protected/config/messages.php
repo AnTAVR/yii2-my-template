@@ -88,7 +88,5 @@ return [
  *
  * NOTE: this file must be saved in UTF-8 encoding.
  */
-/** @noinspection UnusedTranslationsInspection */
-/** @noinspection MissingTranslationsInspection */
 DOCBLOCK
 ];
