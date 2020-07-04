@@ -1,6 +1,8 @@
 <?php
 
 // NOTE: Make sure this file is not accessible when deployed to production
+use yii\web\Application;
+
 if (!in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])) {
     die('You are not allowed to access this file.');
 }
@@ -13,4 +15,4 @@ require __DIR__ . '/protected/vendor/yiisoft/yii2/Yii.php';
 
 $config = require __DIR__ . '/protected/config/test.php';
 
-(new yii\web\Application($config))->run();
+(new Application($config))->run();
