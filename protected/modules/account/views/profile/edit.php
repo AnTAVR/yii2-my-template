@@ -1,13 +1,18 @@
 <?php
-/* @var $this yii\web\View */
 
-/** @var $identity app\modules\account\models\User */
+use app\modules\account\models\User;
+use yii\web\Controller;
+use yii\web\View;
+
+/* @var $this View */
+/** @var $identity User */
+
 $identity = Yii::$app->user->identity;
 $this->params['breadcrumbs'][] = ['label' => $identity->username, 'url' => ['/account']];
 
 $this->params['breadcrumbs'][] = $this->title;
 
-/* @var $context yii\web\Controller */
+/* @var $context Controller */
 $context = $this->context;
 ?>
 <h1><?= $context->action->uniqueId ?></h1>

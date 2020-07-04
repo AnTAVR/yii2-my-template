@@ -1,15 +1,18 @@
 <?php
-/* @var $this yii\web\View */
 
-/* @var $model app\modules\account\models\forms\PasswordEditForm */
-
+use app\modules\account\models\forms\PasswordEditForm;
+use app\modules\account\models\User;
 use app\widgets\Captcha;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
+use yii\web\View;
+
+/* @var $this View */
+/* @var $model PasswordEditForm */
 
 $this->title = Yii::t('app', 'Password Edit');
 
-/** @var $identity app\modules\account\models\User */
+/** @var $identity User */
 $identity = Yii::$app->user->identity;
 $this->params['breadcrumbs'][] = ['label' => $identity->username, 'url' => ['/account']];
 

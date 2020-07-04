@@ -1,11 +1,13 @@
 <?php
-/* @var $this yii\web\View */
 
-/* @var $model app\modules\account\models\forms\SignupForm */
-
+use app\modules\account\models\forms\SignupForm;
 use app\widgets\Captcha;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
+use yii\web\View;
+
+/* @var $this View */
+/* @var $model SignupForm */
 
 $this->title = Yii::t('app', 'Signup');
 $this->params['breadcrumbs'][] = $this->title;
