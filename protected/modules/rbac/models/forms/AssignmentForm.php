@@ -2,6 +2,7 @@
 
 namespace app\modules\rbac\models\forms;
 
+use Exception;
 use Yii;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
@@ -35,15 +36,13 @@ class AssignmentForm extends Model
     public function Roles()
     {
         $authManager = Yii::$app->authManager;
-        $items = $authManager->getRolesByUser($this->userId);
-        return $items;
+        return $authManager->getRolesByUser($this->userId);
     }
 
     public function Permissions()
     {
         $authManager = Yii::$app->authManager;
-        $items = $authManager->getPermissionsByUser($this->userId);
-        return $items;
+        return $authManager->getPermissionsByUser($this->userId);
     }
 
     public function rules()
@@ -63,7 +62,7 @@ class AssignmentForm extends Model
     /**
      * Save assignment data
      * @return boolean whether assignment save success
-     * @throws \Exception
+     * @throws Exception
      */
     public function save()
     {
