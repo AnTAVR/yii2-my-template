@@ -5,6 +5,7 @@ namespace app\modules\rbac\controllers;
 use app\modules\account\models\User;
 use app\modules\rbac\models\forms\AssignmentForm;
 use app\modules\rbac\models\searches\AssignmentSearch;
+use Exception;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -17,7 +18,7 @@ class AdminAssignmentController extends Controller
     {
         return [
             'access' => [
-                'class' => '\yii\filters\AccessControl',
+                'class' => 'yii\filters\AccessControl',
                 'rules' => [
                     [
                         'allow' => true,
@@ -47,7 +48,7 @@ class AdminAssignmentController extends Controller
      * @param integer $id The user id
      * @return string
      * @throws NotFoundHttpException
-     * @throws \Exception
+     * @throws Exception
      */
     public function actionUpdate($id)
     {
