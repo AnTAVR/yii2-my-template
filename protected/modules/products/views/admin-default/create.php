@@ -1,9 +1,11 @@
 <?php
 
+use app\modules\products\models\Products;
 use yii\helpers\Html;
+use yii\web\View;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\products\models\Products */
+/* @var $this View */
+/* @var $model Products */
 
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Products'), 'url' => ['index']];
 

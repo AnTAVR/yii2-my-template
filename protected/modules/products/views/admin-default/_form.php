@@ -1,14 +1,16 @@
 <?php
-/* @var $this yii\web\View */
-
-/* @var $model app\modules\products\models\Products */
 
 use app\modules\products\models\Products;
 use app\widgets\CKEditor\CKEditor;
 use app\widgets\DateTimePicker\DateTimePicker;
 use app\widgets\UrlTranslit\UrlTranslit;
 use yii\helpers\Html;
+use yii\web\View;
 use yii\widgets\ActiveForm;
+
+/* @var $this View */
+/* @var $model Products */
+
 
 ?>
 <?php $form = ActiveForm::begin(); ?>

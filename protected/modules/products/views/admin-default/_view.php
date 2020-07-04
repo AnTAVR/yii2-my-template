@@ -1,9 +1,11 @@
 <?php
 
+use app\modules\products\models\Products;
+use yii\web\View;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\products\models\Products */
+/* @var $this View */
+/* @var $model Products */
 ?>
 <?= DetailView::widget([
     'model' => $model,
