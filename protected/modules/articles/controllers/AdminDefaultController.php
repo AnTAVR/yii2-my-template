@@ -1,8 +1,9 @@
-<?php
+<?php /** @noinspection PhpUndefinedClassInspection */
 
 namespace app\modules\articles\controllers;
 
 use app\modules\articles\models\Articles;
+use Throwable;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\db\StaleObjectException;
@@ -125,9 +126,7 @@ class AdminDefaultController extends Controller
      * @return Response
      * @throws NotFoundHttpException
      * @throws StaleObjectException
-     * @throws \Throwable
-     * @noinspection PhpUndefinedClassInspection
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @throws Throwable
      */
     public function actionDelete($id)
     {
