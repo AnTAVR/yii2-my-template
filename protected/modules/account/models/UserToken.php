@@ -1,10 +1,13 @@
-<?php
+<?php /** @noinspection PhpUndefinedClassInspection */
 
 namespace app\modules\account\models;
 
+use Exception;
+use Throwable;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
+use yii\db\StaleObjectException;
 use yii\web\NotFoundHttpException;
 
 
@@ -37,7 +40,7 @@ class UserToken extends ActiveRecord
     {
         return '{{%user_token}}';
     }
-    /** @noinspection PhpUndefinedClassInspection */
+
     /**
      * Finds a token with user by the token's code.
      *
@@ -46,9 +49,8 @@ class UserToken extends ActiveRecord
      * @return static
      * @throws NotFoundHttpException
      * @throws Exception
-     * @throws \Throwable
-     * @throws \yii\db\StaleObjectException
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @throws Throwable
+     * @throws StaleObjectException
      */
     public static function findByCode($code, $type = self::TYPE_API_AUTH)
     {
