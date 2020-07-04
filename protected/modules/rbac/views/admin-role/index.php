@@ -1,12 +1,13 @@
 <?php
 
+/* @var $this yii\web\View */
+/* @var $searchModel app\modules\rbac\models\searches\RuleSearch */
+
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
-
-/* @var $this \yii\web\View */
-/* @var $searchModel \app\modules\rbac\models\searches\AuthItemSearch */
-/* @var $dataProvider \yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app', 'Roles Manager');
 $this->params['breadcrumbs'][] = $this->title;
