@@ -3,6 +3,7 @@
 namespace app\modules\rbac\models;
 
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
@@ -14,7 +15,7 @@ abstract class AuthItem extends Item
     public $data;
 
     /**
-     * @param yii\rbac\Role|yii\rbac\Permission $item
+     * @param \yii\rbac\Role|yii\rbac\Permission $item
      * @param array $config name-value pairs that will be used to initialize the object properties
      */
     public function __construct($item, $config = [])
@@ -76,7 +77,7 @@ abstract class AuthItem extends Item
     {
         $authManager = Yii::$app->authManager;
 
-        if (static::TYPE == yii\rbac\Item::TYPE_ROLE) {
+        if (static::TYPE == \yii\rbac\Item::TYPE_ROLE) {
             $item = $authManager->createRole($this->name);
         } else {
             $item = $authManager->createPermission($this->name);
@@ -95,12 +96,12 @@ abstract class AuthItem extends Item
     /**
      * Search auth item
      * @param array $params
-     * @return yii\data\ActiveDataProvider|yii\data\ArrayDataProvider
+     * @return ActiveDataProvider|yii\data\ArrayDataProvider
      */
     public function search($params)
     {
         $authManager = Yii::$app->authManager;
-        if (static::TYPE == yii\rbac\Item::TYPE_ROLE) {
+        if (static::TYPE == \yii\rbac\Item::TYPE_ROLE) {
             $items = $authManager->getRoles();
         } else {
             $items = $authManager->getPermissions();

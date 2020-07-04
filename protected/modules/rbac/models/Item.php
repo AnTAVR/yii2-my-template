@@ -4,7 +4,7 @@ namespace app\modules\rbac\models;
 
 use Exception;
 use Yii;
-use Yii\base\Exception as YiiException;
+use yii\base\Exception as YiiException;
 use yii\base\Model;
 use yii\base\ModelEvent;
 use yii\db\AfterSaveEvent;
@@ -38,9 +38,9 @@ abstract class Item extends Model
     {
         $authManager = Yii::$app->authManager;
 
-        if (static::TYPE === yii\rbac\Item::TYPE_PERMISSION) {
+        if (static::TYPE === \yii\rbac\Item::TYPE_PERMISSION) {
             $item = $authManager->getPermission($name);
-        } elseif (static::TYPE === yii\rbac\Item::TYPE_ROLE) {
+        } elseif (static::TYPE === \yii\rbac\Item::TYPE_ROLE) {
             $item = $authManager->getRole($name);
         } else {
             $item = $authManager->getRule($name);
@@ -56,9 +56,9 @@ abstract class Item extends Model
     {
         $authManager = Yii::$app->authManager;
 
-        if (static::TYPE === yii\rbac\Item::TYPE_PERMISSION) {
+        if (static::TYPE === \yii\rbac\Item::TYPE_PERMISSION) {
             $items = $authManager->getPermissions();
-        } elseif (static::TYPE === yii\rbac\Item::TYPE_ROLE) {
+        } elseif (static::TYPE === \yii\rbac\Item::TYPE_ROLE) {
             $items = $authManager->getRoles();
         } else {
             $items = $authManager->getRules();
@@ -117,9 +117,9 @@ abstract class Item extends Model
     {
         $authManager = Yii::$app->authManager;
 
-        if (static::TYPE === yii\rbac\Item::TYPE_ROLE) {
+        if (static::TYPE === \yii\rbac\Item::TYPE_ROLE) {
             $item = $authManager->getRole($this->name);
-        } elseif (static::TYPE === yii\rbac\Item::TYPE_PERMISSION) {
+        } elseif (static::TYPE === \yii\rbac\Item::TYPE_PERMISSION) {
             $item = $authManager->getPermission($this->name);
         } else {
             $item = $authManager->getRule($this->name);
@@ -185,7 +185,7 @@ abstract class Item extends Model
     }
 
     /**
-     * @return yii\rbac\Role|yii\rbac\Permission|yii\rbac\Rule
+     * @return \yii\rbac\Role|yii\rbac\Permission|yii\rbac\Rule
      */
     abstract protected function newItem();
 
