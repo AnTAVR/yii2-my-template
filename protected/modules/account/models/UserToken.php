@@ -44,9 +44,10 @@ class UserToken extends ActiveRecord
      * @param integer $type The type of the token
      * @return static
      * @throws NotFoundHttpException
-     * @throws \Exception
+     * @throws Exception
      * @throws \Throwable
-     * @throws \yii\db\StaleObjectException
+     * @throws yii\db\StaleObjectException
+     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     public static function findByCode($code, $type = self::TYPE_API_AUTH)
     {
@@ -68,8 +69,8 @@ class UserToken extends ActiveRecord
      * @param integer $userId
      * @param string $code
      * @param integer $expiresOn
-     * @return static|null
-     * @throws \yii\base\InvalidConfigException
+     * @return object|null
+     * @throws yii\base\InvalidConfigException
      */
     public static function createApiAuthToken($userId, $code, $expiresOn)
     {
@@ -117,8 +118,6 @@ class UserToken extends ActiveRecord
             self::TYPE_RECOVERY_PASSWORD => Yii::t('app', 'RECOVERY PASSWORD'),
         ];
     }
-
-    /** @noinspection PhpUndefinedClassInspection */
 
     public function getStatusName()
     {
@@ -178,7 +177,7 @@ class UserToken extends ActiveRecord
 
     /**
      * @return string
-     * @throws \yii\base\InvalidConfigException
+     * @throws yii\base\InvalidConfigException
      */
     public function getExpiresTxt()
     {
@@ -190,7 +189,7 @@ class UserToken extends ActiveRecord
 
     /**
      * @return string
-     * @throws \yii\base\InvalidConfigException
+     * @throws yii\base\InvalidConfigException
      */
     public function getCreatedTxt()
     {

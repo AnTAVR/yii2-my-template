@@ -16,9 +16,10 @@ class VerifyMailController extends Controller
      * @param $token string
      * @return string
      * @throws NotFoundHttpException
-     * @throws \Exception
+     * @throws Exception
      * @throws \Throwable
-     * @throws \yii\db\StaleObjectException
+     * @throws yii\db\StaleObjectException
+     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     public function actionIndex($token)
     {
