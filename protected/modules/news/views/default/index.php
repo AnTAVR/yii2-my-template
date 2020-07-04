@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
-/* @var $this \yii\web\View */
+/* @var $this yii\web\View */
 /* @var $data array */
 /* @var $pagination yii\data\Pagination */
 
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php $i = 0;
 $col = 1;
 foreach ($data as $model) {
-    /* @var $model \app\modules\news\models\News */
+    /* @var $model app\modules\news\models\News */
     if (!$i) {
         echo '<div class="row">', "\n";
         $open = true;

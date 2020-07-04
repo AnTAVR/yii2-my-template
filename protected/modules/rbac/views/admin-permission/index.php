@@ -3,8 +3,8 @@
 use yii\grid\GridView;
 use yii\helpers\Html;
 
-/* @var $this \yii\web\View */
-/* @var $dataProvider \yii\data\ActiveDataProvider|\yii\data\ArrayDataProvider */
+/* @var $this yii\web\View */
+/* @var $dataProvider yii\data\ActiveDataProvider|yii\data\ArrayDataProvider */
 
 $this->title = Yii::t('app', 'Permissions Manager');
 $this->params['breadcrumbs'][] = $this->title;

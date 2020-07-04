@@ -3,9 +3,9 @@
 use yii\grid\GridView;
 use yii\helpers\Html;
 
-/* @var $this \yii\web\View */
-/* @var $searchModel \app\modules\rbac\models\searches\AssignmentSearch */
-/* @var $dataProvider \yii\data\ActiveDataProvider */
+/* @var $this yii\web\View */
+/* @var $searchModel app\modules\rbac\models\searches\AssignmentSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app', 'User Assignment');
 $this->params['breadcrumbs'][] = $this->title;
