@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUndefinedClassInspection */
 
 namespace app\modules\account\controllers;
 
@@ -7,6 +7,7 @@ use app\modules\account\models\forms\RecoveryPasswordRequestForm;
 use app\modules\account\models\User;
 use app\modules\account\models\UserToken;
 use Exception;
+use Throwable;
 use Yii;
 use yii\base\Exception as YiiException;
 use yii\db\StaleObjectException;
@@ -84,9 +85,7 @@ class RecoveryController extends Controller
      * @throws Exception
      * @throws YiiException
      * @throws StaleObjectException
-     * @throws \Throwable
-     * @noinspection PhpFullyQualifiedNameUsageInspection
-     * @noinspection PhpUndefinedClassInspection
+     * @throws Throwable
      */
     public function actionNew($token)
     {

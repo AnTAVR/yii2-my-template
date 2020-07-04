@@ -1,10 +1,12 @@
-<?php
+<?php /** @noinspection PhpUndefinedClassInspection */
 
 namespace app\modules\account\controllers;
 
 use app\modules\account\models\forms\SignupForm;
 use app\modules\account\models\User;
 use app\modules\account\models\UserToken;
+use Exception;
+use Throwable;
 use Yii;
 use yii\db\StaleObjectException;
 use yii\web\Controller;
@@ -12,15 +14,13 @@ use yii\web\NotFoundHttpException;
 
 class VerifyMailController extends Controller
 {
-    /** @noinspection PhpUndefinedClassInspection */
     /**
      * @param $token string
      * @return string
      * @throws NotFoundHttpException
      * @throws Exception
-     * @throws \Throwable
+     * @throws Throwable
      * @throws StaleObjectException
-     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     public function actionIndex($token)
     {
