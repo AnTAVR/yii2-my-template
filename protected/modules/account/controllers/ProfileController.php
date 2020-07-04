@@ -13,7 +13,7 @@ class ProfileController extends Controller
     {
         return [
             'access' => [
-                'class' => '\yii\filters\AccessControl',
+                'class' => 'yii\filters\AccessControl',
                 'rules' => [
                     [
                         'allow' => true,
@@ -46,7 +46,7 @@ class ProfileController extends Controller
 
     public function actionDelete()
     {
-        /** @var $identity \app\modules\account\models\User */
+        /** @var $identity User */
         $identity = Yii::$app->user->identity;
         $identity->status = User::STATUS_DELETED;
         $identity->save();
