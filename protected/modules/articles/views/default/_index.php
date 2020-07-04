@@ -1,9 +1,11 @@
 <?php
 
+use app\modules\articles\models\Articles as Articles;
 use yii\helpers\Html;
+use yii\web\View;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\articles\models\Articles */
+/* @var $this View */
+/* @var $model Articles */
 /* @var $class string */
 
 ?>

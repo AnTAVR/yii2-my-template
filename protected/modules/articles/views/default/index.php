@@ -1,11 +1,14 @@
 <?php
 
+use app\modules\articles\models\Articles;
+use yii\data\Pagination;
 use yii\helpers\Html;
+use yii\web\View;
 use yii\widgets\LinkPager;
 
-/* @var $this yii\web\View */
+/* @var $this View */
 /* @var $data array */
-/* @var $pagination yii\data\Pagination */
+/* @var $pagination Pagination */
 
 $this->title = Yii::t('app', 'Articles');
 $this->params['breadcrumbs'][] = $this->title;
@@ -17,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php $i = 0;
 $col = 1;
 foreach ($data as $model) {
-    /* @var $model app\modules\articles\models\Articles */
+    /* @var $model Articles */
     if (!$i) {
         echo '<div class="row">', "\n";
         $open = true;
