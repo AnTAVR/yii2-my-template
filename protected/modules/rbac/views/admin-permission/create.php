@@ -1,6 +1,10 @@
 <?php
-/* @var $this yii\web\View */
-/* @var $model app\modules\rbac\models\Permission */
+
+use app\modules\rbac\models\Permission;
+use yii\web\View;
+
+/* @var $this View */
+/* @var $model Permission */
 ?>
 <?= $this->render('_form', [
     'model' => $model,

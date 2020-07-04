@@ -1,11 +1,14 @@
 <?php
 
+use app\modules\rbac\models\searches\AssignmentSearch;
+use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use yii\helpers\Html;
+use yii\web\View;
 
-/* @var $this yii\web\View */
-/* @var $searchModel app\modules\rbac\models\searches\AssignmentSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $this View */
+/* @var $searchModel AssignmentSearch */
+/* @var $dataProvider ActiveDataProvider */
 
 $this->title = Yii::t('app', 'User Assignment');
 $this->params['breadcrumbs'][] = $this->title;

@@ -1,12 +1,13 @@
 <?php
 
-/* @var $this yii\web\View */
-
-/* @var $model app\modules\rbac\models\forms\AssignmentForm */
-
+use app\modules\rbac\models\forms\AssignmentForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\web\View;
 use yii\widgets\ActiveForm;
+
+/* @var $this View */
+/* @var $model AssignmentForm */
 
 $authManager = Yii::$app->authManager;
 ?>

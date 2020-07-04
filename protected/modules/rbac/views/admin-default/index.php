@@ -1,9 +1,11 @@
 <?php
 
+use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
+use yii\web\View;
 
-/* @var $this yii\web\View */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $this View */
+/* @var $dataProvider ActiveDataProvider */
 
 $this->title = Yii::t('app', 'RBAC');
 $this->params['breadcrumbs'][] = $this->title;

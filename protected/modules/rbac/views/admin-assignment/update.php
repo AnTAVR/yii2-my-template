@@ -1,10 +1,11 @@
 <?php
 
-/* @var $this yii\web\View */
-
-/* @var $model app\modules\rbac\models\forms\AssignmentForm */
-
+use app\modules\rbac\models\forms\AssignmentForm;
 use yii\helpers\Html;
+use yii\web\View;
+
+/* @var $this View */
+/* @var $model AssignmentForm */
 
 $this->title = Yii::t('app', 'User Assignment');
 $this->params['breadcrumbs'][] = $this->title;

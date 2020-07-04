@@ -1,7 +1,10 @@
 <?php
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\rbac\models\Role */
+use app\modules\rbac\models\Role;
+use yii\web\View;
+
+/* @var $this View */
+/* @var $model Role */
 
 ?>
 <table class="table table-striped table-bordered detail-view">

@@ -1,10 +1,12 @@
 <?php
 
+use app\modules\rbac\models\Rule;
 use yii\helpers\Html;
+use yii\web\View;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\rbac\models\Rule */
+/* @var $this View */
+/* @var $model Rule */
 ?>
 <?php $form = ActiveForm::begin(); ?>
 

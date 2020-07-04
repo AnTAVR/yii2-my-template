@@ -1,9 +1,11 @@
 <?php
 
+use app\modules\rbac\models\Permission;
+use yii\web\View;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\rbac\models\Permission */
+/* @var $this View */
+/* @var $model Permission */
 ?>
 <?= DetailView::widget([
     'model' => $model,

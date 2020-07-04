@@ -1,11 +1,12 @@
 <?php
 
-/* @var $this yii\web\View */
-
-/* @var $model app\modules\rbac\models\Role */
-
+use app\modules\rbac\models\Role;
 use yii\helpers\Html;
+use yii\web\View;
 use yii\widgets\ActiveForm;
+
+/* @var $this View */
+/* @var $model Role */
 
 $rules = Yii::$app->authManager->getRules();
 $rulesNames = array_keys($rules);

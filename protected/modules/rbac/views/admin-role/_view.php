@@ -1,9 +1,11 @@
 <?php
-/* @var $this yii\web\View */
 
-/* @var $model app\modules\rbac\models\Role */
-
+use app\modules\rbac\models\Role;
+use yii\web\View;
 use yii\widgets\DetailView;
+
+/* @var $this View */
+/* @var $model Role */
 
 ?>
 <?= DetailView::widget([
