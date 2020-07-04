@@ -8,7 +8,7 @@ use PDO;
 use PDOException;
 use Symfony\Component\Process\Process;
 use Yii;
-use Yii\base\Exception as YiiException;
+use yii\base\Exception as YiiException;
 use yii\base\InvalidConfigException;
 use yii\console\Controller;
 use yii\console\ExitCode;
