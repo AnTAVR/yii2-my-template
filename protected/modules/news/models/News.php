@@ -3,6 +3,7 @@
 namespace app\modules\news\models;
 
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
 use yii\helpers\Url;
 
@@ -136,7 +137,7 @@ class News extends ActiveRecord
 
     /**
      * @return int|string|null
-     * @throws yii\base\InvalidConfigException
+     * @throws InvalidConfigException
      */
     public function getPublished()
     {
