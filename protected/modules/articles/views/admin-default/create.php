@@ -2,8 +2,8 @@
 
 use yii\helpers\Html;
 
-/* @var $this \yii\web\View */
-/* @var $model \app\modules\articles\models\Articles */
+/* @var $this yii\web\View */
+/* @var $model app\modules\articles\models\Articles */
 
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Articles'), 'url' => ['index']];
 
