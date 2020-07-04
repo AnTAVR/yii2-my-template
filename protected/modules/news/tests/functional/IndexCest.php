@@ -2,9 +2,10 @@
 
 namespace news\tests\functional;
 
+use Codeception\Scenario;
 use news\tests\FunctionalTester as Tester;
 
-/* @var $scenario \Codeception\Scenario */
+/* @var $scenario Scenario */
 class IndexCest
 {
     public function _before(Tester $I)

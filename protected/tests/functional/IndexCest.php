@@ -3,9 +3,10 @@
 namespace app\tests\functional;
 
 use app\tests\FunctionalTester as Tester;
+use Codeception\Scenario;
 use Yii;
 
-/* @var $scenario \Codeception\Scenario */
+/* @var $scenario Scenario */
 class IndexCest
 {
     public function checkOpenIndexPage(Tester $I)

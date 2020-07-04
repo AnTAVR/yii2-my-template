@@ -2,9 +2,10 @@
 
 namespace rbac\tests\functional;
 
+use Codeception\Scenario;
 use rbac\tests\FunctionalTester as Tester;
 
-/* @var $scenario \Codeception\Scenario */
+/* @var $scenario Scenario */
 class IndexCest
 {
     public function checkOpenIndexPage(Tester $I)

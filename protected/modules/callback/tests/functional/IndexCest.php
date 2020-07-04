@@ -3,8 +3,9 @@
 namespace callback\tests\functional;
 
 use callback\tests\FunctionalTester as Tester;
+use Codeception\Scenario;
 
-/* @var $scenario \Codeception\Scenario */
+/* @var $scenario Scenario */
 class IndexCest
 {
     public function _before(Tester $I)

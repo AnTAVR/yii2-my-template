@@ -3,8 +3,9 @@
 namespace account\tests\functional;
 
 use account\tests\FunctionalTester as Tester;
+use Codeception\Scenario;
 
-/* @var $scenario \Codeception\Scenario */
+/* @var $scenario Scenario */
 class LoginCest
 {
     public function _before(Tester $I)

@@ -22,7 +22,6 @@ use Codeception\Lib\Friend;
  *
  * @SuppressWarnings(PHPMD)
  */
-/** @noinspection PhpUndefinedClassInspection */
 
 class UnitTester extends Actor
 {

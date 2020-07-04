@@ -2,9 +2,10 @@
 
 namespace statics\tests\functional;
 
+use Codeception\Scenario;
 use statics\tests\FunctionalTester as Tester;
 
-/* @var $scenario \Codeception\Scenario */
+/* @var $scenario Scenario */
 class IndexCest
 {
     public function checkOpenIndexPage(Tester $I)
