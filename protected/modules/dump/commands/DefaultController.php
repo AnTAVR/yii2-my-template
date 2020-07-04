@@ -22,8 +22,8 @@ class DefaultController extends Controller
      * Create Dump DB
      *
      * @return int
-     * @throws \yii\base\Exception
-     * @throws \yii\base\InvalidConfigException
+     * @throws yii\base\Exception
+     * @throws yii\base\InvalidConfigException
      */
     public function actionCreate()
     {
@@ -62,8 +62,8 @@ class DefaultController extends Controller
      *
      * @param string $fileName Name File Dump
      * @return int
-     * @throws \yii\base\Exception
-     * @throws \yii\base\InvalidConfigException
+     * @throws yii\base\Exception
+     * @throws yii\base\InvalidConfigException
      */
     public function actionRestore($fileName)
     {
@@ -107,7 +107,7 @@ class DefaultController extends Controller
     /**
      * @param string $fileName Name File Dump
      * @throws NotFoundHttpException
-     * @throws \yii\base\Exception
+     * @throws yii\base\Exception
      */
     public static function testFileName($fileName)
     {
@@ -129,7 +129,7 @@ class DefaultController extends Controller
      * Test DB Connection
      *
      * @return int
-     * @throws \yii\base\InvalidConfigException
+     * @throws yii\base\InvalidConfigException
      */
     public function actionTest()
     {
@@ -154,7 +154,7 @@ class DefaultController extends Controller
      * List Dumps DB
      *
      * @return int
-     * @throws \yii\base\Exception
+     * @throws yii\base\Exception
      */
     public function actionList()
     {

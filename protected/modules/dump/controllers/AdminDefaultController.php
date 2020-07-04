@@ -19,7 +19,7 @@ class AdminDefaultController extends Controller
     {
         return [
             'access' => [
-                'class' => '\yii\filters\AccessControl',
+                'class' => 'yii\filters\AccessControl',
                 'rules' => [
                     [
                         'allow' => true,
@@ -28,7 +28,7 @@ class AdminDefaultController extends Controller
                 ],
             ],
             'verbs' => [
-                'class' => '\yii\filters\VerbFilter',
+                'class' => 'yii\filters\VerbFilter',
                 'actions' => [
                     'create' => ['post'],
                     'delete' => ['post'],
@@ -42,7 +42,7 @@ class AdminDefaultController extends Controller
 
     /**
      * @return string
-     * @throws \yii\base\Exception
+     * @throws yii\base\Exception
      */
     public function actionIndex()
     {
@@ -58,10 +58,10 @@ class AdminDefaultController extends Controller
     }
 
     /**
-     * @return \yii\web\Response
+     * @return yii\web\Response
      * @throws HttpException
-     * @throws \yii\base\Exception
-     * @throws \yii\base\InvalidConfigException
+     * @throws yii\base\Exception
+     * @throws yii\base\InvalidConfigException
      */
     public function actionCreate()
     {
@@ -100,11 +100,11 @@ class AdminDefaultController extends Controller
 
     /**
      * @param string $id Name File Dump
-     * @return \yii\web\Response
+     * @return yii\web\Response
      * @throws HttpException
      * @throws NotFoundHttpException
-     * @throws \yii\base\Exception
-     * @throws \yii\base\InvalidConfigException
+     * @throws yii\base\Exception
+     * @throws yii\base\InvalidConfigException
      */
     public function actionRestore($id)
     {
@@ -128,7 +128,7 @@ class AdminDefaultController extends Controller
     /**
      * @param string $fileName Name File Dump
      * @throws NotFoundHttpException
-     * @throws \yii\base\Exception
+     * @throws yii\base\Exception
      */
     public static function testFileName($fileName)
     {
@@ -148,9 +148,9 @@ class AdminDefaultController extends Controller
 
     /**
      * @param string $id Name File Dump
-     * @return \yii\web\Response
+     * @return yii\web\Response
      * @throws NotFoundHttpException
-     * @throws \yii\base\Exception
+     * @throws yii\base\Exception
      */
     public function actionDownload($id)
     {
@@ -163,9 +163,9 @@ class AdminDefaultController extends Controller
 
     /**
      * @param string $id Name File Dump
-     * @return \yii\web\Response
+     * @return yii\web\Response
      * @throws NotFoundHttpException
-     * @throws \yii\base\Exception
+     * @throws yii\base\Exception
      */
     public function actionDelete($id)
     {
@@ -183,8 +183,8 @@ class AdminDefaultController extends Controller
     }
 
     /**
-     * @return \yii\web\Response
-     * @throws \yii\base\Exception
+     * @return yii\web\Response
+     * @throws yii\base\Exception
      */
     public function actionDeleteAll()
     {
