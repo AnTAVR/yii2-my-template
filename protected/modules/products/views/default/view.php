@@ -1,7 +1,10 @@
 <?php
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\products\models\Products */
+use app\modules\products\models\Products;
+use yii\web\View;
+
+/* @var $model Products */
+/* @var $this View */
 
 if (!empty($model->meta_description)) {
     $this->registerMetaTag([
