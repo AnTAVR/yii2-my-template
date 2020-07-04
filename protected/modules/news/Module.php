@@ -13,7 +13,6 @@ class Module extends ModuleOld
 
         $this->params = require __DIR__ . '/config/params.php';
 
-        /** @noinspection HtmlUnknownTag */
         Yii::$app->urlManager->addRules(
             [
                 '/news/page<page:\d+>' => '/news/default/index',
