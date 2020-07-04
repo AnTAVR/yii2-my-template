@@ -13,7 +13,6 @@ class Module extends ModuleOld
 
         $this->params = require __DIR__ . '/config/params.php';
 
-        /** @noinspection HtmlUnknownTag */
         Yii::$app->urlManager->addRules(
             [
                 '/s/<meta_url:[\w\-]+>' => '/statics/default/index',
