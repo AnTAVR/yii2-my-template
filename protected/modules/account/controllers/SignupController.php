@@ -5,7 +5,7 @@ namespace app\modules\account\controllers;
 use app\modules\account\models\forms\SignupForm;
 use app\modules\account\Module;
 use Yii;
-use Yii\base\Exception as YiiException;
+use yii\base\Exception as YiiException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 

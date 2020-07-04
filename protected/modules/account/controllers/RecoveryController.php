@@ -8,7 +8,7 @@ use app\modules\account\models\User;
 use app\modules\account\models\UserToken;
 use Exception;
 use Yii;
-use Yii\base\Exception as YiiException;
+use yii\base\Exception as YiiException;
 use yii\db\StaleObjectException;
 use yii\helpers\Url;
 use yii\web\Controller;
