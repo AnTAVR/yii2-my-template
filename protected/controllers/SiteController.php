@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\modules\statics\controllers\DefaultController;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class SiteController extends Controller
 {
@@ -42,7 +43,7 @@ class SiteController extends Controller
     /**
      * Displays a single StaticPage model.
      * @return string
-     * @throws \yii\web\NotFoundHttpException
+     * @throws NotFoundHttpException
      */
     public function actionIndex()
     {
