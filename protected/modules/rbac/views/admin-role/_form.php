@@ -1,8 +1,8 @@
 <?php
 
-/* @var $this \yii\web\View */
+/* @var $this yii\web\View */
 
-/* @var $model \app\modules\rbac\models\Role */
+/* @var $model app\modules\rbac\models\Role */
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
