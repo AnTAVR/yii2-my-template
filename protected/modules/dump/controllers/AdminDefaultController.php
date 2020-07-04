@@ -6,7 +6,7 @@ use app\modules\dump\helpers\BaseDump;
 use app\modules\dump\helpers\DumpInterface;
 use Symfony\Component\Process\Process;
 use Yii;
-use Yii\base\Exception as YiiException;
+use yii\base\Exception as YiiException;
 use yii\base\InvalidConfigException;
 use yii\data\ArrayDataProvider;
 use yii\web\Controller;
