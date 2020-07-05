@@ -1,9 +1,5 @@
 <?php
 
-/* @var $this View */
-
-/* @var $content string */
-
 use app\assets\AppSiteAsset;
 use app\modules\account\models\User;
 use app\modules\rbac\helpers\RBAC;
@@ -17,6 +13,9 @@ use yii\helpers\Html;
 use yii\web\AssetBundle;
 use yii\web\View;
 use yii\widgets\Breadcrumbs;
+
+/* @var $this View */
+/* @var $content string */
 
 $asset = AppSiteAsset::register($this);
 /** @var AssetBundle $asset */
