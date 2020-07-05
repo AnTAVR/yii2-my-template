@@ -6,8 +6,8 @@ class DefaultContent
 {
 //  style="float:right"
     const CONTENT_IMAGE = <<<HTML
-<a href="/upload/images/15191356815a8c2bc17ad332.97335651.png" target="_blank">
-    <img alt="" class="thumbnail" src="/upload/images/thumbnail/15191356815a8c2bc17ad332.97335651.png"{style} />
+<a href="/upload/images/default.png" target="_blank">
+    <img alt="" class="thumbnail" src="/upload/images/thumbnail/default.png"{style} />
 </a>
 HTML;
     const CONTENT_SHORT = <<<HTML

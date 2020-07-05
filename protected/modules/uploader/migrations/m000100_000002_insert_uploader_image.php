@@ -19,14 +19,14 @@ class m000100_000002_insert_uploader_image extends Migration
                 'file' => 'image.png',
                 'comment' => 'image',
 
-                'meta_url' => '15191356815a8c2bc17ad332.97335651.png',
+                'meta_url' => 'default.png',
             ]
         );
     }
 
     public function down()
     {
-        $this->delete($this->tableName, ['meta_url' => '15191356815a8c2bc17ad332.97335651.png']);
+        $this->delete($this->tableName, ['meta_url' => 'default.png']);
     }
 
     /*
