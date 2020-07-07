@@ -29,8 +29,8 @@ class m000099_000001_create_token extends Migration
             'user_id' => $this->integer()->notNull(),
             'code' => $this->string(64)->notNull(),
             'type' => $this->smallInteger()->notNull(),
-            'created_at' => $this->integer()->notNull(),
-            'expires_on' => $this->integer()->notNull()->defaultValue(0),
+            'created_at' => $this->bigInteger()->notNull(),
+            'expires_on' => $this->bigInteger()->notNull()->defaultValue(0),
         ], $this->tableOptions);
 
         $name = 'token_unique';
