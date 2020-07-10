@@ -40,7 +40,7 @@ class m000103_000001_create_page_news extends Migration
             'meta_description' => $this->string(),
             'meta_keywords' => $this->string(),
 
-            'count_view' => $this->integer()->defaultValue(0),
+            'view_count' => $this->integer()->defaultValue(0),
         ], $this->tableOptions);
 
         $name = 'published_at';
