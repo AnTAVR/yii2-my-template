@@ -8,6 +8,7 @@ use yii\base\Exception as YiiException;
 use yii\base\Model;
 use yii\base\ModelEvent;
 use yii\db\AfterSaveEvent;
+use yii\rbac\Item as YiiItem;
 use yii\rbac\Permission as Permission;
 use yii\rbac\Role as Role;
 use yii\rbac\Rule as Rule;
@@ -41,9 +42,9 @@ abstract class Item extends Model
     {
         $authManager = Yii::$app->authManager;
 
-        if (static::TYPE === \yii\rbac\Item::TYPE_PERMISSION) {
+        if (static::TYPE === YiiItem::TYPE_PERMISSION) {
             $item = $authManager->getPermission($name);
-        } elseif (static::TYPE === \yii\rbac\Item::TYPE_ROLE) {
+        } elseif (static::TYPE === YiiItem::TYPE_ROLE) {
             $item = $authManager->getRole($name);
         } else {
             $item = $authManager->getRule($name);
@@ -59,9 +60,9 @@ abstract class Item extends Model
     {
         $authManager = Yii::$app->authManager;
 
-        if (static::TYPE === \yii\rbac\Item::TYPE_PERMISSION) {
+        if (static::TYPE === YiiItem::TYPE_PERMISSION) {
             $items = $authManager->getPermissions();
-        } elseif (static::TYPE === \yii\rbac\Item::TYPE_ROLE) {
+        } elseif (static::TYPE === YiiItem::TYPE_ROLE) {
             $items = $authManager->getRoles();
         } else {
             $items = $authManager->getRules();
@@ -120,9 +121,9 @@ abstract class Item extends Model
     {
         $authManager = Yii::$app->authManager;
 
-        if (static::TYPE === \yii\rbac\Item::TYPE_ROLE) {
+        if (static::TYPE === YiiItem::TYPE_ROLE) {
             $item = $authManager->getRole($this->name);
-        } elseif (static::TYPE === \yii\rbac\Item::TYPE_PERMISSION) {
+        } elseif (static::TYPE === YiiItem::TYPE_PERMISSION) {
             $item = $authManager->getPermission($this->name);
         } else {
             $item = $authManager->getRule($this->name);
