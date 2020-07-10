@@ -7,6 +7,7 @@ use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
+use yii\rbac\Item as YiiItem;
 use yii\rbac\Permission;
 use yii\rbac\Role;
 
@@ -79,7 +80,7 @@ abstract class AuthItem extends Item
     {
         $authManager = Yii::$app->authManager;
 
-        if (static::TYPE == \yii\rbac\Item::TYPE_ROLE) {
+        if (static::TYPE == YiiItem::TYPE_ROLE) {
             $item = $authManager->createRole($this->name);
         } else {
             $item = $authManager->createPermission($this->name);
@@ -103,7 +104,7 @@ abstract class AuthItem extends Item
     public function search($params)
     {
         $authManager = Yii::$app->authManager;
-        if (static::TYPE == \yii\rbac\Item::TYPE_ROLE) {
+        if (static::TYPE == YiiItem::TYPE_ROLE) {
             $items = $authManager->getRoles();
         } else {
             $items = $authManager->getPermissions();
