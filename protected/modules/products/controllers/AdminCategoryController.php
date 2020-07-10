@@ -47,16 +47,6 @@ class AdminCategoryController extends Controller
         $searchModel = new CategorySearch;
         $dataProvider = $searchModel->search();
 
-//        $dataProvider = new ActiveDataProvider([
-//            'query' => Category::find(),
-//            'pagination' => [
-//                'defaultPageSize' => $this->module->params['adminPageSize'],
-//            ],
-//            'sort' => [
-//                'defaultOrder' => ['id' => SORT_DESC,],
-//            ],
-//        ]);
-
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,
