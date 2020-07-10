@@ -1,5 +1,6 @@
 <?php
 
+use app\modules\products\models\Category;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use yii\helpers\Html;
@@ -28,7 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'content_title',
         'published_at:datetime',
         'status_txt',
-        'category_name',
+        [
+            'attribute' => 'category_id',
+            'filter' => Category::find()->select(['content_title', 'id'])->indexBy('id')->column(),
+            'value' => 'category.content_title',
+        ],
         [
             'class' => 'app\components\grid\ActionColumn',
             'header' => Yii::t('app', 'Actions'),
