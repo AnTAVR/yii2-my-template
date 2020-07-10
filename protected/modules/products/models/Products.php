@@ -38,7 +38,7 @@ class Products extends ActiveRecord
 
     public static function tableName()
     {
-        return '{{%page_products}}';
+        return '{{%products_page}}';
     }
 
     function init()
