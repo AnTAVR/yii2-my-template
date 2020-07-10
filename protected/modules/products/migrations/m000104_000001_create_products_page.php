@@ -1,6 +1,7 @@
 <?php
 
 use app\components\DbHelper;
+use app\modules\products\models\Category;
 use app\modules\products\models\Products;
 use yii\db\Migration;
 
@@ -27,6 +28,7 @@ class m000104_000001_create_products_page extends Migration
             'id' => $this->primaryKey(),
 
             'published_at' => $this->bigInteger(),
+            'category_id' => $this->integer()->notNull(),
             'status' => $this->smallInteger()->notNull()->defaultValue(Products::STATUS_DRAFT),
 
             'content_title' => $this->string()->notNull(),
@@ -42,6 +44,9 @@ class m000104_000001_create_products_page extends Migration
 
         $name = 'published_at';
         $this->createIndex(DbHelper::indexName($this->tableName, $name), $this->tableName, $name);
+
+        $name = 'category_id';
+        $this->addForeignKey(DbHelper::foreignName($this->tableName, $name), $this->tableName, $name, Category::tableName(), 'id', 'CASCADE', 'RESTRICT');
     }
 
     public function down()

@@ -31,6 +31,7 @@ class m000104_000002_insert_products_page extends Migration
 
             $this->insert($this->tableName, [
                 'published_at' => time(),
+                'category_id' => 1,
                 'status' => Products::STATUS_ACTIVE,
 
                 'content_title' => $title,
