@@ -58,7 +58,17 @@ $user = Yii::$app->user;
         ['label' => Yii::t('app', 'Products'),
             'active' => $moduleId === 'products',
             'visible' => $user->can('products.openAdminPanel'),
-            'url' => ['/products/admin-default']],
+            'url' => ['/products/admin-default'],
+            'items' => [
+                ['label' => Yii::t('app', 'Category'),
+                    'active' => $moduleId === 'products' && $controllerId === 'admin-category',
+                    'url' => ['/products/admin-category']],
+
+                ['label' => Yii::t('app', 'Product'),
+                    'active' => $moduleId === 'products' && $controllerId === 'admin-product',
+                    'url' => ['/products/admin-product']],
+            ]
+        ],
 
         ['label' => Yii::t('app', 'Uploader'),
             'active' => $moduleId === 'uploader',
