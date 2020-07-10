@@ -2,6 +2,8 @@
 
 namespace app\modules\products\models;
 
+use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
+use lhs\Yii2SaveRelationsBehavior\SaveRelationsTrait;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
@@ -31,6 +33,10 @@ use yii\helpers\Url;
  */
 class Products extends ActiveRecord
 {
+    use SaveRelationsTrait;
+
+    // Optional
+
     const STATUS_DELETED = 0;
     const STATUS_DRAFT = 10;
     const STATUS_ACTIVE = 20;
@@ -57,14 +63,27 @@ class Products extends ActiveRecord
         }
     }
 
-    public function getStatusName()
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
     {
-        return self::$statusNames[$this->status];
+        return [
+            'saveRelations' => [
+                'class' => SaveRelationsBehavior::class,
+                'relations' => [
+                    'category',
+                ],
+            ],
+        ];
     }
 
-    public function getCategory()
+    //Использовать транзакции для SaveRelationsBehavior
+    public function transactions()
     {
-        return $this->hasOne(Category::class, ['id' => 'category_id']);
+        return [
+            self::SCENARIO_DEFAULT => self::OP_ALL,
+        ];
     }
 
     public function rules()
@@ -76,7 +95,7 @@ class Products extends ActiveRecord
 
             ['category_id', 'integer'],
             ['category_id', 'string', 'max' => 11],
-            ['category_id', 'required'],
+            ['category_id', 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']],
 
             ['content_title', 'trim'],
             ['content_title', 'required'],
@@ -125,6 +144,7 @@ class Products extends ActiveRecord
             'published_at' => Yii::t('app', 'Published At'),
             'published' => Yii::t('app', 'Published At'),
             'status' => Yii::t('app', 'Status'),
+            'category' => Yii::t('app', 'Category'),
 
             'content_title' => Yii::t('app', 'Title'),
             'content_short' => Yii::t('app', 'Content Short'),
@@ -145,6 +165,16 @@ class Products extends ActiveRecord
             'meta_url' => Yii::t('app', 'Possible characters ({chars})', ['chars' => Yii::$app->params['meta_url_hint']]),
             'content_short' => Yii::t('app', 'Max length {length}', ['length' => self::CONTENT_SHORT_MAX_SIZE]),
         ];
+    }
+
+    public function getStatusName()
+    {
+        return self::$statusNames[$this->status];
+    }
+
+    public function getCategory()
+    {
+        return $this->hasOne(Category::class, ['id' => 'category_id']);
     }
 
     /**
