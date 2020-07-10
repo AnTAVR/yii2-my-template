@@ -7,7 +7,7 @@ use yii\db\Migration;
 class m000104_000000_insert_products_category extends Migration
 {
     const CONTENT_TITLE = 'allproducts';
-    const COUNT = 1;
+    const COUNT = 3;
     public $tableName;
 
     public function init()
