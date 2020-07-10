@@ -1,6 +1,7 @@
 <?php
 
 use app\modules\products\models\Products;
+use yii\helpers\ArrayHelper;
 use yii\web\View;
 use yii\widgets\DetailView;
 
@@ -17,7 +18,10 @@ use yii\widgets\DetailView;
         'content_full:raw',
         'published_at:datetime',
         'status_txt',
-        'category_name',
+        [
+            'attribute' => 'category_id',
+            'value' => ArrayHelper::getValue($model, 'category.content_title'),
+        ],
         'meta_description',
         'meta_keywords',
     ],
