@@ -74,9 +74,9 @@ class Products extends ActiveRecord
             ['published', 'trim'],
             ['published', 'datetime'],
 
-            ['category_id', 'numerical', 'integerOnly' => true],
-            ['category_id', 'length', 'max' => 11],
-            ['category_id', 'default', 'setOnEmpty' => true, 'value' => null],
+            ['category_id', 'integer'],
+            ['category_id', 'string', 'max' => 11],
+            ['category_id', 'required'],
 
             ['content_title', 'trim'],
             ['content_title', 'required'],
