@@ -11,6 +11,7 @@ use yii\helpers\Url;
  * Database fields:
  * @property int $id [int(11)]
  * @property int $published_at [int(11)]
+ * @property int $category_id [int(11)]
  * @property int $status [smallint(6)]
  * @property string $content_title [varchar(255)]
  * @property string $content_short
@@ -21,6 +22,7 @@ use yii\helpers\Url;
  * @property int $view_count [int(11)]
  *
  * Fields:
+ * @property Category $category
  * @property string $statusName
  * @property null|string|int $published
  * @property string $url
@@ -60,12 +62,21 @@ class Products extends ActiveRecord
         return self::$statusNames[$this->status];
     }
 
+    public function getCategory()
+    {
+        return $this->hasOne(Category::class, ['id' => 'category_id']);
+    }
+
     public function rules()
     {
         $params = Yii::$app->params;
         return [
             ['published', 'trim'],
             ['published', 'datetime'],
+
+            ['category_id', 'numerical', 'integerOnly' => true],
+            ['category_id', 'length', 'max' => 11],
+            ['category_id', 'default', 'setOnEmpty' => true, 'value' => null],
 
             ['content_title', 'trim'],
             ['content_title', 'required'],
