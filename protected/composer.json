@@ -33,7 +33,8 @@
     "yiisoft/yii2-authclient": "^2.1",
     "borales/yii2-phone-input": "*",
     "kartik-v/yii2-icons": "*",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "la-haute-societe/yii2-save-relations-behavior": "*"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "~2.0.0",
