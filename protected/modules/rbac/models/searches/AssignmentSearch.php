@@ -19,13 +19,13 @@ class AssignmentSearch extends Model
      *
      * @var string $login
      */
-    public $login;
+    public $username;
 
     public function rules()
     {
         return [
             ['id', 'safe'],
-            ['login', 'safe'],
+            ['username', 'safe'],
         ];
     }
 
@@ -33,7 +33,7 @@ class AssignmentSearch extends Model
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'login' => Yii::t('app', 'Username'),
+            'username' => Yii::t('app', 'Username'),
         ];
     }
 
@@ -53,7 +53,7 @@ class AssignmentSearch extends Model
         }
 
         $query->andFilterWhere(['id' => $this->id]);
-        $query->andFilterWhere(['like', 'username', $this->login]);
+        $query->andFilterWhere(['like', 'username', $this->username]);
 
         return $dataProvider;
     }
