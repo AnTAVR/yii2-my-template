@@ -3,14 +3,16 @@
 namespace app\modules\products\controllers;
 
 use app\modules\products\models\Products;
+use app\modules\products\models\searches\ProductSearch;
 use Exception;
 use Throwable;
 use Yii;
-use yii\data\ActiveDataProvider;
 use yii\db\StaleObjectException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
+
+//use yii\data\ActiveDataProvider;
 
 class AdminProductController extends Controller
 {
@@ -43,18 +45,22 @@ class AdminProductController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Products::find(),
-            'pagination' => [
-                'defaultPageSize' => $this->module->params['adminPageSize'],
-            ],
-            'sort' => [
-                'defaultOrder' => ['id' => SORT_DESC,],
-            ],
-        ]);
+        $searchModel = new ProductSearch;
+        $dataProvider = $searchModel->search();
+
+//        $dataProvider = new ActiveDataProvider([
+//            'query' => Products::find(),
+//            'pagination' => [
+//                'defaultPageSize' => $this->module->params['adminPageSize'],
+//            ],
+//            'sort' => [
+//                'defaultOrder' => ['id' => SORT_DESC,],
+//            ],
+//        ]);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
         ]);
     }
 

@@ -3,14 +3,16 @@
 namespace app\modules\products\controllers;
 
 use app\modules\products\models\Category;
+use app\modules\products\models\searches\CategorySearch;
 use Exception;
 use Throwable;
 use Yii;
-use yii\data\ActiveDataProvider;
 use yii\db\StaleObjectException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
+
+//use yii\data\ActiveDataProvider;
 
 class AdminCategoryController extends Controller
 {
@@ -42,18 +44,22 @@ class AdminCategoryController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Category::find(),
-            'pagination' => [
-                'defaultPageSize' => $this->module->params['adminPageSize'],
-            ],
-            'sort' => [
-                'defaultOrder' => ['id' => SORT_DESC,],
-            ],
-        ]);
+        $searchModel = new CategorySearch;
+        $dataProvider = $searchModel->search();
+
+//        $dataProvider = new ActiveDataProvider([
+//            'query' => Category::find(),
+//            'pagination' => [
+//                'defaultPageSize' => $this->module->params['adminPageSize'],
+//            ],
+//            'sort' => [
+//                'defaultOrder' => ['id' => SORT_DESC,],
+//            ],
+//        ]);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
         ]);
     }
 
