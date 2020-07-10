@@ -48,16 +48,6 @@ class AdminProductController extends Controller
         $searchModel = new ProductSearch;
         $dataProvider = $searchModel->search();
 
-//        $dataProvider = new ActiveDataProvider([
-//            'query' => Products::find(),
-//            'pagination' => [
-//                'defaultPageSize' => $this->module->params['adminPageSize'],
-//            ],
-//            'sort' => [
-//                'defaultOrder' => ['id' => SORT_DESC,],
-//            ],
-//        ]);
-
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,
