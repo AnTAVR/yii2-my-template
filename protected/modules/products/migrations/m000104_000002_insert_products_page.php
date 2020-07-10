@@ -4,7 +4,7 @@ use app\migrations\DefaultContent;
 use app\modules\products\models\Products;
 use yii\db\Migration;
 
-class m000104_000002_insert_page_products extends Migration
+class m000104_000002_insert_products_page extends Migration
 {
     public $tableName;
 

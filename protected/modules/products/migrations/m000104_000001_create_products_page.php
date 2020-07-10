@@ -4,10 +4,7 @@ use app\components\DbHelper;
 use app\modules\products\models\Products;
 use yii\db\Migration;
 
-/**
- * Handles the creation for table `page_products`.
- */
-class m000104_000001_create_page_products extends Migration
+class m000104_000001_create_products_page extends Migration
 {
     public $tableName;
 
