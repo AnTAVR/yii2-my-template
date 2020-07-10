@@ -1,5 +1,6 @@
 <?php
 
+use app\modules\products\models\Category;
 use app\modules\products\models\Products;
 use app\widgets\CKEditor\CKEditor;
 use app\widgets\DateTimePicker\DateTimePicker;
@@ -20,6 +21,21 @@ use yii\widgets\ActiveForm;
     'options' => ['maxlength' => true]
 ]) ?>
 
+<div class="row">
+    <?= $form->field($model, 'published', ['options' => ['class' => 'col-xs-4']])->widget(DateTimePicker::class, [
+        'clientOptions' => [
+            'format' => 'yyyy-mm-dd hh:ii:ss',
+            'todayBtn' => true,
+            'autoclose' => true,
+        ]
+    ]) ?>
+
+    <?= $form->field($model, 'status', ['options' => ['class' => 'col-xs-4']])->dropDownList(Products::$statusNames) ?>
+
+    <?= $form->field($model, 'category', ['options' => ['class' => 'col-xs-4']])->dropDownList(Category::find()->select(['content_title', 'id'])->indexBy('id')->column()) ?>
+
+</div>
+
 <?= $form->field($model, 'content_title')->textInput(['maxlength' => true]) ?>
 
 <?= $form->field($model, 'content_short')->widget(CKEditor::class, [
@@ -30,18 +46,6 @@ use yii\widgets\ActiveForm;
     'options' => ['rows' => 6],
     'preset' => 'full'
 ]) ?>
-
-<div class="row">
-    <?= $form->field($model, 'published', ['options' => ['class' => 'col-xs-8']])->widget(DateTimePicker::class, [
-        'clientOptions' => [
-            'format' => 'yyyy-mm-dd hh:ii:ss',
-            'todayBtn' => true,
-            'autoclose' => true,
-        ]
-    ]) ?>
-
-    <?= $form->field($model, 'status', ['options' => ['class' => 'col-xs-4']])->dropDownList(Products::$statusNames) ?>
-</div>
 
 <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>
 
