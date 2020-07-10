@@ -17,6 +17,7 @@ use yii\widgets\DetailView;
         'content_full:raw',
         'published_at:datetime',
         'status_txt',
+        'category_name',
         'meta_description',
         'meta_keywords',
     ],

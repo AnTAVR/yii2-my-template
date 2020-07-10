@@ -25,6 +25,7 @@ use yii\helpers\Url;
  *
  * Fields:
  * @property Category $category
+ * @property string $category_name
  * @property string $statusName
  * @property null|string|int $published
  * @property string $url
@@ -148,6 +149,7 @@ class Products extends ActiveRecord
             'status' => Yii::t('app', 'Status'),
             'category_id' => Yii::t('app', 'Category'),
             'category' => Yii::t('app', 'Category'),
+            'category_name' => Yii::t('app', 'Category'),
 
             'content_title' => Yii::t('app', 'Title'),
             'content_short' => Yii::t('app', 'Content Short'),
@@ -173,6 +175,14 @@ class Products extends ActiveRecord
     public function getStatusName()
     {
         return self::$statusNames[$this->status];
+    }
+
+    public function getCategory_name()
+    {
+        $e = $this->hasOne(Category::class, ['id' => 'category_id'])->column();
+        Yii::error($e);
+
+        return 'content_title';
     }
 
     public function getCategory()
