@@ -29,7 +29,7 @@ class m000104_000000_create_products_category extends Migration
             'published_at' => $this->bigInteger(),
 
             'content_title' => $this->string()->notNull(),
-            'content_full' => $this->text()->notNull(),
+            'content_full' => $this->text(),
 
             'meta_url' => $this->string()->notNull()->unique(),
             'meta_description' => $this->string(),
