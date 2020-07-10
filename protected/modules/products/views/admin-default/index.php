@@ -28,6 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'content_title',
         'published_at:datetime',
         'status_txt',
+        'category_name',
         [
             'class' => 'app\components\grid\ActionColumn',
             'header' => Yii::t('app', 'Actions'),
