@@ -32,7 +32,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'status', ['options' => ['class' => 'col-xs-4']])->dropDownList(Products::$statusNames) ?>
 
-    <?= $form->field($model, 'category', ['options' => ['class' => 'col-xs-4']])->dropDownList(Category::find()->select(['content_title', 'id'])->indexBy('id')->column()) ?>
+    <?= $form->field($model, 'category_id', ['options' => ['class' => 'col-xs-4']])->dropDownList(Category::find()->select(['content_title', 'id'])->indexBy('id')->column()) ?>
 
 </div>
 
