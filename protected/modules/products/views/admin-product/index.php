@@ -10,7 +10,7 @@ use yii\web\View;
 /* @var $this View */
 /* @var $dataProvider ActiveDataProvider */
 $searchModel = null;
-$this->title = Yii::t('app', 'Products');
+$this->title = Yii::t('app', 'Product');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <h1><?= Html::encode($this->title) ?></h1>

@@ -7,7 +7,7 @@ use yii\web\View;
 /* @var $this View */
 /* @var $model Products */
 
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Products'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Product'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 
 $this->title = Yii::t('yii', 'Update');
