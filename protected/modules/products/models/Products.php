@@ -146,6 +146,7 @@ class Products extends ActiveRecord
             'published_at' => Yii::t('app', 'Published At'),
             'published' => Yii::t('app', 'Published At'),
             'status' => Yii::t('app', 'Status'),
+            'category_id' => Yii::t('app', 'Category'),
             'category' => Yii::t('app', 'Category'),
 
             'content_title' => Yii::t('app', 'Title'),
