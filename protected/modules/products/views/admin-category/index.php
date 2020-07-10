@@ -1,5 +1,6 @@
 <?php
 
+use app\modules\products\models\searches\CategorySearch;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use yii\helpers\Html;
@@ -7,7 +8,8 @@ use yii\web\View;
 
 /* @var $this View */
 /* @var $dataProvider ActiveDataProvider */
-$searchModel = null;
+/* @var $searchModel CategorySearch */
+
 $this->title = Yii::t('app', 'Category');
 $this->params['breadcrumbs'][] = $this->title;
 ?>

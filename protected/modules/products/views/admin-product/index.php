@@ -2,6 +2,7 @@
 
 use app\modules\products\models\Category;
 use app\modules\products\models\Products;
+use app\modules\products\models\searches\ProductSearch;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use yii\helpers\Html;
@@ -9,7 +10,7 @@ use yii\web\View;
 
 /* @var $this View */
 /* @var $dataProvider ActiveDataProvider */
-$searchModel = null;
+/* @var $searchModel ProductSearch */
 $this->title = Yii::t('app', 'Product');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
