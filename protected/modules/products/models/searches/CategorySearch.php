@@ -38,8 +38,8 @@ class CategorySearch extends Model
 
     public function attributeLabels()
     {
-        $category = new Category();
-        return $category->attributeLabels();
+        $model = new Category();
+        return $model->attributeLabels();
     }
 
     /**
