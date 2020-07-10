@@ -18,7 +18,6 @@ use yii\helpers\Url;
  * @property string $meta_keywords [varchar(255)]
  *
  * Fields:
- * @property Products $products
  * @property null|string|int $published
  * @property string $url
  * @property array $arrUrl
@@ -105,11 +104,6 @@ class Category extends ActiveRecord
     public function setPublished($value)
     {
         $this->published_at = $value ? Yii::$app->formatter->asTimestamp($value) : $value;
-    }
-
-    public function getProducts()
-    {
-        return $this->hasMany(Products::class, ['category_id' => 'id']);
     }
 
     public function getArrUrl()
