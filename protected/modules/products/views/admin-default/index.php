@@ -9,7 +9,7 @@ use yii\web\View;
 
 /* @var $this View */
 /* @var $dataProvider ActiveDataProvider */
-
+$searchModel = null;
 $this->title = Yii::t('app', 'Products');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
 </p>
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
+    'filterModel' => $searchModel,
     'columns' => [
         'id',
         [
