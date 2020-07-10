@@ -93,8 +93,10 @@ class Products extends ActiveRecord
             ['published', 'trim'],
             ['published', 'datetime'],
 
-            ['category_id', 'integer'],
+            ['content_short', 'trim'],
+            ['category_id', 'required'],
             ['category_id', 'string', 'max' => 11],
+            ['category_id', 'integer'],
             ['category_id', 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']],
 
             ['content_title', 'trim'],
