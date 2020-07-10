@@ -14,6 +14,7 @@ use yii\helpers\Url;
  * @property string $meta_url [varchar(255)]
  * @property string $meta_description [varchar(255)]
  * @property string $meta_keywords [varchar(255)]
+ * @property int $view_count [int(11)]
  *
  * Fields:
  * @property string $url
