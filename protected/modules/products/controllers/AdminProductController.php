@@ -12,7 +12,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
-class AdminDefaultController extends Controller
+class AdminProductController extends Controller
 {
     public $layout = '@app/views/layouts/admin';
 
