@@ -17,7 +17,10 @@ use yii\widgets\DetailView;
         'content_short:raw',
         'content_full:raw',
         'published_at:datetime',
-        'status_txt',
+        [
+            'attribute' => 'status',
+            'value' => Products::$statusNames[$model->status],
+        ],
         [
             'attribute' => 'category_id',
             'value' => ArrayHelper::getValue($model, 'category.content_title'),

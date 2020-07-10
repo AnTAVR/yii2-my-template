@@ -1,6 +1,7 @@
 <?php
 
 use app\modules\products\models\Category;
+use app\modules\products\models\Products;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use yii\helpers\Html;
@@ -25,10 +26,20 @@ $this->params['breadcrumbs'][] = $this->title;
     'dataProvider' => $dataProvider,
     'columns' => [
         'id',
-        'url',
+        [
+            'attribute' => 'meta_url',
+            'value' => function ($data) {
+                return $data->url;
+            },
+        ],
         'content_title',
         'published_at:datetime',
-        'status_txt',
+        [
+            'attribute' => 'status',
+            'value' => function ($data) {
+                return Products::$statusNames[$data->status];
+            },
+        ],
         [
             'attribute' => 'category_id',
             'filter' => Category::find()->select(['content_title', 'id'])->indexBy('id')->column(),
