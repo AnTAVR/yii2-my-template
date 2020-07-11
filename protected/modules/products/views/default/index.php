@@ -1,5 +1,6 @@
 <?php
 
+use app\modules\products\models\Category;
 use app\modules\products\models\Products;
 use yii\data\Pagination;
 use yii\helpers\Html;
@@ -9,13 +10,27 @@ use yii\widgets\LinkPager;
 /* @var $this View */
 /* @var $data array */
 /* @var $pagination Pagination */
+/* @var $category Category */
 
-$this->title = Yii::t('app', 'Products');
+if ($category == null) {
+    $title = Yii::t('app', 'Products');
+} else {
+    $title = $category->content_title;
+}
+
+$this->title = $title;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <h1><?= Html::encode($this->title) ?></h1>
 
+<?php
+if ($category !== null and $category->content_full) {
+    echo '<div class="panel-body">' . $category->content_full . '</div>';
+}
+?>
+
 <?= LinkPager::widget(['pagination' => $pagination,]) ?>
+
 
 <?php $i = 0;
 $col = 1;

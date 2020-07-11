@@ -19,13 +19,15 @@ class DefaultController extends Controller
      */
     public function actionIndex($meta_url = null)
     {
+        $category = null;
+
         if ($meta_url == null) {
             $query = Products::find()->where(['status' => Products::STATUS_ACTIVE]);
         } else {
-            if (($model = Category::findOne(['meta_url' => $meta_url])) == null) {
+            if (($category = Category::findOne(['meta_url' => $meta_url])) == null) {
                 throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
             }
-            $query = Products::find()->where(['status' => Products::STATUS_ACTIVE, 'category_id' => $model->id]);
+            $query = Products::find()->where(['status' => Products::STATUS_ACTIVE, 'category_id' => $category->id]);
         }
 
         $pagination = new Pagination([
@@ -41,7 +43,7 @@ class DefaultController extends Controller
 
         $data = $query->offset($pagination->offset)->limit($pagination->limit)->all();
 
-        return $this->render('index', ['data' => $data, 'pagination' => $pagination,]);
+        return $this->render('index', ['data' => $data, 'pagination' => $pagination, 'category' => $category]);
     }
 
     /**
