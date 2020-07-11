@@ -128,7 +128,6 @@ NavBar::end();
                 ],
             ],
         ];
-
         $menuItems = ArrayHelper::merge($menuItems, [
             ['label' => Yii::t('app', 'Продукты'),
                 'items' => [
