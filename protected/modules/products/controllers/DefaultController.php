@@ -12,10 +12,11 @@ class DefaultController extends Controller
 {
     /**
      * Lists all Products models.
+     * @param string $meta_url
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionIndex()
+    public function actionIndex($meta_url = null)
     {
         $query = Products::find()->where(['status' => Products::STATUS_ACTIVE]);
 
