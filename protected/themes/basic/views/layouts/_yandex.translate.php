@@ -5,9 +5,7 @@ use yii\web\View;
 /* @var $this View */
 ?>
 
-<li class="dropdown">
-    <div id="ytWidget" class="dropdown-toggle"></div>
-</li>
+<div id="ytWidget"></div>
 <script src="https://translate.yandex.net/website-widget/v1/widget.js?widgetId=ytWidget&pageLang=ru&widgetTheme=light&autoMode=false"
         type="text/javascript"></script>
 <style>
@@ -17,5 +15,7 @@ use yii\web\View;
 
     #ytWidget {
         padding-top: 7px;
+        float: right;
+        padding-right: 7px;
     }
 </style>
