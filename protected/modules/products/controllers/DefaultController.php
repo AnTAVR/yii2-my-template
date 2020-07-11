@@ -54,8 +54,11 @@ class DefaultController extends Controller
      */
     public function actionView($meta_url)
     {
+        $model = $this->findModel($meta_url);
+        $category = $model->category;
         return $this->render('view', [
-            'model' => $this->findModel($meta_url),
+            'model' => $model,
+            'category' => $category,
         ]);
     }
 
