@@ -2,6 +2,7 @@
 
 namespace app\modules\products\controllers;
 
+use app\modules\products\models\Category;
 use app\modules\products\models\Products;
 use Yii;
 use yii\data\Pagination;
@@ -18,7 +19,14 @@ class DefaultController extends Controller
      */
     public function actionIndex($meta_url = null)
     {
-        $query = Products::find()->where(['status' => Products::STATUS_ACTIVE]);
+        if ($meta_url == null) {
+            $query = Products::find()->where(['status' => Products::STATUS_ACTIVE]);
+        } else {
+            if (($model = Category::findOne(['meta_url' => $meta_url])) == null) {
+                throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+            }
+            $query = Products::find()->where(['status' => Products::STATUS_ACTIVE, 'category_id' => $model->id]);
+        }
 
         $pagination = new Pagination([
             'totalCount' => $query->count(),
