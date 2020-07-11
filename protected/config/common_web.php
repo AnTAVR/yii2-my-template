@@ -24,6 +24,10 @@ return [
                 'firstPageLabel' => true,
                 'jumpPageLabel' => true,
             ],
+            'yii\grid\GridView' => [
+                'layout' => "{pager}\n{summary}\n{items}\n{pager}",
+            ],
         ],
+
     ],
 ];
