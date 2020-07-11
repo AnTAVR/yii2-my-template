@@ -19,7 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
 
-<?= $form->field($model, 'fileUpload')->widget(FileUploadUI::class, [
+<?= FileUploadUI::widget([
+    'model' => $model,
+    'attribute' => 'fileUpload',
     'url' => ['upload'],
     'formView' => '@app/modules/uploader/views/form',
     'gallery' => false,
