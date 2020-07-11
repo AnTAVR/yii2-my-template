@@ -7,6 +7,10 @@ body {
     background-color: #fff9f6;
 }
 
-.navbar-header {
+.container > .navbar-header {
+    margin: 0;
+}
+
+.navbar-brand {
     background-color: rgba(105, 238, 255, 0.33);
 }
