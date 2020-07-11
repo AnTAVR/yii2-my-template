@@ -14,6 +14,10 @@ use yii\web\AssetBundle;
 use yii\web\View;
 use yii\widgets\Breadcrumbs;
 
+//use app\modules\articles\widgets\ArticlesMenu;
+//use app\modules\news\widgets\NewsMenu;
+//use app\modules\products\widgets\ProductsMenu;
+
 /* @var $this View */
 /* @var $content string */
 
@@ -35,7 +39,7 @@ $asset = AppSiteAsset::register($this);
 <?php $this->beginBody() ?>
 
 <?php
-$fixed_top = true;
+$fixed_top = false;
 NavBar::begin([
     'brandLabel' => Yii::$app->params['brandLabel'],
     'brandUrl' => Yii::$app->homeUrl,
@@ -52,18 +56,7 @@ NavBar::begin([
 </p>
 <?php
 $menuItems = [
-    ['label' => Yii::t('app', 'Contacts'),
-        'items' => [
-            ['label' => Yii::t('app', 'About'), 'url' => ['/statics/default/index', 'meta_url' => 'about']],
-            ['label' => Yii::t('app', 'Partners'), 'url' => ['/statics/default/index', 'meta_url' => 'partners']],
-            ['label' => Yii::t('app', 'Delivery'), 'url' => ['/statics/default/index', 'meta_url' => 'delivery']],
-            ['label' => Yii::t('app', 'Payment'), 'url' => ['/statics/default/index', 'meta_url' => 'payment']],
-            ['label' => Yii::t('app', 'Docs'), 'url' => ['/statics/default/index', 'meta_url' => 'docs']],
-            '<li class="divider"></li>',
-            ['label' => Yii::t('app', 'Contact'), 'url' => ['/contact']],
-            ['label' => Yii::t('app', 'Callback'), 'url' => ['/callback']],
-        ],
-    ],
+    $this->render('@app/views/layouts/_yandex.translate.php'),
 ];
 
 $profileItems = [];
@@ -125,9 +118,80 @@ NavBar::end();
             ]
         ]);
         ?>
-        <?= Breadcrumbs::widget([
+        <?php
+        $menuItems = [
+            ['label' => Yii::t('app', 'О компании'),
+                'items' => [
+                    ['label' => Yii::t('app', 'Docs'), 'url' => ['/statics/default/index', 'meta_url' => 'docs']],
+                    ['label' => Yii::t('app', 'История'), 'url' => ['/statics/default/index', 'meta_url' => 'history']],
+                    ['label' => Yii::t('app', 'Приоритеты'), 'url' => ['/statics/default/index', 'meta_url' => 'prioritets']],
+                ],
+            ],
+        ];
+
+        $menuItems = ArrayHelper::merge($menuItems, [
+            ['label' => Yii::t('app', 'Продукты'),
+                'items' => [
+                    ['label' => Yii::t('app', 'Гипер и вибропрессование'), 'url' => ['/products']],
+                    ['label' => Yii::t('app', 'Строительство'), 'url' => ['/statics/default/index', 'meta_url' => 'docs']],
+                    ['label' => Yii::t('app', 'Производство'), 'url' => ['/statics/default/index', 'meta_url' => 'delivery']],
+                    '<li class="divider"></li>',
+//                    '<li class="dropdown-header">Dropdown Header</li>',
+                    ['label' => Yii::t('app', 'Сейсмика'), 'url' => ['/statics/default/index', 'meta_url' => 'payment']],
+                    ['label' => Yii::t('app', 'Аэродромы'), 'url' => ['/contact']],
+                    ['label' => Yii::t('app', 'Гидробетон'), 'url' => ['/callback']],
+                ],
+            ],
+        ]);
+
+        $menuItems = ArrayHelper::merge($menuItems, [
+            ['label' => Yii::t('app', 'Партнеры'),
+                'items' => [
+                    ['label' => Yii::t('app', 'Карта Евразии'), 'url' => ['/statics/default/index', 'meta_url' => 'euromap']],
+                    ['label' => Yii::t('app', 'Отзывы'), 'url' => ['/statics/default/index', 'meta_url' => 'comments']],
+                    ['label' => Yii::t('app', 'Оставить отзыв'), 'url' => ['/statics/default/index', 'meta_url' => 'comments']],
+                    '<li class="divider"></li>',
+                    ['label' => Yii::t('app', 'Партнерам'), 'url' => ['/statics/default/index', 'meta_url' => 'partners']],
+                ],
+            ],
+            ['label' => Yii::t('app', 'Карьера'),
+                'items' => [
+                    ['label' => Yii::t('app', 'Вакансии'), 'url' => ['/statics/default/index', 'meta_url' => 'vakansii']],
+                    ['label' => Yii::t('app', 'Условия работы'), 'url' => ['/statics/default/index', 'meta_url' => 'docs']],
+                    ['label' => Yii::t('app', 'Выслать резюме'), 'url' => ['/statics/default/index', 'meta_url' => 'delivery']],
+                    ['label' => Yii::t('app', 'Для студентов'), 'url' => ['/statics/default/index', 'meta_url' => 'payment']],
+                    ['label' => Yii::t('app', 'Совместителем'), 'url' => ['/statics/default/index', 'meta_url' => 'payment']],
+                ],
+            ],
+            ['label' => Yii::t('app', 'Contacts'), 'url' => ['/statics/default/index', 'meta_url' => 'about']],
+            ['label' => Yii::t('app', 'Новости'),
+                'items' => [
+                    ['label' => Yii::t('app', 'About'), 'url' => ['/statics/default/index', 'meta_url' => 'about']],
+                    ['label' => Yii::t('app', 'Docs'), 'url' => ['/statics/default/index', 'meta_url' => 'docs']],
+                    ['label' => Yii::t('app', 'Delivery'), 'url' => ['/statics/default/index', 'meta_url' => 'delivery']],
+                    ['label' => Yii::t('app', 'Payment'), 'url' => ['/statics/default/index', 'meta_url' => 'payment']],
+                    '<li class="divider"></li>',
+                    ['label' => Yii::t('app', 'Contact'), 'url' => ['/contact']],
+                    ['label' => Yii::t('app', 'Callback'), 'url' => ['/callback']],
+                    '<li class="divider"></li>',
+                    ['label' => Yii::t('app', 'Partners'), 'url' => ['/statics/default/index', 'meta_url' => 'partners']],
+                ],
+            ],
+        ]);
+
+        //$menuItems[] = ['encode' => false, 'label' => NewsMenu::widget()];
+        //$menuItems[] = ['encode' => false, 'label' => ArticlesMenu::widget()];
+
+        echo Nav::widget([
+            'options' => ['class' => 'nav nav-pills'],
+            'items' => $menuItems,
+        ]);
+
+        echo Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
+        ]);
+
+        ?>
 
         <?= $content ?>
     </div>
