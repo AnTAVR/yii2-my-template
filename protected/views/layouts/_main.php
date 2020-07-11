@@ -43,20 +43,14 @@ $fixed_top = false;
 NavBar::begin([
     'brandLabel' => Yii::$app->params['brandLabel'],
     'brandUrl' => Yii::$app->homeUrl,
+    'headerContent' => '<div class="navbar-text">' . Yii::$app->params['brandLabelText'] . '</div>',
     'options' => [
         'class' => 'navbar-default' . ($fixed_top ? ' navbar-fixed-top' : ''),
     ],
 ]); ?>
-<p class="navbar-text">
-    <small>
-        <small>
-            <?= Yii::$app->params['brandLabelText'] ?>
-        </small>
-    </small>
-</p>
+
 <?php
 $menuItems = [
-    $this->render('@app/views/layouts/_yandex.translate.php'),
 ];
 
 $profileItems = [];
@@ -90,6 +84,9 @@ echo Nav::widget([
     'options' => ['class' => 'navbar-nav navbar-right'],
     'items' => $menuItems,
 ]);
+
+echo $this->render('@app/views/layouts/_yandex.translate.php');
+
 NavBar::end();
 ?>
 <div class="wrap<?= $fixed_top ? ' fixed-top' : '' ?>">
