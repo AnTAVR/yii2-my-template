@@ -16,7 +16,6 @@ use yii\web\View;
     <?= ProductsMenu::widget() ?>
     <?= NewsMenu::widget() ?>
     <?= ArticlesMenu::widget() ?>
-    <?= $this->render('@app/views/layouts/_yandex.translate.php') ?>
 </div>
 
 <div class="col-sm-9">
