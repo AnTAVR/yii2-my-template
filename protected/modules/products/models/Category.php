@@ -108,7 +108,7 @@ class Category extends ActiveRecord
 
     public function getArrUrl()
     {
-        return ['/products/category/view', 'meta_url' => $this->meta_url];
+        return ['/products/default/index', 'meta_url' => $this->meta_url];
     }
 
     public function getUrl()
