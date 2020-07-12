@@ -69,6 +69,8 @@ $__config = [
         ],
         'assetManager' => [
             'appendTimestamp' => true,
+            'linkAssets' => YII_ENV_DEV,
+            'forceCopy' => YII_ENV_DEV,
             'bundles' => [
                 'yii\web\JqueryAsset' => [
                     'js' => [
