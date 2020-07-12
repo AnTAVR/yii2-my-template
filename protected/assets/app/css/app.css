@@ -32,3 +32,8 @@ a.desc:after {
 .sort-ordinal a.desc:after {
     content: "\e156";
 }
+
+div.required label.control-label:after {
+    content: " *";
+    color: red;
+}

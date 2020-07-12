@@ -39,11 +39,6 @@ img.thumbnail {
     margin: 5px;
 }
 
-div.required label.control-label:after {
-    content: " *";
-    color: red;
-}
-
 .footer {
     height: auto;
     background-color: transparent;
