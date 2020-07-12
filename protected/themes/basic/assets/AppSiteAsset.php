@@ -8,10 +8,10 @@ use yii\web\AssetBundle;
 class AppSiteAsset extends AssetBundle
 {
     public $css = [
-        'css/site.css',
+        'css/basic.css',
     ];
     public $js = [
-        'js/site.js',
+        'js/basic.js',
     ];
     public $depends = [
         'app\assets\AppAsset'
