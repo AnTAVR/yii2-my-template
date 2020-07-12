@@ -23,7 +23,7 @@ body {
     float: left;
 }
 
-.navbar-brand {
+.navbar .navbar-brand, .navbar .navbar-brand:hover {
     background-color: rgba(105, 238, 255, 0.33);
 }
 
