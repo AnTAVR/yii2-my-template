@@ -3,7 +3,7 @@ $domen = 'localhost.localhost';
 
 return [
     'brandLabel' => 'brandLabel',
-    'brandLabelText' => 'brandLabelText<br>brandLabelText',
+    'brandLabelText' => 'brandLabelText',
     'appName' => $domen,
     'adminEmail' => 'info@' . $domen,
     'supportEmail' => 'robot@' . $domen,
