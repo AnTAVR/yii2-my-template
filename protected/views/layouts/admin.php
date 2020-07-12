@@ -1,6 +1,6 @@
 <?php
 
-use app\assets\AppSiteAsset;
+use app\assets\AppAsset;
 use app\modules\account\models\User;
 use app\widgets\Alert;
 use app\widgets\Thumbnail\Thumbnail;
@@ -12,10 +12,12 @@ use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\Breadcrumbs;
 
+//use app\assets\AppSiteAsset;
+
 /* @var $this View */
 /* @var $content string */
 
-$asset = AppSiteAsset::register($this);
+$asset = AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
