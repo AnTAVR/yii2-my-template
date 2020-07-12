@@ -5,13 +5,13 @@ namespace app\themes\basic\assets;
 use app\themes\BasicTheme as Theme;
 use yii\web\AssetBundle;
 
-class BasicAsset extends AssetBundle
+class SiteAsset extends AssetBundle
 {
     public $css = [
-        'css/basic.css',
+        'css/site.css',
     ];
     public $js = [
-        'js/basic.js',
+        'js/site.js',
     ];
     public $depends = [
         'app\assets\AppAsset'

@@ -12,8 +12,6 @@ use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\Breadcrumbs;
 
-//use app\assets\AppSiteAsset;
-
 /* @var $this View */
 /* @var $content string */
 
