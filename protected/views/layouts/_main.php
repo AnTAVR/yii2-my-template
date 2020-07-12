@@ -2,6 +2,7 @@
 
 use app\assets\AppSiteAsset;
 use app\modules\account\models\User;
+use app\modules\news\widgets\NewsNav;
 use app\modules\rbac\helpers\RBAC;
 use app\widgets\Thumbnail\Thumbnail;
 use app\widgets\TopLink\TopLink;
@@ -161,17 +162,7 @@ NavBar::end();
             ],
             ['label' => Yii::t('app', 'Contacts'), 'url' => ['/statics/default/index', 'meta_url' => 'about']],
             ['label' => Yii::t('app', 'Новости'),
-                'items' => [
-                    ['label' => Yii::t('app', 'About'), 'url' => ['/statics/default/index', 'meta_url' => 'about']],
-                    ['label' => Yii::t('app', 'Docs'), 'url' => ['/statics/default/index', 'meta_url' => 'docs']],
-                    ['label' => Yii::t('app', 'Delivery'), 'url' => ['/statics/default/index', 'meta_url' => 'delivery']],
-                    ['label' => Yii::t('app', 'Payment'), 'url' => ['/statics/default/index', 'meta_url' => 'payment']],
-                    '<li class="divider"></li>',
-                    ['label' => Yii::t('app', 'Contact'), 'url' => ['/contact']],
-                    ['label' => Yii::t('app', 'Callback'), 'url' => ['/callback']],
-                    '<li class="divider"></li>',
-                    ['label' => Yii::t('app', 'Partners'), 'url' => ['/statics/default/index', 'meta_url' => 'partners']],
-                ],
+                'items' => NewsNav::widget(),
             ],
         ]);
 
