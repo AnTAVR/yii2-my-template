@@ -5,13 +5,14 @@ use yii\web\AssetBundle;
 
 class AppAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
+    public $sourcePath = '@app/assets/app';
+//    public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+        'css/app.css',
     ];
     public $js = [
-        'js/site.js',
+        'js/app.js',
     ];
     public $depends = [
         'app\assets\NormalizeCSSAsset',
