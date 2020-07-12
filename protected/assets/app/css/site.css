@@ -70,3 +70,19 @@ img.thumbnail {
     margin: 5px;
 }
 
+div.required label.control-label:after {
+    content: " *";
+    color: red;
+}
+
+.footer {
+    height: auto;
+    background-color: transparent;
+    border-top: 3px solid black;
+    padding-top: 0;
+    background-size: cover;
+}
+
+/*.fixed-top {*/
+/*    margin-top: 50px;*/
+/*}*/
