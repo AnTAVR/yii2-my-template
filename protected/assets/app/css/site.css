@@ -1,10 +1,12 @@
 html,
 body {
     background-color: #fffff5;
+    /*    min-width: 320px;*/
 }
 
 .wrap > .container {
     background-color: #fff9f6;
+    /*    padding-top: 10px;*/
 }
 
 .container > .navbar-header {
@@ -60,5 +62,11 @@ a.desc:after {
 
 .sort-ordinal a.desc:after {
     content: "\e156";
+}
+
+img.thumbnail {
+    display: inline-block;
+    vertical-align: inherit;
+    margin: 5px;
 }
 
