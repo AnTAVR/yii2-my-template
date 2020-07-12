@@ -33,12 +33,6 @@ body {
     background-color: rgba(105, 238, 255, 0.33);
 }
 
-img.thumbnail {
-    display: inline-block;
-    vertical-align: inherit;
-    margin: 5px;
-}
-
 .footer {
     height: auto;
     background-color: transparent;

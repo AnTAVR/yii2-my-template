@@ -37,3 +37,9 @@ div.required label.control-label:after {
     content: " *";
     color: red;
 }
+
+img.thumbnail {
+    display: inline-block;
+    vertical-align: inherit;
+    margin: 5px;
+}
