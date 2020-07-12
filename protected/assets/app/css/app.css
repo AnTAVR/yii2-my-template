@@ -1,3 +1,8 @@
+html,
+body {
+    min-width: 360px;
+}
+
 a.asc:after, a.desc:after {
     position: relative;
     top: 1px;
