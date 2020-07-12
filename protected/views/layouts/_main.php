@@ -3,6 +3,7 @@
 use app\assets\AppSiteAsset;
 use app\modules\account\models\User;
 use app\modules\news\widgets\NewsNav;
+use app\modules\products\widgets\ProductsNav;
 use app\modules\rbac\helpers\RBAC;
 use app\widgets\Thumbnail\Thumbnail;
 use app\widgets\TopLink\TopLink;
@@ -128,20 +129,8 @@ NavBar::end();
         ];
         $menuItems = ArrayHelper::merge($menuItems, [
             ['label' => Yii::t('app', 'Продукты'),
-                'items' => [
-                    ['label' => Yii::t('app', 'Гипер и вибропрессование'), 'url' => ['/products']],
-                    ['label' => Yii::t('app', 'Строительство'), 'url' => ['/statics/default/index', 'meta_url' => 'docs']],
-                    ['label' => Yii::t('app', 'Производство'), 'url' => ['/statics/default/index', 'meta_url' => 'delivery']],
-                    '<li class="divider"></li>',
-//                    '<li class="dropdown-header">Dropdown Header</li>',
-                    ['label' => Yii::t('app', 'Сейсмика'), 'url' => ['/statics/default/index', 'meta_url' => 'payment']],
-                    ['label' => Yii::t('app', 'Аэродромы'), 'url' => ['/contact']],
-                    ['label' => Yii::t('app', 'Гидробетон'), 'url' => ['/callback']],
-                ],
+                'items' => ProductsNav::widget(),
             ],
-        ]);
-
-        $menuItems = ArrayHelper::merge($menuItems, [
             ['label' => Yii::t('app', 'Партнеры'),
                 'items' => [
                     ['label' => Yii::t('app', 'Карта Евразии'), 'url' => ['/statics/default/index', 'meta_url' => 'euromap']],
