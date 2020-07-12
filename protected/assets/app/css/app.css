@@ -1,33 +1,34 @@
-/*.navbar > .container {*/
-/*    padding: 0;*/
-/*}*/
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings', serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
 
-/*.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {*/
-/*    margin-left: 0;*/
-/*}*/
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
+}
 
-/*pre {*/
-/*    max-height: 300px;*/
-/*}*/
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
+}
 
-/*.sidebar-module > ul.list-unstyled > li > a {*/
-/*    border-left: 3px solid transparent;*/
-/*    text-decoration: none;*/
-/*    padding-left: 3px;*/
-/*}*/
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
 
-/*.sidebar-module > ul.list-unstyled > li.active > a {*/
-/*    border-left-color: #9e2929;*/
-/*}*/
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
 
-/*.sidebar-module > ul.list-unstyled > li > a:hover {*/
-/*    border-left-color: #2b9e3e;*/
-/*}*/
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
 
-/*.sidebar-module > h4 {*/
-/*    text-decoration: none;*/
-/*}*/
-
-/*.sidebar-module > h4 > a {*/
-/*    text-decoration: none;*/
-/*}*/
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
