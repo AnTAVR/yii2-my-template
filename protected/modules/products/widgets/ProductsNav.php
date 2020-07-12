@@ -14,7 +14,7 @@ class ProductsNav extends Widget
         $itemsMenu = [];
         foreach ($this->findModel() as $model) {
             /* @var $model Category */
-            $itemsMenu[] = ['label' => $model->content_title, 'url' => $model->arrUrl];
+            $itemsMenu[] = ['label' => $model->content_title . ' (' . $model->count . ')', 'url' => $model->arrUrl];
         }
 
         if (!$itemsMenu)

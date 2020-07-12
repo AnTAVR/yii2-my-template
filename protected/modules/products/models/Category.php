@@ -19,8 +19,9 @@ use yii\helpers\Url;
  *
  * Fields:
  * @property null|string|int $published
- * @property string $url
- * @property array $arrUrl
+ * @property-read string $url
+ * @property-read integer|string $count
+ * @property-read array $arrUrl
  */
 class Category extends ActiveRecord
 {
@@ -115,4 +116,10 @@ class Category extends ActiveRecord
     {
         return Url::to($this->arrUrl);
     }
+
+    public function getCount()
+    {
+        return Products::find()->where(['category_id' => $this->id])->count();
+    }
+
 }
