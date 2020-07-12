@@ -13,9 +13,10 @@ class BasicAsset extends AssetBundle
     public $js = [
         'js/basic.js',
     ];
-//    public $depends = [
-//        'app\assets\AppAsset'
-//    ];
+    public $depends = [
+        'app\assets\AppAsset'
+    ];
+
     public function init()
     {
         parent::init();
