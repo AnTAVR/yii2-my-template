@@ -5,7 +5,7 @@ namespace app\themes\basic\assets;
 use app\themes\BasicTheme as Theme;
 use yii\web\AssetBundle;
 
-class AppSiteAsset extends AssetBundle
+class BasicAsset extends AssetBundle
 {
     public $css = [
         'css/basic.css',
@@ -13,9 +13,9 @@ class AppSiteAsset extends AssetBundle
     public $js = [
         'js/basic.js',
     ];
-    public $depends = [
-        'app\assets\AppAsset'
-    ];
+//    public $depends = [
+//        'app\assets\AppAsset'
+//    ];
     public function init()
     {
         parent::init();
