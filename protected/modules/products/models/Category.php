@@ -21,6 +21,7 @@ use yii\helpers\Url;
  * @property null|string|int $published
  * @property-read string $url
  * @property-read integer|string $count
+ * @property-read array $product [Products]
  * @property-read array $arrUrl
  */
 class Category extends ActiveRecord
@@ -120,6 +121,20 @@ class Category extends ActiveRecord
     public function getCount()
     {
         return Products::find()->where(['category_id' => $this->id])->count();
+    }
+
+    public function getProduct()
+    {
+        if (($model = Products::find()
+                ->where(['category_id' => $this->id, 'status' => Products::STATUS_ACTIVE])
+                ->orderBy(['published_at' => SORT_DESC, 'id' => SORT_ASC])
+//                ->limit(10)
+                ->all()
+            ) !== null
+        ) {
+            return $model;
+        }
+        return [];
     }
 
 }

@@ -3,6 +3,8 @@
 namespace app\modules\products\widgets;
 
 use app\modules\products\models\Category;
+use app\modules\products\models\Products;
+use Yii;
 use yii\bootstrap\Widget;
 use yii\widgets\Menu;
 
@@ -14,7 +16,14 @@ class ProductsNav extends Widget
         $itemsMenu = [];
         foreach ($this->findModel() as $model) {
             /* @var $model Category */
-            $itemsMenu[] = ['label' => $model->content_title . ' (' . $model->count . ')', 'url' => $model->arrUrl];
+            $itemsMenu[] = ['label' => $model->content_title . ' (' . $model->count . ')', 'url' => $model->arrUrl,
+                'options' => ['class' => 'dropdown-header']
+            ];
+            foreach ($model->product as $product) {
+                Yii::error(serialize($product));
+                /* @var $product Products */
+                $itemsMenu[] = ['label' => $product->content_title, 'url' => $product->arrUrl];
+            }
         }
 
         if (!$itemsMenu)
