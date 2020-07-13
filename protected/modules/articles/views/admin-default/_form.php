@@ -1,5 +1,6 @@
 <?php
 
+use app\modules\articles\models\Articles;
 use app\widgets\CKEditor\CKEditor;
 use app\widgets\DateTimePicker\DateTimePicker;
 use app\widgets\UrlTranslit\UrlTranslit;
@@ -8,7 +9,7 @@ use yii\web\View;
 use yii\widgets\ActiveForm;
 
 /* @var $this View */
-/* @var $model \app\modules\articles\models\Articles */
+/* @var $model Articles */
 
 ?>
 <?php $form = ActiveForm::begin(); ?>
