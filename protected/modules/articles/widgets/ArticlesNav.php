@@ -3,12 +3,10 @@
 namespace app\modules\articles\widgets;
 
 use app\modules\articles\models\Articles;
-use Yii;
 use yii\bootstrap\Widget;
-use yii\helpers\Html;
 use yii\widgets\Menu;
 
-class ArticlesMenu extends Widget
+class ArticlesNav extends Widget
 {
 
     public function run()
@@ -21,15 +19,10 @@ class ArticlesMenu extends Widget
 
         if (!$itemsMenu) return '';
 
-        $text = '<div class="sidebar-module sidebar-articles">';
-        $text .= '<h4>' . Html::a(Yii::t('app', 'Articles'), ['/articles']) . '</h4>';
-        $text .= Menu::widget([
-            'options' => ['class' => 'list-unstyled'],
+        return Menu::widget([
+            'options' => ['class' => 'dropdown-menu'],
             'items' => $itemsMenu,
         ]);
-        $text .= '</div>';
-
-        return $text;
     }
 
     protected function findModel()

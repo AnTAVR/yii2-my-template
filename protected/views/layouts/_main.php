@@ -2,6 +2,7 @@
 
 use app\assets\AppSiteAsset;
 use app\modules\account\models\User;
+use app\modules\articles\widgets\ArticlesNav;
 use app\modules\news\widgets\NewsNav;
 use app\modules\products\widgets\ProductsNav;
 use app\modules\rbac\helpers\RBAC;
@@ -126,8 +127,6 @@ NavBar::end();
                     ['label' => Yii::t('app', 'Приоритеты'), 'url' => ['/statics/default/index', 'meta_url' => 'prioritets']],
                 ],
             ],
-        ];
-        $menuItems = ArrayHelper::merge($menuItems, [
             ['label' => Yii::t('app', 'Продукты'),
                 'items' => ProductsNav::widget(),
             ],
@@ -150,10 +149,13 @@ NavBar::end();
                 ],
             ],
             ['label' => Yii::t('app', 'Contacts'), 'url' => ['/statics/default/index', 'meta_url' => 'about']],
-            ['label' => Yii::t('app', 'Новости'),
+            ['label' => Yii::t('app', 'News'),
                 'items' => NewsNav::widget(),
             ],
-        ]);
+            ['label' => Yii::t('app', 'Articles'),
+                'items' => ArticlesNav::widget(),
+            ],
+        ];
 
         //$menuItems[] = ['encode' => false, 'label' => NewsMenu::widget()];
         //$menuItems[] = ['encode' => false, 'label' => ArticlesMenu::widget()];
